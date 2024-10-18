@@ -10,6 +10,8 @@ require("prototypes.programming")
 require("prototypes.heat-exchange")
 require("prototypes.tile")
 require("prototypes.styles")
+require("prototypes.creative")
+require("prototypes.yafc-fixes")
 
 local missed = {fluid = {}, item = {}}
 
