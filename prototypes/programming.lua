@@ -27,21 +27,20 @@ data:extend({
                 production_type = "input",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = -1,
-                pipe_connections = {{ type="input", position = {0, -4} }},
+                pipe_connections = {{ flow_direction="input", position = {0, -3}, direction=defines.direction.south }},
                 secondary_draw_orders = { north = -1 }
             },
             {
                 production_type = "output",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = 1,
-                pipe_connections = {{ type="output", position = {0, 4} }},
+                pipe_connections = {{ flow_direction="output", position = {0, 3}, direction=defines.direction.south }},
                 secondary_draw_orders = { north = -1 }
             },
-            off_when_no_fluid_recipe = true
         },
         collision_box = {{-3.2, -3.2}, {3.2, 3.2}},
         selection_box = {{-3.5, -3.5}, {3.5, 3.5}},
@@ -84,7 +83,7 @@ data:extend({
         {
             type = "electric",
             usage_priority = "secondary-input",
-            emissions_per_minute = 3
+            emissions_per_minute = {pollution=3}
         },
         energy_usage = "20MW",
     },

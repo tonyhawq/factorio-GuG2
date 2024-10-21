@@ -58,21 +58,21 @@ local controllers =
 
 function cleanroom.setup()
     ---@type table<integer, Bucket.Cleanroom>
-    global.cbuckets = {{n=0}, {n=0}, {n=0}, {n=0}}
-    global.cbucket_idx = 0
-    global.cbucket_adding_idx = 0
+    storage.cbuckets = {{n=0}, {n=0}, {n=0}, {n=0}}
+    storage.cbucket_idx = 0
+    storage.cbucket_adding_idx = 0
 
     ---@type table<uint32, Cleanroom>
-    global.cleanrooms = {}
+    storage.cleanrooms = {}
 
     ---@type table<uint32, uint32>
-    global.cleanroom_composed_of = {}
+    storage.cleanroom_composed_of = {}
 
     ---@type table<integer, table<integer, CleanroomID>>
-    global.tiles_inside_cleanroom = {}
+    storage.tiles_inside_cleanroom = {}
 
     ---@type table<integer, CleanroomID>
-    global.built_inside_cleanroom = {}
+    storage.built_inside_cleanroom = {}
 end
 
 ---@param name string
@@ -89,31 +89,31 @@ end
 ---@param y integer
 ---@param as uint32
 function cleanroom.register_tile(x, y, as)
-    global.tiles_inside_cleanroom[x] = global.tiles_inside_cleanroom[x] or {}
-    global.tiles_inside_cleanroom[x][y] = as
+    storage.tiles_inside_cleanroom[x] = storage.tiles_inside_cleanroom[x] or {}
+    storage.tiles_inside_cleanroom[x][y] = as
 end
 
 ---@param x integer
 ---@param y integer
 function cleanroom.unregister_tile(x, y)
-    if global.tiles_inside_cleanroom[x] then
-        global.tiles_inside_cleanroom[x][y] = nil
+    if storage.tiles_inside_cleanroom[x] then
+        storage.tiles_inside_cleanroom[x][y] = nil
     end
 end
 
 ---@param entity LuaEntity
 function cleanroom.is_inside_cleanroom(entity)
     local pos = entity.position
-    if global.tiles_inside_cleanroom[pos.x] then
-        if global.tiles_inside_cleanroom[pos.x][pos.y] then
-            return global.tiles_inside_cleanroom[pos.x][pos.y]
+    if storage.tiles_inside_cleanroom[pos.x] then
+        if storage.tiles_inside_cleanroom[pos.x][pos.y] then
+            return storage.tiles_inside_cleanroom[pos.x][pos.y]
         end
     end
 end
 
 ---@param event EventData.on_built_entity|EventData.on_robot_built_entity
 function cleanroom.on_created(event)
-    local entity = event.created_entity
+    local entity = event.entity
     local room_id = cleanroom.is_inside_cleanroom(entity)
     if not room_id then
         --game.print("placed outside cleanroom")
@@ -123,7 +123,7 @@ function cleanroom.on_created(event)
         end
         return
     end
-    local room = global.cleanrooms[room_id]
+    local room = storage.cleanrooms[room_id]
     if not room then
         error("Cleanroom was registered to tile despite not existing.")
     end
@@ -144,17 +144,17 @@ end
 ---@param event EventData.on_player_mined_entity|EventData.on_entity_died|EventData.on_robot_mined_entity
 function cleanroom.on_destroyed(event)
     local unit_number = event.entity.unit_number --[[@as uint32]]
-    if global.cleanroom_composed_of[unit_number] then
+    if storage.cleanroom_composed_of[unit_number] then
         --game.print("is part of construction")
-        local room = global.cleanrooms[global.cleanroom_composed_of[unit_number]]
+        local room = storage.cleanrooms[storage.cleanroom_composed_of[unit_number]]
         cleanroom.destroy(room)
-        if global.cleanroom_composed_of[unit_number] then
+        if storage.cleanroom_composed_of[unit_number] then
             --game.print("destroy did not remove me")
         end
     end
-    if global.built_inside_cleanroom[unit_number] then
+    if storage.built_inside_cleanroom[unit_number] then
         --game.print("was built inside room")
-        local room = global.cleanrooms[global.built_inside_cleanroom[unit_number]]
+        local room = storage.cleanrooms[storage.built_inside_cleanroom[unit_number]]
         if room then
             cleanroom.remove_contained(room, event.entity)
         end
@@ -163,15 +163,15 @@ end
 
 ---@param room Cleanroom
 function cleanroom.destroy(room)
-    global.cleanroom_composed_of[room.controller.unit_number] = nil
-    global.cleanrooms[room.controller.unit_number] = nil
+    storage.cleanroom_composed_of[room.controller.unit_number] = nil
+    storage.cleanrooms[room.controller.unit_number] = nil
     for child, _ in pairs(room.children) do
-        global.cleanroom_composed_of[child] = nil
+        storage.cleanroom_composed_of[child] = nil
     end
     cleanroom.disable_internal(room)
     for contained, entity in pairs(room.contains) do
         room.contains[contained] = nil
-        global.built_inside_cleanroom[entity.unit_number] = nil
+        storage.built_inside_cleanroom[entity.unit_number] = nil
     end
     for _, tile in pairs(room.tiles) do
         cleanroom.unregister_tile(tile.x, tile.y)
@@ -182,15 +182,15 @@ end
 ---@param entity LuaEntity
 function cleanroom.add_contained(room, entity)
     if cleanroom.do_control(entity.type) then
-        if global.built_inside_cleanroom[entity.unit_number] then
+        if storage.built_inside_cleanroom[entity.unit_number] then
             error("Attempting to add entity to a cleanroom that already has a cleanroom")
         end
-        global.built_inside_cleanroom[entity.unit_number] = room.controller.unit_number
+        storage.built_inside_cleanroom[entity.unit_number] = room.controller.unit_number
         room.contains[entity.unit_number] = entity
         entity.active = room.enabled
         if room.enabled then
             cleanroom.deactivate(room)
-            entity.surface.create_entity{name="flying-text", text={"label.deactivated-the-cleanroom"}, position=entity.position}            
+            rendering.draw_text{text={"label.deactivated-the-cleanroom"}, surface=entity.surface, target=entity.position, color={r=255,g=255,b=255}, time_to_live=120, scale_with_zoom=true}
         end
     end
 end
@@ -198,14 +198,14 @@ end
 ---@param room Cleanroom
 ---@param entity LuaEntity
 function cleanroom.remove_contained(room, entity)
-    if not global.built_inside_cleanroom[entity.unit_number] then
+    if not storage.built_inside_cleanroom[entity.unit_number] then
         error("Cannot remove an entity that is not built inside of a cleanroom.")
     end
-    global.built_inside_cleanroom[entity.unit_number] = nil
+    storage.built_inside_cleanroom[entity.unit_number] = nil
     room.contains[entity.unit_number] = nil
     if room.enabled then
         cleanroom.deactivate(room)
-        entity.surface.create_entity{name="flying-text", text={"label.deactivated-the-cleanroom"}, position=entity.position}            
+        rendering.draw_text{text={"label.deactivated-the-cleanroom"}, surface=entity.surface, target=entity.position, color={r=255,g=255,b=255}, time_to_live=120, scale_with_zoom=true}
     end
 end
 
@@ -231,7 +231,7 @@ function cleanroom.disable_internal(room)
         if not entity.valid then
             error("Invalid entity detected inside of cleanroom.")
             -- cleanup invalid contained things (should never happen?)
-            global.built_inside_cleanroom[unit_number] = nil
+            storage.built_inside_cleanroom[unit_number] = nil
             room.contains[unit_number] = nil
             goto continue
         end
@@ -246,7 +246,7 @@ function cleanroom.enable_internal(room)
         if not entity.valid then
             error("Invalid entity detected inside of cleanroom.")
             -- cleanup invalid contained things (should never happen?)
-            global.built_inside_cleanroom[unit_number] = nil
+            storage.built_inside_cleanroom[unit_number] = nil
             room.contains[unit_number] = nil
             goto continue
         end
@@ -258,13 +258,13 @@ end
 ---@param entity LuaEntity
 ---@return boolean
 function cleanroom.is_clean(entity)
-    return not (entity.prototype.collision_mask[Masks.layer("cleanroom-tile")] or false)
+    return not (entity.prototype.collision_mask.layers.cleanroom_tile or false)
 end
 
 ---@param entity LuaEntity
 ---@return boolean
 function cleanroom.requires_cleanroom(entity)
-    return entity.prototype.collision_mask["ground-tile"] or false
+    return entity.prototype.collision_mask.layers.ground_tile or false
 end
 
 local SEARCH_LIMIT = 200
@@ -289,7 +289,7 @@ function cleanroom.is_continuous(surf, from, to, dir, wall_map)
         rendering.draw_circle{surface=surf, target=working, radius=0.25, filled=true, color={r=0, g=0, b=255, a=255}}
         local entities = surf.find_entities_filtered{position=working}
         for _, entity in pairs(entities) do
-            if cleanroom.is_wall(entity.name) and (not global.cleanroom_composed_of[entity.unit_number]) then
+            if cleanroom.is_wall(entity.name) and (not storage.cleanroom_composed_of[entity.unit_number]) then
                 is_wall = true
                 wall_map[entity.unit_number] = entity
             end
@@ -310,7 +310,7 @@ function cleanroom.has_wall(entities, regged_walls)
     local errorno = nil
     local controllers = 0
     for _, entity in pairs(entities) do
-        if global.cleanroom_composed_of[entity.unit_number] then
+        if storage.cleanroom_composed_of[entity.unit_number] then
             errorno = "other cleanroom present"
         end
         if cleanroom.is_wall(entity.name) then
@@ -344,7 +344,7 @@ end
 
 ---@param controller LuaEntity
 function cleanroom.create(controller)
-    if global.cleanrooms[controller.unit_number] then
+    if storage.cleanrooms[controller.unit_number] then
         error("cleanroom:create Cleanroom already exists with same unit_number", 2)
     end
     rendering.clear("GuG2")
@@ -495,12 +495,12 @@ function cleanroom.create(controller)
         end
         if cleanroom.do_control(entity.type) then
             entity.active = false
-            global.built_inside_cleanroom[entity.unit_number] = controller.unit_number
+            storage.built_inside_cleanroom[entity.unit_number] = controller.unit_number
             cleanroom_contains[entity.unit_number] = entity
             rendering.draw_circle{target=entity.position, color={r=0, g=255, b=255, a=255}, radius=0.25, filled=true, surface=entity.surface}
         end
     end
-    local cleanroom_tiles = controller.surface.count_tiles_filtered{area=internal_area, collision_mask={Masks.layer("cleanroom-tile")}}
+    local cleanroom_tiles = controller.surface.count_tiles_filtered{area=internal_area, collision_mask={cleanroom_tile = true}}
     local calculated_amount = (width - 1) * (height - 1)
     if cleanroom_tiles < calculated_amount then
         game.print("has tiles "..cleanroom_tiles)
@@ -514,13 +514,13 @@ function cleanroom.create(controller)
     local visited_vents = {}
     local vent_count = 0
     for unit_number, entity in pairs(visited_walls) do
-        global.cleanroom_composed_of[unit_number] = controller.unit_number
+        storage.cleanroom_composed_of[unit_number] = controller.unit_number
         if entity.name == "cleanroom-vent" then
             visited_vents[entity.unit_number] = entity
             vent_count = vent_count + 1
         end
     end
-    global.cleanroom_composed_of[controller.unit_number] = controller.unit_number
+    storage.cleanroom_composed_of[controller.unit_number] = controller.unit_number
     local created = {
         children = visited_walls,
         vents = visited_vents,
@@ -545,7 +545,7 @@ function cleanroom.create(controller)
         end
     end
     created.total_tiles = (width - 1) * (height- 1)
-    global.cleanrooms[controller.unit_number] = created
+    storage.cleanrooms[controller.unit_number] = created
     cleanroom.calculate_efficiency(created)
     cleanroom.add_to_bucket(created.controller.unit_number)
 end
@@ -606,17 +606,17 @@ local update = cleanroom.update
 
 ---@param room_id uint32
 function cleanroom.add_to_bucket(room_id)
-    global.cbucket_adding_idx = (global.cbucket_adding_idx % BUCKET_COUNT) + 1
-    local bucket = global.cbuckets[global.cbucket_adding_idx]
+    storage.cbucket_adding_idx = (storage.cbucket_adding_idx % BUCKET_COUNT) + 1
+    local bucket = storage.cbuckets[storage.cbucket_adding_idx]
     bucket[bucket.n + 1] = room_id
     bucket.n = bucket.n + 1
 end
 
 function cleanroom.on_quarter_second()
-    global.cbucket_idx = (global.cbucket_idx % BUCKET_COUNT) + 1
+    storage.cbucket_idx = (storage.cbucket_idx % BUCKET_COUNT) + 1
     -- there are four buckets, so each cleanroom update happens once per second.
-    local i = global.cbucket_idx
-    local bucket = global.cbuckets[i]
+    local i = storage.cbucket_idx
+    local bucket = storage.cbuckets[i]
     if not bucket then
         return
     end
@@ -624,11 +624,11 @@ function cleanroom.on_quarter_second()
         if idx == "n" then
             goto continue
         end
-        if not global.cleanrooms[id] then
+        if not storage.cleanrooms[id] then
             bucket[idx] = nil
             goto continue
         end
-        update(global.cleanrooms[id])
+        update(storage.cleanrooms[id])
         ::continue::
     end
 end

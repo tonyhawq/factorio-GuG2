@@ -2,20 +2,21 @@ local du = require("dutil")
 
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
 local sounds = require("__base__.prototypes.entity.sounds")
+require ("__core__.lualib.circuit-connector-sprites")
 
 require ("__base__.prototypes.entity.pipecovers") ---@diagnostic disable-line
 
 local distillation_rig = table.deepcopy(data.raw["assembling-machine"]["oil-refinery"])
 table.insert(distillation_rig.crafting_categories, "distillation")
 distillation_rig.fluid_boxes = {
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=-1, pipe_connections={{position={ 0, 3}, type="input"}}, production_type="input"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=-1, pipe_connections={{position={ 0,-3}, type="input"}}, production_type="input"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=1, pipe_connections={{position={-3, 2}, type="output"}}, production_type="output"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=1, pipe_connections={{position={-3, 0}, type="output"}}, production_type="output"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=1, pipe_connections={{position={-3,-2}, type="output"}}, production_type="output"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=1, pipe_connections={{position={ 3, 2}, type="output"}}, production_type="output"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=1, pipe_connections={{position={ 3, 0}, type="output"}}, production_type="output"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=1, pipe_connections={{position={ 3,-2}, type="output"}}, production_type="output"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={ 0, 2}, direction=defines.direction.south, flow_direction="input"}}, production_type="input"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={ 0,-2}, direction=defines.direction.north, flow_direction="input"}}, production_type="input"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={-2, 2}, direction=defines.direction.west, flow_direction="output"}}, production_type="output"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={-2, 0}, direction=defines.direction.west, flow_direction="output"}}, production_type="output"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={-2,-2}, direction=defines.direction.west, flow_direction="output"}}, production_type="output"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={ 2, 2}, direction=defines.direction.east, flow_direction="output"}}, production_type="output"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={ 2, 0}, direction=defines.direction.east, flow_direction="output"}}, production_type="output"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={ 2,-2}, direction=defines.direction.east, flow_direction="output"}}, production_type="output"},
 }
 distillation_rig.name = "distillation-rig"
 data:extend({distillation_rig})
@@ -36,12 +37,12 @@ data:extend({
         selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
         fluid_box =
         {
-            base_area = 1,
+            volume=100,
             pipe_covers = pipecoverspictures(),
             pipe_connections =
             {
-                { position = {-1, 0}, type = "input"},
-                { position = {1, 0}, type = "output"}
+                { position = {0, 0}, --[[flow_direction = "input",]] direction=defines.direction.north},
+                { position = {0, 0}, --[[flow_direction = "output",]] direction=defines.direction.south}
             }
         },
         window_bounding_box = {{-0.125, 0.6875}, {0.1875, 1.1875}},
@@ -167,15 +168,15 @@ data:extend({
         {
             type = "fluid",
             effectivity = 1,
-            emissions_per_minute = 8,
+            emissions_per_minute = {pollution=8},
             scale_fluid_usage = true,
             burns_fluid = true,
             fluid_box = {
                 production_type = "input",
                 pipe_covers = pipecoverspictures(),
-                base_area = 2,
+                volume = 200,
                 base_level = -1,
-                pipe_connections = {{ type="input", position = {3.5, 1.5} }},
+                pipe_connections = {{ flow_direction="input", position = {2.5, 1.5}, direction=defines.direction.east }},
                 secondary_draw_orders = { north = -1 }
             },
         },
@@ -207,33 +208,32 @@ data:extend({
                 production_type = "input",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),        
-                base_area = 10,
+                volume = 100,
                 base_level = -1,
-                pipe_connections = {{type = "input", position = {3.4, -0.5}}}
+                pipe_connections = {{flow_direction = "input", position = {2.4, -0.5}, direction=defines.direction.east}}
             },
             {
                 production_type = "input",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),        
-                base_area = 10,
+                volume = 100,
                 base_level = -1,
-                pipe_connections = {{type = "input", position = {0.5, 3.4}}}
+                pipe_connections = {{flow_direction = "input", position = {0.5, 2.4}, direction=defines.direction.north}}
             },
             {
                 production_type = "output",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_level = 1,
-                pipe_connections = {{type = "output", position = {-3.4, -0.5}}}
+                volume = 100,
+                pipe_connections = {{flow_direction = "output", position = {-2.4, -0.5}, direction=defines.direction.west}}
             },
             {
                 production_type = "output",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),        
-                base_level = 1,
-                pipe_connections = {{type = "output", position = {-0.5, 3.4}}}
+                volume = 100,
+                pipe_connections = {{flow_direction = "output", position = {-0.5, 2.4}, direction=defines.direction.south}}
             },
-            off_when_no_fluid_recipe = true
         },
         vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
         working_sound = {
@@ -262,9 +262,9 @@ data:extend({
         crafting_speed = 1,
         energy_source = {
             type = "burner",
-            fuel_category = "chemical",
+            fuel_categories = {"chemical"},
             fuel_inventory_size = 1,
-            emissions_per_minute = 6,
+            emissions_per_minute = {pollution=6},
         },
         energy_usage = "250kW",
         animation = {
@@ -303,78 +303,72 @@ data:extend({
             {  
                 production_type = "input",
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
-                base_level = -1,
+                volume = 100,
                 pipe_picture = assembler2pipepictures(),
-                pipe_connections = {{type = "input", position = {-1.5, -4.5}}}
+                pipe_connections = {{flow_direction = "input", position = {-1.5, -3}, direction=defines.direction.north}}
             },
             --North, right
             {
                 production_type = "output",
                 pipe_covers = pipecoverspictures(),
-                base_level = 1,
+                volume = 100,
                 pipe_picture = assembler2pipepictures(), --.05
-                pipe_connections = {{type = "output", position = {1.5, -4.5}}}
+                pipe_connections = {{flow_direction = "output", position = {1.5, -3}, direction=defines.direction.north}}
             },
             --South, left
             {
                 production_type = "input",
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
-                base_level = -1,
+                volume = 100,
                 pipe_picture = assembler2pipepictures(),
-                pipe_connections = {{type = "input", position = {-1.5, 4.5}}}
+                pipe_connections = {{flow_direction = "input", position = {-1.5, 3}, direction=defines.direction.south}}
             },
             --South, right
             {
                 production_type = "output",
                 pipe_covers = pipecoverspictures(),
-                base_level = 1,
+                volume = 100,
                 pipe_picture = assembler2pipepictures(), --.05
-                pipe_connections = {{type = "output", position = {1.5, 4.5}}}
+                pipe_connections = {{flow_direction = "output", position = {1.5, 3}, direction=defines.direction.south}}
             },
             --West, top
             {
                 production_type = "input",
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
-                base_level = -1,
+                volume = 100,
                 pipe_picture = assembler2pipepictures(), --.05
-                pipe_connections = {{type = "input", position = {-4.5, -1.5}}}
+                pipe_connections = {{flow_direction = "input", position = {-3, -1.5}, direction=defines.direction.west}}
             },
             --West, bottom
             {
                 production_type = "output",
                 pipe_covers = pipecoverspictures(),
-                base_level = 1,
-                pipe_picture = assembler2pipepictures(),
-                pipe_connections = {{type = "output", position = {-4.5, 1.5}}}
+                volume = 100,                pipe_picture = assembler2pipepictures(),
+                pipe_connections = {{flow_direction = "output", position = {-3, 1.5}, direction=defines.direction.west}}
             },
             --East, top
             {
                 production_type = "input",
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
-                base_level = -1,
+                volume = 100,
                 pipe_picture = assembler2pipepictures(), --.05
-                pipe_connections = {{type = "input", position = {4.5, -1.5}}}
+                pipe_connections = {{flow_direction = "input", position = {3, -1.5}, direction=defines.direction.east}}
             },
             --East, bottom
             {
                 production_type = "output",
                 pipe_covers = pipecoverspictures(),
-                base_level = 1,
+                volume = 100,
                 pipe_picture = assembler2pipepictures(),
-                pipe_connections = {{type = "output", position = {4.5, 1.5}}}
+                pipe_connections = {{flow_direction = "output", position = {3, 1.5}, direction=defines.direction.east}}
             },
             {
                 production_type = "output",
                 pipe_covers = pipecoverspictures(),
-                base_level = 1,
+                volume = 100,
                 pipe_picture = assembler2pipepictures(),
-                pipe_connections = {{type = "output", position = {4.5, 3.5}}}
+                pipe_connections = {{flow_direction = "output", position = {3, 2.5}, direction=defines.direction.east}}
             },
-            off_when_no_fluid_recipe = true
         },
         vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
         working_sound = {
@@ -406,17 +400,17 @@ data:extend({
         energy_source =
         {
             type = "fluid",
-            emissions_per_minute = 10,
+            emissions_per_minute = {pollution=10},
             destroy_non_fuel_fluid = false,
             fluid_box =
             {
-                base_area = 1,
+                volume=100,
                 height = 2,
                 base_level = -1,
                 pipe_connections =
                 {
-                    {type = "input-output", position = {4, 0}},
-                    {type = "input-output", position = {-4, 0}}
+                    {flow_direction = "input-output", position = {3, 0}, direction=defines.direction.east},
+                    {flow_direction = "input-output", position = {-3, 0}, direction=defines.direction.west}
                 },
                 pipe_covers = pipecoverspictures(),
                 pipe_picture = assembler2pipepictures(),
@@ -520,35 +514,34 @@ data:extend({
                 production_type = "input",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = -1,
-                pipe_connections = {{type = "input", position = {1.0, -4.0}}}
+                pipe_connections = {{flow_direction = "input", position = {1.0, -3.0}, direction=defines.direction.north}}
             },
             {
                 production_type = "input",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = -1,
-                pipe_connections = {{type = "input", position = {-1.0, -4.0}}}
+                pipe_connections = {{flow_direction = "input", position = {-1.0, -3.0}, direction=defines.direction.north}}
             },
             {
                 production_type = "input",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = -1,
-                pipe_connections = {{type = "input", position = {2.0, 4.0}}}
+                pipe_connections = {{flow_direction = "input", position = {2.0, 3.0}, direction=defines.direction.south}}
             },
             {
                 production_type = "output",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = 1,
-                pipe_connections = {{type = "output", position = {-2.0, 4.0}}}
+                pipe_connections = {{flow_direction = "output", position = {-2.0, 3.0}, direction=defines.direction.south}}
             },
-            off_when_no_fluid_recipe = true
         },
         vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
         working_sound = {
@@ -586,33 +579,33 @@ data:extend({
                 production_type = "input",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = -1,
-                pipe_connections = {{type = "input", position = {2.0, 4.0}}}
+                pipe_connections = {{flow_direction = "input", position = {2.0, 3.0}, direction=defines.direction.south}}
             },
             {
                 production_type = "output",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = 1,
-                pipe_connections = {{type = "output", position = {-2.0, 4.0}}}
+                pipe_connections = {{flow_direction = "output", position = {-2.0, 3.0}, direction=defines.direction.south}}
             },
             {
                 production_type = "input",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = -1,
-                pipe_connections = {{type = "input", position = {-2.0, -4.0}}}
+                pipe_connections = {{flow_direction = "input", position = {-2.0, -3.0}, direction=defines.direction.north}}
             },
             {
                 production_type = "output",
                 pipe_picture = assembler2pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = 1,
-                pipe_connections = {{type = "output", position = {2.0, -4.0}}}
+                pipe_connections = {{flow_direction = "output", position = {2.0, -3.0}, direction=defines.direction.north}}
             },
         },
         animation = {
@@ -643,7 +636,7 @@ gf_boiler_entity.fluid_box.filter = "seawater"
 gf_boiler_entity.energy_source = {
     type = "fluid",
     fluid_box = {
-        base_area = 1,
+        volume=100,
         height = 1,
         base_level = -1,
         pipe_covers = pipecoverspictures(),
@@ -718,7 +711,7 @@ gf_boiler_entity.energy_source = {
             }
         },
         pipe_connections = {
-            {type = "input", position = {0, 1.5}},
+            {flow_direction = "input", position = {0, 0.5}, direction=defines.direction.north},
         },
         secondary_draw_orders = {
             south = 32,
@@ -729,7 +722,7 @@ gf_boiler_entity.energy_source = {
     },
     burns_fluid = true,
     scale_fluid_usage = true,
-    emissions_per_minute = 30,
+    emissions_per_minute = {pollution=30},
     effectivity = 0.5,
     smoke = {{
         name = "smoke",
@@ -750,6 +743,7 @@ gf_boiler_entity.energy_source = {
 gf_boiler_entity.fire_flicker_enabled = false
 gf_boiler_entity.fire_glow_flicker_enabled = false
 gf_boiler_entity.fire = {}
+--[[
 gf_boiler_entity.fire_glow.north.filename = 
 "__GuG2__/graphics/entity/scale-boiler/"..
 "gas-boiler-N-light.png"
@@ -785,7 +779,7 @@ gf_boiler_entity.fire_glow.west.tint={r=1,g=0.6,b=0.6,a=0.4}
 gf_boiler_entity.fire_glow.north.blend_mode = "additive-soft"
 gf_boiler_entity.fire_glow.south.blend_mode = "additive-soft"
 gf_boiler_entity.fire_glow.east.blend_mode = "additive-soft"
-gf_boiler_entity.fire_glow.west.blend_mode = "additive-soft"
+gf_boiler_entity.fire_glow.west.blend_mode = "additive-soft"]]
 
 data:extend({gf_boiler_entity})
 
@@ -804,6 +798,9 @@ end
 
 data:extend({
     {
+        circuit_connector = circuit_connector_definitions["wall"], ---@diagnostic disable-line
+        circuit_wire_max_distance = default_circuit_wire_max_distance, ---@diagnostic disable-line
+        default_output_signal = {type = "virtual", name = "signal-G"},    
         g2_clean_only = true, ---@diagnostic disable-line
         localised_description = {"", {"entity-description.cleanroom-wall"}, "\n", {"label.cleanroom-tile-required"}},
         type = "wall",
@@ -1203,11 +1200,6 @@ data:extend({
             size = 1,
             intensity = 0.2
         },
-        
-        circuit_wire_connection_point = circuit_connector_definitions["gate"].points,
-        circuit_connector_sprites = circuit_connector_definitions["gate"].sprites,
-        circuit_wire_max_distance = default_circuit_wire_max_distance,
-        default_output_signal = {type = "virtual", name = "signal-G"}
     },
     {
         g2_clean_only = true,---@diagnostic disable-line
@@ -1232,6 +1224,7 @@ data:extend({
         },
         gui_mode = "none",
         energy_source = {
+            type = "electric",
             usage_priority = "primary-input",
             buffer_capacity = "30MJ",
             drain = "600kW",
@@ -1315,11 +1308,11 @@ data:extend({
         selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
         fluid_box =
         {
-            base_area = 10,
+            volume = 100,
             pipe_covers = pipecoverspictures(),
             pipe_connections =
             {
-                { position = {1, 0}, type = "output"}
+                { position = {0, 0}, --[[flow_direction = "output",]] direction=defines.direction.north}
             }
         },
         window_bounding_box = {{-0.125, 0.6875}, {0.1875, 1.1875}},
@@ -1367,13 +1360,13 @@ data:extend({
         selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
         fluid_box =
         {
-            base_area = 10,
+            volume = 100,
             pipe_picture = assembler2pipepictures(),
             pipe_covers = pipecoverspictures(),
             pipe_connections =
             {
-                { position = {0, 1}, type = "output"},
-                { position = {0, -1}, type = "input"},
+                { position = {0, 0}, --[[flow_direction = "output",]] direction=defines.direction.north},
+                { position = {0, 0}, --[[flow_direction = "input",]] direction=defines.direction.south},
             }
         },
         window_bounding_box = {{-0.125, 0.6875}, {0.1875, 1.1875}},
@@ -1433,39 +1426,38 @@ data:extend({
                 production_type = "input",
                 pipe_picture = assembler3pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = -1,
-                pipe_connections = {{ type="input", position = {-1, -2} }},
+                pipe_connections = {{ flow_direction="input", position = {-1, -1}, direction=defines.direction.north }},
                 secondary_draw_orders = { north = -1 }
             },
             {
                 production_type = "input",
                 pipe_picture = assembler3pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = -1,
-                pipe_connections = {{ type="input", position = {1, -2} }},
+                pipe_connections = {{ flow_direction="input", position = {1, -1}, direction=defines.direction.north }},
                 secondary_draw_orders = { north = -1 }
             },
             {
                 production_type = "output",
                 pipe_picture = assembler3pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = 1,
-                pipe_connections = {{ type="output", position = {-1, 2} }},
+                pipe_connections = {{ flow_direction="output", position = {-1, 1}, direction=defines.direction.south }},
                 secondary_draw_orders = { north = -1 }
             },
             {
                 production_type = "output",
                 pipe_picture = assembler3pipepictures(),
                 pipe_covers = pipecoverspictures(),
-                base_area = 10,
+                volume = 100,
                 base_level = 1,
-                pipe_connections = {{ type="output", position = {1, 2} }},
+                pipe_connections = {{ flow_direction="output", position = {1, 1}, direction=defines.direction.south }},
                 secondary_draw_orders = { north = -1 }
             },
-            off_when_no_fluid_recipe = true
         },
         open_sound = sounds.machine_open,
         close_sound = sounds.machine_close,
@@ -1543,7 +1535,7 @@ data:extend({
         {
             type = "electric",
             usage_priority = "secondary-input",
-            emissions_per_minute = 0
+            emissions_per_minute = {pollution=0}
         },
         energy_usage = "675kW",
         module_specification =
@@ -1576,8 +1568,8 @@ data:extend({
         damaged_trigger_effect = hit_effects.entity(),
         pickup_position = {0, -1},
         insert_position = {0, 1.2},
-        energy_per_movement = "16KJ",
-        energy_per_rotation = "16KJ",
+        energy_per_movement = "16kJ",
+        energy_per_rotation = "16kJ",
         energy_source =
         {
             type = "electric",
@@ -1729,8 +1721,8 @@ data:extend({
         damaged_trigger_effect = hit_effects.entity(),
         pickup_position = {0, -2},
         insert_position = {0, 2.2},
-        energy_per_movement = "16KJ",
-        energy_per_rotation = "16KJ",
+        energy_per_movement = "16kJ",
+        energy_per_rotation = "16kJ",
         rotation_speed = 0.04,
         extension_speed = 0.04,
         hand_size = 1.5,
@@ -1885,13 +1877,13 @@ data:extend({
         damaged_trigger_effect = hit_effects.entity(),
         fluid_box =
         {
-            base_area = 1,
+            volume=100,
             pipe_connections =
             {
-                { position = {0, -1} },
-                { position = {1, 0} },
-                { position = {0, 1} },
-                { position = {-1, 0} }
+                { position = {0, 0}, direction=defines.direction.north },
+                { position = {0, 0}, direction=defines.direction.east },
+                { position = {0, 0}, direction=defines.direction.south },
+                { position = {0, 0}, direction=defines.direction.west }
             }
         },
         vehicle_impact_sound = sounds.generic_impact,
@@ -2097,14 +2089,7 @@ data:extend({
                 direction_count = 1
             }
         },
-        working_sound =
-        {
-            sound = sounds.pipe,
-            match_volume_to_activity = true,
-            audible_distance_modifier = 0.3,
-            fade_in_ticks = 4,
-            fade_out_ticks = 60
-        },
+        working_sound = sounds.pipe,
         open_sound = sounds.machine_open,
         close_sound = sounds.machine_close,
         
@@ -2136,31 +2121,21 @@ data:extend({
         damaged_trigger_effect = hit_effects.entity(),
         fluid_box =
         {
-            base_area = 1,
+            volume=100,
             pipe_covers = pipecoverspictures(),
             pipe_connections =
             {
-                { position = {0, -1} },
-                {
-                    position = {0, 1},
-                    max_underground_distance = 20
-                }
+                { position = {0, 0}, direction=defines.direction.south},
+                { position = {0, 0}, direction=defines.direction.north, connection_type="underground", max_underground_distance=30}
             }
         },
         vehicle_impact_sound = sounds.generic_impact,
-        working_sound =
-        {
-            sound = sounds.pipe,
-            match_volume_to_activity = true,
-            audible_distance_modifier = 0.3,
-            fade_in_ticks = 4,
-            fade_out_ticks = 60
-        },
+        working_sound = sounds.pipe,
         open_sound = sounds.machine_open,
         close_sound = sounds.machine_close,
         pictures =
         {
-            up =
+            north =
             {
                 filename = "__GuG2__/graphics/entity/clean-pipe-to-ground/hr-pipe-to-ground-up.png",
                 priority = "extra-high",
@@ -2168,7 +2143,7 @@ data:extend({
                 height = 128,
                 scale = 0.5
             },
-            down =
+            south =
             {
                 filename = "__GuG2__/graphics/entity/clean-pipe-to-ground/hr-pipe-to-ground-down.png",
                 priority = "extra-high",
@@ -2176,7 +2151,7 @@ data:extend({
                 height = 128,
                 scale = 0.5
             },
-            left =
+            west =
             {
                 filename = "__GuG2__/graphics/entity/clean-pipe-to-ground/hr-pipe-to-ground-left.png",
                 priority = "extra-high",
@@ -2184,7 +2159,7 @@ data:extend({
                 height = 128,
                 scale = 0.5
             },
-            right =
+            east =
             {
                 filename = "__GuG2__/graphics/entity/clean-pipe-to-ground/hr-pipe-to-ground-right.png",
                 priority = "extra-high",
@@ -2239,38 +2214,21 @@ data.raw.generator["steam-engine"].effectivity = 0.75
 data.raw["assembling-machine"]["assembling-machine-1"].energy_source = {
     type = "fluid",
     effectivity = 1,
-    emissions_per_minute = 8,
+    emissions_per_minute = {pollution=8},
     scale_fluid_usage = true,
     burns_fluid = false,
     fluid_box = {
         filter = "steam",
         production_type = "input",
         pipe_covers = pipecoverspictures(),
-        base_area = 2,
+        volume = 100,
         base_level = -1,
-        pipe_connections = {{ type="input", position = {2, 0} }},
+        pipe_connections = {{ flow_direction="input", position = {1, 0}, direction=defines.direction.east }},
         secondary_draw_orders = { north = -1 }
     },
 }
 data.raw["assembling-machine"]["assembling-machine-1"].crafting_categories = {"crafting", "crafting-with-fluid", "autocrafting"}
-data.raw["assembling-machine"]["assembling-machine-1"].fluid_boxes = {
-    {
-        production_type = "input",
-        pipe_covers = pipecoverspictures(),
-        base_area = 1,
-        base_level = -1,
-        pipe_connections = {{ type="input", position = {1, -2} }},
-        secondary_draw_orders = { north = -1 }
-    },
-    {
-        production_type = "output",
-        pipe_covers = pipecoverspictures(),
-        base_area = 1,
-        base_level = 1,
-        pipe_connections = {{ type="output", position = {-1, 2} }},
-        secondary_draw_orders = { north = -1 }
-    },
-}
+data.raw["assembling-machine"]["assembling-machine-1"].fluid_boxes = table.deepcopy(data.raw["assembling-machine"]["assembling-machine-2"].fluid_boxes)
 
 data.raw["offshore-pump"]["offshore-pump"].fluid = "seawater"
 data.raw["offshore-pump"]["offshore-pump"].fluid_box.filter = "seawater"

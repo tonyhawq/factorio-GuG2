@@ -121,7 +121,7 @@ end
 function cleanroom_gui.update_gui(player)
     local root = player.gui.relative[cleanroom_gui.root_name]
     if not (root and root.tags and root.tags.unit_number) then return end
-    local cleanroom_data = global.cleanrooms[root.tags.unit_number]
+    local cleanroom_data = storage.cleanrooms[root.tags.unit_number]
     local status_flow = root.frame.status_flow
     local factor_flow = root.frame.factor_flow
     local power_flow = root.frame.power_flow
@@ -161,7 +161,7 @@ function cleanroom_gui.player_clicked_gui(event, player)
     if not root or not root.tags or not root.tags.unit_number then
         return
     end
-    local room = global.cleanrooms[root.tags.unit_number]
+    local room = storage.cleanrooms[root.tags.unit_number]
     if event.element.name == "g2-cleanroom-register" then
         if not room then
             Cleanroom.create(game.get_surface(root.tags.surface_index).find_entity("cleanroom-controller", root.tags.located_at) --[[@as LuaEntity]])

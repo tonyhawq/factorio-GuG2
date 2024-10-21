@@ -2,20 +2,29 @@ local du = require("dutil")
 
 data:extend({
     {
+        type = "collision-layer",
+        name = "cleanroom_tile"    
+    }
+})
+
+data:extend({
+    {
         type = "tile",
         name = "cleanroom-tile",
         needs_correction = false,
         check_collision_with_entities = true,
         minable = {mining_time = 0.1, result = "cleanroom-tile"},
         collision_mask = {
-            CUTIL.layer("cleanroom-tile"), ---@diagnostic disable-line
+            layers = {
+                cleanroom_tile = true
+            }
         },
-        pollution_absorption_per_second = 1,
         walking_speed_modifier = 1,
         layer = 207,
         decorative_removal_probability = 1,
         variants =
         {
+            empty_transitions = true,
             main =
             {
                 {
@@ -36,48 +45,23 @@ data:extend({
                     probability = 0.02,
                 },
             },
-            inner_corner =
-            {
-                picture = "__GuG2__/graphics/terrain/cleanroom-tile/tile-inner-corner.png",
-                count = 8,
-            },
-            outer_corner =
-            {
-                picture = "__GuG2__/graphics/terrain/cleanroom-tile/tile-outer-corner.png",
-                count = 8,
-            },
-            side =
-            {
-                picture = "__GuG2__/graphics/terrain/cleanroom-tile/tile-side.png",
-                count = 8,
-            },
-            u_transition =
-            {
-                picture = "__GuG2__/graphics/terrain/cleanroom-tile/tile-u.png",
-                count = 1,
-            },
-            o_transition =
-            {
-                picture = "__GuG2__/graphics/terrain/cleanroom-tile/tile-o.png",
-                count = 8,
-            }
         },
         walking_sound =
         {
             {
-                filename = "__base__/sound/walking/concrete-01.ogg",
+                filename = "__base__/sound/walking/concrete-1.ogg",
                 volume = 1.2
             },
             {
-                filename = "__base__/sound/walking/concrete-02.ogg",
+                filename = "__base__/sound/walking/concrete-2.ogg",
                 volume = 1.2
             },
             {
-                filename = "__base__/sound/walking/concrete-03.ogg",
+                filename = "__base__/sound/walking/concrete-3.ogg",
                 volume = 1.2
             },
             {
-                filename = "__base__/sound/walking/concrete-04.ogg",
+                filename = "__base__/sound/walking/concrete-4.ogg",
                 volume = 1.2
             }
         },
@@ -97,7 +81,9 @@ data:extend({
         {
             result = "cleanroom-tile",
             condition_size = 1,
-            condition = { "water-tile" }
+            condition = {
+                layers = {water_tile = true},
+            },
         }
     },
 })

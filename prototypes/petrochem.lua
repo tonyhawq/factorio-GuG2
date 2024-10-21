@@ -870,7 +870,7 @@ data:extend({
         results = {
             {type="fluid", name="hals", amount=30},
             {type="fluid", name="steam", amount=30, temperature=300},
-            {type="item", name="empty-barrel", amount=1},
+            {type="item", name="barrel", amount=1},
         }
     }
 })

@@ -1150,7 +1150,7 @@ data:extend({
             {type="fluid", name="naphthalene", amount=1},
             {type="fluid", name="nitric-acid", amount=1},
             {type="fluid", name="hydrogen", amount=1},
-            {type="item", name="empty-barrel", amount=1},
+            {type="item", name="barrel", amount=1},
         },
         results = {
             {type="item", name="photoresist", amount=1},
@@ -1177,7 +1177,7 @@ data:extend({
         },
         results = {
             {type="item", name="pre-etched-simple-wafer", amount=1, probability=0.9},
-            {type="item", name="empty-barrel", amount=1},
+            {type="item", name="barrel", amount=1},
         }
     },
     {
@@ -1211,14 +1211,14 @@ data:extend({
         energy_required = 1,
         ingredients = {
             {type="item", name="lithographed-simple-wafer", amount=1},
-            {type="item", name="empty-barrel", amount=1},
+            {type="item", name="barrel", amount=1},
             {type="fluid", name="ammonium-fluoride", amount=1},
             {type="fluid", name="hydrofluoric-acid", amount=1},
         },
         results = {
             {type="item", name="simple-wafer", amount=1, probability=1/3},
             {type="item", name="pre-etched-simple-wafer", amount=1, probability=2/3},
-            {type="item", name="empty-barrel", amount=1, probability=5/6},
+            {type="item", name="barrel", amount=1, probability=5/6},
             {type="item", name="photoresist", amount=1, probability=1/6},
             {type="fluid", name="fluoric-wastewater", amount=1},
         }

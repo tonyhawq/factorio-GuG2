@@ -1,13 +1,13 @@
 {
     "name": "GuG2",
     "version": "0.1.09",
-    "factorio_version": "1.1",
+    "factorio_version": "2.0",
     "title": "GuG2",
     "author": "unfunnyjoke27",
     "description": "The GuG returns for a sequel.",
     "homepage": "",
     "dependencies": [
-      "base >= 1.1.0",
+      "base >= 2.0",
       "factorio-questing",
       "pycoalprocessinggraphics"
     ]

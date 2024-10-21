@@ -1,3 +1,5 @@
+local collision_mask_util = require("__core__.lualib.collision-mask-util")
+
 ---@param prototype_name string
 ---@param prototype_type string eg assembling-machine
 local function update_mask(prototype_name, prototype_type)
@@ -5,16 +7,16 @@ local function update_mask(prototype_name, prototype_type)
     if not ptype then
         error("No such prototype exists with type/name "..tostring(prototype_type).."["..tostring(prototype_name).."]", 2)
     end
-    ptype.collision_mask = ptype.collision_mask or CUTIL.get_default_mask(prototype_type)
+    ptype.collision_mask = ptype.collision_mask or collision_mask_util.get_default_mask(prototype_type) or {}
     if ptype.g2_clean_only then
         ptype.g2_clean = true ---@diagnostic disable-line
-        CUTIL.add_layer(ptype.collision_mask, "ground-tile")
+        ptype.collision_mask.layers.ground_tile = true
         if not ptype.localised_description then
             ptype.localised_description = {"", {"?", {"", {"entity-description."..ptype.name}, "\n"}, ""}, {"label.requires-cleanroom"}}
         end
     end
     if not ptype.g2_clean then
-        CUTIL.add_layer(ptype.collision_mask, CUTIL.layer("cleanroom-tile"))
+        ptype.collision_mask.layers.cleanroom_tile = true
         if not ptype.localised_description then
             ptype.localised_description = {"", {"?", {"", {"entity-description."..ptype.name}, "\n"}, ""}, {"label.no-cleanroom"}}
         end
@@ -35,7 +37,6 @@ local unclean_types = {
     "offshore-pump",
     "pipe",
     "pipe-to-ground",
-    "curved-rail",
     "straight-rail",
     "storage-tank",
     "underground-belt",
@@ -65,6 +66,9 @@ make_clean(data.raw["splitter"]["fast-splitter"])
 make_clean(data.raw["splitter"]["express-splitter"])
 
 for _, dtype in pairs(unclean_types) do
+    if not data.raw[dtype] then
+        error("no protype type for "..dtype) 
+    end
     for name, ptype in pairs(data.raw[dtype]) do
         update_mask(name, dtype)
     end

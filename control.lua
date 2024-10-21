@@ -2,7 +2,6 @@ Multistage = require("__factorio-questing__.remote.multistage.control")
 Bucketing = require("__GuG2__.scripts.bucketing")
 Cleanroom = require("__GuG2__.scripts.cleanroom")
 CleanroomGUI = require("__GuG2__.scripts.cleanroom-gui")
-Masks = require("__GuG2__.scripts.collision-util")
 
 -- Global library Multistage has different values depending on which remote/multistage/ file is reqd.
 
@@ -12,11 +11,9 @@ script.on_init(function ()
     Multistage.load() -- internally calls remote.call() with reqd. arguments.
     Bucketing.setup()
     Cleanroom.setup()
-    Masks.setup()
 end)
 
 script.on_configuration_changed(function ()
-    Masks.update_masks()
 end)
 
 script.on_event(defines.events.on_tick, function(event_data)
