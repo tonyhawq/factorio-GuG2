@@ -5,21 +5,21 @@ local sounds = require("__base__.prototypes.entity.sounds")
 
 require ("__base__.prototypes.entity.pipecovers") ---@diagnostic disable-line
 
-data.raw["assembling-machine"]["oil-refinery"].fluid_boxes = {
-    {pipe_connections={{type="input", position={ 3,  1}}}, production_type = "input", pipe_picture = assembler3pipepictures(), pipe_covers = pipecoverspictures(), base_area = 10, base_level = -1,},
-    {pipe_connections={{type="input", position={ 3, -1}}}, production_type = "input", pipe_picture = assembler3pipepictures(), pipe_covers = pipecoverspictures(), base_area = 10, base_level = -1,},
-    
-    {pipe_connections={{type="input", position={ 1, -3}}}, production_type = "input", pipe_picture = assembler3pipepictures(), pipe_covers = pipecoverspictures(), base_area = 10, base_level = -1,},
-    {pipe_connections={{type="input", position={-1, -3}}}, production_type = "input", pipe_picture = assembler3pipepictures(), pipe_covers = pipecoverspictures(), base_area = 10, base_level = -1,},
-    
-    {pipe_connections={{type="output", position={-3, 1}}}, production_type = "output", pipe_picture = assembler3pipepictures(), pipe_covers = pipecoverspictures(), base_area = 10, base_level = 1,},
-    {pipe_connections={{type="output", position={-3,-1}}}, production_type = "output", pipe_picture = assembler3pipepictures(), pipe_covers = pipecoverspictures(), base_area = 10, base_level = 1,},
-    
-    {pipe_connections={{type="output", position={ 1, 3}}}, production_type = "output", pipe_picture = assembler3pipepictures(), pipe_covers = pipecoverspictures(), base_area = 10, base_level = 1,},
-    {pipe_connections={{type="output", position={-1, 3}}}, production_type = "output", pipe_picture = assembler3pipepictures(), pipe_covers = pipecoverspictures(), base_area = 10, base_level = 1,},
+local distillation_rig = table.deepcopy(data.raw["assembling-machine"]["oil-refinery"])
+table.insert(distillation_rig.crafting_categories, "distillation")
+distillation_rig.fluid_boxes = {
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=-1, pipe_connections={{position={ 0, 3}, type="input"}}, production_type="input"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=-1, pipe_connections={{position={ 0,-3}, type="input"}}, production_type="input"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=1, pipe_connections={{position={-3, 2}, type="output"}}, production_type="output"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=1, pipe_connections={{position={-3, 0}, type="output"}}, production_type="output"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=1, pipe_connections={{position={-3,-2}, type="output"}}, production_type="output"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=1, pipe_connections={{position={ 3, 2}, type="output"}}, production_type="output"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=1, pipe_connections={{position={ 3, 0}, type="output"}}, production_type="output"},
+    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), base_level=1, pipe_connections={{position={ 3,-2}, type="output"}}, production_type="output"},
 }
+distillation_rig.name = "distillation-rig"
+data:extend({distillation_rig})
 
-data.raw["assembling-machine"]["oil-refinery"].crafting_categories = {"crafting-with-fluid", "glassworking", "smithing", "autocrafting", "crafting", "flash-boiling"}
 data:extend({
     {
         g2_clean = true, ---@diagnostic disable-line
@@ -2272,6 +2272,8 @@ data.raw["assembling-machine"]["assembling-machine-1"].fluid_boxes = {
     },
 }
 
+data.raw["offshore-pump"]["offshore-pump"].fluid = "seawater"
+data.raw["offshore-pump"]["offshore-pump"].fluid_box.filter = "seawater"
 
 data:extend({
     {
@@ -2492,5 +2494,9 @@ data:extend({
     {
         type = "recipe-category",
         name = "clean-crafting"
+    },
+    {
+        type = "recipe-category",
+        name = "distillation"
     },
 })

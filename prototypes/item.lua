@@ -245,8 +245,8 @@ data:extend({
   },
   {
     type = "item",
-    name = "iron-sheet",
-    icons = du.icons("iron-sheet"),
+    name = "wrought-iron-sheet",
+    icons = du.icons("wrought-iron-sheet"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50
@@ -254,8 +254,16 @@ data:extend({
 
   {
     type = "item",
-    name = "iron-rod",
-    icons = du.icons("iron-rod"),
+    name = "wrought-iron-plate",
+    icons = du.icons("wrought-iron-plate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "wrought-iron-rod",
+    icons = du.icons("wrought-iron-rod"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50
@@ -547,6 +555,78 @@ data:extend({
     type = "item",
     name = "polysilicon",
     icons = du.icons("polysilicon"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "lead-ore",
+    icons = du.icons("lead-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "raw-silver-dust",
+    icons = du.icons("raw-silver-dust"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "limestone",
+    icons = du.icons("limestone"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "tin-ingot",
+    icons = du.icons("tin-ingot"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "tin-plate",
+    icons = du.icons("tin-plate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "bronze-ingot",
+    icons = du.icons("bronze-ingot"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "bronze-plate",
+    icons = du.icons("bronze-plate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "tin-ore",
+    icons = du.icons("tin-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "planter-box",
+    icons = du.icons("planter-box"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50

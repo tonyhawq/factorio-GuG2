@@ -1,6 +1,10 @@
 CUTIL = require("__GuG2__.scripts.collision-util")
 CUTIL.create_layer("cleanroom-tile")
 
+require("prototypes.pre-science.recipe")
+require("prototypes.environmental-science.recipe")
+require("prototypes.environmental-science.technology")
+
 require("prototypes.entity")
 require("prototypes.fluid")
 require("prototypes.petrochem")

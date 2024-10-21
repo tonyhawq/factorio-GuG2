@@ -1,28 +1,8 @@
-local du = require("dutil")
+-- analog circuit board
+-- wood base
+-- chains & pulleys
 
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        category = "crafting-with-fluid", ---@diagnostic disable-line
-        name = "environmental-science-pack",
-        icons = du.icons("environmental-science-pack"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        enabled = true,
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="fluid", name="steam", amount=10},
-            {type="item", name="glass", amount=6},
-            {type="item", name="steam-inserter", amount=2},
-        },
-        results = {
-            {type="item", name="environmental-science-pack", amount=4},
-            {type="fluid", name="water", amount=10},
-        }
-    }
-})
+local du = require("dutil")
 
 
 data:extend({
@@ -34,7 +14,6 @@ data:extend({
         icons = du.icons("glass"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -54,19 +33,19 @@ data:extend({
         icons = du.icons("mechanical-inserter"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 0.5,
         ingredients = {
             -- spring?
-            {type="item", name="iron-sheet", amount=1},
-            {type="item", name="iron-rod", amount=1},
+            {type="item", name="wrought-iron-sheet", amount=1},
+            {type="item", name="wrought-iron-rod", amount=1},
         },
         results = {
             {type="item", name="mechanical-inserter", amount=1},
         }
     }
 })
+
 data:extend({
     {
         type = "recipe", 
@@ -76,37 +55,16 @@ data:extend({
         icons = du.icons_ext{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/advanced-foundry-mk01.png"}:fin(),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
             {type="item", name="stone-furnace", amount=1},
             {type="item", name="iron-ingot", amount=12},
-            {type="item", name="mechanical-inserter", amount=2},
+            {type="item", name="mechanical-inserter", amount=6},
         },
         results = {
             -- consumes gaseous fuel (infinite source present in crashed ship until DD tower produced)
             {type="item", name="smithy", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        category = "smithing", ---@diagnostic disable-line
-        name = "rivets",
-        icons = du.icons("rivets"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        enabled = true,
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="iron-rod", amount=1},
-        },
-        results = {
-            {type="item", name="rivets", amount=2},
         }
     }
 })
@@ -119,11 +77,10 @@ data:extend({
         icons = du.icons("screws"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="item", name="iron-rod", amount=1},
+            {type="item", name="wrought-iron-rod", amount=1},
             {type="item", name="bound-porcelain", amount=1},
         },
         results = {
@@ -141,7 +98,6 @@ data:extend({
         icons = du.icons("bolts"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -162,7 +118,6 @@ data:extend({
         icons = du.icons("pipe"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -183,7 +138,6 @@ data:extend({
         icons = du.icons_ext{mod="__base__", name="boiler"}:fin(),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -206,7 +160,6 @@ data:extend({
         icons = du.icons_ext{mod="__base__", name="assembling-machine-1"}:fin(),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -225,11 +178,29 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
+        name = "offshore-pump",
+        icons = du.icons_ext{mod="__base__", name="offshore-pump"}:fin(),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="iron-ingot", amount=4},
+        },
+        results = {
+            {type="item", name="offshore-pump", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "crafting", ---@diagnostic disable-line
         name = "steam-inserter",
         icons = du.icons("steam-inserter"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -251,12 +222,12 @@ data:extend({
         icons = du.icons_ext{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/glassworks-mk01.png"}:fin(),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
             {type="item", name="scale-boiler", amount=2},
-            {type="item", name="bound-porcelain", amount=12},
+            {type="item", name="screws", amount=12},
+            {type="item", name="lead-sheet", amount=12},
             {type="item", name="brick", amount=10},
         },
         results = {
@@ -281,7 +252,6 @@ data:extend({
         icons = du.icons("lv-resistor"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -303,7 +273,6 @@ data:extend({
         icons = du.icons("analog-circuit"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -318,67 +287,14 @@ data:extend({
     }
 })
 
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        category = "smelting", ---@diagnostic disable-line
-        name = "iron-ingot-1",
-        icons = du.icons("analog-circuit"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        enabled = true,
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="iron-ore", amount=4},
-        },
-        results = {
-            {type="item", name="iron-ingot", amount=1},
-            {type="item", name="gravel", amount=2},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        category = "smithing", ---@diagnostic disable-line
-        name = "iron-plate-1",
-        icons = du.icons("iron-plate"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        enabled = true,
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="iron-ingot", amount=1},
-        },
-        results = {
-            {type="item", name="iron-plate", amount=2},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        category = "smithing", ---@diagnostic disable-line
-        name = "copper-plate-1",
-        icons = du.icons_ext{mod="__base__", name="copper-plate"}:fin(),
-        subgroup = "raw-material",
-        order = "a[a]",
-        enabled = true,
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="copper-ingot", amount=1},
-        },
-        results = {
-            {type="item", name="copper-plate", amount=2},
-        }
-    }
-})
+
+
+
+-- resources progression
+-- tin, copper, limestone -> environmental science pack
+-- bronze -> smithy
+-- smithy -> wrought iron, steel
+
 data:extend({
     {
         type = "recipe", 
@@ -388,7 +304,6 @@ data:extend({
         icons = du.icons("copper-sheet"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -408,7 +323,6 @@ data:extend({
         icons = du.icons("copper-wire"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -424,58 +338,17 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         category = "smithing", ---@diagnostic disable-line
-        name = "iron-sheet-1",
-        icons = du.icons("iron-sheet"),
+        name = "wrought-iron-sheet-1",
+        icons = du.icons("wrought-iron-sheet"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="item", name="iron-plate", amount=4},
+            {type="item", name="wrought-iron-plate", amount=4},
         },
         results = {
-            {type="item", name="iron-sheet", amount=3},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        category = "smithing", ---@diagnostic disable-line
-        name = "lead-plate-1",
-        icons = du.icons("lead-plate"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        enabled = true,
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="lead-ingot", amount=4},
-        },
-        results = {
-            {type="item", name="lead-plate", amount=3},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        category = "smithing", ---@diagnostic disable-line
-        name = "lead-sheet-1",
-        icons = du.icons("lead-sheet"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        enabled = true,
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="lead-plate", amount=4},
-        },
-        results = {
-            {type="item", name="lead-sheet", amount=3},
+            {type="item", name="wrought-iron-sheet", amount=3},
         }
     }
 })
@@ -485,18 +358,17 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         category = "smithing", ---@diagnostic disable-line
-        name = "iron-rod-1",
-        icons = du.icons("iron-rod"),
+        name = "wrought-iron-rod-1",
+        icons = du.icons("wrought-iron-rod"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
             {type="item", name="iron-ingot", amount=1},
         },
         results = {
-            {type="item", name="iron-rod", amount=3},
+            {type="item", name="wrought-iron-rod", amount=3},
         }
     }
 })
@@ -509,7 +381,6 @@ data:extend({
         icons = du.icons("bound-porcelain"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -530,7 +401,6 @@ data:extend({
         icons = du.icons("electrolytic-cell"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -553,7 +423,6 @@ data:extend({
         icons = du.icons_ext{mod="__base__", name="fluid/water"}:addm(du.icon_c("oxygen")):add(du.icon_co("hydrogen")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -569,16 +438,34 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        category = "crafting", ---@diagnostic disable-line
+        name = "destructive-distillation-tower",
+        icons = du.icons_ext{mod="__pycoalprocessinggraphics__", name="distilator"}:fin(),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="scale-boiler", amount=2},
+            {type="item", name="wrought-iron-sheet", amount=20},
+        },
+        results = {
+            {type="item", name="destructive-distillation-tower", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
         name = "steel-ingot",
         icons = du.icons("steel-ingot"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 10,
         ingredients = {
-            {type="fluid", name="oxygen", amount=20},
             {type="item", name="iron-ingot", amount=3},
             {type="item", name="coke", amount=1},
         },
@@ -596,7 +483,6 @@ data:extend({
         icons = du.icons("steel-rod"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -616,7 +502,6 @@ data:extend({
         icons = du.icons("steel-plate"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -636,7 +521,6 @@ data:extend({
         icons = du.icons("steel-beam"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -658,7 +542,6 @@ data:extend({
         icons = du.icons("steel-cable"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 6,
         ingredients = {
@@ -678,7 +561,6 @@ data:extend({
         icons = du.icons("__base__/graphics/icons/stone-brick.png", 64, true),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -701,7 +583,6 @@ data:extend({
         icons = du.icons("__base__/graphics/icons/stone-brick.png", 64, true),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -721,7 +602,6 @@ data:extend({
         icons = du.icons("refractory-brick"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -743,7 +623,6 @@ data:extend({
         icons = du.icons_ext{mod="__base__", name="fluid/steam"}:add(du.icon_c("seawater")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -764,7 +643,6 @@ data:extend({
         icons = du.icons_ext{mod="__base__", name="fluid/steam"}:add(du.icon_c("saline-water")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -786,7 +664,6 @@ data:extend({
         icons = du.icons_ext{mod="__base__", name="fluid/steam"}:add(du.icon_c("brine")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -808,7 +685,6 @@ data:extend({
         icons = du.icons_ext{mod="__base__", name="fluid/steam"}:add(du.icon_c("mineralized-water")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -830,7 +706,6 @@ data:extend({
         icons = du.icons_m("rubber"):add(du.icon_c("latex")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -854,7 +729,6 @@ data:extend({
         icons = du.icons("wood-oil"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -899,7 +773,6 @@ data:extend({
         icons = du.icons("coal"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -921,7 +794,6 @@ data:extend({
         icons = du.icons("coke"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -943,7 +815,6 @@ data:extend({
         icons = du.icons("coke"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 12,
         ingredients = {
@@ -967,7 +838,6 @@ data:extend({
         icons = du.icons("tar"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -991,7 +861,6 @@ data:extend({
         icons = du.icons_m("creosote-oil"):add(du.icon_c("creosote-oil")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -1013,7 +882,6 @@ data:extend({
         icons = du.icons_m("anthracene"):add(du.icon_c("green-oil")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -1033,7 +901,6 @@ data:extend({
         icons = du.icons_m("carbolic-acid"):add(du.icon_c("creosote-oil")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -1053,7 +920,6 @@ data:extend({
         icons = du.icons_m("carbolic-acid"):add(du.icon_c("middle-oil")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -1073,7 +939,6 @@ data:extend({
         icons = du.icons_m("syngas"):add(du.icon_c("tar")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1096,7 +961,6 @@ data:extend({
         icons = du.icons_m("syngas"):add(du.icon_c("coal-gas")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1118,7 +982,6 @@ data:extend({
         icons = du.icons_m("syngas"):addm(du.icon_c("coal-gas")):add(du.icon_co("oxygen")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1141,7 +1004,6 @@ data:extend({
         icons = du.icons_m("methanol"):add(du.icon_c("wood-oil")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -1165,7 +1027,6 @@ data:extend({
         icons = du.icons_m("steam"):add(du.icon_c("syngas")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1187,7 +1048,6 @@ data:extend({
         icons = du.icons_m("steam"):add(du.icon_c("syngas")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1209,7 +1069,6 @@ data:extend({
         icons = du.icons_m("steam"):add(du.icon_c("syngas")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1231,7 +1090,6 @@ data:extend({
         icons = du.icons_m("steam"):add(du.icon_c("syngas")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1267,7 +1125,6 @@ data:extend({
         icons = du.icons("silicon-wafer"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1287,7 +1144,6 @@ data:extend({
         icons = du.icons("photoresist"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1310,7 +1166,6 @@ data:extend({
         icons = du.icons("pre-etched-simple-wafer"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1333,7 +1188,6 @@ data:extend({
         icons = du.icons("lithographed-simple-wafer"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1353,7 +1207,6 @@ data:extend({
         icons = du.icons("simple-wafer"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1378,7 +1231,6 @@ data:extend({
         icons = du.icons("integrated-circuit-die"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1400,7 +1252,6 @@ data:extend({
         icons = du.icons("integrated-circuit-die"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 1,
         ingredients = {

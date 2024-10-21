@@ -49,11 +49,9 @@ data:extend({
     creative_recipe("creative-fuel", "fluid"),
     creative_recipe("mechanical-inserter"),
     -- TODO: eliminate all these recipes
-    creative_recipe("oil-refinery"),
-    creative_recipe("water", "fluid"),
-    creative_recipe("oxygen", "fluid"),
+    creative_recipe("lead-ore"),
+    creative_recipe("tin-ore"),
     creative_recipe("raw-coal"),
     creative_recipe("crude-oil", "fluid"),
-    creative_recipe("brick"),
-    creative_recipe("lead-ingot"),
+    creative_recipe("clay"),
 })
