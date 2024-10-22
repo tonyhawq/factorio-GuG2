@@ -2,7 +2,7 @@ require("util")
 
 local dutil = {}
 
-dutil.mod = "__GuG2__"
+dutil.mod = "GuG2"
 dutil.path = "/graphics/icons/"
 dutil.ext = ".png"
 dutil.size = 64
@@ -74,7 +74,7 @@ function dutil.icons_ext(tab)
     local size = tab.size or dutil.size
     local fullpath = tab.name
     if not tab.discard then
-        fullpath = modn..path..tab.name..ext
+        fullpath = "__"..modn.."__"..path..tab.name..ext
     end
     return {
         {
@@ -102,7 +102,7 @@ function dutil.icons_m(name, size, discard)
         return dutil.icons_ext(name)
     end
     if not discard then
-        name = dutil.mod..dutil.path..name..dutil.ext
+        name = "__"..dutil.mod.."__"..dutil.path..name..dutil.ext
     end
     return {
         {
@@ -123,7 +123,7 @@ end
 ---@nodiscard
 function dutil.icon_c(name, size, discard)
     if not discard then
-        name = dutil.mod..dutil.path..name..dutil.ext
+        name = "__"..dutil.mod.."__"..dutil.path..name..dutil.ext
     end
     return {
         icon = name,

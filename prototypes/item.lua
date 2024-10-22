@@ -585,6 +585,14 @@ data:extend({
   },
   {
     type = "item",
+    name = "sandstone",
+    icons = du.icons("sandstone"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
     name = "tin-ingot",
     icons = du.icons("tin-ingot"),
     subgroup = "smelting-machine",

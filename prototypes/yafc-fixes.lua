@@ -2,6 +2,8 @@ if not data.data_crawler then ---@diagnostic disable-line
     return
 end
 
+require("prototypes.creative")
+
 local du = require("dutil")
 
 ---@param name string

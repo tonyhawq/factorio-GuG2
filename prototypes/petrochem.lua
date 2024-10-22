@@ -9,7 +9,6 @@ data:extend({
         icons = du.icons("crude-oil-fractioning"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -34,7 +33,6 @@ data:extend({
         icons = du.icons("heavy-distillates-fractioning"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -56,7 +54,6 @@ data:extend({
         icons = du.icons("medium-distillates-fractioning"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -78,7 +75,6 @@ data:extend({
         icons = du.icons("light-distillates-fractioning"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -100,7 +96,6 @@ data:extend({
         icons = du.icons("light-distillates-fractioning"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -122,7 +117,6 @@ data:extend({
         icons = du.icons("light-distillates-fractioning"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -145,7 +139,6 @@ data:extend({
         icons = du.icons("kerosene"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -167,7 +160,6 @@ data:extend({
         icons = du.icons("gasoline-pyrolysis"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -189,7 +181,6 @@ data:extend({
         icons = du.icons("gasoline-pyrolysis"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -211,7 +202,6 @@ data:extend({
         icons = du.icons("gasoline-pyrolysis"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -233,7 +223,6 @@ data:extend({
         icons = du.icons("petroleum-gas"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -255,7 +244,6 @@ data:extend({
         icons = du.icons("light-naphtha"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -276,7 +264,6 @@ data:extend({
         icons = du.icons("light-naphtha"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -298,7 +285,6 @@ data:extend({
         icons = du.icons("light-naphtha"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -319,7 +305,6 @@ data:extend({
         icons = du.icons_m("gasoline"):add(du.icon_c("heavy-naphtha")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -340,7 +325,6 @@ data:extend({
         icons = du.icons_m("gasoline"):add(du.icon_c("light-naphtha")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -361,7 +345,6 @@ data:extend({
         icons = du.icons_m("fuel-oil"):add(du.icon_c("light-gas-oil")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -383,7 +366,6 @@ data:extend({
         icons = du.icons_m("fuel-oil"):add(du.icon_c("heavy-gas-oil")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -405,7 +387,6 @@ data:extend({
         icons = du.icons_m("gas-oil"):add(du.icon_c("kerosene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -426,7 +407,6 @@ data:extend({
         icons = du.icons("gas-oil"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -447,7 +427,6 @@ data:extend({
         icons = du.icons("btx"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -469,7 +448,6 @@ data:extend({
         icons = du.icons("diesel"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -490,7 +468,6 @@ data:extend({
         icons = du.icons("__base__/graphics/icons/fluid/heavy-oil.png", 64, true),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -511,7 +488,6 @@ data:extend({
         icons = du.icons_m("diesel"):add(du.icon_c("__base__/graphics/icons/fluid/heavy-oil.png", 64, true)),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -532,7 +508,6 @@ data:extend({
         icons = du.icons("raw-lubricating-oil"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -554,7 +529,6 @@ data:extend({
         icons = du.icons("fuel-oil"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -576,7 +550,6 @@ data:extend({
         icons = du.icons("fuel-oil"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -607,7 +580,6 @@ data:extend({
         icons = du.icons_ext{name="acrylonitrile"}:add(du.icon_c("propylene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -628,10 +600,9 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-polypropylene",
-        icons = du.icons_ext{name="plastic-bar", mod="__base__"}:add(du.icon_c("propylene")),
+        icons = du.icons_ext{name="plastic-bar", mod="base"}:add(du.icon_c("propylene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -649,10 +620,9 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-polypropylene-2",
-        icons = du.icons_ext{name="plastic-bar", mod="__base__"}:addm(du.icon_c("propylene")):add(du.icon_c("anthracene")),
+        icons = du.icons_ext{name="plastic-bar", mod="base"}:addm(du.icon_c("propylene")):add(du.icon_c("anthracene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -671,10 +641,9 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-pvc-1",
-        icons = du.icons_ext{name="plastic-bar", mod="__base__"}:add(du.icon_c("acetylene")),
+        icons = du.icons_ext{name="plastic-bar", mod="base"}:add(du.icon_c("acetylene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -695,10 +664,9 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-pvc-2",
-        icons = du.icons_ext{name="plastic-bar", mod="__base__"}:add(du.icon_c("ethylene")),
+        icons = du.icons_ext{name="plastic-bar", mod="base"}:add(du.icon_c("ethylene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -720,7 +688,6 @@ data:extend({
         icons = du.icons_m("rubber"):add(du.icon_c("styrene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -742,7 +709,6 @@ data:extend({
         icons = du.icons_m("polymer-additives"):add(du.icon_c("bound-porcelain")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -765,7 +731,6 @@ data:extend({
         icons = du.icons_m("polymer-additives"):add(du.icon_c("styrene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -789,7 +754,6 @@ data:extend({
         icons = du.icons_m("rubber"):add(du.icon_c("styrene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -811,7 +775,6 @@ data:extend({
         icons = du.icons_m("rubber"):add(du.icon_c("styrene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -832,7 +795,6 @@ data:extend({
         icons = du.icons_m("rubber"):add(du.icon_c("styrene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -855,7 +817,6 @@ data:extend({
         icons = du.icons_m("rubber"):add(du.icon_c("styrene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -885,7 +846,6 @@ data:extend({
         icons = du.icons_m("rubber"):add(du.icon_c("styrene")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {

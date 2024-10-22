@@ -6,15 +6,15 @@ data:extend({
         always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
         name = "stone-furnace",
-        icons = du.icons_ext{mod = "__base__", name = "stone-furnace"}:fin(),
+        icons = du.icons_ext{mod = "base", name = "stone-furnace"}:fin(),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
         enabled = true,
         energy_required = 2,
         ingredients = {
-            {type="item", name="limestone", amount=4},
-            {type="item", name="clay", amount=2},
+            {type="item", name="sandstone", amount=6},
+            {type="item", name="clay", amount=3},
         },
         results = {
             {type="item", name="stone-furnace", amount=1},
@@ -27,7 +27,7 @@ data:extend({
         always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
         name = "burner-mining-drill",
-        icons = du.icons_ext{mod = "__base__", name = "burner-mining-drill"}:fin(),
+        icons = du.icons_ext{mod = "base", name = "burner-mining-drill"}:fin(),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -39,6 +39,27 @@ data:extend({
         },
         results = {
             {type="item", name="burner-mining-drill", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "smelting", ---@diagnostic disable-line
+        name = "transport-belt",
+        icons = du.icons_ext{mod = "base", name = "transport-belt"}:fin(),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        enabled = true,
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="stone-furnace", amount=1},
+            {type="item", name="lead-plate", amount=6},
+        },
+        results = {
+            {type="item", name="transport-belt", amount=1},
         }
     }
 })
@@ -149,7 +170,7 @@ data:extend({
         always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
         name = "copper-plate-1",
-        icons = du.icons_ext{mod="__base__", name="copper-plate"}:fin(),
+        icons = du.icons_ext{mod="base", name="copper-plate"}:fin(),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

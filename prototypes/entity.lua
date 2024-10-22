@@ -181,27 +181,29 @@ data:extend({
             },
         },
         energy_usage = "0.6MW",
-        animation = {
-            layers = {
-                {
-                    filename = "__pycoalprocessinggraphics__/graphics/entity/advanced-foundry/advanced-foundry-base-mk01.png",
-                    width = 224,
-                    height = 224,
-                    line_length = 9,
-                    frame_count = 76,
-                    shift = {0.3, -0.5},
-                    animation_speed = 0.5
-                },
-                {
-                    filename = "__pycoalprocessinggraphics__/graphics/entity/advanced-foundry/advanced-foundry-top-mk01.png",
-                    width = 224,
-                    height = 41,
-                    line_length = 9,
-                    frame_count = 76,
-                    shift = {0.3, -4.63},
-                    animation_speed = 0.5
+        graphics_set = {
+            animation = {
+                layers = {
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/advanced-foundry/advanced-foundry-base.png",
+                        width = 224,
+                        height = 224,
+                        line_length = 9,
+                        frame_count = 76,
+                        shift = {0.3, -0.5},
+                        animation_speed = 0.5
+                    },
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/advanced-foundry/advanced-foundry-top.png",
+                        width = 224,
+                        height = 41,
+                        line_length = 9,
+                        frame_count = 76,
+                        shift = {0.3, -4.63},
+                        animation_speed = 0.5
+                    }
                 }
-            }
+            },
         },
         fluid_boxes = {
             {
@@ -267,36 +269,38 @@ data:extend({
             emissions_per_minute = {pollution=6},
         },
         energy_usage = "250kW",
-        animation = {
-            layers = {
-                {
-                    filename = "__pycoalprocessinggraphics__/graphics/entity/distilator/distilator-mk01-a.png",
-                    width = 96,
-                    height = 358,
-                    line_length = 20,
-                    frame_count = 100,
-                    animation_speed = 0.5,
-                    shift = util.by_pixel(-80, -50)
-                },
-                {
-                    filename = "__pycoalprocessinggraphics__/graphics/entity/distilator/distilator-mk01-b.png",
-                    width = 96,
-                    height = 358,
-                    line_length = 20,
-                    frame_count = 100,
-                    animation_speed = 0.5,
-                    shift = util.by_pixel(16, -50)
-                },
-                {
-                    filename = "__pycoalprocessinggraphics__/graphics/entity/distilator/distilator-mk01-c.png",
-                    width = 96,
-                    height = 358,
-                    line_length = 20,
-                    frame_count = 100,
-                    animation_speed = 0.5,
-                    shift = util.by_pixel(112, -50)
-                },
-            }
+        graphics_set = {
+            animation = {
+                layers = {
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/distilator/distilator-a.png",
+                        width = 96,
+                        height = 358,
+                        line_length = 20,
+                        frame_count = 100,
+                        animation_speed = 0.5,
+                        shift = util.by_pixel(-80, -50)
+                    },
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/distilator/distilator-b.png",
+                        width = 96,
+                        height = 358,
+                        line_length = 20,
+                        frame_count = 100,
+                        animation_speed = 0.5,
+                        shift = util.by_pixel(16, -50)
+                    },
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/distilator/distilator-c.png",
+                        width = 96,
+                        height = 358,
+                        line_length = 20,
+                        frame_count = 100,
+                        animation_speed = 0.5,
+                        shift = util.by_pixel(112, -50)
+                    },
+                }
+            },
         },
         fluid_boxes = {
             --North, left
@@ -452,31 +456,33 @@ data:extend({
             }
         },
         energy_usage = "12MW",
-        animation = {
-            layers = {
-                {
-                    filename = "__pycoalprocessinggraphics__/graphics/entity/glassworks/bot.png",
-                    width = 256,
-                    height = 32,
-                    frame_count = 1,
-                    shift = util.by_pixel(16, 96)
-                },
-                {
-                    filename = "__pycoalprocessinggraphics__/graphics/entity/glassworks/top.png",
-                    width = 256,
-                    height = 224,
-                    frame_count = 1,
-                    shift = util.by_pixel(16, -32)
-                },
-                {
-                    filename = "__pycoalprocessinggraphics__/graphics/entity/glassworks/top-mask.png",
-                    width = 256,
-                    height = 224,
-                    frame_count = 1,
-                    shift = util.by_pixel(16, -32),
-                    tint = {r = 1.0, g = 1.0, b = 0.0, a = 1.0}
-                },
-            }
+        graphics_set = {
+            animation = {
+                layers = {
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/glassworks/bot.png",
+                        width = 256,
+                        height = 32,
+                        frame_count = 1,
+                        shift = util.by_pixel(16, 96)
+                    },
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/glassworks/top.png",
+                        width = 256,
+                        height = 224,
+                        frame_count = 1,
+                        shift = util.by_pixel(16, -32)
+                    },
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/glassworks/top-mask.png",
+                        width = 256,
+                        height = 224,
+                        frame_count = 1,
+                        shift = util.by_pixel(16, -32),
+                        tint = {r = 1.0, g = 1.0, b = 0.0, a = 1.0}
+                    },
+                }
+            },
         },
         working_visualisations = {
             {
@@ -608,14 +614,16 @@ data:extend({
                 pipe_connections = {{flow_direction = "output", position = {2.0, -3.0}, direction=defines.direction.north}}
             },
         },
-        animation = {
-            filename = "__pycoalprocessinggraphics__/graphics/entity/classifier/classifier.png",
-            width = 256,
-            height = 257,
-            frame_count = 34,
-            line_length = 8,
-            animation_speed = 0.6,
-            shift = {0.495, -0.48}
+        graphics_set = {
+            animation = {
+                filename = "__pycoalprocessinggraphics__/graphics/entity/classifier/classifier.png",
+                width = 256,
+                height = 257,
+                frame_count = 34,
+                line_length = 8,
+                animation_speed = 0.6,
+                shift = {0.495, -0.48}
+            },
         },
         vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.55},
         working_sound = {
@@ -1480,53 +1488,55 @@ data:extend({
         damaged_trigger_effect = hit_effects.entity(),
         drawing_box = {{-1.5, -1.7}, {1.5, 1.5}},
         fast_replaceable_group = "clean-assembling-machine",
-        animation =
-        {
-            layers =
+        graphics_set = {
+            animation =
             {
+                layers =
                 {
-                    filename = "__GuG2__/graphics/entity/clean-assembling-machine/clean-assembling-machine.png",
-                    priority = "high",
-                    width = 108,
-                    height = 119,
-                    frame_count = 32,
-                    line_length = 8,
-                    shift = util.by_pixel(0, -0.5),
-                    hr_version =
                     {
-                        filename = "__GuG2__/graphics/entity/clean-assembling-machine/hr-clean-assembling-machine.png",
+                        filename = "__GuG2__/graphics/entity/clean-assembling-machine/clean-assembling-machine.png",
                         priority = "high",
-                        width = 214,
-                        height = 237,
+                        width = 108,
+                        height = 119,
                         frame_count = 32,
                         line_length = 8,
-                        shift = util.by_pixel(0, -0.75),
-                        scale = 0.5
-                    }
-                },
-                {
-                    filename = "__GuG2__/graphics/entity/clean-assembling-machine/clean-assembling-machine-shadow.png",
-                    priority = "high",
-                    width = 130,
-                    height = 82,
-                    frame_count = 32,
-                    line_length = 8,
-                    draw_as_shadow = true,
-                    shift = util.by_pixel(28, 4),
-                    hr_version =
+                        shift = util.by_pixel(0, -0.5),
+                        hr_version =
+                        {
+                            filename = "__GuG2__/graphics/entity/clean-assembling-machine/hr-clean-assembling-machine.png",
+                            priority = "high",
+                            width = 214,
+                            height = 237,
+                            frame_count = 32,
+                            line_length = 8,
+                            shift = util.by_pixel(0, -0.75),
+                            scale = 0.5
+                        }
+                    },
                     {
-                        filename = "__GuG2__/graphics/entity/clean-assembling-machine/hr-clean-assembling-machine-shadow.png",
+                        filename = "__GuG2__/graphics/entity/clean-assembling-machine/clean-assembling-machine-shadow.png",
                         priority = "high",
-                        width = 260,
-                        height = 162,
+                        width = 130,
+                        height = 82,
                         frame_count = 32,
                         line_length = 8,
                         draw_as_shadow = true,
                         shift = util.by_pixel(28, 4),
-                        scale = 0.5
+                        hr_version =
+                        {
+                            filename = "__GuG2__/graphics/entity/clean-assembling-machine/hr-clean-assembling-machine-shadow.png",
+                            priority = "high",
+                            width = 260,
+                            height = 162,
+                            frame_count = 32,
+                            line_length = 8,
+                            draw_as_shadow = true,
+                            shift = util.by_pixel(28, 4),
+                            scale = 0.5
+                        }
                     }
                 }
-            }
+            },
         },
         
         crafting_categories = {"advanced-crafting", "clean-crafting"},
@@ -2235,6 +2245,195 @@ data.raw["offshore-pump"]["offshore-pump"].fluid_box.filter = "seawater"
 
 data:extend({
     {
+        type = "assembling-machine",
+        name = "tube-boiler",
+        icons = du.icons("tube-boiler"),
+        flags = {"placeable-neutral","player-creation"},
+        minable = {mining_time = 0.2, result = "tube-boiler"},
+        max_health = 350,
+        corpse = "oil-refinery-remnants",
+        dying_explosion = "oil-refinery-explosion",
+        collision_box = {{-0.4, -2.4}, {0.4, 2.4}},
+        selection_box = {{-0.5, -2.5}, {0.5, 2.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-1.5, -0.5}, {1.5, 0.5}},
+        scale_entity_info_icon = true,
+        crafting_categories = {"boiling"},
+        crafting_speed = 1,
+        energy_source =
+        {
+            type = "fluid",
+            effectivity = 0.75,
+            emissions_per_minute = {pollution=8},
+            scale_fluid_usage = true,
+            burns_fluid = true,
+            fluid_box = {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{ flow_direction="input", position = {0, -1}, direction=defines.direction.east }},
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        energy_usage = "0.54MW",
+        graphics_set = {
+            animation =
+            {
+                north = {
+                    layers =
+                    {
+                        {
+                            filename = "__GuG2__/graphics/entity/boiler/tube-boiler-1-north.png",
+                            priority="high",
+                            width = 80,
+                            height = 320,
+                            frame_count = 1,
+                            line_length = 1,
+                            scale = 0.5,
+                        }
+                    },
+                },
+                east = {
+                    layers =
+                    {
+                        {
+                            filename = "__GuG2__/graphics/entity/boiler/tube-boiler-1-east.png",
+                            priority="high",
+                            width = 320,
+                            height = 80,
+                            frame_count = 1,
+                            line_length = 1,
+                            scale = 0.5,
+                        }
+                    },
+                },
+                south = {
+                    layers =
+                    {
+                        {
+                            filename = "__GuG2__/graphics/entity/boiler/tube-boiler-1-south.png",
+                            priority="high",
+                            width = 80,
+                            height = 320,
+                            frame_count = 1,
+                            line_length = 1,
+                            scale = 0.5,
+                        }
+                    },
+                },
+                west = {
+                    layers =
+                    {
+                        {
+                            filename = "__GuG2__/graphics/entity/boiler/tube-boiler-1-west.png",
+                            priority="high",
+                            width = 320,
+                            height = 80,
+                            frame_count = 1,
+                            line_length = 1,
+                            scale = 0.5,
+                        }
+                    },
+                },
+            },
+        },
+        vehicle_impact_sound = sounds.generic_impact,
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        working_sound =
+        {
+            sound =
+            {
+                filename = "__base__/sound/oil-refinery.ogg"
+            },
+            --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections =
+                {
+                    {
+                        flow_direction="input",
+                        position = {0,-2},
+                        direction=defines.direction.north
+                    }
+                }
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections =
+                {
+                    {
+                        flow_direction = "output",
+                        position = {0, 2},
+                        direction=defines.direction.south
+                    }
+                }
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections =
+                {
+                    {
+                        flow_direction = "output",
+                        position = {0, 1},
+                        direction=defines.direction.west
+                    }
+                }
+            },
+        },
+        water_reflection =
+        {
+            pictures =
+            {
+                filename = "__base__/graphics/entity/oil-refinery/oil-refinery-reflection.png",
+                priority = "extra-high",
+                width = 40,
+                height = 48,
+                shift = util.by_pixel(5, 95),
+                variation_count = 4,
+                scale = 5
+            },
+            rotate = false,
+            orientation_to_variation = true
+        }
+    },
+    {
+        type = "recipe-category",
+        name = "boiling"
+    },
+})
+
+data:extend({
+    {
+        type = "item",
+        name = "small-tank",
+        icons = du.icons("small-tank"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "small-tank",
+    },
+    {
+        type = "item",
+        name = "tube-boiler",
+        icons = du.icons("tube-boiler"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "tube-boiler",
+    },
+    {
         type = "item",
         name = "cleanroom-fluid-interface",
         icons = du.icons("cleanroom-fluid-interface"),
@@ -2344,7 +2543,7 @@ data:extend({
     {
         type = "item",
         name = "scale-boiler",
-        icons = du.icons_ext{mod="__base__", name="boiler"}:fin(),
+        icons = du.icons_ext{mod="base", name="boiler"}:fin(),
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,

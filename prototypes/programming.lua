@@ -207,7 +207,6 @@ data:extend({
         icons = du.icons("process"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 10,
         ingredients = {
@@ -227,7 +226,6 @@ data:extend({
         icons = du.icons_m("process"):add(du.icon_c("cpu-time")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -248,7 +246,6 @@ data:extend({
         icons = du.icons("cpu-time"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -269,7 +266,6 @@ data:extend({
         icons = du.icons("program"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -291,7 +287,6 @@ data:extend({
         icons = du.icons("thread"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -312,7 +307,6 @@ data:extend({
         icons = du.icons("coroutine"),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 20,
         ingredients = {
@@ -333,7 +327,6 @@ data:extend({
         icons = du.icons_m("cpu-time"):add(du.icon_c("coroutine")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -354,7 +347,6 @@ data:extend({
         icons = du.icons_m("thread"):add(du.icon_c("restart")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -374,7 +366,6 @@ data:extend({
         icons = du.icons_m("program-garbage"):add(du.icon_c("restart")),
         subgroup = "raw-material",
         order = "a[a]",
-        enabled = true,
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -386,3 +377,13 @@ data:extend({
         }
     }
 })
+
+-- quiescent reality
+-- evanescent reality
+-- subsistent reality
+-- abstracted reality
+-- affluent reality
+-- lingering reality
+-- vanishing reality
+
+-- abstraction point - final item
