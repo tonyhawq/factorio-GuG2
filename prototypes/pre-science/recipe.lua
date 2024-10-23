@@ -6,7 +6,7 @@ data:extend({
         always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
         name = "stone-furnace",
-        icons = du.icons_ext{mod = "base", name = "stone-furnace"},
+        icons = du.icons{mod = "base", name = "stone-furnace"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -27,7 +27,7 @@ data:extend({
         always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
         name = "burner-mining-drill",
-        icons = du.icons_ext{mod = "base", name = "burner-mining-drill"},
+        icons = du.icons{mod = "base", name = "burner-mining-drill"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -48,7 +48,7 @@ data:extend({
         always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
         name = "transport-belt",
-        icons = du.icons_ext{mod = "base", name = "transport-belt"},
+        icons = du.icons{mod = "base", name = "transport-belt"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -170,7 +170,7 @@ data:extend({
         always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
         name = "copper-plate-1",
-        icons = du.icons_ext{mod="base", name="copper-plate"},
+        icons = du.icons{mod="base", name="copper-plate"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

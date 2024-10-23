@@ -209,7 +209,7 @@ data:extend({
         always_show_made_in = true,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "200c-to-water",
-        icons = du.icons_ext{mod="base", name="fluid/water"}.add_corner("200c"),
+        icons = du.icons{mod="base", name="fluid/water"}.add_corner("200c"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

@@ -81,8 +81,8 @@ dutil.icon_mt = {
                 if type(name) == "table" then
                     local config = name
                     icons.add(config)
-                    icons.get().scale = config.scale or dutil.corner_scale
-                    icons.get().shift = dutil.get_corner_offset(config.corner or dutil.default_corner)
+                    --icons.get().scale = config.scale or dutil.corner_scale
+                    --icons.get().shift = dutil.get_corner_offset(config.corner or dutil.default_corner)
                     return icons
                 end
                 table.insert(icons, {
@@ -102,7 +102,6 @@ dutil.icon_mt = {
                 return icons
             end
         end
-        error(tostring(key).." is not a part of dutil.icons.")
     end
 }
 
@@ -116,12 +115,13 @@ function dutil.empty_icons()
     return returned
 end
 
-function dutil.icons_ext(config)
-    local returned = dutil.empty_icons()
-    return returned.add(config)
-end
-
 function dutil.icons(name, size, discard)
+    log("creating icons with spec: ")
+    if type(name) == "table" then
+        log(tostring(name.name))
+    else
+        log(tostring(name))
+    end
     local returned = dutil.empty_icons()
     return returned.add(name, size, discard)
 end

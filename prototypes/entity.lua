@@ -2543,7 +2543,7 @@ data:extend({
     {
         type = "item",
         name = "scale-boiler",
-        icons = du.icons_ext{mod="base", name="boiler"},
+        icons = du.icons{mod="base", name="boiler"},
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
@@ -2552,7 +2552,7 @@ data:extend({
     {
         type = "item",
         name = "smithy",
-        icons = du.icons_ext{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/advanced-foundry-mk01.png"},
+        icons = du.icons{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/advanced-foundry-mk01.png"},
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
@@ -2561,7 +2561,7 @@ data:extend({
     {
         type = "item",
         name = "glassworks",
-        icons = du.icons_ext{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/glassworks-mk01.png"},
+        icons = du.icons{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/glassworks-mk01.png"},
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
@@ -2570,7 +2570,7 @@ data:extend({
     {
         type = "item",
         name = "destructive-distillation-tower",
-        icons = du.icons_ext{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/distilator.png"},
+        icons = du.icons{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/distilator.png"},
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
@@ -2579,7 +2579,7 @@ data:extend({
     {
         type = "item",
         name = "counterflow-heat-exchanger",
-        icons = du.icons_ext{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/classifier.png"},
+        icons = du.icons{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/classifier.png"},
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,

@@ -32,7 +32,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "scale-boiler",
-        icons = du.icons_ext{mod="base", name="boiler"},
+        icons = du.icons{mod="base", name="boiler"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -212,7 +212,7 @@ data:extend({
         always_show_made_in = true,
         category = "electrolysis", ---@diagnostic disable-line
         name = "water-electrolysis",
-        icons = du.icons_ext{mod="base", name="fluid/water"}.add_corner("oxygen"):add(du.icon_co("hydrogen")),
+        icons = du.icons{mod="base", name="fluid/water"}.add_corner("oxygen"):add(du.icon_co("hydrogen")),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -294,7 +294,7 @@ data:extend({
         always_show_made_in = true,
         category = "boiling", ---@diagnostic disable-line
         name = "seawater-boiling",
-        icons = du.icons_ext{mod="base", name="fluid/steam"}.add_corner("seawater"),
+        icons = du.icons{mod="base", name="fluid/steam"}.add_corner("seawater"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -314,7 +314,7 @@ data:extend({
         always_show_made_in = true,
         category = "boiling", ---@diagnostic disable-line
         name = "saline-water-boiling",
-        icons = du.icons_ext{mod="base", name="fluid/steam"}.add_corner("saline-water"),
+        icons = du.icons{mod="base", name="fluid/steam"}.add_corner("saline-water"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -335,7 +335,7 @@ data:extend({
         always_show_made_in = true,
         category = "boiling", ---@diagnostic disable-line
         name = "brine-boiling",
-        icons = du.icons_ext{mod="base", name="fluid/steam"}.add_corner("brine"),
+        icons = du.icons{mod="base", name="fluid/steam"}.add_corner("brine"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -356,7 +356,7 @@ data:extend({
         always_show_made_in = true,
         category = "boiling", ---@diagnostic disable-line
         name = "mineralized-water-boiling",
-        icons = du.icons_ext{mod="base", name="fluid/steam"}.add_corner("mineralized-water"),
+        icons = du.icons{mod="base", name="fluid/steam"}.add_corner("mineralized-water"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

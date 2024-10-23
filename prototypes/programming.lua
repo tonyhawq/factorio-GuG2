@@ -299,7 +299,7 @@ data:extend({
         always_show_made_in = true,
         category = "basic-computing", ---@diagnostic disable-line
         name = "memories",
-        icons = du.icons("thread"):tint(),
+        icons = du.icons("thread").tint(),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

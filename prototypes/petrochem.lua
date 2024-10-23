@@ -577,7 +577,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "acrylonitrile",
-        icons = du.icons_ext{name="acrylonitrile"}.add_corner("propylene"),
+        icons = du.icons{name="acrylonitrile"}.add_corner("propylene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -600,7 +600,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-polypropylene",
-        icons = du.icons_ext{name="plastic-bar", mod="base"}.add_corner("propylene"),
+        icons = du.icons{name="plastic-bar", mod="base"}.add_corner("propylene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -620,7 +620,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-polypropylene-2",
-        icons = du.icons_ext{name="plastic-bar", mod="base"}.add_corner("propylene").add_corner("anthracene"),
+        icons = du.icons{name="plastic-bar", mod="base"}.add_corner("propylene").add_corner("anthracene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -641,7 +641,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-pvc-1",
-        icons = du.icons_ext{name="plastic-bar", mod="base"}.add_corner("acetylene"),
+        icons = du.icons{name="plastic-bar", mod="base"}.add_corner("acetylene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -664,7 +664,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-pvc-2",
-        icons = du.icons_ext{name="plastic-bar", mod="base"}.add_corner("ethylene"),
+        icons = du.icons{name="plastic-bar", mod="base"}.add_corner("ethylene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
