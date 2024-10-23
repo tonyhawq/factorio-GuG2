@@ -4,6 +4,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "200c-production",
         icons = du.icons("200c").add_corner("flue-gas"),
@@ -24,6 +25,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "300c-production",
         icons = du.icons("300c").add_corner("flue-gas"),
@@ -44,6 +46,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "400c-production",
         icons = du.icons("400c").add_corner("flue-gas"),
@@ -64,6 +67,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "500c-production",
         icons = du.icons("500c").add_corner("flue-gas"),
@@ -84,6 +88,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "500c-to-400c",
         icons = du.icons("400c").add_corner("500c"),
@@ -104,6 +109,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "500c-to-300c",
         icons = du.icons("300c").add_corner("500c"),
@@ -124,6 +130,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "500c-to-200c",
         icons = du.icons("200c").add_corner("500c"),
@@ -145,6 +152,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "400c-to-300c",
         icons = du.icons("300c").add_corner("400c"),
@@ -165,6 +173,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "400c-to-200c",
         icons = du.icons("200c").add_corner("400c"),
@@ -186,6 +195,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "300c-to-200c",
         icons = du.icons("200c").add_corner("300c"),
@@ -207,6 +217,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "200c-to-water",
         icons = du.icons{mod="base", name="fluid/water"}.add_corner("200c"),

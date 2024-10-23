@@ -8,6 +8,7 @@ dutil.ext = ".png"
 dutil.size = 64
 dutil.corner_scale = 0.3
 
+dutil.middle = 0
 dutil.left_top = 1
 dutil.right_top = 2
 dutil.left_bottom = 3
@@ -27,6 +28,9 @@ function dutil.get_corner_offset(direction)
     end
     if direction == dutil.right_bottom then
         return {10, 10}
+    end
+    if direction == dutil.middle then
+        return {0,0}
     end
     error("Please input a direction", 2)
 end
@@ -130,13 +134,10 @@ function dutil.empty_icons()
 end
 
 function dutil.icons(name, size, discard)
-    log("creating icons with spec: ")
-    if type(name) == "table" then
-        log(tostring(name.name))
-    else
-        log(tostring(name))
-    end
     local returned = dutil.empty_icons()
+    if not name then
+        return returned
+    end
     return returned.add(name, size, discard)
 end
 

@@ -4,6 +4,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "crude-oil-fractioning",
         icons = du.icons("crude-oil-fractioning"),
@@ -28,6 +29,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "heavy-distillates-fractioning",
         icons = du.icons("heavy-distillates-fractioning"),
@@ -49,6 +51,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "medium-distillates-fractioning",
         icons = du.icons("medium-distillates-fractioning"),
@@ -70,6 +73,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "light-distillates-fractioning",
         icons = du.icons("light-distillates-fractioning"),
@@ -91,6 +95,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "residuals-fractioning",
         icons = du.icons("light-distillates-fractioning"),
@@ -112,6 +117,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "condensates-fractioning",
         icons = du.icons("light-distillates-fractioning"),
@@ -134,6 +140,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "raw-kerosene-treating",
         icons = du.icons("kerosene"),
@@ -155,6 +162,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "gasoline-pyrolysis",
         icons = du.icons("gasoline-pyrolysis"),
@@ -176,6 +184,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "fcc-gasoline",
         icons = du.icons("gasoline-pyrolysis"),
@@ -197,6 +206,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "gasoline-to-styrene",
         icons = du.icons("gasoline-pyrolysis"),
@@ -218,6 +228,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "petroleum-gas-cracking",
         icons = du.icons("petroleum-gas"),
@@ -239,6 +250,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "light-naphtha-cracking",
         icons = du.icons("light-naphtha"),
@@ -259,6 +271,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "mixed-naphtha-cracking",
         icons = du.icons("light-naphtha"),
@@ -280,6 +293,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "heavy-naphtha-cracking",
         icons = du.icons("light-naphtha"),
@@ -300,6 +314,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "gasoline-from-heavy-naphtha",
         icons = du.icons("gasoline").add_corner("heavy-naphtha"),
@@ -320,6 +335,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "gasoline-from-light-naphtha",
         icons = du.icons("gasoline").add_corner("light-naphtha"),
@@ -340,6 +356,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "fuel-oil-from-light-gas-oil",
         icons = du.icons("fuel-oil").add_corner("light-gas-oil"),
@@ -361,6 +378,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "fuel-oil-from-heavy-gas-oil",
         icons = du.icons("fuel-oil").add_corner("heavy-gas-oil"),
@@ -382,6 +400,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "mixed-gas-oil-from-kerosene",
         icons = du.icons("gas-oil").add_corner("kerosene"),
@@ -402,6 +421,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "gas-oil-separation",
         icons = du.icons("gas-oil"),
@@ -422,6 +442,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "btx-separation",
         icons = du.icons("btx"),
@@ -443,6 +464,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "diesel-cracking",
         icons = du.icons("diesel"),
@@ -463,6 +485,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "fcc-heavy-oil",
         icons = du.icons("__base__/graphics/icons/fluid/heavy-oil.png", 64, true),
@@ -575,6 +598,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "acrylonitrile",
         icons = du.icons{name="acrylonitrile"}.add_corner("propylene"),
@@ -598,6 +622,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-polypropylene",
         icons = du.icons{name="plastic-bar", mod="base"}.add_corner("propylene"),
@@ -618,6 +643,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-polypropylene-2",
         icons = du.icons{name="plastic-bar", mod="base"}.add_corner("propylene").add_corner("anthracene"),
@@ -639,6 +665,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-pvc-1",
         icons = du.icons{name="plastic-bar", mod="base"}.add_corner("acetylene"),
@@ -662,6 +689,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-pvc-2",
         icons = du.icons{name="plastic-bar", mod="base"}.add_corner("ethylene"),
@@ -683,6 +711,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "rubber-sbr",
         icons = du.icons("rubber").add_corner("styrene"),
@@ -704,6 +733,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "polymer-additives-1",
         icons = du.icons("polymer-additives").add_corner("bound-porcelain"),
@@ -726,6 +756,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "polymer-additives-2",
         icons = du.icons("polymer-additives").add_corner("styrene"),
@@ -749,6 +780,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "low-quality-plastic",
         icons = du.icons("rubber").add_corner("styrene"),
@@ -770,6 +802,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "finished-plastic",
         icons = du.icons("rubber").add_corner("styrene"),
@@ -790,6 +823,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "high-quality-plastic",
         icons = du.icons("rubber").add_corner("styrene"),
@@ -812,6 +846,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "hals", -- 2,2,6,6-Tetramethylpiperidine
         icons = du.icons("rubber").add_corner("styrene"),
@@ -841,6 +876,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "finished-rubber",
         icons = du.icons("rubber").add_corner("styrene"),

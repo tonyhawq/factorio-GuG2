@@ -15,7 +15,7 @@ local function creative_recipe(name, fluid)
         always_show_made_in = true,
         category = "creative-assembling", ---@diagnostic disable-line
         name = "yafc-fix-"..name,
-        icons = du.icons("creative-fuel"),
+        icons = {{icon="__GuG2__/graphics/icons/creative-fuel.png", icon_size=64}},
         subgroup = "raw-material",
         order = "a[a]",
         enabled = true,
@@ -35,7 +35,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "yafc-fix-creative-assembler",
-        icons = du.icons("creative-fuel"),
+        icons = {{icon="__GuG2__/graphics/icons/creative-fuel.png", icon_size=64}},
         subgroup = "raw-material",
         order = "a[a]",
         enabled = true,
@@ -47,9 +47,6 @@ data:extend({
             {type="item", name="yafc-fix-creative-assembler", amount=1},
         }
     },
-    -- Required due to YAFC not registering items you spawned with / are scripted in
-    creative_recipe("creative-fuel", "fluid"),
-    creative_recipe("mechanical-inserter"),
     -- TODO: eliminate all these recipes
     creative_recipe("lead-ore"),
     creative_recipe("tin-ore"),

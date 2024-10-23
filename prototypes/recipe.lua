@@ -10,6 +10,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smithing", ---@diagnostic disable-line
         name = "bolts",
         icons = du.icons("bolts"),
@@ -30,6 +31,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "scale-boiler",
         icons = du.icons{mod="base", name="boiler"},
@@ -61,6 +63,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "lv-resistor-1",
         icons = du.icons("lv-resistor"),
@@ -91,6 +94,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smithing", ---@diagnostic disable-line
         name = "copper-sheet-1",
         icons = du.icons("copper-sheet"),
@@ -110,6 +114,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "autocrafting", ---@diagnostic disable-line
         name = "copper-wire-1",
         icons = du.icons("copper-wire"),
@@ -129,6 +134,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smithing", ---@diagnostic disable-line
         name = "wrought-iron-sheet-1",
         icons = du.icons("wrought-iron-sheet"),
@@ -149,6 +155,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smithing", ---@diagnostic disable-line
         name = "wrought-iron-rod-1",
         icons = du.icons("wrought-iron-rod"),
@@ -168,6 +175,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smithing", ---@diagnostic disable-line
         name = "bound-porcelain",
         icons = du.icons("bound-porcelain"),
@@ -188,6 +196,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "electrolytic-cell-1",
         icons = du.icons("electrolytic-cell"),
@@ -210,6 +219,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "electrolysis", ---@diagnostic disable-line
         name = "water-electrolysis",
         icons = du.icons{mod="base", name="fluid/water"}.add_corner("oxygen"):add(du.icon_co("hydrogen")),
@@ -230,6 +240,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "stone-brick-1",
         icons = du.icons("__base__/graphics/icons/stone-brick.png", 64, true),
@@ -252,6 +263,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crushing", ---@diagnostic disable-line
         name = "stone-brick-crushing",
         icons = du.icons("__base__/graphics/icons/stone-brick.png", 64, true),
@@ -271,6 +283,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "refractory-brick-1",
         icons = du.icons("refractory-brick"),
@@ -292,6 +305,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "boiling", ---@diagnostic disable-line
         name = "seawater-boiling",
         icons = du.icons{mod="base", name="fluid/steam"}.add_corner("seawater"),
@@ -312,6 +326,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "boiling", ---@diagnostic disable-line
         name = "saline-water-boiling",
         icons = du.icons{mod="base", name="fluid/steam"}.add_corner("saline-water"),
@@ -333,6 +348,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "boiling", ---@diagnostic disable-line
         name = "brine-boiling",
         icons = du.icons{mod="base", name="fluid/steam"}.add_corner("brine"),
@@ -354,6 +370,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "boiling", ---@diagnostic disable-line
         name = "mineralized-water-boiling",
         icons = du.icons{mod="base", name="fluid/steam"}.add_corner("mineralized-water"),
@@ -375,6 +392,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "latex-to-rubber-1",
         icons = du.icons("rubber").add_corner("latex"),
@@ -398,6 +416,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "wood-gasificiation",
         icons = du.icons("wood-oil"),
@@ -442,6 +461,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "raw-coal-to-coal",
         icons = du.icons("coal"),
@@ -463,6 +483,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "coal-to-coke",
         icons = du.icons("coke"),
@@ -484,6 +505,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "coke-gasification",
         icons = du.icons("coke"),
@@ -507,6 +529,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "tar-processing",
         icons = du.icons("tar"),
@@ -530,6 +553,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "creosote-oil-from-green",
         icons = du.icons("creosote-oil").add_corner("creosote-oil"),
@@ -551,6 +575,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "anthracene-from-green",
         icons = du.icons("anthracene").add_corner("green-oil"),
@@ -570,6 +595,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "carbolic-acid-creosote",
         icons = du.icons("carbolic-acid").add_corner("creosote-oil"),
@@ -589,6 +615,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "carbolic-acid-middle",
         icons = du.icons("carbolic-acid").add_corner("middle-oil"),
@@ -608,6 +635,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "tar-gasification",
         icons = du.icons("syngas").add_corner("tar"),
@@ -630,6 +658,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "coal-gas-gasification",
         icons = du.icons("syngas").add_corner("coal-gas"),
@@ -651,6 +680,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "oxygenated-coal-gas-gasification",
         icons = du.icons("syngas").add_corner("coal-gas"),
@@ -673,6 +703,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "separating", ---@diagnostic disable-line
         name = "wood-oil-separation",
         icons = du.icons("methanol").add_corner("wood-oil"),
@@ -696,6 +727,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "flash-boiling", ---@diagnostic disable-line
         name = "flash-boil-water",
         icons = du.icons("steam").add_corner("syngas"),
@@ -717,6 +749,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "flash-boiling", ---@diagnostic disable-line
         name = "flash-boil-40c-water",
         icons = du.icons("steam").add_corner("syngas"),
@@ -738,6 +771,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "flash-boiling", ---@diagnostic disable-line
         name = "flash-boil-60c-water",
         icons = du.icons("steam").add_corner("syngas"),
@@ -759,6 +793,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "flash-boiling", ---@diagnostic disable-line
         name = "flash-boil-80c-water",
         icons = du.icons("steam").add_corner("syngas"),
@@ -794,6 +829,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "clean-crafting", ---@diagnostic disable-line
         name = "wafer-dicing",
         icons = du.icons("silicon-wafer"),
@@ -813,6 +849,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "chemistry", ---@diagnostic disable-line
         name = "photoresist",
         icons = du.icons("photoresist"),
@@ -835,6 +872,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "clean-crafting", ---@diagnostic disable-line
         name = "pre-etched-simple-wafer",
         icons = du.icons("pre-etched-simple-wafer"),
@@ -857,6 +895,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "clean-crafting", ---@diagnostic disable-line
         name = "simple-wafer-lithography",
         icons = du.icons("lithographed-simple-wafer"),
@@ -876,6 +915,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "clean-crafting", ---@diagnostic disable-line
         name = "simple-wafer-etching",
         icons = du.icons("simple-wafer"),
@@ -900,6 +940,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "integrated-circuit-die",
         icons = du.icons("integrated-circuit-die"),
@@ -921,6 +962,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "integrated-circuit-die",
         icons = du.icons("integrated-circuit-die"),

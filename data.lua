@@ -1,3 +1,11 @@
+for _, technology in pairs(data.raw.technology) do
+    technology.hidden = true
+end
+for _, recipe in pairs(data.raw.recipe) do
+    recipe.hidden = true
+    recipe.enabled = false
+end
+
 table.insert(data.raw.lab.lab.inputs, "environmental-science-pack")
 
 require("prototypes.pre-science.recipe")

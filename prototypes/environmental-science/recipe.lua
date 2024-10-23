@@ -697,3 +697,24 @@ data:extend({
         }
     }
 })
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "crafting", ---@diagnostic disable-line
+        name = "automation-science-pack",
+        icons = du.icons{mod="base", name="automation-science-pack"},
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="glass", amount=2},
+            {type="item", name="analog-circuit", amount=1},
+            {type="item", name="stone-brick", amount=3},
+        },
+        results = {
+            {type="item", name="automation-science-pack", amount=2},
+        }
+    }
+})
