@@ -57,6 +57,12 @@ local function get_icon_path_from_config(config)
     return name
 end
 
+local function ensure_dot_syntax(first_argument)
+    if type(first_argument) == "table" and first_argument.type == "icons" then
+        error("Ensure all icons calls are . syntax, not :")
+    end
+end
+
 dutil.icon_mt = {
     __index = function(icons, key)
         if key == "type" then
@@ -65,13 +71,11 @@ dutil.icon_mt = {
             if #icons == 0 then
                 error("Cannot get from empty icons table", 2)
             end
-            return function() return icons[#icons] end
+            return function(first_arg) ensure_dot_syntax(first_arg) return icons[#icons] end
         elseif key == "add" then
             return function(name, size, discard)
+                ensure_dot_syntax(name)
                 if type(name) == "table" then
-                    if name.type == "icons" then
-                        error("Ensure all icons calls are . syntax, not :")
-                    end
                     local config = name
                     return icons.add(get_icon_path_from_config(config), config.size, true)
                 end
@@ -83,10 +87,8 @@ dutil.icon_mt = {
             end
         elseif key == "add_corner" then
             return function(name, size, discard)
+                ensure_dot_syntax(name)
                 if type(name) == "table" then
-                    if name.type == "icons" then
-                        error("Ensure all icons calls are . syntax, not :")
-                    end
                     local config = name
                     icons.add(config)
                     icons.get().scale = config.scale or dutil.corner_scale
@@ -106,11 +108,9 @@ dutil.icon_mt = {
                 error("Cannot tint empty icons table", 2)
             end
             return function(tint)
+                ensure_dot_syntax(tint)
                 if type(tint) ~= "table" then
                     error("Tint requires a table")
-                end
-                if tint.type == "icons" then
-                    error("Ensure all icons calls are . syntax, not :")
                 end
                 icons.get().tint = tint
                 return icons
