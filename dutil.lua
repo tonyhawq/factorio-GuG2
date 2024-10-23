@@ -66,6 +66,10 @@ dutil.icon_mt = {
             return function() return icons[#icons] end
         elseif key == "add" then
             return function(name, size, discard)
+                if type(name) == "table" then
+                    local config = name
+                    return icons.add(get_icon_path_from_config(config), config.size, true)
+                end
                 table.insert(icons, {
                     icon = get_icon_path(name, discard),
                     icon_size = size or dutil.size
@@ -76,8 +80,7 @@ dutil.icon_mt = {
             return function(name, size, discard)
                 if type(name) == "table" then
                     local config = name
-                    local path = get_icon_path_from_config(config)
-                    icons.add(path, config.size, true)
+                    icons.add(config)
                     icons.get().scale = config.scale or dutil.corner_scale
                     icons.get().shift = dutil.get_corner_offset(config.corner or dutil.default_corner)
                     return icons
@@ -107,23 +110,20 @@ function dutil.MJ(string)
     return util.parse_energy(string)/1000/1000
 end
 
+function dutil.empty_icons()
+    local returned = {}
+    setmetatable(returned, dutil.icon_mt)
+    return returned
+end
+
 function dutil.icons_ext(config)
-    local name = config.name
-    if not config.discard then
-        local mod = config.mod or dutil.mod
-        local path = config.path or dutil.path
-        local ext = config.ext or dutil.ext
-        name = "__"..mod.."__"..path..name..ext
-    end
-    return dutil.icons(name, config.size, true)
+    local returned = dutil.empty_icons()
+    return returned.add(config)
 end
 
 function dutil.icons(name, size, discard)
-    name = get_icon_path(name, discard)
-    local returned = {}
-    setmetatable(returned, dutil.icon_mt)
-    returned.add(name, size, discard)
-    return returned
+    local returned = dutil.empty_icons()
+    return returned.add(name, size, discard)
 end
 
 ---@param name string
