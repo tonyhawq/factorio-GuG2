@@ -6,7 +6,7 @@ data:extend({
         always_show_made_in = true,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "200c-production",
-        icons = du.icons_m("200c"):add(du.icon_c("flue-gas")),
+        icons = du.icons("200c").add_corner("flue-gas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -26,7 +26,7 @@ data:extend({
         always_show_made_in = true,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "300c-production",
-        icons = du.icons_m("300c"):add(du.icon_c("flue-gas")),
+        icons = du.icons("300c").add_corner("flue-gas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -46,7 +46,7 @@ data:extend({
         always_show_made_in = true,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "400c-production",
-        icons = du.icons_m("400c"):add(du.icon_c("flue-gas")),
+        icons = du.icons("400c").add_corner("flue-gas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -66,7 +66,7 @@ data:extend({
         always_show_made_in = true,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "500c-production",
-        icons = du.icons_m("500c"):add(du.icon_c("flue-gas")),
+        icons = du.icons("500c").add_corner("flue-gas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -86,7 +86,7 @@ data:extend({
         always_show_made_in = true,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "500c-to-400c",
-        icons = du.icons_m("400c"):add(du.icon_c("500c")),
+        icons = du.icons("400c").add_corner("500c"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -106,7 +106,7 @@ data:extend({
         always_show_made_in = true,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "500c-to-300c",
-        icons = du.icons_m("300c"):add(du.icon_c("500c")),
+        icons = du.icons("300c").add_corner("500c"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -126,7 +126,7 @@ data:extend({
         always_show_made_in = true,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "500c-to-200c",
-        icons = du.icons_m("200c"):add(du.icon_c("500c")),
+        icons = du.icons("200c").add_corner("500c"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -147,7 +147,7 @@ data:extend({
         always_show_made_in = true,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "400c-to-300c",
-        icons = du.icons_m("300c"):add(du.icon_c("400c")),
+        icons = du.icons("300c").add_corner("400c"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -167,7 +167,7 @@ data:extend({
         always_show_made_in = true,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "400c-to-200c",
-        icons = du.icons_m("200c"):add(du.icon_c("400c")),
+        icons = du.icons("200c").add_corner("400c"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -188,7 +188,7 @@ data:extend({
         always_show_made_in = true,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "300c-to-200c",
-        icons = du.icons_m("200c"):add(du.icon_c("300c")),
+        icons = du.icons("200c").add_corner("300c"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -209,7 +209,7 @@ data:extend({
         always_show_made_in = true,
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "200c-to-water",
-        icons = du.icons_ext{mod="base", name="fluid/water"}:add(du.icon_c("200c")),
+        icons = du.icons_ext{mod="base", name="fluid/water"}.add_corner("200c"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

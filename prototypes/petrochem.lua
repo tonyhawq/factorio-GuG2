@@ -302,7 +302,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "gasoline-from-heavy-naphtha",
-        icons = du.icons_m("gasoline"):add(du.icon_c("heavy-naphtha")),
+        icons = du.icons("gasoline").add_corner("heavy-naphtha"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -322,7 +322,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "gasoline-from-light-naphtha",
-        icons = du.icons_m("gasoline"):add(du.icon_c("light-naphtha")),
+        icons = du.icons("gasoline").add_corner("light-naphtha"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -342,7 +342,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "fuel-oil-from-light-gas-oil",
-        icons = du.icons_m("fuel-oil"):add(du.icon_c("light-gas-oil")),
+        icons = du.icons("fuel-oil").add_corner("light-gas-oil"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -363,7 +363,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "fuel-oil-from-heavy-gas-oil",
-        icons = du.icons_m("fuel-oil"):add(du.icon_c("heavy-gas-oil")),
+        icons = du.icons("fuel-oil").add_corner("heavy-gas-oil"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -384,7 +384,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "mixed-gas-oil-from-kerosene",
-        icons = du.icons_m("gas-oil"):add(du.icon_c("kerosene")),
+        icons = du.icons("gas-oil").add_corner("kerosene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -485,7 +485,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "diesel-from-heavy-oil",
-        icons = du.icons_m("diesel"):add(du.icon_c("__base__/graphics/icons/fluid/heavy-oil.png", 64, true)),
+        icons = du.icons("diesel").add_corner("__base__/graphics/icons/fluid/heavy-oil.png", 64, true),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -577,7 +577,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "acrylonitrile",
-        icons = du.icons_ext{name="acrylonitrile"}:add(du.icon_c("propylene")),
+        icons = du.icons_ext{name="acrylonitrile"}.add_corner("propylene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -600,7 +600,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-polypropylene",
-        icons = du.icons_ext{name="plastic-bar", mod="base"}:add(du.icon_c("propylene")),
+        icons = du.icons_ext{name="plastic-bar", mod="base"}.add_corner("propylene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -620,7 +620,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-polypropylene-2",
-        icons = du.icons_ext{name="plastic-bar", mod="base"}:addm(du.icon_c("propylene")):add(du.icon_c("anthracene")),
+        icons = du.icons_ext{name="plastic-bar", mod="base"}.add_corner("propylene").add_corner("anthracene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -641,7 +641,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-pvc-1",
-        icons = du.icons_ext{name="plastic-bar", mod="base"}:add(du.icon_c("acetylene")),
+        icons = du.icons_ext{name="plastic-bar", mod="base"}.add_corner("acetylene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -664,7 +664,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "plastic-pvc-2",
-        icons = du.icons_ext{name="plastic-bar", mod="base"}:add(du.icon_c("ethylene")),
+        icons = du.icons_ext{name="plastic-bar", mod="base"}.add_corner("ethylene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -685,7 +685,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "rubber-sbr",
-        icons = du.icons_m("rubber"):add(du.icon_c("styrene")),
+        icons = du.icons("rubber").add_corner("styrene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -706,7 +706,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "polymer-additives-1",
-        icons = du.icons_m("polymer-additives"):add(du.icon_c("bound-porcelain")),
+        icons = du.icons("polymer-additives").add_corner("bound-porcelain"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -728,7 +728,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "polymer-additives-2",
-        icons = du.icons_m("polymer-additives"):add(du.icon_c("styrene")),
+        icons = du.icons("polymer-additives").add_corner("styrene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -751,7 +751,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "low-quality-plastic",
-        icons = du.icons_m("rubber"):add(du.icon_c("styrene")),
+        icons = du.icons("rubber").add_corner("styrene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -772,7 +772,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "finished-plastic",
-        icons = du.icons_m("rubber"):add(du.icon_c("styrene")),
+        icons = du.icons("rubber").add_corner("styrene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -792,7 +792,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "high-quality-plastic",
-        icons = du.icons_m("rubber"):add(du.icon_c("styrene")),
+        icons = du.icons("rubber").add_corner("styrene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -814,7 +814,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "hals", -- 2,2,6,6-Tetramethylpiperidine
-        icons = du.icons_m("rubber"):add(du.icon_c("styrene")),
+        icons = du.icons("rubber").add_corner("styrene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -843,7 +843,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "finished-rubber",
-        icons = du.icons_m("rubber"):add(du.icon_c("styrene")),
+        icons = du.icons("rubber").add_corner("styrene"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

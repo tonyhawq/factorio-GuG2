@@ -7,7 +7,7 @@ data:extend({
         type = "assembling-machine",
         name = "central-processor",
         icon = "__base__/graphics/icons/assembling-machine-2.png",
-        icon_size = 64, icon_mipmaps = 4,
+        icon_size = 64,
         flags = {"placeable-neutral", "placeable-player", "player-creation"}, ---@diagnostic disable-line
         minable = {mining_time = 0.2, result = "central-processor"},
         max_health = 350,
@@ -29,7 +29,7 @@ data:extend({
                 pipe_covers = pipecoverspictures(),
                 volume = 100,
                 base_level = -1,
-                pipe_connections = {{ flow_direction="input", position = {0, -3}, direction=defines.direction.south }},
+                pipe_connections = {{ flow_direction="input", position = {0, -3}, direction=defines.direction.south }}, ---@diagnostic disable-line
                 secondary_draw_orders = { north = -1 }
             },
             {
@@ -38,7 +38,7 @@ data:extend({
                 pipe_covers = pipecoverspictures(),
                 volume = 100,
                 base_level = 1,
-                pipe_connections = {{ flow_direction="output", position = {0, 3}, direction=defines.direction.south }},
+                pipe_connections = {{ flow_direction="output", position = {0, 3}, direction=defines.direction.south }}, ---@diagnostic disable-line
                 secondary_draw_orders = { north = -1 }
             },
         },
@@ -169,8 +169,64 @@ data:extend({
     },
     {
         type = "item",
-        name = "simple-program",
+        name = "program",
         icons = du.icons("program"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50
+    },
+    {
+        type = "item",
+        name = "io-expander",
+        icons = du.icons("io-expander"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50
+    },
+    {
+        type = "item",
+        name = "up-float",
+        icons = du.icons("up-float"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50
+    },
+    {
+        type = "item",
+        name = "nan-float",
+        icons = du.icons("nan-float"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50
+    },
+    {
+        type = "item",
+        name = "down-float",
+        icons = du.icons("down-float"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50
+    },
+    {
+        type = "item",
+        name = "memories",
+        icons = du.icons("memories"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50
+    },
+    {
+        type = "item",
+        name = "priority-interrupt",
+        icons = du.icons("priority-interrupt"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50
+    },
+    {
+        type = "item",
+        name = "deferred-interrupt",
+        icons = du.icons("deferred-interrupt"),
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50
@@ -221,26 +277,6 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        category = "central-processor", ---@diagnostic disable-line
-        name = "revive-process-2",
-        icons = du.icons_m("process"):add(du.icon_c("cpu-time")),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="dead-process", amount=1},
-            {type="fluid", name="cpu-time", amount=200},
-        },
-        results = {
-            {type="item", name="process", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
         category = "basic-computing", ---@diagnostic disable-line
         name = "cpu-time",
         icons = du.icons("cpu-time"),
@@ -262,19 +298,78 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         category = "basic-computing", ---@diagnostic disable-line
-        name = "simple-program",
+        name = "memories",
+        icons = du.icons("thread"):tint(),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="item", name="process", amount=1},
+        },
+        results = {
+            {type="item", name="memories", amount=500},
+            {type="item", name="dead-process", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "basic-computing", ---@diagnostic disable-line
+        name = "interrupts",
+        icons = du.icons("interrupts"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="fluid", name="cpu-time", amount=100},
+        },
+        results = {
+            {type="item", name="priority-interrupt", amount=5},
+            {type="item", name="deferred-interrupt", amount=5},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "basic-computing", ---@diagnostic disable-line
+        name = "program",
         icons = du.icons("program"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 5,
         ingredients = {
-            {type="item", name="process", amount=1},
-            {type="fluid", name="cpu-time", amount=100},
+            {type="item", name="memories", amount=100},
+            {type="item", name="priority-interrupt", amount=100},
         },
         results = {
-            {type="item", name="dead-process", amount=1},
-            {type="item", name="simple-program", amount=1},
+            {type="item", name="program", amount=5},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "basic-computing", ---@diagnostic disable-line
+        name = "io-expander",
+        icons = du.icons("io-expander"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="item", name="memories", amount=100},
+            {type="item", name="deferred-interrupt", amount=100},
+        },
+        results = {
+            {type="item", name="io-expander", amount=5},
         }
     }
 })
@@ -288,13 +383,31 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 5,
         ingredients = {
             {type="item", name="process", amount=1},
-            {type="fluid", name="cpu-time", amount=640},
         },
         results = {
-            {type="item", name="thread", amount=64},
+            {type="item", name="thread", amount=32},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "basic-computing", ---@diagnostic disable-line
+        name = "thread-joining",
+        icons = du.icons("thread-joining"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="item", name="thread", amount=32},
+        },
+        results = {
+            {type="item", name="dead-process", amount=1},
         }
     }
 })
@@ -308,12 +421,34 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 20,
+        energy_required = 5,
         ingredients = {
+            {type="item", name="deferred-interrupt", amount=1},
             {type="item", name="thread", amount=1},
         },
         results = {
             {type="item", name="coroutine", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "basic-computing", ---@diagnostic disable-line
+        name = "interrupt-scheduling",
+        icons = du.icons("priority-interrupt"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="item", name="deferred-interrupt", amount=1},
+            {type="item", name="coroutine", amount=1},
+            {type="item", name="thread", amount=1},
+        },
+        results = {
+            {type="item", name="priority-interrupt", amount=1},
             {type="item", name="thread", amount=1},
         }
     }
@@ -323,18 +458,20 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         category = "basic-computing", ---@diagnostic disable-line
-        name = "cpu-time-from-coroutine",
-        icons = du.icons_m("cpu-time"):add(du.icon_c("coroutine")),
+        name = "floating-point-operation",
+        icons = du.icons("floating-points"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 5,
         ingredients = {
-            {type="item", name="coroutine", amount=1},
+            {type="item", name="process", amount=1},
+            {type="item", name="memories", amount=1},
         },
         results = {
-            {type="item", name="program-garbage", amount=2},
-            {type="fluid", name="cpu-time", amount=500},
+            {type="item", name="up-float", amount=1, probability=0.33},
+            {type="item", name="nan-float", amount=1, probability=0.33},
+            {type="item", name="down-float", amount=1, probability=0.33},
         }
     }
 })
@@ -343,17 +480,19 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         category = "basic-computing", ---@diagnostic disable-line
-        name = "unthreading",
-        icons = du.icons_m("thread"):add(du.icon_c("restart")),
+        name = "float-up-folding",
+        icons = du.icons("up-float"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 5,
         ingredients = {
-            {type="item", name="thread", amount=64},
+            {type="item", name="process", amount=1},
+            {type="item", name="up-float", amount=1},
         },
         results = {
-            {type="item", name="process", amount=1},
+            {type="item", name="nan-float", amount=1, probability=0.33},
+            {type="item", name="down-float", amount=1, probability=0.66},
         }
     }
 })
@@ -362,18 +501,20 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         category = "basic-computing", ---@diagnostic disable-line
-        name = "garbage-collection",
-        icons = du.icons_m("program-garbage"):add(du.icon_c("restart")),
+        name = "float-down-folding",
+        icons = du.icons("down-float"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 5,
         ingredients = {
-            {type="item", name="program-garbage", amount=1200},
             {type="item", name="process", amount=1},
+            {type="item", name="down-float", amount=1},
+            {type="item", name="nan-float", amount=1},
         },
         results = {
-            {type="item", name="dead-process", amount=1},
+            {type="item", name="nan-float", amount=2, probability=0.66},
+            {type="item", name="down-float", amount=1, probability=0.33},
         }
     }
 })

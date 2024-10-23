@@ -45,7 +45,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "smithy",
-        icons = du.icons_ext{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/advanced-foundry-mk01.png"}:fin(),
+        icons = du.icons_ext{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/advanced-foundry-mk01.png"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -166,7 +166,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "offshore-pump",
-        icons = du.icons_ext{name="__base__/graphics/icons/offshore-pump.png", discard=true}:fin(),
+        icons = du.icons_ext{name="__base__/graphics/icons/offshore-pump.png", discard=true},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -207,7 +207,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "pipe-to-ground",
-        icons = du.icons_ext{mod="base",name="pipe-to-ground"}:fin(),
+        icons = du.icons_ext{mod="base",name="pipe-to-ground"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -248,7 +248,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "steam-engine",
-        icons = du.icons_ext{mod="base",name="steam-engine"}:fin(),
+        icons = du.icons_ext{mod="base",name="steam-engine"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -290,7 +290,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "destructive-distillation-tower",
-        icons = du.icons_ext{mod="pycoalprocessinggraphics", name="distilator"}:fin(),
+        icons = du.icons_ext{mod="pycoalprocessinggraphics", name="distilator"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -312,7 +312,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "assembling-machine-1",
-        icons = du.icons_ext{mod="base",name="assembling-machine-1"}:fin(),
+        icons = du.icons_ext{mod="base",name="assembling-machine-1"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -477,7 +477,7 @@ data:extend({
         always_show_made_in = true,
         category = "autocrafting", ---@diagnostic disable-line
         name = "wrought-iron-gear",
-        icons = du.icons_ext{mod="base", name="iron-gear-wheel"}:fin(),
+        icons = du.icons_ext{mod="base", name="iron-gear-wheel"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -542,7 +542,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "sandstone-crushing",
-        icons = du.icons_m("sandstone"):add(du.icon_c("crushing")),
+        icons = du.icons("sandstone").add_corner("crushing"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -562,7 +562,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "gravel-crushing",
-        icons = du.icons_m("gravel"):add(du.icon_c("crushing")),
+        icons = du.icons("gravel").add_corner("crushing"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -582,7 +582,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "stone-crushing",
-        icons = du.icons_ext{mod="base",name="stone"}:add(du.icon_c("crushing")),
+        icons = du.icons_ext{mod="base",name="stone"}.add_corner("crushing"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -681,7 +681,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "glassworks",
-        icons = du.icons_ext{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/glassworks-mk01.png"}:fin(),
+        icons = du.icons_ext{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/glassworks-mk01.png"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

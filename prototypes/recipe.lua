@@ -32,7 +32,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "scale-boiler",
-        icons = du.icons_ext{mod="base", name="boiler"}:fin(),
+        icons = du.icons_ext{mod="base", name="boiler"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -212,7 +212,7 @@ data:extend({
         always_show_made_in = true,
         category = "electrolysis", ---@diagnostic disable-line
         name = "water-electrolysis",
-        icons = du.icons_ext{mod="base", name="fluid/water"}:addm(du.icon_c("oxygen")):add(du.icon_co("hydrogen")),
+        icons = du.icons_ext{mod="base", name="fluid/water"}.add_corner("oxygen"):add(du.icon_co("hydrogen")),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -253,7 +253,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         category = "crushing", ---@diagnostic disable-line
-        name = "stone-brick-crushing-1",
+        name = "stone-brick-crushing",
         icons = du.icons("__base__/graphics/icons/stone-brick.png", 64, true),
         subgroup = "raw-material",
         order = "a[a]",
@@ -294,7 +294,7 @@ data:extend({
         always_show_made_in = true,
         category = "boiling", ---@diagnostic disable-line
         name = "seawater-boiling",
-        icons = du.icons_ext{mod="base", name="fluid/steam"}:add(du.icon_c("seawater")),
+        icons = du.icons_ext{mod="base", name="fluid/steam"}.add_corner("seawater"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -314,7 +314,7 @@ data:extend({
         always_show_made_in = true,
         category = "boiling", ---@diagnostic disable-line
         name = "saline-water-boiling",
-        icons = du.icons_ext{mod="base", name="fluid/steam"}:add(du.icon_c("saline-water")),
+        icons = du.icons_ext{mod="base", name="fluid/steam"}.add_corner("saline-water"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -335,7 +335,7 @@ data:extend({
         always_show_made_in = true,
         category = "boiling", ---@diagnostic disable-line
         name = "brine-boiling",
-        icons = du.icons_ext{mod="base", name="fluid/steam"}:add(du.icon_c("brine")),
+        icons = du.icons_ext{mod="base", name="fluid/steam"}.add_corner("brine"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -356,7 +356,7 @@ data:extend({
         always_show_made_in = true,
         category = "boiling", ---@diagnostic disable-line
         name = "mineralized-water-boiling",
-        icons = du.icons_ext{mod="base", name="fluid/steam"}:add(du.icon_c("mineralized-water")),
+        icons = du.icons_ext{mod="base", name="fluid/steam"}.add_corner("mineralized-water"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -377,7 +377,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "latex-to-rubber-1",
-        icons = du.icons_m("rubber"):add(du.icon_c("latex")),
+        icons = du.icons("rubber").add_corner("latex"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -532,7 +532,7 @@ data:extend({
         always_show_made_in = true,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "creosote-oil-from-green",
-        icons = du.icons_m("creosote-oil"):add(du.icon_c("creosote-oil")),
+        icons = du.icons("creosote-oil").add_corner("creosote-oil"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -553,7 +553,7 @@ data:extend({
         always_show_made_in = true,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "anthracene-from-green",
-        icons = du.icons_m("anthracene"):add(du.icon_c("green-oil")),
+        icons = du.icons("anthracene").add_corner("green-oil"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -572,7 +572,7 @@ data:extend({
         always_show_made_in = true,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "carbolic-acid-creosote",
-        icons = du.icons_m("carbolic-acid"):add(du.icon_c("creosote-oil")),
+        icons = du.icons("carbolic-acid").add_corner("creosote-oil"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -591,7 +591,7 @@ data:extend({
         always_show_made_in = true,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "carbolic-acid-middle",
-        icons = du.icons_m("carbolic-acid"):add(du.icon_c("middle-oil")),
+        icons = du.icons("carbolic-acid").add_corner("middle-oil"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -610,7 +610,7 @@ data:extend({
         always_show_made_in = true,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "tar-gasification",
-        icons = du.icons_m("syngas"):add(du.icon_c("tar")),
+        icons = du.icons("syngas").add_corner("tar"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -632,7 +632,7 @@ data:extend({
         always_show_made_in = true,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "coal-gas-gasification",
-        icons = du.icons_m("syngas"):add(du.icon_c("coal-gas")),
+        icons = du.icons("syngas").add_corner("coal-gas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -653,7 +653,7 @@ data:extend({
         always_show_made_in = true,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "oxygenated-coal-gas-gasification",
-        icons = du.icons_m("syngas"):addm(du.icon_c("coal-gas")):add(du.icon_co("oxygen")),
+        icons = du.icons("syngas").add_corner("coal-gas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -675,7 +675,7 @@ data:extend({
         always_show_made_in = true,
         category = "separating", ---@diagnostic disable-line
         name = "wood-oil-separation",
-        icons = du.icons_m("methanol"):add(du.icon_c("wood-oil")),
+        icons = du.icons("methanol").add_corner("wood-oil"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -698,7 +698,7 @@ data:extend({
         always_show_made_in = true,
         category = "flash-boiling", ---@diagnostic disable-line
         name = "flash-boil-water",
-        icons = du.icons_m("steam"):add(du.icon_c("syngas")),
+        icons = du.icons("steam").add_corner("syngas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -719,7 +719,7 @@ data:extend({
         always_show_made_in = true,
         category = "flash-boiling", ---@diagnostic disable-line
         name = "flash-boil-40c-water",
-        icons = du.icons_m("steam"):add(du.icon_c("syngas")),
+        icons = du.icons("steam").add_corner("syngas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -740,7 +740,7 @@ data:extend({
         always_show_made_in = true,
         category = "flash-boiling", ---@diagnostic disable-line
         name = "flash-boil-60c-water",
-        icons = du.icons_m("steam"):add(du.icon_c("syngas")),
+        icons = du.icons("steam").add_corner("syngas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -761,7 +761,7 @@ data:extend({
         always_show_made_in = true,
         category = "flash-boiling", ---@diagnostic disable-line
         name = "flash-boil-80c-water",
-        icons = du.icons_m("steam"):add(du.icon_c("syngas")),
+        icons = du.icons("steam").add_corner("syngas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

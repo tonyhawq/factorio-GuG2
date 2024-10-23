@@ -82,7 +82,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"steel-processing", "glassworks"},
+        prerequisites = {"steel-processing", "glassworking-1"},
         unit =
         {
             count = 10,
@@ -414,7 +414,7 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="stone-brick",
+                recipe="stone-brick-1",
             },
         },
         order = "b-b"
