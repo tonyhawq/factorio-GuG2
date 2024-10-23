@@ -59,7 +59,9 @@ end
 
 dutil.icon_mt = {
     __index = function(icons, key)
-        if key == "get" then
+        if key == "type" then
+            return "icons"
+        elseif key == "get" then
             if #icons == 0 then
                 error("Cannot get from empty icons table", 2)
             end
@@ -67,6 +69,9 @@ dutil.icon_mt = {
         elseif key == "add" then
             return function(name, size, discard)
                 if type(name) == "table" then
+                    if name.type == "icons" then
+                        error("Ensure all icons calls are . syntax, not :")
+                    end
                     local config = name
                     return icons.add(get_icon_path_from_config(config), config.size, true)
                 end
@@ -79,10 +84,13 @@ dutil.icon_mt = {
         elseif key == "add_corner" then
             return function(name, size, discard)
                 if type(name) == "table" then
+                    if name.type == "icons" then
+                        error("Ensure all icons calls are . syntax, not :")
+                    end
                     local config = name
                     icons.add(config)
-                    --icons.get().scale = config.scale or dutil.corner_scale
-                    --icons.get().shift = dutil.get_corner_offset(config.corner or dutil.default_corner)
+                    icons.get().scale = config.scale or dutil.corner_scale
+                    icons.get().shift = dutil.get_corner_offset(config.corner or dutil.default_corner)
                     return icons
                 end
                 table.insert(icons, {
@@ -98,7 +106,13 @@ dutil.icon_mt = {
                 error("Cannot tint empty icons table", 2)
             end
             return function(tint)
-                icons[#icons].tint = tint
+                if type(tint) ~= "table" then
+                    error("Tint requires a table")
+                end
+                if tint.type == "icons" then
+                    error("Ensure all icons calls are . syntax, not :")
+                end
+                icons.get().tint = tint
                 return icons
             end
         end
