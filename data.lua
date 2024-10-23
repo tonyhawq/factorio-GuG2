@@ -15,26 +15,3 @@ require("prototypes.heat-exchange")
 require("prototypes.tile")
 require("prototypes.styles")
 require("prototypes.yafc-fixes")
-
-local du = require("dutil")
-
-data:extend({
-    {
-        type = "item",
-        name = "sig",
-        icons = du.icons{mod="base",name="iron-plate"}.add_corner{mod="base",name="iron-plate"}.add_corner("steel-plate").add_corner("steel-plate").add("steel-plate"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
-        stack_size = 50
-    }
-})
-
--- replace du.icons with iron plate
--- du.icons(.+)
--- to
--- {{icon="__base__/graphics/icons/iron-plate.png", icon_size=64}},--$1
-
--- replace that with original
--- \{\{icon="__base__/graphics/icons/iron-plate.png", icon_size=64\}\},--
--- to
--- du.icons

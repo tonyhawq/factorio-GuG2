@@ -156,3 +156,13 @@ function dutil.fuel_value(name)
 end
 
 return dutil
+
+-- replace du.icons with iron plate
+-- du.icons(.+)
+-- to
+-- {{icon="__base__/graphics/icons/iron-plate.png", icon_size=64}},--$1
+
+-- replace that with original
+-- \{\{icon="__base__/graphics/icons/iron-plate.png", icon_size=64\}\},--
+-- to
+-- du.icons
