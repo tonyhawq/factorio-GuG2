@@ -4,6 +4,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smelting", ---@diagnostic disable-line
         name = "bronze-ingot-1",
         icons = du.icons("bronze-ingot"),
@@ -24,6 +25,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smelting", ---@diagnostic disable-line
         name = "bronze-plate-1",
         icons = du.icons("bronze-plate"),
@@ -43,6 +45,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "smithy",
         icons = du.icons{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/advanced-foundry-mk01.png"},
@@ -65,6 +68,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smithing", ---@diagnostic disable-line
         name = "rivets",
         icons = du.icons("rivets"),
@@ -85,6 +89,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smelting", ---@diagnostic disable-line
         name = "iron-ingot-1",
         icons = du.icons("iron-ingot"),
@@ -105,6 +110,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smithing", ---@diagnostic disable-line
         name = "wrought-iron-plate-1",
         icons = du.icons("wrought-iron-plate"),
@@ -124,6 +130,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "mechanical-inserter",
         icons = du.icons("mechanical-inserter"),
@@ -144,6 +151,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "small-tank",
         icons = du.icons("small-tank"),
@@ -164,6 +172,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "offshore-pump",
         icons = du.icons{name="__base__/graphics/icons/offshore-pump.png", discard=true},
@@ -185,6 +194,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "pipe",
         icons = du.icons("pipe"),
@@ -205,6 +215,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "pipe-to-ground",
         icons = du.icons{mod="base",name="pipe-to-ground"},
@@ -225,6 +236,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "evaporator",
         icons = {{icon="__GuG2__/graphics/missing.png"}},
@@ -246,6 +258,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "steam-engine",
         icons = du.icons{mod="base",name="steam-engine"},
@@ -268,6 +281,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "steam-inserter",
         icons = du.icons("steam-inserter"),
@@ -288,6 +302,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "destructive-distillation-tower",
         icons = du.icons{mod="pycoalprocessinggraphics", name="distilator"},
@@ -310,6 +325,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "assembling-machine-1",
         icons = du.icons{mod="base",name="assembling-machine-1"},
@@ -332,6 +348,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "tube-boiler",
         icons = du.icons("tube-boiler"),
@@ -355,6 +372,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "fluid-mining-drill",
         icons = du.icons("fluid-mining-drill"),
@@ -377,6 +395,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smelting", ---@diagnostic disable-line
         name = "steel-ingot-1",
         icons = du.icons("steel-ingot"),
@@ -397,6 +416,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smithing", ---@diagnostic disable-line
         name = "steel-rod-1",
         icons = du.icons("steel-rod"),
@@ -416,6 +436,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smithing", ---@diagnostic disable-line
         name = "steel-plate-1",
         icons = du.icons("steel-plate"),
@@ -435,6 +456,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smithing", ---@diagnostic disable-line
         name = "steel-beam-1",
         icons = du.icons("steel-beam"),
@@ -456,6 +478,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "smelting", ---@diagnostic disable-line
         name = "steel-cable-1",
         icons = du.icons("steel-cable"),
@@ -475,6 +498,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "autocrafting", ---@diagnostic disable-line
         name = "wrought-iron-gear",
         icons = du.icons{mod="base", name="iron-gear-wheel"},
@@ -485,6 +509,7 @@ data:extend({
         ingredients = {
             {type="item", name="wrought-iron-plate", amount=1},
             {type="item", name="wrought-iron-rod", amount=1},
+            {type="item", name="bound-porcelain", amount=1},
         },
         results = {
             {type="item", name="iron-gear-wheel", amount=1},
@@ -495,6 +520,28 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "treated-wood",
+        icons = du.icons("treated-wood"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 20,
+        ingredients = {
+            {type="item", name="wood", amount=1},
+            {type="fluid", name="creosote-oil", amount=6},
+        },
+        results = {
+            {type="item", name="treated-wood", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "analog-circuit-1",
         icons = du.icons("analog-circuit"),
@@ -503,10 +550,10 @@ data:extend({
         main_product = "",
         energy_required = 20,
         ingredients = {
-            {type="item", name="steel-cable", amount=6},
+            {type="item", name="fiber", amount=6},
             {type="item", name="iron-gear-wheel", amount=6},
             {type="item", name="screws", amount=12},
-            {type="item", name="wood", amount=2},
+            {type="item", name="treated-wood", amount=2},
             {type="item", name="bronze-plate", amount=2},
         },
         results = {
@@ -518,6 +565,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "steam-crusher",
         icons = du.icons("analog-circuit"),
@@ -528,7 +576,7 @@ data:extend({
         ingredients = {
             {type="item", name="steam-engine", amount=1},
             {type="item", name="iron-gear-wheel", amount=6},
-            {type="item", name="steel-beam", amount=6},
+            {type="item", name="wrought-iron-sheet", amount=6},
             {type="item", name="lead-sheet", amount=6},
         },
         results = {
@@ -540,6 +588,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "sandstone-crushing",
         icons = du.icons("sandstone").add_corner("crushing"),
@@ -560,6 +609,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "gravel-crushing",
         icons = du.icons("gravel").add_corner("crushing"),
@@ -580,6 +630,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "stone-crushing",
         icons = du.icons{mod="base",name="stone"}.add_corner("crushing"),
@@ -599,6 +650,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "glassworking", ---@diagnostic disable-line
         name = "raw-quartz-glass",
         icons = du.icons("glass"),
@@ -618,6 +670,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "glassworking", ---@diagnostic disable-line
         name = "crushed-quartz-glass",
         icons = du.icons("glass"),
@@ -637,6 +690,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "glassworking", ---@diagnostic disable-line
         name = "float-glass",
         icons = du.icons("glass"),
@@ -658,6 +712,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "autocrafting", ---@diagnostic disable-line
         name = "screws",
         icons = du.icons("screws"),
@@ -679,6 +734,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "glassworks",
         icons = du.icons{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/glassworks-mk01.png"},
@@ -701,6 +757,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "automation-science-pack",
         icons = du.icons{mod="base", name="automation-science-pack"},

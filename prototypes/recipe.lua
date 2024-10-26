@@ -449,7 +449,7 @@ data:extend({
 -- creosote is then used for wood treatment or can be converted to phenol
 -- green -> anthracene
 -- middle -> naphthalene
--- light oil -> benzene
+-- light oil -> BTX & fuel
 
 -- fractions are
 -- 25% green oil
@@ -546,6 +546,30 @@ data:extend({
             {type="fluid", name="light-oil", amount=10},
             {type="fluid", name="middle-oil", amount=20},
             {type="fluid", name="tar-pitch", amount=40},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "pitch-processing",
+        icons = du.icons("tar-pitch"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            -- getting into some coal products, are we?
+            {type="fluid", name="tar-pitch", amount=100},
+        },
+        results = {
+            {type="fluid", name="hydrogen", amount=25},
+            {type="fluid", name="light-oil", amount=10},
+            {type="item", name="coke", amount=6},
+            {type="item", name="asphalt", amount=4},
         }
     }
 })

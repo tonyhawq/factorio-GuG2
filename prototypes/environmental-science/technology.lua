@@ -82,7 +82,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"steel-processing", "glassworking-1"},
+        prerequisites = {"steam-power", "glassworking-1"},
         unit =
         {
             count = 10,
@@ -97,6 +97,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="screws",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="wrought-iron-gear",
             },
             {
                 type = "unlock-recipe",
@@ -301,52 +305,6 @@ data:extend({
 data:extend({
     {
         type = "technology",
-        name = "steel-processing",
-        icons = {
-            {
-                icon = "__base__/graphics/technology/steel-processing.png",
-                icon_size = 256,
-            }
-        },
-        prerequisites = {"steam-power"},
-        unit =
-        {
-            count = 10,
-            ingredients =
-            {
-                {"environmental-science-pack", 1},
-            },
-            time = 10
-        },
-        effects =
-        {
-            {
-                type = "unlock-recipe",
-                recipe="steel-ingot-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="steel-plate-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="steel-rod-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="steel-cable-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="steel-beam-1",
-            },
-        },
-        order = "b-b"
-    },
-})
-data:extend({
-    {
-        type = "technology",
         name = "crushing",
         icons = {
             {
@@ -354,7 +312,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"steel-processing"},
+        prerequisites = {"mechanics-2"},
         unit =
         {
             count = 10,

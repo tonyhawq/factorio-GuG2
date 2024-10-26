@@ -639,4 +639,36 @@ data:extend({
     order = "a[stone-furnace]",
     stack_size = 50
   },
+  {
+    type = "item",
+    name = "treated-wood",
+    icons = du.icons("treated-wood"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "fiberboard",
+    icons = du.icons("fiberboard"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "fiber",
+    icons = du.icons("fiber"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "asphalt",
+    icons = du.icons("asphalt"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
 })

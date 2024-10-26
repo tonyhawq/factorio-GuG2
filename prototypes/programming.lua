@@ -637,6 +637,12 @@ data:extend({
     }
 })
 
+-- weighted neurons ->
+-- transformer program ->
+-- conscious program
+-- -> AI limiter ->
+-- enslaved program
+
 -- quiescent reality
 -- evanescent reality
 -- subsistent reality
