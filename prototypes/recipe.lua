@@ -301,92 +301,6 @@ data:extend({
         }
     }
 })
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "boiling", ---@diagnostic disable-line
-        name = "seawater-boiling",
-        icons = du.icons{mod="base", name="fluid/steam"}.add_corner("seawater"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="fluid", name="seawater", amount=100},
-        },
-        results = {
-            {type="fluid", name="steam", amount=80},
-            {type="fluid", name="brine", amount=20},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "boiling", ---@diagnostic disable-line
-        name = "saline-water-boiling",
-        icons = du.icons{mod="base", name="fluid/steam"}.add_corner("saline-water"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="fluid", name="saline-water", amount=100},
-        },
-        results = {
-            {type="fluid", name="steam", amount=80},
-            {type="fluid", name="mineralized-water", amount=20},
-        }
-    }
-})
-
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "boiling", ---@diagnostic disable-line
-        name = "brine-boiling",
-        icons = du.icons{mod="base", name="fluid/steam"}.add_corner("brine"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="fluid", name="brine", amount=100},
-        },
-        results = {
-            {type="fluid", name="steam", amount=80},
-            {type="item", name="salt", amount=1},
-        }
-    }
-})
-
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "boiling", ---@diagnostic disable-line
-        name = "mineralized-water-boiling",
-        icons = du.icons{mod="base", name="fluid/steam"}.add_corner("mineralized-water"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="fluid", name="mineralized-water", amount=100},
-        },
-        results = {
-            {type="fluid", name="steam", amount=80},
-            {type="item", name="stone", amount=1},
-        }
-    }
-})
 
 data:extend({
     {
@@ -543,7 +457,7 @@ data:extend({
         },
         results = {
             {type="fluid", name="green-oil", amount=25},
-            {type="fluid", name="light-oil", amount=10},
+            {type="fluid", name="light-oil", amount=5},
             {type="fluid", name="middle-oil", amount=20},
             {type="fluid", name="tar-pitch", amount=40},
         }
@@ -580,6 +494,48 @@ data:extend({
         enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "creosote-oil-from-green",
+        icons = du.icons("creosote-oil").add_corner("green-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="fluid", name="green-oil", amount=100},
+            {type="fluid", name="light-oil", amount=35},
+            {type="fluid", name="creosote-oil", amount=25},
+        },
+        results = {
+            {type="fluid", name="creosote-oil", amount=175},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "creosote-oil-from-middle",
+        icons = du.icons("creosote-oil").add_corner("middle-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="fluid", name="middle-oil", amount=100},
+        },
+        results = {
+            {type="fluid", name="creosote-oil", amount=60},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "creosote-oil-from-blended",
         icons = du.icons("creosote-oil").add_corner("creosote-oil"),
         subgroup = "raw-material",
         order = "a[a]",
@@ -587,11 +543,10 @@ data:extend({
         energy_required = 5,
         ingredients = {
             {type="fluid", name="green-oil", amount=100},
-            {type="fluid", name="light-oil", amount=10},
-            {type="fluid", name="creosote-oil", amount=25},
+            {type="fluid", name="middle-oil", amount=50},
         },
         results = {
-            {type="fluid", name="creosote-oil", amount=125},
+            {type="fluid", name="creosote-oil", amount=60},
         }
     }
 })
@@ -661,7 +616,29 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
-        name = "tar-gasification",
+        name = "carbon-black-green-oil",
+        icons = du.icons("carbon-black").add_corner("green-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="fluid", name="green-oil", amount=100},
+            {type="fluid", name="syngas", amount=10},
+            {type="fluid", name="500c", amount=30},
+        },
+        results = {
+            {type="item", name="carbon-black", amount=80},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "full-tar-gasification",
         icons = du.icons("syngas").add_corner("tar"),
         subgroup = "raw-material",
         order = "a[a]",
@@ -669,7 +646,7 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="fluid", name="tar", amount=100},
-            {type="fluid", name="oxygen", amount=25},
+            {type="fluid", name="water", amount=65},
         },
         results = {
             {type="fluid", name="coal-gas", amount=120},
@@ -764,7 +741,7 @@ data:extend({
             {type="fluid", name="syngas", amount=2},
         },
         results = {
-            {type="fluid", name="steam", amount=2*math.ceil(syngas_MJ / (water_cap * (165-15)))},
+            {type="fluid", name="steam", amount=2*math.ceil(syngas_MJ / (water_cap * (165-15))), temperature=165},
             {type="fluid", name="flue-gas", amount=2, temperature=200},
         }
     }
@@ -786,7 +763,7 @@ data:extend({
             {type="fluid", name="syngas", amount=2},
         },
         results = {
-            {type="fluid", name="steam", amount=2*math.ceil(syngas_MJ / (water_cap * (165-40)))},
+            {type="fluid", name="steam", amount=2*math.ceil(syngas_MJ / (water_cap * (165-40))), temperature=165},
             {type="fluid", name="flue-gas", amount=2, temperature=200},
         }
     }
@@ -808,7 +785,7 @@ data:extend({
             {type="fluid", name="syngas", amount=2},
         },
         results = {
-            {type="fluid", name="steam", amount=2*math.ceil(syngas_MJ / (water_cap * (165-60)))},
+            {type="fluid", name="steam", amount=2*math.ceil(syngas_MJ / (water_cap * (165-60))), temperature=165},
             {type="fluid", name="flue-gas", amount=2, temperature=200},
         }
     }
@@ -830,7 +807,7 @@ data:extend({
             {type="fluid", name="syngas", amount=2},
         },
         results = {
-            {type="fluid", name="steam", amount=2*math.ceil(syngas_MJ / (water_cap * (165-80)))},
+            {type="fluid", name="steam", amount=2*math.ceil(syngas_MJ / (water_cap * (165-80))), temperature=165},
             {type="fluid", name="flue-gas", amount=2, temperature=200},
         }
     }

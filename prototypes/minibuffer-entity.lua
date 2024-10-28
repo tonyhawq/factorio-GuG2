@@ -24,8 +24,8 @@ storageTank.fluid_box = {
   volume = 1000,
   pipe_covers = pipecoverspictures(),
   pipe_connections = {
-    {position = {0, 0}, direction=defines.direction.east},
-    {position = {0, 0}, direction=defines.direction.west},
+    {position = {0, 0}, direction=defines.direction.east --[[@as number]]},
+    {position = {0, 0}, direction=defines.direction.west --[[@as number]]},
   },
 }
 storageTank.two_direction_only = true
@@ -132,8 +132,8 @@ storageTank.pictures = {
       },
     },
     
-    south = util.empty_sprite(0),
-    west = util.empty_sprite(0),
+    south = util.empty_sprite(),
+    west = util.empty_sprite(),
   },
 }
 data:extend{storageTank}

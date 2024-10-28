@@ -2407,7 +2407,47 @@ data:extend({
     },
 })
 
+local mechanical_inserter = table.deepcopy(data.raw.inserter["burner-inserter"])
+mechanical_inserter.name = "mechanical-inserter"
+mechanical_inserter.minable.result = "mechanical-inserter"
+mechanical_inserter.icons = du.icons("mechanical-inserter")
+mechanical_inserter.energy_source = {type="void"}
+data:extend({mechanical_inserter})
+
+local burner_chem = table.deepcopy(data.raw["assembling-machine"]["chemical-plant"])
+burner_chem.name = "burner-chemical-plant"
+burner_chem.minable.result = "burner-chemical-plant"
+burner_chem.icons = du.icons("burner-chemical-plant")
+burner_chem.energy_source = {
+    type="burner",
+    fuel_inventory_size=1,
+    fuel_categories = {"chemical"},
+    smoke = {
+        {
+            name = "smoke",
+            frequency = 12,
+            north_position=util.by_pixel(-16, -80),
+            east_position=util.by_pixel(16, -70),
+            south_position=util.by_pixel(4, -64),
+            west_position=util.by_pixel(-16, -64),
+            deviation = util.by_pixel(8,8),
+            starting_vertical_speed = 0.08,
+            starting_frame_deviation = 60
+        }
+    }
+}
+data:extend({burner_chem})
+
 data:extend({
+    {
+        type = "item",
+        name = "burner-chemical-plant",
+        icons = du.icons("burner-chemical-plant"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "burner-chemical-plant",
+    },
     {
         type = "item",
         name = "small-tank",
@@ -2604,6 +2644,34 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         place_result = "top-up-valve"
+    },
+    {
+        type = "item",
+        name = "forestry",
+        icons = du.icons("forestry"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+    },
+    {
+        type = "item",
+        name = "soil-extractor",
+        icons = du.icons("soil-extractor"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+    },
+    {
+        type = "item",
+        name = "fluid-mining-drill",
+        icons = du.icons("fluid-mining-drill"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+    },
+    {
+        type = "recipe-category",
+        name = "extracting"
     },
     {
         type = "recipe-category",

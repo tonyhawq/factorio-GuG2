@@ -674,7 +674,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "0.8MJ",
+        fuel_value = "1.2MJ",
         icons = du.icons("light-oil"),
         order = "a[fluid]-j[sludge]"
     },
@@ -770,6 +770,15 @@ data:extend({
     },
     {
         type = "fluid",
+        name = "organic-wastewater",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("organic-wastewater"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
         name = "phosphine",
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
@@ -829,6 +838,60 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         icons = du.icons("carbon-dioxide"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "formaldehyde",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("formaldehyde"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "slaked-lime",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("slaked-lime"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "green-liquor",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("green-liquor"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "black-liquor",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("black-liquor"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "tall-oil",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("tall-oil"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "caustic-solution",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("caustic-solution"),
         order = "a[fluid]-j[sludge]"
     },
 })

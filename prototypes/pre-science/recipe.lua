@@ -55,11 +55,10 @@ data:extend({
         enabled = true,
         energy_required = 2,
         ingredients = {
-            {type="item", name="stone-furnace", amount=1},
-            {type="item", name="lead-plate", amount=6},
+            {type="item", name="lead-plate", amount=2},
         },
         results = {
-            {type="item", name="transport-belt", amount=1},
+            {type="item", name="transport-belt", amount=3},
         }
     }
 })

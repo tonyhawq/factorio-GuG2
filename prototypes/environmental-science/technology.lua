@@ -75,6 +75,68 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "tar-processing",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/mechanics.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"steam-power"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="tar-processing",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pitch-processing",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="creosote-oil-from-green",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="creosote-oil-from-middle",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="creosote-oil-from-blended",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="treated-wood",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="anthracene-from-green",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="carbolic-acid-middle",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="carbolic-acid-creosote",
+            },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "mechanics-2",
         icons = {
             {
@@ -82,7 +144,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"steam-power", "glassworking-1"},
+        prerequisites = {"tar-processing", "glassworking-1"},
         unit =
         {
             count = 10,
@@ -105,6 +167,14 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="analog-circuit-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fluid-mining-drill",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="soil-extractor",
             },
         },
         order = "b-b"
@@ -284,6 +354,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="brine-salt-separation-1",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="steam-engine",
             },
             {
@@ -312,7 +386,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"mechanics-2"},
+        prerequisites = {"mechanics-2", "masonry-1"},
         unit =
         {
             count = 10,
@@ -419,14 +493,157 @@ data:extend({
         },
         order = "b-b"
     },
-})--[[
+})
+data:extend({
+    {
+        type = "technology",
+        name = "basic-chemistry",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/chemistry.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"mechanics-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="burner-chemical-plant",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="brine-salt-separation-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="sodium-carbonate-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="caustic-solution-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="caustic-solution-boiling-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="lime",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="slaked-lime",
+            },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "wood-processing",
+        icons = {
+            {
+                icon = "__core__/graphics/icons/force/neutral-force-icon.png",
+                icon_size = 128,
+            }
+        },
+        prerequisites = {"basic-chemistry", "mechanics-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="sapling-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="tree-growing-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="sap-extraction",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="green-liquor",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="kraft-process",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="black-liquor-regeneration",
+            },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "organics",
+        icons = {
+            {
+                icon = "__core__/graphics/icons/force/neutral-force-icon.png",
+                icon_size = 128,
+            }
+        },
+        prerequisites = {"mechanics-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="smart-farm",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="seaweed-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="agar",
+            },
+        },
+        order = "b-b"
+    },
+})
+--[[
 data:extend({
     {
         type = "technology",
         name = "botany-1",
         icons = {
             {
-                icon = "__base__/graphics/technology/automation.png",
+                icon = "__base__/graphics/technology/automation-1.png",
                 icon_size = 256,
             }
         },

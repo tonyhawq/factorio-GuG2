@@ -1,2 +1,6 @@
 methane: 11703
 hydrogen: 9305
+graphite ore refining: 3121
+residual oil syngas: 8513
+tar syngas: 8540
+tar and pitch: 18762
