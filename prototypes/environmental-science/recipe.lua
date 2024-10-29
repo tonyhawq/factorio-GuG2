@@ -544,7 +544,7 @@ data:extend({
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "steam-crusher",
-        icons = du.icons("analog-circuit"),
+        icons = du.icons("steam-crusher"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -556,7 +556,7 @@ data:extend({
             {type="item", name="lead-sheet", amount=6},
         },
         results = {
-            {type="item", name="analog-circuit", amount=10},
+            {type="item", name="steam-crusher", amount=1},
         }
     }
 })
@@ -1500,6 +1500,49 @@ data:extend({
         results = {
             {type="item", name="salt", amount=9},
             {type="item", name="sodium-sulfate", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "raw-silica-1",
+        icons = du.icons("raw-silica"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="silica-sand", amount=3},
+            {type="fluid", name="water", amount=10},
+        },
+        results = {
+            {type="item", name="sand", amount=2},
+            {type="item", name="raw-silica", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smelting", ---@diagnostic disable-line
+        name = "silica-1",
+        icons = du.icons("silica"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="raw-silica", amount=1},
+        },
+        results = {
+            {type="item", name="silica", amount=1},
+            {type="fluid", name="steam", temperature=165, amount=3},
         }
     }
 })

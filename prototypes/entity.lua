@@ -784,6 +784,123 @@ gf_boiler_entity.fire_glow.west.blend_mode = "additive-soft"]]
 
 data:extend({gf_boiler_entity})
 
+
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "steam-crusher",
+        icons = du.icons("steam-crusher"),
+        flags = {"placeable-neutral","player-creation"},
+        minable = {mining_time = 0.2, result = "steam-crusher"},
+        max_health = 350,
+        corpse = "oil-refinery-remnants",
+        dying_explosion = "oil-refinery-explosion",
+        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
+        selection_box = {{-1.9, -1.9}, {1.9, 1.9}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
+        scale_entity_info_icon = true,
+        crafting_categories = {"crushing"},
+        crafting_speed = 1,
+        energy_usage = "250kW",
+        energy_source =
+        {
+            type = "fluid",
+            scale_fluid_usage = true,
+            fluid_box = {
+                filter = "steam",
+                minimum_temperature = 100.0,
+                maximum_temperature = 600.0,
+                production_type = "input-output",
+                pipe_picture = assembler2pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {
+                    { flow_direction="input-output", position = {1.5, 0.5}, direction=defines.direction.east },
+                    { flow_direction="input-output", position = {-1.5, 0.5}, direction=defines.direction.west }
+                },
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        graphics_set = {
+            animation =
+            {
+                layers =
+                {
+                    {
+                        filename = "__GuG2__/graphics/entity/crusher/crusher-base.png",
+                        priority="high",
+                        width = 160,
+                        height = 160,
+                        frame_count = 5,
+                        line_length = 5,
+                        scale = 1,
+                        animation_speed = 0.5,
+                        shift = util.by_pixel(0, 2),
+                    },
+                }
+            },
+        },
+        vehicle_impact_sound = sounds.generic_impact,
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        working_sound =
+        {
+            sound =
+            {
+                filename = "__base__/sound/oil-refinery.ogg"
+            },
+            --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections =
+                {
+                    {
+                        flow_direction="input",
+                        position = {1.5, 1.5},
+                        direction = defines.direction.south
+                    }
+                }
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections =
+                {
+                    {
+                        flow_direction="output",
+                        position = {-1.5, -1.5},
+                        direction = defines.direction.north
+                    }
+                }
+            },
+        },
+        water_reflection =
+        {
+            pictures =
+            {
+                filename = "__base__/graphics/entity/oil-refinery/oil-refinery-reflection.png",
+                priority = "extra-high",
+                width = 40,
+                height = 48,
+                shift = util.by_pixel(5, 95),
+                variation_count = 4,
+                scale = 5
+            },
+            rotate = false,
+            orientation_to_variation = true
+        }
+    },
+})
+
 local function cleanroom_wall_cross()
     return {
         filename = "__GuG2__/graphics/entity/cleanroom/hr-wall-single.png",
@@ -2439,6 +2556,15 @@ burner_chem.energy_source = {
 data:extend({burner_chem})
 
 data:extend({
+    {
+        type = "item",
+        name = "steam-crusher",
+        icons = du.icons("steam-crusher"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "steam-crusher",
+    },
     {
         type = "item",
         name = "burner-chemical-plant",
