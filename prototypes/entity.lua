@@ -2555,6 +2555,21 @@ burner_chem.energy_source = {
 }
 data:extend({burner_chem})
 
+local stone_furnace = data.raw.furnace["stone-furnace"]
+stone_furnace.type = "assembling-machine"
+stone_furnace.crafting_categories = {"smelting"}
+stone_furnace.collision_box = {{-1.3, -1.3}, {1.3, 1.3}}
+stone_furnace.selection_box = {{-1.3, -1.5}, {1.3, 1.5}}
+for _, layer in pairs(stone_furnace.graphics_set.animation.layers) do
+    layer.scale = (layer.scale or 1) * 1.5
+end
+for _, visual in pairs(stone_furnace.graphics_set.working_visualisations) do
+    for _, layer in pairs(visual.animation.layers) do
+        layer.scale = (layer.scale or 1) * 1.5
+    end
+end
+data:extend({stone_furnace})
+
 data:extend({
     {
         type = "item",

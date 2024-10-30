@@ -449,6 +449,22 @@ data:extend({
   },
   {
     type = "item",
+    name = "aluminum-ingot",
+    icons = du.icons("aluminum-ingot"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "aluminum-carbide",
+    icons = du.icons("aluminum-carbide"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
     name = "lv-resistor",
     icons = du.icons("lv-resistor"),
     subgroup = "smelting-machine",

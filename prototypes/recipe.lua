@@ -669,34 +669,11 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="fluid", name="coal-gas", amount=100},
-            {type="fluid", name="water", amount=100},
+            {type="fluid", name="water", amount=300},
         },
         results = {
             {type="fluid", name="syngas", amount=80},
             {type="fluid", name="flue-gas", amount=80, temperature=300},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "destructive-distillation", ---@diagnostic disable-line
-        name = "oxygenated-coal-gas-gasification",
-        icons = du.icons("syngas").add_corner("coal-gas"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="fluid", name="coal-gas", amount=120},
-            {type="fluid", name="water", amount=100},
-            {type="fluid", name="oxygen", amount=25},
-        },
-        results = {
-            {type="fluid", name="syngas", amount=300},
-            {type="fluid", name="flue-gas", amount=100, temperature=300},
         }
     }
 })

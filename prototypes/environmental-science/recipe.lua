@@ -1317,7 +1317,50 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "crafting-with-fluid", ---@diagnostic disable-line
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "syngas-redox",
+        icons = du.icons("hydrogen").add_corner("syngas"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 8,
+        ingredients = {
+            {type="fluid", name="syngas", amount=60},
+            {type="item", name="iron-oxide", amount=2},
+        },
+        results = {
+            {type="fluid", name="carbon-dioxide", amount=30},
+            {type="fluid", name="hydrogen", amount=30},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "glassworking", ---@diagnostic disable-line
+        name = "petri-dish-1",
+        icons = du.icons("petri-dish"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 8,
+        ingredients = {
+            {type="fluid", name="molten-glass", amount=12},
+            {type="fluid", name="methanol", amount=6},
+        },
+        results = {
+            {type="item", name="petri-dish", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "bioreacting", ---@diagnostic disable-line
         name = "synthesis-methanogenesis",
         icons = du.icons("methane").add_corner("hydrogen").add_corner{name="bacterium", corner=du.right_bottom, scale=0.5},
         subgroup = "raw-material",
@@ -1327,11 +1370,60 @@ data:extend({
         ingredients = {
             {type="fluid", name="hydrogen", amount=12},
             {type="fluid", name="carbon-dioxide", amount=12},
-            {type="item", name="agar", amount=2},
+            {type="item", name="cultivated-methanobacteria", amount=2},
         },
         results = {
-            {type="fluid", name="methane", amount=6},
+            {type="item", name="petri-dish", amount=2},
+            {type="fluid", name="methane", amount=12},
             {type="fluid", name="organic-wastewater", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "bioreacting", ---@diagnostic disable-line
+        name = "synthesis-methanobacteria",
+        icons = du.icons("methanobacteria").add_corner("dna"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 30,
+        ingredients = {
+            {type="fluid", name="methane", amount=20},
+            {type="fluid", name="hydrogen", amount=12},
+            {type="item", name="agar-dish", amount=1},
+            {type="item", name="soil", amount=10},
+            {type="item", name="log", amount=5},
+        },
+        results = {
+            {type="item", name="cultivated-methanobacteria", amount=1, probability=0.1},
+            {type="item", name="petri-dish", amount=1, probability=0.9},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "bioreacting", ---@diagnostic disable-line
+        name = "methanobacteria-1",
+        icons = du.icons("methanobacteria"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 30,
+        ingredients = {
+            {type="fluid", name="hydrogen", amount=12},
+            {type="item", name="soil", amount=10},
+            {type="item", name="cultivated-methanobacteria", amount=1},
+            {type="item", name="agar-dish", amount=1},
+        },
+        results = {
+            {type="item", name="cultivated-methanobacteria", amount=2},
         }
     }
 })
@@ -1517,7 +1609,7 @@ data:extend({
         energy_required = 1,
         ingredients = {
             {type="item", name="silica-sand", amount=3},
-            {type="fluid", name="water", amount=10},
+            {type="fluid", name="water", amount=6},
         },
         results = {
             {type="item", name="sand", amount=2},
@@ -1543,6 +1635,183 @@ data:extend({
         results = {
             {type="item", name="silica", amount=1},
             {type="fluid", name="steam", temperature=165, amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crushing", ---@diagnostic disable-line
+        name = "crushed-aluminum-ore",
+        icons = du.icons("crushed-aluminum-ore"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="aluminum-ore", amount=1},
+        },
+        results = {
+            {type="item", name="crushed-aluminum-ore", amount=1},
+            {type="item", name="gravel", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "aluminum-hydroxide-1",
+        icons = du.icons("alumina"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="crushed-aluminum-ore", amount=1},
+            {type="fluid", name="caustic-solution", amount=1},
+        },
+        results = {
+            {type="item", name="aluminum-hydroxide", amount=1},
+            {type="fluid", name="wastewater", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smelting", ---@diagnostic disable-line
+        name = "alumina-1",
+        icons = du.icons("alumina"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="aluminum-hydroxide", amount=1},
+        },
+        results = {
+            {type="item", name="alumina", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "aluminum-ingot-1",
+        icons = du.icons("aluminum-ingot"),
+        enabled = false,
+        category = "smelting",
+        subgroup = "raw-material",
+        energy_required = 2,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="alumina", amount=8},
+            {type="item", name="coke", amount=3},
+            {type="fluid", name="syngas", amount=10},
+        },
+        results ={
+            {type="fluid", name="carbon-monoxide", amount=5},
+            {type="item", name="aluminum-ingot", amount=6},
+            {type="item", name="aluminum-carbide", amount=8},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "aluminum-ingot-2",
+        icons = du.icons("aluminum-ingot").add_corner("silica"),
+        enabled = false,
+        category = "smelting",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="alumina", amount=8},
+            {type="item", name="coke", amount=3},
+            {type="item", name="silica", amount=3},
+        },
+        results ={
+            {type="fluid", name="carbon-monoxide", amount=5},
+            {type="item", name="aluminum-ingot", amount=3},
+            {type="item", name="aluminum-carbide", amount=18},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "aluminum-carbide-reprocessing-1",
+        icons = du.icons("aluminum-carbide"),
+        enabled = false,
+        category = "crafting-with-fluid",
+        subgroup = "raw-material",
+        energy_required = 5,
+        order = "d",
+        main_product = "",
+        ingredients = {
+            {type="item", name="aluminum-carbide", amount=6},
+            {type="fluid", name="water", amount=60},
+        },
+        results ={
+            {type="item", name="aluminum-hydroxide", amount=10},
+            {type="fluid", name="methane", amount=30},
+            {type="fluid", name="wastewater", amount=40},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "nickel-ingot-1",
+        icons = du.icons("nickel-ingot"),
+        enabled = false,
+        category = "blasting",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="nickel-ore", amount=8},
+        },
+        results ={
+            {type="item", name="nickel-ingot", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "steel-ingot-1",
+        icons = du.icons("steel-ingot"),
+        enabled = false,
+        category = "blasting",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="iron-ingot", amount=3},
+            {type="item", name="coke", amount=1},
+            {type="item", name="lime", amount=3},
+        },
+        results ={
+            {type="item", name="steel-ingot", amount=1},
+            {type="fluid", name="carbon-dioxide", amount=40},
         }
     }
 })
