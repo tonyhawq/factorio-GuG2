@@ -2568,6 +2568,23 @@ for _, visual in pairs(stone_furnace.graphics_set.working_visualisations) do
         layer.scale = (layer.scale or 1) * 1.5
     end
 end
+stone_furnace.fluid_boxes =
+{
+    {
+        production_type="input",
+        pipe_covers = pipecoverspictures(),
+        pipe_picture = assembler2pipepictures(),
+        volume=100,
+        pipe_connections={{position={0, 1}, direction=defines.direction.south, flow_direction="input"}},
+    },
+    {
+        production_type="output",
+        pipe_covers = pipecoverspictures(),
+        pipe_picture = assembler2pipepictures(),
+        volume=100,
+        pipe_connections={{position={0,-1}, direction=defines.direction.south, flow_direction="output"}},
+    },
+}
 data:extend({stone_furnace})
 
 data:extend({
