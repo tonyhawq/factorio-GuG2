@@ -1508,7 +1508,7 @@ data:extend({
         },
         results = {
             {type="fluid", name="steam", amount=80, temperature=165},
-            {type="fluid", name="brine", amount=20},
+            {type="fluid", name="saline-water", amount=20},
         }
     }
 })
@@ -1521,7 +1521,7 @@ data:extend({
         name = "saline-water-boiling",
         icons = du.icons{mod="base", name="fluid/steam"}.add_corner("saline-water"),
         subgroup = "raw-material",
-        order = "a[a]",
+        order = "a[b]",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1529,7 +1529,7 @@ data:extend({
         },
         results = {
             {type="fluid", name="steam", amount=80, temperature=165},
-            {type="fluid", name="mineralized-water", amount=20},
+            {type="fluid", name="brine", amount=20},
         }
     }
 })
@@ -1542,7 +1542,7 @@ data:extend({
         name = "brine-boiling",
         icons = du.icons{mod="base", name="fluid/steam"}.add_corner("brine"),
         subgroup = "raw-material",
-        order = "a[a]",
+        order = "a[c]",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1550,6 +1550,7 @@ data:extend({
         },
         results = {
             {type="fluid", name="steam", amount=80, temperature=165},
+            {type="fluid", name="mineralized-water", amount=20},
             {type="item", name="brine-salt", amount=1},
         }
     }
@@ -1563,7 +1564,7 @@ data:extend({
         name = "mineralized-water-boiling",
         icons = du.icons{mod="base", name="fluid/steam"}.add_corner("mineralized-water"),
         subgroup = "raw-material",
-        order = "a[a]",
+        order = "a[d]",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1584,14 +1585,16 @@ data:extend({
         name = "brine-salt-separation-1",
         icons = du.icons("brine-salt"),
         subgroup = "raw-material",
-        order = "a[a]",
+        order = "a[e]-a",
         main_product = "",
         energy_required = 0.5,
         ingredients = {
             {type="item", name="brine-salt", amount=1},    
         },
         results = {
-            {type="item", name="salt", amount=1},
+            {type="item", name="salt", amount=1, probability=0.7},
+            {type="item", name="manganese-oxides", amount=1, probability=0.4},
+            {type="item", name="sodium-sulfate", amount=1, probability=0.1},
         }
     }
 })
@@ -1600,19 +1603,42 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "chemistry", ---@diagnostic disable-line
-        name = "brine-salt-separation-2",
-        icons = du.icons("brine-salt"),
+        category = "boiling", ---@diagnostic disable-line
+        name = "brine-salt-void-1",
+        icons = du.icons("brine").add_corner("brine-salt"),
         subgroup = "raw-material",
-        order = "a[a]",
+        order = "a[e]-b",
         main_product = "",
-        energy_required = 5,
+        energy_required = 0.2,
         ingredients = {
-            {type="item", name="brine-salt", amount=10},
+            {type="fluid", name="saline-water", amount=10},
+            {type="item", name="sodium-sulfate", amount=1},
+            {type="item", name="salt", amount=4},
         },
         results = {
-            {type="item", name="salt", amount=9},
-            {type="item", name="sodium-sulfate", amount=1},
+            {type="fluid", name="brine", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "boiling", ---@diagnostic disable-line
+        name = "brine-salt-void-2",
+        icons = du.icons("brine").add_corner("brine-salt"),
+        subgroup = "raw-material",
+        order = "a[e]-c",
+        main_product = "",
+        energy_required = 0.2,
+        ingredients = {
+            {type="fluid", name="saline-water", amount=10},
+            {type="item", name="manganese-oxides", amount=1},
+            {type="item", name="salt", amount=4},
+        },
+        results = {
+            {type="fluid", name="brine", amount=10},
         }
     }
 })

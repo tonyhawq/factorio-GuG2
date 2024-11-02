@@ -362,6 +362,14 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="brine-salt-void-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="brine-salt-void-2",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="steam-engine",
             },
             {
@@ -523,10 +531,6 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="burner-chemical-plant",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="brine-salt-separation-2",
             },
             {
                 type = "unlock-recipe",

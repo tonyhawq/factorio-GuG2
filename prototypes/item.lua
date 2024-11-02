@@ -473,6 +473,14 @@ data:extend({
   },
   {
     type = "item",
+    name = "manganese-oxides",
+    icons = du.icons("manganese-oxides"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
     name = "aluminum-ingot",
     icons = du.icons("aluminum-ingot"),
     subgroup = "smelting-machine",
