@@ -2753,7 +2753,7 @@ data:extend({
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
-        --place_result = "mechanical-inserter",
+        place_result = "mechanical-inserter",
     },
     {
         type = "item",
