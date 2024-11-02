@@ -870,6 +870,32 @@ data:extend({
                 }
             },
             {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections =
+                {
+                    {
+                        flow_direction="input",
+                        position = {-0.5, 1.5},
+                        direction = defines.direction.south
+                    }
+                }
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections =
+                {
+                    {
+                        flow_direction="output",
+                        position = {0.5, -1.5},
+                        direction = defines.direction.north
+                    }
+                }
+            },
+            {
                 production_type = "output",
                 pipe_covers = pipecoverspictures(),
                 volume = 100,

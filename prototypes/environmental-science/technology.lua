@@ -650,7 +650,7 @@ data:extend({
                 icon_size = 128,
             }
         },
-        prerequisites = {"mechanics-2"},
+        prerequisites = {"organics"},
         unit =
         {
             count = 10,
