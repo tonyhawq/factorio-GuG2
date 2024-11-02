@@ -1360,6 +1360,27 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "glassworking", ---@diagnostic disable-line
+        name = "agar-dish-1",
+        icons = du.icons("agar-dish"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 8,
+        ingredients = {
+            {type="item", name="petri-dish", amount=1},
+            {type="item", name="agar", amount=1},
+        },
+        results = {
+            {type="item", name="agar-dish", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "bioreacting", ---@diagnostic disable-line
         name = "synthesis-methanogenesis",
         icons = du.icons("methane").add_corner("hydrogen").add_corner{name="bacterium", corner=du.right_bottom, scale=0.5},
@@ -1386,7 +1407,7 @@ data:extend({
         enabled = false,
         category = "bioreacting", ---@diagnostic disable-line
         name = "synthesis-methanobacteria",
-        icons = du.icons("methanobacteria").add_corner("dna"),
+        icons = du.icons("cultivated-methanobacteria").add_corner("dna"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -1411,7 +1432,7 @@ data:extend({
         enabled = false,
         category = "bioreacting", ---@diagnostic disable-line
         name = "methanobacteria-1",
-        icons = du.icons("methanobacteria"),
+        icons = du.icons("cultivated-methanobacteria"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -1600,7 +1621,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "crafting", ---@diagnostic disable-line
+        category = "chemistry", ---@diagnostic disable-line
         name = "raw-silica-1",
         icons = du.icons("raw-silica"),
         subgroup = "raw-material",

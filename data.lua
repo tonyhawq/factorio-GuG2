@@ -13,6 +13,7 @@ require("prototypes.environmental-science.recipe")
 require("prototypes.environmental-science.technology")
 require("prototypes.automation-science.recipe")
 
+require("prototypes.groups")
 require("prototypes.minibuffer-entity")
 require("prototypes.entity")
 require("prototypes.fluid")

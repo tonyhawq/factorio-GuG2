@@ -130,6 +130,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="carbolic-acid-creosote",
             },
+            {
+                type = "unlock-recipe",
+                recipe = "wood-oil-separation",
+            }
         },
         order = "b-b"
     },
@@ -632,6 +636,104 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="agar",
             },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "microbiology",
+        icons = {
+            {
+                icon = "__core__/graphics/icons/force/neutral-force-icon.png",
+                icon_size = 128,
+            }
+        },
+        prerequisites = {"mechanics-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="petri-dish-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="agar-dish-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="synthesis-methanogenesis",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="synthesis-methanobacteria",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="methanobacteria-1",
+            },
+            
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "aluminum-processing",
+        icons = {
+            {
+                icon = "__core__/graphics/icons/force/neutral-force-icon.png",
+                icon_size = 128,
+            }
+        },
+        prerequisites = {"mechanics-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="crushed-aluminum-ore",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="aluminum-hydroxide-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="alumina-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="aluminum-ingot-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="aluminum-ingot-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="aluminum-carbide-reprocessing-1",
+            },
+            
         },
         order = "b-b"
     },

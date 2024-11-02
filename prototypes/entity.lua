@@ -2556,6 +2556,8 @@ burner_chem.energy_source = {
 data:extend({burner_chem})
 
 local stone_furnace = data.raw.furnace["stone-furnace"]
+data.raw.furnace["stone-furnace"] = nil
+stone_furnace.next_upgrade = nil
 stone_furnace.type = "assembling-machine"
 stone_furnace.crafting_categories = {"smelting"}
 stone_furnace.collision_box = {{-1.3, -1.3}, {1.3, 1.3}}
@@ -2564,8 +2566,12 @@ for _, layer in pairs(stone_furnace.graphics_set.animation.layers) do
     layer.scale = (layer.scale or 1) * 1.5
 end
 for _, visual in pairs(stone_furnace.graphics_set.working_visualisations) do
-    for _, layer in pairs(visual.animation.layers) do
-        layer.scale = (layer.scale or 1) * 1.5
+    if visual.animation.layers then
+        for _, layer in pairs(visual.animation.layers) do
+            layer.scale = (layer.scale or 1) * 1.5
+        end
+    else
+        visual.animation.scale = (visual.animation.scale or 1) * 1.5
     end
 end
 stone_furnace.fluid_boxes =
@@ -2874,5 +2880,13 @@ data:extend({
     {
         type = "recipe-category",
         name = "distillation"
+    },
+    {
+        type = "recipe-category",
+        name = "blasting"
+    },
+    {
+        type = "recipe-category",
+        name = "bioreacting"
     },
 })

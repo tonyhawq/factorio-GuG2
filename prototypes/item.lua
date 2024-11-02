@@ -441,8 +441,32 @@ data:extend({
   },
   {
     type = "item",
+    name = "aluminum-ore",
+    icons = du.icons("aluminum-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
     name = "crushed-aluminum-ore",
     icons = du.icons("crushed-aluminum-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "nickel-ore",
+    icons = du.icons("nickel-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "nickel-ingot",
+    icons = du.icons("nickel-ingot"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50
@@ -824,6 +848,38 @@ data:extend({
     type = "item",
     name = "solder",
     icons = du.icons("solder"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+  },
+  {
+    type = "item",
+    name = "petri-dish",
+    icons = du.icons("petri-dish"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+  },
+  {
+    type = "item",
+    name = "agar-dish",
+    icons = du.icons("agar-dish"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+  },
+  {
+    type = "item",
+    name = "raw-silica",
+    icons = du.icons("raw-silica"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+  },
+  {
+    type = "item",
+    name = "cultivated-methanobacteria",
+    icons = du.icons("cultivated-methanobacteria"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50,
