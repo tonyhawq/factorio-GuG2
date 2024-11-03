@@ -726,7 +726,7 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
-        name = "formaldehyde",
+        name = "formaldehyde-1",
         icons = du.icons("formaldehyde"),
         subgroup = "raw-material",
         order = "a[a]",
@@ -747,7 +747,7 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
-        name = "synthetic-resin",
+        name = "synthetic-resin-1",
         icons = du.icons("synthetic-resin"),
         subgroup = "raw-material",
         order = "a[a]",
@@ -1968,6 +1968,184 @@ data:extend({
         },
         results ={
             {type="item", name="battery", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "magnet-wire-1",
+        icons = du.icons("magnet-wire"),
+        enabled = false,
+        category = "smelting",
+        subgroup = "raw-material",
+        energy_required = 0.5,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="copper-cable", amount=3},
+            {type="item", name="synthetic-resin", amount=1},
+        },
+        results ={
+            {type="item", name="magnet-wire", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "ferrite-1",
+        icons = du.icons("ferrite"),
+        enabled = false,
+        category = "smelting",
+        subgroup = "raw-material",
+        energy_required = 0.5,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="iron-oxide", amount=6},
+            {type="item", name="manganese-oxides", amount=1},
+        },
+        results ={
+            {type="item", name="ferrite", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "lv-capacitor-1",
+        icons = du.icons("lv-capacitor"),
+        enabled = false,
+        category = "crafting",
+        subgroup = "raw-material",
+        energy_required = 0.5,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="clay", amount=2},
+            {type="item", name="aluminum-plate", amount=1},
+        },
+        results ={
+            {type="item", name="lv-capacitor", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "small-electric-motor-1",
+        icons = du.icons("small-electric-motor"),
+        enabled = false,
+        category = "crafting",
+        subgroup = "raw-material",
+        energy_required = 0.5,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="lv-capacitor", amount=2},
+            {type="item", name="magnet-wire", amount=6},
+            {type="item", name="ferrite", amount=1},
+            {type="item", name="screws", amount=3},
+        },
+        results ={
+            {type="item", name="small-electric-motor", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "small-electric-pole",
+        icons = du.icons{mod="base",name="small-electric-pole"},
+        enabled = false,
+        category = "crafting",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="treated-wood", amount=2},
+            {type="item", name="copper-cable", amount=6},
+        },
+        results ={
+            {type="item", name="small-electric-pole", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "small-electric-pole-2",
+        icons = du.icons{mod="base",name="small-electric-pole"}.add_corner("aluminum-ingot"),
+        enabled = false,
+        category = "crafting",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="treated-wood", amount=2},
+            {type="item", name="aluminum-cable", amount=6},
+        },
+        results ={
+            {type="item", name="small-electric-pole", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "lv-generator",
+        icons = du.icons("lv-generator"),
+        enabled = false,
+        category = "crafting",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="treated-wood", amount=20},
+            {type="item", name="steel-beam", amount=8},
+            {type="item", name="iron-gear-wheel", amount=16},
+            {type="item", name="small-electric-motor", amount=8},
+        },
+        results ={
+            {type="item", name="lv-generator", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "inserter",
+        icons = du.icons{mod="base", name="inserter"},
+        enabled = false,
+        category = "crafting",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="steel-beam", amount=2},
+            {type="item", name="small-electric-motor", amount=1},
+        },
+        results ={
+            {type="item", name="inserter", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "long-handed-inserter",
+        icons = du.icons{mod="base", name="long-handed-inserter"},
+        enabled = false,
+        category = "crafting",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="inserter", amount=1},
+            {type="item", name="aluminum-plate", amount=4},
+        },
+        results ={
+            {type="item", name="long-handed-inserter", amount=1},
         }
     }
 })

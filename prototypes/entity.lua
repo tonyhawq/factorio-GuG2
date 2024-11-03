@@ -2355,7 +2355,187 @@ data:extend({
     },
 })
 
-data.raw.generator["steam-engine"].effectivity = 0.75
+local steam_engine = data.raw.generator["steam-engine"]
+data.raw.generator["steam-engine"] = nil
+steam_engine.type = "assembling-machine"
+steam_engine.crafting_categories = {"generating"}
+steam_engine.fixed_recipe = "steam-engine-rotation-generation"
+steam_engine.energy_usage = "1800kW"
+steam_engine.crafting_speed = 1
+steam_engine.fluid_boxes = {
+    {
+        volume = 200,
+        pipe_covers = pipecoverspictures(),
+        pipe_connections =
+        {
+            { flow_direction = "output", direction = defines.direction.north, position = {0, -2} }
+        },
+        production_type = "output",
+        filter = "rotational-force",
+    }
+}
+steam_engine.graphics_set = {
+    animation = {
+        north = steam_engine.vertical_animation,
+        east = steam_engine.horizontal_animation,
+        south = steam_engine.vertical_animation,
+        west = steam_engine.horizontal_animation,
+    }
+}
+steam_engine.energy_source = {
+    type = "fluid",
+    maximum_temperature=165,
+    fluid_box = {
+        volume=100,
+        height = 1,
+        base_level = -1,
+        pipe_covers = pipecoverspictures(),
+        pipe_connections = {
+            {flow_direction = "input", position = {0, 2}, direction=defines.direction.south},
+        },
+        filter="steam",
+        minimum_temperature=100,
+    },
+    burns_fluid = false,
+    scale_fluid_usage = true,
+    destroy_non_fuel_fluid = false,
+    smoke =
+    {
+      {
+        name = "light-smoke",
+        north_position = {0.9, 0.0},
+        east_position = {-2.0, -2.0},
+        frequency = 10 / 32,
+        starting_vertical_speed = 0.08,
+        starting_frame_deviation = 60
+      }
+    },
+    light_flicker = {
+        color = {0.8,0.6,0.4},
+        minimum_light_size = 0.1,
+        light_intensity_to_size_coefficient = 1
+    }
+}
+data:extend({steam_engine})
+
+data:extend({
+    {
+        type = "recipe-category",
+        name = "generating",
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "generating", ---@diagnostic disable-line
+        name = "steam-engine-rotation-generation",
+        icons = du.icons("rotational-force"),
+        hidden = true,
+        energy_required = 0.1,
+        ingredients = {
+        },
+        results = {
+            {type="fluid", name="rotational-force", amount=((du.J(du.assembling_machine("steam-engine").energy_usage) * 60) / (du.J(du.fluid("rotational-force").heat_capacity) * 1200)) * 0.1, temperature=1200},
+        }
+    }
+})
+
+data:extend({
+    {
+        type = "generator",
+        name = "lv-generator",
+        icons = du.icons("lv-generator"),
+        flags = {"placeable-neutral","player-creation"},
+        minable = {mining_time = 0.3, result = "lv-generator"},
+        max_health = 400,
+        corpse = "steam-engine-remnants",
+        dying_explosion = "steam-engine-explosion",
+        alert_icon_shift = util.by_pixel(0, -12),
+        effectivity = 1,
+        fluid_usage_per_tick = 2,
+        maximum_temperature = 1200,
+        resistances =
+        {
+            {
+                type = "fire",
+                percent = 70
+            },
+            {
+                type = "impact",
+                percent = 30
+            }
+        },
+        fast_replaceable_group = "steam-engine",
+        collision_box = {{-1.25, -0.75}, {1.25, 0.75}},
+        selection_box = {{-1.5, -1}, {1.5, 1}},
+        damaged_trigger_effect = hit_effects.entity(),
+        fluid_box =
+        {
+            volume = 200,
+            pipe_covers = pipecoverspictures(),
+            pipe_connections =
+            {
+                { flow_direction = "input-output", direction = defines.direction.south, position = {0, 0.5} },
+                { flow_direction = "input-output", direction = defines.direction.north, position = {0, -0.5} }
+            },
+            production_type = "input",
+            filter = "rotational-force",
+            minimum_temperature = 100.0
+        },
+        energy_source =
+        {
+            type = "electric",
+            usage_priority = "secondary-output"
+        },
+        horizontal_animation =
+        {
+            layers =
+            {
+                {
+                    filename = "__GuG2__/graphics/entity/lv-generator/lv-generator-horizontal.png",
+                    width = 128,
+                    height = 192,
+                    frame_count = 1,
+                    line_length = 1,
+                    scale = 0.5
+                },
+            }
+        },
+        vertical_animation =
+        {
+            layers =
+            {
+                {
+                    filename = "__GuG2__/graphics/entity/lv-generator/lv-generator-vertical.png",
+                    width = 192,
+                    height = 128,
+                    frame_count = 1,
+                    line_length = 1,
+                    scale = 0.5
+                },
+            }
+        },
+        impact_category = "metal-large",
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        working_sound =
+        {
+            sound =
+            {
+                filename = "__base__/sound/steam-engine-90bpm.ogg",
+                volume = 0.55,
+                speed_smoothing_window_size = 60,
+                modifiers = volume_multiplier("tips-and-tricks", 1.1)
+            },
+            match_speed_to_activity = true,
+            audible_distance_modifier = 0.8,
+            max_sounds_per_type = 3,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        perceived_performance = { minimum = 0.25, performance_to_activity_rate = 2.0 },
+    }
+})
 
 data.raw["assembling-machine"]["assembling-machine-1"].energy_source = {
     type = "fluid",
@@ -2622,6 +2802,15 @@ stone_furnace.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({stone_furnace})
 
 data:extend({
+    {
+        type = "item",
+        name = "lv-generator",
+        icons = du.icons("lv-generator"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "lv-generator"
+    },
     {
         type = "item",
         name = "steam-crusher",

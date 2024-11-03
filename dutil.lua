@@ -123,8 +123,27 @@ dutil.icon_mt = {
     end
 }
 
+local function_types = {
+    "assembling-machine",
+    "item",
+    "fluid",
+}
+
+for _, type in pairs(function_types) do
+    dutil[type:gsub("-", "_")] = function(name)
+        if not data.raw[type][name] then
+            error("No "..type.." exists with name "..tostring(name))
+        end
+        return data.raw[type][name]
+    end
+end
+
 function dutil.MJ(string)
-    return util.parse_energy(string)/1000/1000
+    return dutil.J(string)
+end
+
+function dutil.J(string)
+    return util.parse_energy(string)
 end
 
 function dutil.empty_icons()

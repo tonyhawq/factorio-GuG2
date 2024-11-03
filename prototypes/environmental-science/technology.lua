@@ -826,3 +826,61 @@ data:extend({
         order = "b-b"
     },
 })
+data:extend({
+    {
+        type = "technology",
+        name = "electromagnetism",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/electric-engine.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"steel-processing"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="magnet-wire-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="ferrite-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="small-electric-motor-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="small-electric-pole",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="small-electric-pole-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="inserter",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="long-handed-inserter",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="lv-generator",
+            },
+        },
+        order = "b-b"
+    },
+})
