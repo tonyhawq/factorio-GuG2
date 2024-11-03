@@ -450,7 +450,7 @@ data:extend({
         icons = du.icons("seawater"),
         default_temperature = 15,
         max_temperature = 100,
-        heat_capacity = "0.2kJ",
+        heat_capacity = "2kJ",
         order = "a[fluid]-j[sludge]"
     },
     {

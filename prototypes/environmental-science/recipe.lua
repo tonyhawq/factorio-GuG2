@@ -554,6 +554,27 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
+        name = "limestone-crushing",
+        icons = du.icons("limestone").add_corner("crushing"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="limestone", amount=4},
+        },
+        results = {
+            {type="item", name="gravel", amount=3},
+            {type="item", name="sand", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
         name = "gravel-crushing",
         icons = du.icons("gravel").add_corner("crushing"),
         subgroup = "raw-material",
@@ -899,9 +920,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "fluid-mining-drill",
         icons = du.icons("fluid-mining-drill"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 2,
         ingredients = {
             {type="item", name="stone-brick", amount=10},
@@ -924,7 +942,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 1,
+        energy_required = 0.25,
         ingredients = {
             {type="fluid", name="water", amount=3},
         },
@@ -944,7 +962,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 3,
+        energy_required = 2,
         ingredients = {
         },
         results = {
@@ -1046,7 +1064,7 @@ data:extend({
         energy_required = 4,
         ingredients = {
             {type="item", name="wood", amount=1},
-            {type="fluid", name="steam", amount=10},
+            {type="fluid", name="steam", amount=50},
             {type="fluid", name="green-liquor", amount=2},
         },
         results = {
@@ -1074,7 +1092,7 @@ data:extend({
         results = {
             {type="fluid", name="green-liquor", amount=2},
             {type="fluid", name="tall-oil", amount=1},
-            {type="fluid", name="steam", amount=30, temperature=165},
+            {type="fluid", name="steam", amount=60, temperature=165},
         }
     }
 })
@@ -1201,7 +1219,7 @@ data:extend({
             {type="fluid", name="caustic-solution", amount=10},
         },
         results = {
-            {type="fluid", name="steam", amount=10, temperature=165},
+            {type="fluid", name="steam", amount=100, temperature=165},
             {type="item", name="sodium-hydroxide", amount=1},
         }
     }
@@ -1240,7 +1258,7 @@ data:extend({
         main_product = "",
         energy_required = 1,
         ingredients = {
-            {type="item", name="lime", amount=2},
+            {type="item", name="lime", amount=10},
             {type="fluid", name="water", amount=20},
         },
         results = {
@@ -1261,7 +1279,7 @@ data:extend({
         main_product = "",
         energy_required = 8,
         ingredients = {
-            {type="fluid", name="steam", amount=12},
+            {type="fluid", name="steam", amount=120},
             {type="item", name="seaweed", amount=2},
         },
         results = {
@@ -1283,7 +1301,7 @@ data:extend({
         main_product = "",
         energy_required = 8,
         ingredients = {
-            {type="fluid", name="syngas", amount=60},
+            {type="fluid", name="syngas", amount=120},
             {type="item", name="iron-oxide", amount=2},
         },
         results = {
@@ -1454,19 +1472,113 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "evaporating", ---@diagnostic disable-line
+        name = "water-1",
+        icons = du.icons("evaporate").add_corner("water"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 10,
+        ingredients = {
+            {type="fluid", name="steam", amount=100},
+        },
+        results = {
+            {type="fluid", name="water", amount=9},    
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "evaporating", ---@diagnostic disable-line
+        name = "seawater-void",
+        icons = du.icons("evaporate").add_corner("seawater"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 10,
+        ingredients = {
+            {type="fluid", name="seawater", amount=100},
+        },
+        results = {}
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "evaporating", ---@diagnostic disable-line
+        name = "saline-water-void",
+        icons = du.icons("evaporate").add_corner("saline-water"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 10,
+        ingredients = {
+            {type="fluid", name="saline-water", amount=100},
+        },
+        results = {}
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "evaporating", ---@diagnostic disable-line
+        name = "brine-void",
+        icons = du.icons("evaporate").add_corner("brine"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 20,
+        ingredients = {
+            {type="fluid", name="brine", amount=100},
+        },
+        results = {
+            {type="item", name="brine-salt", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "evaporating", ---@diagnostic disable-line
+        name = "mineralized-water-void",
+        icons = du.icons("evaporate").add_corner("mineralized-water"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 20,
+        ingredients = {
+            {type="fluid", name="mineralized-water", amount=100},
+        },
+        results = {}
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "boiling", ---@diagnostic disable-line
         name = "seawater-boiling",
         icons = du.icons{mod="base", name="fluid/steam"}.add_corner("seawater"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 0.6,
         ingredients = {
-            {type="fluid", name="seawater", amount=100},
+            {type="fluid", name="seawater", amount=10},
         },
         results = {
             {type="fluid", name="steam", amount=80, temperature=165},
-            {type="fluid", name="saline-water", amount=20},
+            {type="fluid", name="saline-water", amount=2},
         }
     }
 })
@@ -1481,13 +1593,13 @@ data:extend({
         subgroup = "raw-material",
         order = "a[b]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 0.6,
         ingredients = {
-            {type="fluid", name="saline-water", amount=100},
+            {type="fluid", name="saline-water", amount=10},
         },
         results = {
             {type="fluid", name="steam", amount=80, temperature=165},
-            {type="fluid", name="brine", amount=20},
+            {type="fluid", name="brine", amount=2},
         }
     }
 })
@@ -1502,13 +1614,13 @@ data:extend({
         subgroup = "raw-material",
         order = "a[c]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 0.6,
         ingredients = {
-            {type="fluid", name="brine", amount=100},
+            {type="fluid", name="brine", amount=10},
         },
         results = {
             {type="fluid", name="steam", amount=80, temperature=165},
-            {type="fluid", name="mineralized-water", amount=20},
+            {type="fluid", name="mineralized-water", amount=2},
             {type="item", name="brine-salt", amount=1},
         }
     }
@@ -1524,9 +1636,9 @@ data:extend({
         subgroup = "raw-material",
         order = "a[d]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 0.6,
         ingredients = {
-            {type="fluid", name="mineralized-water", amount=100},
+            {type="fluid", name="mineralized-water", amount=10},
         },
         results = {
             {type="fluid", name="steam", amount=80, temperature=165},
@@ -1639,7 +1751,7 @@ data:extend({
         },
         results = {
             {type="item", name="silica", amount=1},
-            {type="fluid", name="steam", temperature=165, amount=3},
+            {type="fluid", name="steam", temperature=165, amount=30},
         }
     }
 })
@@ -1806,30 +1918,7 @@ data:extend({
         enabled = false,
         category = "blasting",
         subgroup = "raw-material",
-        energy_required = 4,
-        order = "a",
-        main_product = "",
-        ingredients = {
-            {type="item", name="iron-ingot", amount=3},
-            {type="item", name="coke", amount=1},
-            {type="item", name="lime", amount=3},
-        },
-        results ={
-            {type="item", name="steel-ingot", amount=1},
-            {type="fluid", name="carbon-dioxide", amount=40},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        name = "steel-ingot-1",
-        icons = du.icons("steel-ingot"),
-        enabled = false,
-        category = "blasting",
-        subgroup = "raw-material",
-        energy_required = 4,
+        energy_required = 8,
         order = "a",
         main_product = "",
         ingredients = {
@@ -1852,7 +1941,7 @@ data:extend({
         enabled = false,
         category = "blasting",
         subgroup = "raw-material",
-        energy_required = 4,
+        energy_required = 2,
         order = "a",
         main_product = "",
         ingredients = {
@@ -1873,7 +1962,7 @@ data:extend({
         enabled = false,
         category = "blasting",
         subgroup = "raw-material",
-        energy_required = 4,
+        energy_required = 1,
         order = "a",
         main_product = "",
         ingredients = {
@@ -1908,6 +1997,26 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        name = "zinc-plate-1",
+        icons = du.icons("zinc-plate"),
+        enabled = false,
+        category = "smelting",
+        subgroup = "raw-material",
+        energy_required = 3,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="zinc-ingot", amount=1},
+        },
+        results ={
+            {type="item", name="zinc-plate", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         name = "refractory-brick-1",
         icons = du.icons("refractory-brick"),
         enabled = false,
@@ -1930,7 +2039,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        name = "blast-furnace-1",
+        name = "blast-furnace",
         icons = du.icons("blast-furnace"),
         enabled = false,
         category = "crafting",
@@ -2146,6 +2255,478 @@ data:extend({
         },
         results ={
             {type="item", name="long-handed-inserter", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smithing", ---@diagnostic disable-line
+        name = "copper-sheet-1",
+        icons = du.icons("copper-sheet"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="copper-plate", amount=4},
+        },
+        results = {
+            {type="item", name="copper-sheet", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "autocrafting", ---@diagnostic disable-line
+        name = "copper-wire-1",
+        icons = du.icons("copper-wire"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="copper-ingot", amount=1},
+        },
+        results = {
+            {type="item", name="copper-wire", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smithing", ---@diagnostic disable-line
+        name = "wrought-iron-sheet-1",
+        icons = du.icons("wrought-iron-sheet"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="wrought-iron-plate", amount=4},
+        },
+        results = {
+            {type="item", name="wrought-iron-sheet", amount=3},
+        }
+    }
+})
+
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smithing", ---@diagnostic disable-line
+        name = "wrought-iron-rod-1",
+        icons = du.icons("wrought-iron-rod"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="iron-ingot", amount=1},
+        },
+        results = {
+            {type="item", name="wrought-iron-rod", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smithing", ---@diagnostic disable-line
+        name = "bound-porcelain",
+        icons = du.icons("bound-porcelain"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="clay", amount=3},
+            {type="fluid", name="tar", amount=16},
+        },
+        results = {
+            {type="item", name="bound-porcelain", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "stone-brick-1",
+        icons = du.icons("__base__/graphics/icons/stone-brick.png", 64, true),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="stone", amount=5},
+            {type="item", name="gravel", amount=10},
+            {type="item", name="bound-porcelain", amount=2},
+        },
+        results = {
+            {type="item", name="stone-brick", amount=5},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crushing", ---@diagnostic disable-line
+        name = "stone-brick-crushing",
+        icons = du.icons("__base__/graphics/icons/stone-brick.png", 64, true),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="stone-brick", amount=1},
+        },
+        results = {
+            {type="item", name="stone", amount=2},
+        }
+    }
+})
+-- coal tar is industrially significant
+-- coal gas is not
+-- coal tar distills into 3 fractions
+-- middle
+-- light
+-- green
+
+-- creosote is produced through
+--   green + light
+-- or
+--   middle oil
+-- creosote is then used for wood treatment or can be converted to phenol
+-- green -> anthracene
+-- middle -> naphthalene
+-- light oil -> BTX & fuel
+
+-- fractions are
+-- 25% green oil
+-- 10% light oil
+-- 20% middle oil
+-- 40% tar pitch
+
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "raw-coal-to-coal",
+        icons = du.icons("coal"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 3,
+        ingredients = {
+            {type="item", name="raw-coal", amount=4},
+        },
+        results = {
+            {type="item", name="coal", amount=1},
+            {type="fluid", name="coal-gas", amount=6}, --(du.fuel_value("raw-coal") * 8 - du.fuel_value("coal") * 2) / du.fuel_value("coal-gas") * 0.6
+            {type="fluid", name="tar", amount=10}, --(du.fuel_value("raw-coal") * 8 - du.fuel_value("coal") * 2) / du.fuel_value("tar") * 0.5
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "coal-to-coke",
+        icons = du.icons("coke"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 3,
+        ingredients = {
+            {type="item", name="coal", amount=4},
+        },
+        results = {
+            {type="item", name="coke", amount=1},
+            {type="fluid", name="coal-gas", amount=18},
+            {type="fluid", name="tar", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "coke-gasification",
+        icons = du.icons("coke"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 12,
+        ingredients = {
+            -- 1:1 conversion of coke fuel_value to gaseous fuel value
+            -- 75% coal gas
+            -- 25% tar
+            {type="item", name="coke", amount=6},
+        },
+        results = {
+            {type="fluid", name="coal-gas", amount=25}, --math.floor(du.fuel_value("coke")/du.fuel_value("coal-gas")*0.75)
+            {type="fluid", name="tar", amount=10}, --math.floor(du.fuel_value("coke")/du.fuel_value("coal-gas")*0.25)
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "tar-processing",
+        icons = du.icons("tar"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            -- getting into some coal products, are we?
+            {type="fluid", name="tar", amount=100},
+        },
+        results = {
+            {type="fluid", name="green-oil", amount=25},
+            {type="fluid", name="light-oil", amount=5},
+            {type="fluid", name="middle-oil", amount=20},
+            {type="fluid", name="tar-pitch", amount=40},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "pitch-processing",
+        icons = du.icons("tar-pitch"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            -- getting into some coal products, are we?
+            {type="fluid", name="tar-pitch", amount=100},
+        },
+        results = {
+            {type="fluid", name="hydrogen", amount=25},
+            {type="fluid", name="light-oil", amount=10},
+            {type="item", name="coke", amount=6},
+            {type="item", name="asphalt", amount=4},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "creosote-oil-from-green",
+        icons = du.icons("creosote-oil").add_corner("green-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="fluid", name="green-oil", amount=100},
+            {type="fluid", name="light-oil", amount=35},
+            {type="fluid", name="creosote-oil", amount=25},
+        },
+        results = {
+            {type="fluid", name="creosote-oil", amount=175},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "creosote-oil-from-middle",
+        icons = du.icons("creosote-oil").add_corner("middle-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="fluid", name="middle-oil", amount=100},
+        },
+        results = {
+            {type="fluid", name="creosote-oil", amount=60},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "creosote-oil-from-blended",
+        icons = du.icons("creosote-oil").add_corner("creosote-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="fluid", name="green-oil", amount=100},
+            {type="fluid", name="middle-oil", amount=50},
+        },
+        results = {
+            {type="fluid", name="creosote-oil", amount=60},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "anthracene-from-green",
+        icons = du.icons("anthracene").add_corner("green-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="fluid", name="green-oil", amount=100},
+        },
+        results = {
+            {type="fluid", name="anthracene", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "carbolic-acid-creosote",
+        icons = du.icons("carbolic-acid").add_corner("creosote-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="fluid", name="creosote-oil", amount=100},
+        },
+        results = {
+            {type="fluid", name="carbolic-acid", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "carbolic-acid-middle",
+        icons = du.icons("carbolic-acid").add_corner("middle-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="fluid", name="middle-oil", amount=100},
+        },
+        results = {
+            {type="fluid", name="carbolic-acid", amount=80},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "full-tar-gasification",
+        icons = du.icons("syngas").add_corner("tar"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="tar", amount=100},
+            {type="fluid", name="water", amount=65},
+        },
+        results = {
+            {type="fluid", name="coal-gas", amount=120},
+            {type="fluid", name="syngas", amount=40},
+            {type="fluid", name="flue-gas", amount=80, temperature=500},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "coal-gas-gasification",
+        icons = du.icons("syngas").add_corner("coal-gas"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="coal-gas", amount=100},
+            {type="fluid", name="water", amount=300},
+        },
+        results = {
+            {type="fluid", name="syngas", amount=80},
+            {type="fluid", name="flue-gas", amount=80, temperature=300},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "separating", ---@diagnostic disable-line
+        name = "wood-oil-separation",
+        icons = du.icons("methanol").add_corner("wood-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 3,
+        ingredients = {
+            {type="fluid", name="wood-oil", amount=10},
+        },
+        results = {
+            {type="fluid", name="methanol", amount=3},
+            {type="fluid", name="creosote-oil", amount=4},
+            {type="fluid", name="tar", amount=3},
         }
     }
 })

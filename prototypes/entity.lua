@@ -2401,14 +2401,14 @@ steam_engine.energy_source = {
     destroy_non_fuel_fluid = false,
     smoke =
     {
-      {
-        name = "light-smoke",
-        north_position = {0.9, 0.0},
-        east_position = {-2.0, -2.0},
-        frequency = 10 / 32,
-        starting_vertical_speed = 0.08,
-        starting_frame_deviation = 60
-      }
+        {
+            name = "light-smoke",
+            north_position = {0.9, 0.0},
+            east_position = {-2.0, -2.0},
+            frequency = 10 / 32,
+            starting_vertical_speed = 0.08,
+            starting_frame_deviation = 60
+        }
     },
     light_flicker = {
         color = {0.8,0.6,0.4},
@@ -2579,7 +2579,7 @@ data:extend({
         energy_source =
         {
             type = "fluid",
-            effectivity = 0.75,
+            effectivity = 1,
             emissions_per_minute = {pollution=8},
             scale_fluid_usage = true,
             burns_fluid = true,
@@ -2591,7 +2591,7 @@ data:extend({
                 secondary_draw_orders = { north = -1 }
             },
         },
-        energy_usage = "0.54MW",
+        energy_usage = "1.8MW",
         graphics_set = {
             animation =
             {
@@ -2735,8 +2735,12 @@ mechanical_inserter.name = "mechanical-inserter"
 mechanical_inserter.minable.result = "mechanical-inserter"
 mechanical_inserter.icons = du.icons("mechanical-inserter")
 mechanical_inserter.energy_source = {type="void"}
+mechanical_inserter.hand_base_picture = data.raw.inserter["fast-inserter"].hand_base_picture
+mechanical_inserter.hand_closed_picture = data.raw.inserter["fast-inserter"].hand_closed_picture
+mechanical_inserter.hand_open_picture = data.raw.inserter["fast-inserter"].hand_open_picture
 data:extend({mechanical_inserter})
 data.raw.inserter["burner-inserter"].rotation_speed = data.raw.inserter["fast-inserter"].rotation_speed
+data.raw.inserter["burner-inserter"].allow_burner_leech = true
 
 local burner_chem = table.deepcopy(data.raw["assembling-machine"]["chemical-plant"])
 burner_chem.name = "burner-chemical-plant"
@@ -2800,6 +2804,525 @@ stone_furnace.fluid_boxes =
 }
 stone_furnace.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({stone_furnace})
+
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "soil-extractor",
+        icon = "__pycoalprocessinggraphics__/graphics/icons/soil-extractor-mk01.png",
+        icon_size = 64,
+        flags = {"placeable-neutral", "player-creation"},
+        minable = {mining_time = 1, result = "soil-extractor"},
+        fast_replaceable_group = "extractor",
+        max_health = 300,
+        corpse = "big-remnants",
+        dying_explosion = "medium-explosion",
+        collision_box = {{-3.48, -3.48}, {3.48, 3.48}},
+        selection_box = {{-3.5, -3.5}, {3.5, 3.5}},
+        match_animation_speed_to_activity = false,
+        module_specification = {
+            module_slots = 1
+        },
+        allowed_effects = {"consumption", "speed", "productivity", "pollution"},
+        crafting_categories = {"extracting"},
+        crafting_speed = 1,
+        energy_source =
+        {
+            type = "fluid",
+            scale_fluid_usage = true,
+            fluid_box = {
+                filter = "steam",
+                minimum_temperature = 100.0,
+                production_type = "input-output",
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume = 100,
+                pipe_connections = {
+                    { flow_direction="input-output", position = {0, 3},  direction=defines.direction.south },
+                    { flow_direction="input-output", position = {0, -3}, direction=defines.direction.north }
+                },
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        energy_usage = "400kW",
+        graphics_set = {
+            animation = {
+                filename = "__pycoalprocessinggraphics__/graphics/entity/soil-extractor/soil-extractor.png",
+                width = 235,
+                height = 266,
+                frame_count = 30,
+                line_length = 6,
+                animation_speed = 0.8,
+                shift = {0.16, -0.609}
+            },
+        },
+        fluid_boxes = {
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections = {
+                    {flow_direction = "input-output", direction=defines.direction.east, position = {3.0, 0.0}},
+                    {flow_direction = "input-output", direction=defines.direction.west, position = {-3.0, 0.0}}
+                }
+            },
+        },
+        vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
+        working_sound = {
+            sound = {filename = "__pycoalprocessinggraphics__/sounds/soil-extractor.ogg"},
+            idle_sound = {filename = "__pycoalprocessinggraphics__/sounds/soil-extractor.ogg", volume = 0.3},
+            apparent_volume = 2.5
+        },
+    }
+})
+
+local function forward_then_backward()
+    return "forward-th".."en-backward"
+end
+
+data:extend({
+    {
+        type = "mining-drill",
+        name = "fluid-mining-drill",
+        icon = "__base__/graphics/icons/burner-mining-drill.png",
+        flags = {"placeable-neutral", "player-creation"},
+        resource_categories = {"basic-solid"},
+        minable = {mining_time = 0.3, result = "fluid-mining-drill"},
+        max_health = 150,
+        corpse = "burner-mining-drill-remnants",
+        dying_explosion = "burner-mining-drill-explosion",
+        collision_box = {{-1.3, -1.3}, {1.3, 1.3}},
+        selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        mining_speed = 1,
+        working_sound =
+        {
+            sound = sound_variations("__base__/sound/burner-mining-drill", 2, 0.6, volume_multiplier("tips-and-tricks", 0.8)),
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        open_sound = sounds.drill_open,
+        close_sound = sounds.drill_close,
+        resource_searching_radius = 2.49,
+        radius_visualisation_picture =
+        {
+            filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-radius-visualization.png",
+            width = 10,
+            height = 10
+        },
+        allowed_effects = {}, -- no beacon effects on the burner drill
+        energy_source =
+        {
+            type = "burner",
+            fuel_categories = {"chemical"},
+            effectivity = 1,
+            fuel_inventory_size = 1,
+            emissions_per_minute = { pollution = 12 },
+            light_flicker = {color = {0,0,0}},
+            smoke =
+            {
+                {
+                    name = "smoke",
+                    deviation = {0.1, 0.1},
+                    frequency = 3
+                }
+            }
+        },
+        input_fluid_box =
+        {
+            pipe_picture = assembler2pipepictures(),
+            pipe_covers = pipecoverspictures(),
+            volume = 200,
+            pipe_connections =
+            {
+                { direction = defines.direction.west, position = {-1, 0}},
+                { direction = defines.direction.east, position = {1, 0}},
+                { direction = defines.direction.south, position = {0, 1}}
+            }
+        },
+        energy_usage = "250kW",
+        graphics_set =
+        {
+            animation =
+            {
+                north =
+                {
+                    layers =
+                    {
+                        {
+                            priority = "high",
+                            width = 173,
+                            height = 188,
+                            line_length = 4,
+                            shift = util.by_pixel(2.75, 0.5),
+                            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-N.png",
+                            frame_count = 32,
+                            animation_speed = 0.5,
+                            run_mode = forward_then_backward(),
+                            scale = 0.75
+                        },
+                        {
+                            priority = "high",
+                            width = 217,
+                            height = 150,
+                            line_length = 4,
+                            shift = util.by_pixel(23.75, -1),
+                            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-N-shadow.png",
+                            frame_count = 32,
+                            animation_speed = 0.5,
+                            run_mode = forward_then_backward(),
+                            draw_as_shadow = true,
+                            scale = 0.75
+                        }
+                    }
+                },
+                east =
+                {
+                    layers =
+                    {
+                        {
+                            priority = "high",
+                            width = 185,
+                            height = 168,
+                            line_length = 4,
+                            shift = util.by_pixel(2.75, 1),
+                            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-E.png",
+                            frame_count = 32,
+                            animation_speed = 0.5,
+                            run_mode = forward_then_backward(),
+                            scale = 0.75
+                        },
+                        {
+                            priority = "high",
+                            width = 185,
+                            height = 128,
+                            line_length = 4,
+                            shift = util.by_pixel(13.75, 0.5),
+                            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-E-shadow.png",
+                            frame_count = 32,
+                            animation_speed = 0.5,
+                            run_mode = forward_then_backward(),
+                            draw_as_shadow = true,
+                            scale = 0.75
+                        }
+                    }
+                },
+                south =
+                {
+                    layers =
+                    {
+                        {
+                            priority = "high",
+                            width = 174,
+                            height = 174,
+                            line_length = 4,
+                            shift = util.by_pixel(0.5, -0.5),
+                            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-S.png",
+                            frame_count = 32,
+                            animation_speed = 0.5,
+                            run_mode = forward_then_backward(),
+                            scale = 0.75
+                        },
+                        {
+                            priority = "high",
+                            width = 174,
+                            height = 137,
+                            line_length = 4,
+                            shift = util.by_pixel(11, 2.75),
+                            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-S-shadow.png",
+                            frame_count = 32,
+                            animation_speed = 0.5,
+                            run_mode = forward_then_backward(),
+                            draw_as_shadow = true,
+                            scale = 0.75
+                        }
+                    }
+                },
+                west =
+                {
+                    layers =
+                    {
+                        {
+                            priority = "high",
+                            width = 180,
+                            height = 176,
+                            line_length = 4,
+                            shift = util.by_pixel(-1.5, 0),
+                            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-W.png",
+                            frame_count = 32,
+                            animation_speed = 0.5,
+                            run_mode = forward_then_backward(),
+                            scale = 0.75
+                        },
+                        {
+                            priority = "high",
+                            width = 176,
+                            height = 130,
+                            line_length = 4,
+                            shift = util.by_pixel(7.5, 1),
+                            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-W-shadow.png",
+                            frame_count = 32,
+                            animation_speed = 0.5,
+                            run_mode = forward_then_backward(),
+                            draw_as_shadow = true,
+                            scale = 0.75
+                        }
+                    }
+                }
+            }
+        },
+        monitor_visualization_tint = {78, 173, 255},
+        vector_to_place_result = {0, -1.7},
+        fast_replaceable_group = "mining-drill",
+        
+        circuit_connector = circuit_connector_definitions["burner-mining-drill"],
+        circuit_wire_max_distance = default_circuit_wire_max_distance
+    }
+})
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "evaporator",
+        icons = du.icons("evaporator"),
+        flags = {"placeable-neutral", "player-creation"},
+        minable = {mining_time = 1, result = name},
+        fast_replaceable_group = "evaporator",
+        max_health = 300,
+        corpse = "big-remnants",
+        dying_explosion = "medium-explosion",
+        collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+        match_animation_speed_to_activity = false,
+        module_slots = 1,
+        allowed_effects = {"consumption", "speed", "productivity", "pollution"},
+        crafting_categories = {"evaporating"},
+        crafting_speed = 1,
+        energy_source = {type = "void"},
+        energy_usage = "1W",
+        graphics_set = {
+            working_visualisations = {
+                {
+                    fadeout = true,
+                    constant_speed = true,
+                    north_position = {0.1, -0.0},
+                    west_position = {0.1, -0.0},
+                    south_position = {0.1, -0.0},
+                    east_position = {0.1, -0.0},
+                    animation = {
+                        layers = {
+                            {
+                                filename = "__pycoalprocessinggraphics__/graphics/entity/evaporator/evaporator-anim.png",
+                                frame_count = 80,
+                                line_length = 10,
+                                width = 168,
+                                height = 177,
+                                animation_speed = 0.25,
+                            },
+                            {
+                                filename = "__pycoalprocessinggraphics__/graphics/entity/evaporator/evaporator-anim-glow.png",
+                                frame_count = 80,
+                                line_length = 10,
+                                width = 168,
+                                height = 177,
+                                animation_speed = 0.25,
+                                draw_as_glow = true,
+                            },
+                        }
+                    }
+                }
+            },
+            animation = {
+                layers = {
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/evaporator/evaporator-off.png",
+                        width = 168,
+                        height = 177,
+                        frame_count = 1,
+                        shift = {0.1, 0.0},
+                    },
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/evaporator/evaporator-off-glow.png",
+                        width = 168,
+                        height = 177,
+                        frame_count = 1,
+                        shift = {0.1, 0.0},
+                        draw_as_glow = true,
+                    },
+                }
+            },
+        },
+        fluid_boxes_off_when_no_fluid_recipe = true,
+        fluid_boxes = {
+            {
+                production_type = "input",
+                pipe_picture = assembler2pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 1000,
+                base_level = -1,
+                pipe_connections = {{flow_direction = "input", position = {2.0, 0.0}, direction = defines.direction.east}}
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler2pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 1000,
+                base_level = -1,
+                pipe_connections = {{flow_direction = "input", position = {0.0, 2.0}, direction = defines.direction.south}}
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler2pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "output", position = {-2.0, 0.0}, direction = defines.direction.west}}
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler2pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "output", position = {0.0, -2.0}, direction = defines.direction.north}}
+            },
+        },
+        vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact-1.ogg", volume = 0.65},
+        working_sound = {
+            sound = {filename = "__pycoalprocessinggraphics__/sounds/evaporator.ogg"},
+            idle_sound = {filename = "__pycoalprocessinggraphics__/sounds/evaporator.ogg", volume = 0.3},
+            apparent_volume = 2.5
+        },
+    }
+})
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "blast-furnace",
+        icons = du.icons("blast-furnace"),
+        flags = {"placeable-neutral", "player-creation"},
+        minable = {mining_time = 0.5, result = "blast-furnace"},
+        fast_replaceable_group = "blast-furnace",
+        max_health = 300,
+        corpse = "medium-remnants",
+        dying_explosion = "medium-explosion",
+        collision_box = {{-3.4, -3.4}, {3.4, 3.4}},
+        selection_box = {{-3.5, -3.5}, {3.5, 3.5}},
+        match_animation_speed_to_activity = false,
+        module_slots = 1,
+        allowed_effects = {"consumption", "speed", "productivity", "pollution"},
+        crafting_categories = {"smelting", "blasting"},
+        crafting_speed = 4,
+        energy_source = {
+            type = "burner",
+            fuel_categories = {"chemical"},
+            fuel_inventory_size = 1,
+            emissions_per_minute = {pollution=24},
+        },
+        energy_usage = "12MW",
+        graphics_set = {
+            working_visualisations = {
+                {
+                    fadeout = true,
+                    constant_speed = true,
+                    north_position = util.by_pixel(0, -80),
+                    west_position = util.by_pixel(0, -80),
+                    south_position = util.by_pixel(0, -80),
+                    east_position = util.by_pixel(0, -80),
+                    animation = {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/hpf/on.png",
+                        frame_count = 40,
+                        line_length = 10,
+                        width = 224,
+                        height = 320,
+                        animation_speed = 0.5
+                    }
+                },
+                {
+                    fadeout = true,
+                    constant_speed = true,
+                    north_position = util.by_pixel(0, -80),
+                    west_position = util.by_pixel(0, -80),
+                    south_position = util.by_pixel(0, -80),
+                    east_position = util.by_pixel(0, -80),
+                    animation = {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/hpf/g.png",
+                        frame_count = 40,
+                        line_length = 10,
+                        width = 224,
+                        height = 320,
+                        animation_speed = 0.5,
+                        draw_as_glow = true,
+                    }
+                },
+            },
+            animation = {
+                layers = {
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/hpf/bottom.png",
+                        width = 224,
+                        height = 32,
+                        frame_count = 1,
+                        shift = util.by_pixel(0, 96),
+                    },
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/hpf/off.png",
+                        width = 224,
+                        height = 320,
+                        frame_count = 1,
+                        shift = util.by_pixel(0, -80),
+                    },
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/hpf/sh.png",
+                        width = 288,
+                        height = 224,
+                        frame_count = 1,
+                        draw_as_shadow = true,
+                        shift = util.by_pixel(32, -0),
+                    },
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/hpf/ao.png",
+                        width = 320,
+                        height = 384,
+                        frame_count = 1,
+                        shift = util.by_pixel(16, -48),
+                    },
+                },
+            },
+        },
+        fluid_boxes_off_when_no_fluid_recipe = true,
+        fluid_boxes = {
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "input", position = {3.0, 1.0}, direction = defines.direction.east}}
+            },
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "input", position = {3.0, -1.0}, direction = defines.direction.east}}
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "output", position = {-3.0, 1}, direction = defines.direction.west}}
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "output", position = {-3.0, -1}, direction = defines.direction.west}}
+            },
+        },
+        vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact-1.ogg", volume = 0.65},
+        working_sound = {
+            sound = {filename = "__pycoalprocessinggraphics__/sounds/hpf.ogg"},
+            idle_sound = {filename = "__pycoalprocessinggraphics__/sounds/hpf.ogg", volume = 0.3},
+            apparent_volume = 2.5
+        },
+    }
+})
 
 data:extend({
     {
@@ -3041,6 +3564,7 @@ data:extend({
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
+        place_result = "soil-extractor"
     },
     {
         type = "item",
@@ -3049,6 +3573,7 @@ data:extend({
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
+        place_result = "fluid-mining-drill"
     },
     {
         type = "item",
@@ -3057,6 +3582,7 @@ data:extend({
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
+        place_result = "evaporator"
     },
     {
         type = "item",
@@ -3065,6 +3591,7 @@ data:extend({
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
+        place_result = "blast-furnace"
     },
     {
         type = "recipe-category",
@@ -3121,5 +3648,9 @@ data:extend({
     {
         type = "recipe-category",
         name = "bioreacting"
+    },
+    {
+        type = "recipe-category",
+        name = "evaporating"
     },
 })

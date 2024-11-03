@@ -180,6 +180,14 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="soil-extractor",
             },
+            {
+                type = "unlock-recipe",
+                recipe="clay-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="soil-2",
+            },
         },
         order = "b-b"
     },
@@ -358,6 +366,22 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="seawater-void",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="saline-water-void",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="brine-void",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="mineralized-water-void",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="brine-salt-separation-1",
             },
             {
@@ -420,6 +444,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="limestone-crushing",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="gravel-crushing",
             },
             {
@@ -429,6 +457,44 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="stone-brick-crushing",
+            },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "syngas",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/flammables.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"basic-chemistry"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="full-tar-gasification",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="coal-gas-gasification",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="syngas-redox",
             },
         },
         order = "b-b"
@@ -778,7 +844,7 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
-                recipe="blast-furnace-1",
+                recipe="blast-furnace",
             },
         },
         order = "b-b"
@@ -821,6 +887,48 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="steel-beam-1",
+            },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "zinc-processing",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/steel-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"blasting-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="zinc-oxide-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="zinc-gas-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="zinc-ingot-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="zinc-plate-1",
             },
         },
         order = "b-b"

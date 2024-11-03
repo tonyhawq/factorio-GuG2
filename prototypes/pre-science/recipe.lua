@@ -8,7 +8,7 @@ data:extend({
         name = "stone-furnace",
         icons = du.icons{mod = "base", name = "stone-furnace"},
         enabled = true,
-        energy_required = 2,
+        energy_required = 0.5,
         ingredients = {
             {type="item", name="sandstone", amount=6},
             {type="item", name="clay", amount=3},
@@ -26,7 +26,7 @@ data:extend({
         name = "burner-mining-drill",
         icons = du.icons{mod = "base", name = "burner-mining-drill"},
         enabled = true,
-        energy_required = 2,
+        energy_required = 0.5,
         ingredients = {
             {type="item", name="stone-furnace", amount=1},
             {type="item", name="lead-plate", amount=6},
@@ -44,7 +44,7 @@ data:extend({
         name = "transport-belt",
         icons = du.icons{mod = "base", name = "transport-belt"},
         enabled = true,
-        energy_required = 2,
+        energy_required = 0.5,
         ingredients = {
             {type="item", name="lead-plate", amount=2},
         },
@@ -118,6 +118,42 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = true,
+        category = "crafting", ---@diagnostic disable-line
+        name = "underground-belt",
+        icons = du.icons{mod="base",name="underground-belt"},
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="transport-belt", amount=6},
+            {type="item", name="pipe-to-ground", amount=2},
+        },
+        results = {
+            {type="item", name="underground-belt", amount=4},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = true,
+        category = "crafting", ---@diagnostic disable-line
+        name = "burner-inserter",
+        icons = du.icons{mod="base",name="burner-inserter"},
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="stone-furnace", amount=1},
+            {type="item", name="mechanical-inserter", amount=2},
+        },
+        results = {
+            {type="item", name="burner-inserter", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
         name = "tin-plate-1",
         icons = du.icons("tin-plate"),
@@ -184,7 +220,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 1,
         ingredients = {
             {type="item", name="wood", amount=2},
             {type="item", name="tin-plate", amount=1},
