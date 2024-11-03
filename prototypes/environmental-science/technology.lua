@@ -552,6 +552,14 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="slaked-lime",
             },
+            {
+                type = "unlock-recipe",
+                recipe="raw-silica-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="silica-1",
+            },
         },
         order = "b-b"
     },
@@ -742,18 +750,17 @@ data:extend({
         order = "b-b"
     },
 })
---[[
 data:extend({
     {
         type = "technology",
-        name = "botany-1",
+        name = "blasting-1",
         icons = {
             {
-                icon = "__base__/graphics/technology/automation-1.png",
+                icon = "__base__/graphics/technology/advanced-material-processing.png",
                 icon_size = 256,
             }
         },
-        prerequisites = {"glassworking-1"},
+        prerequisites = {"aluminum-processing"},
         unit =
         {
             count = 10,
@@ -767,25 +774,55 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="basic-farm",
+                recipe="refractory-brick-1",
             },
             {
                 type = "unlock-recipe",
-                recipe="moss-growing",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="seaweed-growing",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="sapling-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="fastwood-1",
+                recipe="blast-furnace-1",
             },
         },
         order = "b-b"
     },
-})]]
+})
+data:extend({
+    {
+        type = "technology",
+        name = "steel-processing",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/steel-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"blasting-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="steel-ingot-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="steel-rod-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="steel-plate-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="steel-beam-1",
+            },
+        },
+        order = "b-b"
+    },
+})

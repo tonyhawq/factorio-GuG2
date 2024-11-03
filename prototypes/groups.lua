@@ -28,6 +28,10 @@ local function metals(metal_name)
             order = "a[metals]-"..str.."["..metal_name.."]-c",    
         },
     }
+    log("created ")
+    log(metal_name.."-ore-processing")
+    log(metal_name.."-smelting")
+    log(metal_name.."-ingot-processing")
 end
 
 metals("tin")

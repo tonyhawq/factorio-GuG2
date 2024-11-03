@@ -2556,6 +2556,7 @@ mechanical_inserter.minable.result = "mechanical-inserter"
 mechanical_inserter.icons = du.icons("mechanical-inserter")
 mechanical_inserter.energy_source = {type="void"}
 data:extend({mechanical_inserter})
+data.raw.inserter["burner-inserter"].rotation_speed = data.raw.inserter["fast-inserter"].rotation_speed
 
 local burner_chem = table.deepcopy(data.raw["assembling-machine"]["chemical-plant"])
 burner_chem.name = "burner-chemical-plant"
@@ -2614,9 +2615,10 @@ stone_furnace.fluid_boxes =
         pipe_covers = pipecoverspictures(),
         pipe_picture = assembler2pipepictures(),
         volume=100,
-        pipe_connections={{position={0,-1}, direction=defines.direction.south, flow_direction="output"}},
+        pipe_connections={{position={0,-1}, direction=defines.direction.north, flow_direction="output"}},
     },
 }
+stone_furnace.fluid_boxes_off_when_no_fluid_recipe = true
 data:extend({stone_furnace})
 
 data:extend({
@@ -2855,6 +2857,22 @@ data:extend({
         type = "item",
         name = "fluid-mining-drill",
         icons = du.icons("fluid-mining-drill"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+    },
+    {
+        type = "item",
+        name = "evaporator",
+        icons = du.icons("evaporator"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+    },
+    {
+        type = "item",
+        name = "blast-furnace",
+        icons = du.icons("blast-furnace"),
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,

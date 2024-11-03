@@ -134,9 +134,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "mechanical-inserter",
         icons = du.icons("mechanical-inserter"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 0.5,
         ingredients = {
             {type="item", name="bronze-plate", amount=1},
@@ -155,9 +152,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "small-tank",
         icons = du.icons("small-tank"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 0.5,
         ingredients = {
             {type="item", name="rivets", amount=6},
@@ -176,9 +170,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "offshore-pump",
         icons = du.icons{name="__base__/graphics/icons/offshore-pump.png", discard=true},
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 0.5,
         ingredients = {
             {type="item", name="mechanical-inserter", amount=3},
@@ -198,9 +189,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "pipe",
         icons = du.icons("pipe"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 2,
         ingredients = {
             {type="item", name="rivets", amount=4},
@@ -219,9 +207,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "pipe-to-ground",
         icons = du.icons{mod="base",name="pipe-to-ground"},
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 2,
         ingredients = {
             {type="item", name="gravel", amount=6},
@@ -239,10 +224,7 @@ data:extend({
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "evaporator",
-        icons = {{icon="__GuG2__/graphics/missing.png"}},
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
+        icons = du.icons("evaporator"),
         energy_required = 0.5,
         ingredients = {
             {type="item", name="mechanical-inserter", amount=3},
@@ -250,7 +232,7 @@ data:extend({
             {type="item", name="pipe", amount=6},
         },
         results = {
-            {type="item", name="offshore-pump", amount=1},
+            {type="item", name="evaporator", amount=1},
         }
     }
 })
@@ -262,9 +244,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "steam-engine",
         icons = du.icons{mod="base",name="steam-engine"},
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 0.5,
         ingredients = {
             {type="item", name="small-tank", amount=3}, -- engine tanks
@@ -285,9 +264,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "steam-inserter",
         icons = du.icons("steam-inserter"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 0.5,
         ingredients = {
             {type="item", name="mechanical-inserter", amount=3},
@@ -306,9 +282,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "destructive-distillation-tower",
         icons = du.icons{mod="pycoalprocessinggraphics", name="distilator"},
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 2,
         ingredients = {
             {type="item", name="pipe", amount=30},
@@ -329,9 +302,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "assembling-machine-1",
         icons = du.icons{mod="base",name="assembling-machine-1"},
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 0.5,
         ingredients = {
             {type="item", name="steam-engine", amount=1},
@@ -352,9 +322,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "tube-boiler",
         icons = du.icons("tube-boiler"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 0.5,
         ingredients = {
             -- spring?
@@ -912,9 +879,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "soil-extractor",
         icons = du.icons("soil-extractor"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 2,
         ingredients = {
             {type="item", name="fluid-mining-drill", amount=1},
@@ -1036,9 +1000,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "burner-chemical-plant",
         icons = du.icons("burner-chemical-plant"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 4,
         ingredients = {
             {type="item", name="glass", amount=16},
@@ -1059,9 +1020,6 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "smart-farm",
         icons = du.icons("seaweed"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
         energy_required = 4,
         ingredients = {
             {type="item", name="glass", amount=16},
@@ -1693,8 +1651,8 @@ data:extend({
         category = "crushing", ---@diagnostic disable-line
         name = "crushed-aluminum-ore",
         icons = du.icons("crushed-aluminum-ore"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "aluminum-ore-processing",
+        order = "a[crushing]-1",
         main_product = "",
         energy_required = 0.5,
         ingredients = {
@@ -1714,8 +1672,8 @@ data:extend({
         category = "chemistry", ---@diagnostic disable-line
         name = "aluminum-hydroxide-1",
         icons = du.icons("alumina"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "aluminum-ore-processing",
+        order = "b[hydroxide]-1",
         main_product = "",
         energy_required = 0.5,
         ingredients = {
@@ -1736,8 +1694,8 @@ data:extend({
         category = "smelting", ---@diagnostic disable-line
         name = "alumina-1",
         icons = du.icons("alumina"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "aluminum-ore-processing",
+        order = "c[alumina]-1",
         main_product = "",
         energy_required = 0.5,
         ingredients = {
@@ -1756,9 +1714,9 @@ data:extend({
         icons = du.icons("aluminum-ingot"),
         enabled = false,
         category = "smelting",
-        subgroup = "raw-material",
+        subgroup = "aluminum-smelting",
         energy_required = 2,
-        order = "a",
+        order = "1",
         main_product = "",
         ingredients = {
             {type="item", name="alumina", amount=8},
@@ -1780,9 +1738,9 @@ data:extend({
         icons = du.icons("aluminum-ingot").add_corner("silica"),
         enabled = false,
         category = "smelting",
-        subgroup = "raw-material",
+        subgroup = "aluminum-smelting",
         energy_required = 4,
-        order = "a",
+        order = "2",
         main_product = "",
         ingredients = {
             {type="item", name="alumina", amount=8},
@@ -1803,10 +1761,10 @@ data:extend({
         name = "aluminum-carbide-reprocessing-1",
         icons = du.icons("aluminum-carbide"),
         enabled = false,
-        category = "crafting-with-fluid",
-        subgroup = "raw-material",
+        category = "chemistry",
+        subgroup = "aluminum-ore-processing",
         energy_required = 5,
-        order = "d",
+        order = "j[reprocessing]-1",
         main_product = "",
         ingredients = {
             {type="item", name="aluminum-carbide", amount=6},
@@ -1859,6 +1817,157 @@ data:extend({
         results ={
             {type="item", name="steel-ingot", amount=1},
             {type="fluid", name="carbon-dioxide", amount=40},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "steel-ingot-1",
+        icons = du.icons("steel-ingot"),
+        enabled = false,
+        category = "blasting",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="iron-ingot", amount=3},
+            {type="item", name="coke", amount=1},
+            {type="item", name="lime", amount=3},
+        },
+        results ={
+            {type="item", name="steel-ingot", amount=1},
+            {type="fluid", name="carbon-dioxide", amount=40},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "zinc-oxide-1",
+        icons = du.icons("zinc-oxide"),
+        enabled = false,
+        category = "blasting",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="zinc-ore", amount=3},
+        },
+        results ={
+            {type="item", name="zinc-oxide", amount=1},
+            {type="fluid", name="sulfur-dioxide", amount=12},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "zinc-gas-1",
+        icons = du.icons("zinc-gas"),
+        enabled = false,
+        category = "blasting",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="zinc-oxide", amount=3},
+        },
+        results ={
+            {type="fluid", name="zinc-gas", amount=12},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "zinc-ingot-1",
+        icons = du.icons("zinc-ingot"),
+        enabled = false,
+        category = "smelting",
+        subgroup = "raw-material",
+        energy_required = 0.5,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="fluid", name="zinc-gas", amount=24},
+        },
+        results ={
+            {type="item", name="zinc-ingot", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "refractory-brick-1",
+        icons = du.icons("refractory-brick"),
+        enabled = false,
+        category = "smelting",
+        subgroup = "raw-material",
+        energy_required = 2,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="alumina", amount=2},
+            {type="item", name="silica", amount=2},
+            {type="item", name="stone-brick", amount=1},
+        },
+        results ={
+            {type="item", name="refractory-brick", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "blast-furnace-1",
+        icons = du.icons("blast-furnace"),
+        enabled = false,
+        category = "crafting",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="small-tank", amount=1},
+            {type="item", name="wrought-iron-sheet", amount=20},
+            {type="item", name="screws", amount=12},
+            {type="item", name="refractory-brick", amount=20},
+            {type="item", name="stone-furnace", amount=1},
+        },
+        results ={
+            {type="item", name="blast-furnace", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "battery-1",
+        icons = du.icons{mod="base", name="battery"},
+        enabled = false,
+        category = "crafting-with-fluid",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="zinc-plate", amount=3},
+            {type="item", name="manganese-oxides", amount=3},
+            {type="item", name="graphite", amount=3},
+            {type="item", name="bronze-plate", amount=6},
+            {type="fluid", name="coal-gas", amount=20},
+        },
+        results ={
+            {type="item", name="battery", amount=1},
         }
     }
 })
