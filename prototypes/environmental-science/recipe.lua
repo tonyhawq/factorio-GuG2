@@ -1474,7 +1474,7 @@ data:extend({
         enabled = false,
         category = "evaporating", ---@diagnostic disable-line
         name = "water-1",
-        icons = du.icons("evaporate").add_corner("water"),
+        icons = du.icons("evaporate").add_corner{mod="base", name="fluid/water"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -1572,7 +1572,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 0.6,
+        energy_required = 1/60,
         ingredients = {
             {type="fluid", name="seawater", amount=10},
         },
@@ -1593,7 +1593,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[b]",
         main_product = "",
-        energy_required = 0.6,
+        energy_required = 1/60,
         ingredients = {
             {type="fluid", name="saline-water", amount=10},
         },
@@ -1614,7 +1614,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[c]",
         main_product = "",
-        energy_required = 0.6,
+        energy_required = 1/60,
         ingredients = {
             {type="fluid", name="brine", amount=10},
         },
@@ -1636,7 +1636,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[d]",
         main_product = "",
-        energy_required = 0.6,
+        energy_required = 1/60,
         ingredients = {
             {type="fluid", name="mineralized-water", amount=10},
         },
@@ -1679,7 +1679,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[e]-b",
         main_product = "",
-        energy_required = 0.2,
+        energy_required = 0.25,
         ingredients = {
             {type="fluid", name="saline-water", amount=10},
             {type="item", name="sodium-sulfate", amount=1},
@@ -1701,7 +1701,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[e]-c",
         main_product = "",
-        energy_required = 0.2,
+        energy_required = 0.25,
         ingredients = {
             {type="fluid", name="saline-water", amount=10},
             {type="item", name="manganese-oxides", amount=1},

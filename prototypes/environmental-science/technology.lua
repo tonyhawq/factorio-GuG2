@@ -366,6 +366,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="water-1",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="seawater-void",
             },
             {
