@@ -41,7 +41,7 @@ data:extend({
     icons = du.icons("rivets"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50
+    stack_size = 200
   },
   {
     type = "item",
@@ -49,7 +49,7 @@ data:extend({
     icons = du.icons("screws"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50
+    stack_size = 200
   },
   {
     type = "item",
@@ -233,7 +233,7 @@ data:extend({
     icons = du.icons("iron-ingot"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50
+    stack_size = 200
   },
   {
     type = "item",
@@ -241,7 +241,7 @@ data:extend({
     icons = du.icons("copper-ingot"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50
+    stack_size = 200
   },
   {
     type = "item",
@@ -266,7 +266,7 @@ data:extend({
     icons = du.icons("wrought-iron-rod"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50
+    stack_size = 200
   },
 
   {
@@ -283,7 +283,7 @@ data:extend({
     icons = du.icons("steel-ingot"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50
+    stack_size = 200
   },
   {
     type = "item",
@@ -469,7 +469,7 @@ data:extend({
     icons = du.icons("nickel-ingot"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50
+    stack_size = 200
   },
   {
     type = "item",
@@ -485,7 +485,7 @@ data:extend({
     icons = du.icons("aluminum-ingot"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50
+    stack_size = 200
   },
   {
     type = "item",
@@ -661,7 +661,7 @@ data:extend({
     icons = du.icons("tin-ingot"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50
+    stack_size = 200
   },
   {
     type = "item",
@@ -677,7 +677,7 @@ data:extend({
     icons = du.icons("bronze-ingot"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50
+    stack_size = 200
   },
   {
     type = "item",
@@ -930,7 +930,7 @@ data:extend({
     icons = du.icons("zinc-ingot"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50,
+    stack_size = 200,
   },
   {
     type = "item",

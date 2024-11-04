@@ -136,7 +136,25 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        enabled = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "mechanical-inserter",
+        icons = du.icons("mechanical-inserter"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="bronze-plate", amount=1},
+            {type="item", name="lead-plate", amount=1},
+        },
+        results = {
+            {type="item", name="mechanical-inserter", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "burner-inserter",
         icons = du.icons{mod="base",name="burner-inserter"},
@@ -144,6 +162,7 @@ data:extend({
         ingredients = {
             {type="item", name="stone-furnace", amount=1},
             {type="item", name="mechanical-inserter", amount=2},
+            {type="item", name="rivets", amount=4},
         },
         results = {
             {type="item", name="burner-inserter", amount=2},
@@ -289,6 +308,24 @@ data:extend({
         },
         results = {
             {type="item", name="lead-plate", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "crafting", ---@diagnostic disable-line
+        name = "firearm-magazine",
+        localised_name = {"recipe-name.firearm-magazine"},
+        icons = du.icons{mod="base", name="firearm-magazine"},
+        enabled = true,
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="wrought-iron-rod", amount=4},
+        },
+        results = {
+            {type="item", name="firearm-magazine", amount=1},
         }
     }
 })

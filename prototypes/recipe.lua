@@ -36,30 +36,6 @@ data:extend({
 -- screws & glass & inserter -> chemical plant
 -- science -> ammonia & urea -> melamine -> electromagnets -> electric machines
 
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "crafting", ---@diagnostic disable-line
-        name = "lv-resistor-1",
-        icons = du.icons("lv-resistor"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="coke", amount=1},
-            {type="item", name="tinned-copper-wire", amount=1},
-            {type="item", name="sap", amount=1},
-        },
-        results = {
-            {type="item", name="lv-resistor", amount=1},
-        }
-    }
-})
-
-
 
 
 -- resources progression
@@ -97,7 +73,7 @@ data:extend({
         enabled = false,
         category = "electrolysis", ---@diagnostic disable-line
         name = "water-electrolysis",
-        icons = du.icons{mod="base", name="fluid/water"}.add_corner("oxygen"):add(du.icon_co("hydrogen")),
+        icons = du.icons{mod="base", name="fluid/water"}:add_corner("oxygen"):add(du.icon_co("hydrogen")),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -119,7 +95,7 @@ data:extend({
         enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "latex-to-rubber-1",
-        icons = du.icons("rubber").add_corner("latex"),
+        icons = du.icons("rubber"):add_corner("latex"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -167,7 +143,7 @@ data:extend({
         enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "carbon-black-green-oil",
-        icons = du.icons("carbon-black").add_corner("green-oil"),
+        icons = du.icons("carbon-black"):add_corner("green-oil"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -192,7 +168,7 @@ data:extend({
         enabled = false,
         category = "flash-boiling", ---@diagnostic disable-line
         name = "flash-boil-water",
-        icons = du.icons("steam").add_corner("syngas"),
+        icons = du.icons("steam"):add_corner("syngas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -214,7 +190,7 @@ data:extend({
         enabled = false,
         category = "flash-boiling", ---@diagnostic disable-line
         name = "flash-boil-40c-water",
-        icons = du.icons("steam").add_corner("syngas"),
+        icons = du.icons("steam"):add_corner("syngas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -236,7 +212,7 @@ data:extend({
         enabled = false,
         category = "flash-boiling", ---@diagnostic disable-line
         name = "flash-boil-60c-water",
-        icons = du.icons("steam").add_corner("syngas"),
+        icons = du.icons("steam"):add_corner("syngas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -258,7 +234,7 @@ data:extend({
         enabled = false,
         category = "flash-boiling", ---@diagnostic disable-line
         name = "flash-boil-80c-water",
-        icons = du.icons("steam").add_corner("syngas"),
+        icons = du.icons("steam"):add_corner("syngas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

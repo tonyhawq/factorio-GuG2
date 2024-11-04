@@ -26,6 +26,8 @@ require("prototypes.heat-exchange")
 require("prototypes.tile")
 require("prototypes.styles")
 require("prototypes.yafc-fixes")
+require("prototypes.fixes")
+require("prototypes.environmental-science.incinerating-recipe")
 
 for _, type in pairs(data.raw) do
     for _, proto in pairs(data.raw[type] or {}) do

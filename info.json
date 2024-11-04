@@ -8,6 +8,7 @@
     "homepage": "",
     "dependencies": [
       "base >= 2.0",
-      "pycoalprocessinggraphics"
+      "pycoalprocessinggraphics",
+      "configurable-valves"
     ]
   }

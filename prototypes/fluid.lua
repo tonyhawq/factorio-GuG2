@@ -189,7 +189,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "100kJ",
         icons = du.icons("hydrogen"),
         order = "a[fluid]-j[sludge]"
     },

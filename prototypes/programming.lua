@@ -339,7 +339,7 @@ data:extend({
         enabled = false,
         category = "creative-assembling", ---@diagnostic disable-line
         name = "interrupts",
-        icons = du.icons().add_corner{name="priority-interrupt", corner=du.left_bottom}.add_corner{name="deferred-interrupt", corner=du.right_top},
+        icons = du.icons():add_corner{name="priority-interrupt", corner=du.left_bottom}:add_corner{name="deferred-interrupt", corner=du.right_top},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -422,7 +422,7 @@ data:extend({
         enabled = false,
         category = "creative-assembling", ---@diagnostic disable-line
         name = "thread-joining",
-        icons = du.icons().add_corner{name="thread",corner=du.left_top}.add_corner{name="thread", corner=du.right_top}.add_corner{name="dead-process", corner=du.middle},
+        icons = du.icons():add_corner{name="thread",corner=du.left_top}:add_corner{name="thread", corner=du.right_top}:add_corner{name="dead-process", corner=du.middle},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -512,7 +512,7 @@ data:extend({
         enabled = false,
         category = "creative-assembling", ---@diagnostic disable-line
         name = "nan-solving",
-        icons = du.icons().add_corner{name="float-nan",corner=du.left_top}.add_corner{name="memories", corner=du.right_bottom}.add_corner{name="arrow-135", corner=du.middle},
+        icons = du.icons():add_corner{name="float-nan",corner=du.left_top}:add_corner{name="memories", corner=du.right_bottom}:add_corner{name="arrow-135", corner=du.middle},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -533,7 +533,7 @@ data:extend({
         enabled = false,
         category = "creative-assembling", ---@diagnostic disable-line
         name = "nan-unboxing",
-        icons = du.icons("float-nan").add_corner{name="float-up",corner=du.left_top}.add_corner{name="float-inf",corner=du.right_top}.add_corner{name="float-down",corner=du.left_bottom},
+        icons = du.icons("float-nan"):add_corner{name="float-up",corner=du.left_top}:add_corner{name="float-inf",corner=du.right_top}:add_corner{name="float-down",corner=du.left_bottom},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -555,7 +555,7 @@ data:extend({
         enabled = false,
         category = "creative-assembling", ---@diagnostic disable-line
         name = "finite-exception-handling",
-        icons = du.icons("float-inf").add_corner("float-double-e"),
+        icons = du.icons("float-inf"):add_corner("float-double-e"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -577,7 +577,7 @@ data:extend({
         enabled = false,
         category = "creative-assembling", ---@diagnostic disable-line
         name = "positive-exception-handling",
-        icons = du.icons("float-up").add_corner("float-double-e"),
+        icons = du.icons("float-up"):add_corner("float-double-e"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -599,7 +599,7 @@ data:extend({
         enabled = false,
         category = "creative-assembling", ---@diagnostic disable-line
         name = "positive-exception-generation",
-        icons = du.icons("float-double-e").add_corner("float-up"),
+        icons = du.icons("float-double-e"):add_corner("float-up"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -621,7 +621,7 @@ data:extend({
         enabled = false,
         category = "creative-assembling", ---@diagnostic disable-line
         name = "positive-negation",
-        icons = du.icons("float-nan").add_corner{name="float-up", corner=du.left_top}.add_corner{name="float-down", corner=du.right_top},
+        icons = du.icons("float-nan"):add_corner{name="float-up", corner=du.left_top}:add_corner{name="float-down", corner=du.right_top},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

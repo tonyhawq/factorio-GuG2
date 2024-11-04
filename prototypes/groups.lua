@@ -34,6 +34,27 @@ local function metals(metal_name)
     log(metal_name.."-ingot-processing")
 end
 
+data:extend{
+    {
+        type = "item-subgroup",
+        group = "intermediate-products",
+        name = "incinerating",
+        order = "z[incinerate]-a",    
+    },
+    {
+        type = "item-subgroup",
+        group = "intermediate-products",
+        name = "incinerating-item",
+        order = "z[incinerate]-b",    
+    },
+    {
+        type = "item-subgroup",
+        group = "intermediate-products",
+        name = "incinerating-fluid",
+        order = "z[incinerate]-c",    
+    },
+}
+
 metals("tin")
 metals("copper")
 metals("bronze")

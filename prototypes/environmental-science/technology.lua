@@ -30,6 +30,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="bronze-plate-1",
             },
+            {
+                type = "unlock-recipe",
+                recipe="mechanical-inserter",
+            },
         },
         order = "b-b"
     },
@@ -58,11 +62,15 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="mechanical-inserter",
+                recipe="burner-inserter",
             },
             {
                 type = "unlock-recipe",
-                recipe="rivets",
+                recipe="rivets-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="rivets-2",
             },
             {
                 type = "unlock-recipe",
@@ -228,6 +236,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="coke-gasification",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="bound-porcelain",
             },
         },
@@ -263,6 +275,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="iron-ingot-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="iron-ingot-2",
             },
             {
                 type = "unlock-recipe",
@@ -367,6 +383,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="water-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="water-void",
             },
             {
                 type = "unlock-recipe",
@@ -941,6 +961,40 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "polymers-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/plastics.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"zinc-processing"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="synthetic-resin-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fiberboard",
+            },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "electromagnetism",
         icons = {
             {
@@ -948,7 +1002,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"steel-processing"},
+        prerequisites = {"polymers-1"},
         unit =
         {
             count = 10,
