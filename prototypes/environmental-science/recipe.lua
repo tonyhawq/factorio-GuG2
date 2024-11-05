@@ -803,7 +803,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "destructive-distillation", ---@diagnostic disable-line
+        category = "crafting", ---@diagnostic disable-line
         name = "fiberboard",
         icons = du.icons("fiberboard"),
         subgroup = "raw-material",
@@ -873,28 +873,6 @@ data:extend({
         },
         results = {
             {type="item", name="stone-wall", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "forestry-pine-growing", ---@diagnostic disable-line
-        name = "pine-growing-1",
-        icons = du.icons("tree-growing"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 400,
-        ingredients = {
-            {type="item", name="pine-sapling", amount=20},
-            {type="fluid", name="water", amount=600},
-        },
-        results = {
-            {type="item", name="pine-log", amount=200},
-            {type="item", name="pinecone", amount=25},
         }
     }
 })
@@ -1450,13 +1428,13 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "glassworking", ---@diagnostic disable-line
+        category = "crafting", ---@diagnostic disable-line
         name = "agar-dish-1",
         icons = du.icons("agar-dish"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 8,
+        energy_required = 0.5,
         ingredients = {
             {type="item", name="petri-dish", amount=1},
             {type="item", name="agar", amount=1},
@@ -1471,7 +1449,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "bioreacting", ---@diagnostic disable-line
+        category = "chemistry", ---@diagnostic disable-line
         name = "synthesis-methanogenesis",
         icons = du.icons("methane"):add_corner("hydrogen"):add_corner{name="bacterium", corner=du.right_bottom, scale=0.5},
         subgroup = "raw-material",
@@ -1495,7 +1473,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "bioreacting", ---@diagnostic disable-line
+        category = "chemistry", ---@diagnostic disable-line
         name = "synthesis-methanobacteria",
         icons = du.icons("cultivated-methanobacteria"):add_corner("dna"),
         subgroup = "raw-material",
@@ -1520,7 +1498,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "bioreacting", ---@diagnostic disable-line
+        category = "chemistry", ---@diagnostic disable-line
         name = "methanobacteria-1",
         icons = du.icons("cultivated-methanobacteria"),
         subgroup = "raw-material",
@@ -1599,6 +1577,24 @@ data:extend({
         results = {
             {type="fluid", name="water", amount=9},    
         }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "evaporating", ---@diagnostic disable-line
+        name = "organic-wastewater-void",
+        icons = du.icons("evaporate"):add_corner("organic-wastewater"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 10,
+        ingredients = {
+            {type="fluid", name="organic-wastewater", amount=100},
+        },
+        results = {}
     }
 })
 data:extend({
@@ -3012,7 +3008,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "separating", ---@diagnostic disable-line
+        category = "destructive-distillation", ---@diagnostic disable-line
         name = "wood-oil-separation",
         icons = du.icons("methanol"):add_corner("wood-oil"),
         subgroup = "raw-material",
@@ -3034,20 +3030,19 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "separating", ---@diagnostic disable-line
-        name = "wood-oil-separation",
-        icons = du.icons("methanol"):add_corner("wood-oil"),
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "wood-gasification",
+        icons = du.icons{mod="base",name="wood"}:add_corner("coal-gas"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
         energy_required = 3,
         ingredients = {
-            {type="fluid", name="wood-oil", amount=10},
+            {type="item", name="wood", amount=10},
         },
         results = {
-            {type="fluid", name="methanol", amount=3},
-            {type="fluid", name="creosote-oil", amount=4},
-            {type="fluid", name="tar", amount=3},
+            {type="fluid", name="wood-oil", amount=30},
+            {type="fluid", name="coal-gas", amount=20},
         }
     }
 })

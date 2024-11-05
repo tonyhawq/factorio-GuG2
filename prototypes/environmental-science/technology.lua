@@ -140,8 +140,12 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe = "wood-gasification",
+            },
+            {
+                type = "unlock-recipe",
                 recipe = "wood-oil-separation",
-            }
+            },
         },
         order = "b-b"
     },
@@ -444,6 +448,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="organic-wastewater-void",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="brine-salt-separation-1",
             },
             {
@@ -718,6 +726,18 @@ data:extend({
         },
         effects =
         {
+            {
+                type = "unlock-recipe",
+                recipe="forestry-soil-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="sap-extraction",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="sap-extraction-pine",
+            },
             {
                 type = "unlock-recipe",
                 recipe="green-liquor",
@@ -1018,6 +1038,10 @@ data:extend({
         },
         effects =
         {
+            {
+                type = "unlock-recipe",
+                recipe="formaldehyde-1",
+            },
             {
                 type = "unlock-recipe",
                 recipe="synthetic-resin-1",

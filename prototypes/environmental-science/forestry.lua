@@ -35,6 +35,9 @@ local function make_logs(names)
             sapling_recp:add_ingredient{type=data.raw.fluid[additional[1]] and "fluid" or "item", name=additional[1], amount=additional[2]}
         end
         local tree_item_name = log.name..dash.."tree-growing"
+        local sapling_amount = 20
+        local logs_per_sapling = 4
+        local water_per_log = 6
         data:extend({
             {
                 type = "recipe", 
@@ -46,16 +49,20 @@ local function make_logs(names)
                 subgroup = "raw-material",
                 order = "a[a]",
                 main_product = "",
-                energy_required = 400,
+                energy_required = sapling_amount * logs_per_sapling * 2,
                 ingredients = {
-                    {type="item", name=log.name..dash.."sapling", amount=20},
-                    {type="fluid", name="water", amount=600},
+                    {type="item", name=log.name..dash.."sapling", amount=sapling_amount},
+                    {type="fluid", name="water", amount=sapling_amount * logs_per_sapling * water_per_log},
                 },
                 results = {
-                    {type="item", name=log.name..dash.."log", amount=200},
+                    {type="item", name=log.name..dash.."log", amount=sapling_amount * logs_per_sapling},
                 }
             }
         })
+        local tree_recp = du.recipe(tree_item_name.."-1")
+        for _, additional in pairs(log.drops or {}) do
+            tree_recp:add_result{type=data.raw.fluid[additional[1]] and "fluid" or "item", name=additional[1], amount=additional[2] * sapling_amount}
+        end
         data:extend({
             {
                 type = "item",
@@ -68,7 +75,6 @@ local function make_logs(names)
                 fuel_category = "chemical",
             },
         })
-        local tree_recp = du.recipe(tree_item_name.."-1")
         if log.technology then
             sapling_recp:add_unlock(log.technology)
             tree_recp:add_unlock(log.technology)    
@@ -77,7 +83,11 @@ local function make_logs(names)
 end
 
 local function set_tree_drops(cfg)
-    for _, tree in pairs(cfg.trees) do
+    for _, tree_name in pairs(cfg.trees) do
+        local tree = data.raw.tree[tree_name]
+        if not tree then
+            error("No tree exists with name "..tostring(tree_name))
+        end
         tree.minable = {
             mining_time = (tree.minable or {mining_time=0.1}).mining_time,
             results = {}
@@ -97,10 +107,30 @@ make_logs{
 }
 du.recipe"oak-sapling-1":add_ingredient{type="item", name="acorn", amount=2}
 du.recipe"pine-sapling-1":add_ingredient{type="item", name="pinecone", amount=1}
+du.recipe"oak-tree-growing-1".energy_required = du.recipe"oak-tree-growing-1".energy_required * 2
 
-set_tree_drops{trees={"tree-03", "tree-04", "tree-05", "tree-06", "tree-06-brown", "tree-07", "tree-08", "tree-08-brown", "tree-08-red"}, drops={{name="log", amount=2}, {name="sap", amount=1, probability=0.25}}}
-set_tree_drops{trees={"tree-01", "tree-02", "tree-02-red"}, drops={{name="pine-log", amount=2}, {name="pinecone", amount=1, probability=0.25}}}
-set_tree_drops{trees={"tree-09", "tree-09-brown", "tree-09-red"}, drops={{name="oak-log", amount=2}, {name="acorn", amount=1, probability=0.25}}}
+local trees = {
+    "tree-03", "tree-04", "tree-05", "tree-06", "tree-06-brown", "tree-07", "tree-08", "tree-08-brown", "tree-08-red"
+}
+local pine_trees = {
+    "tree-01", "tree-02", "tree-02-red"
+}
+local oak_trees = {
+    "tree-09", "tree-09-brown", "tree-09-red"
+}
+
+local function set_tree_name(trees, name)
+    for _, tree in pairs(trees) do
+        data.raw.tree[tree].localised_name = {"tree-name."..(tree:sub(tree:len() - ("brown"):len() + 1, -1) == "brown" and "brown-" or tree:sub(tree:len() - ("red"):len() + 1, -1) == "red" and "red-" or "")..name}
+    end
+end
+
+set_tree_name(pine_trees, "pine")
+set_tree_name(oak_trees, "oak")
+
+set_tree_drops{trees=trees, drops={{name="log", amount=2}, {name="sap", amount=1, probability=0.25}}}
+set_tree_drops{trees=pine_trees, drops={{name="pine-log", amount=2}, {name="pinecone", amount=1, probability=0.25}}}
+set_tree_drops{trees=oak_trees, drops={{name="oak-log", amount=2}, {name="acorn", amount=1, probability=0.25}}}
 
 data:extend({
     {
@@ -109,7 +139,9 @@ data:extend({
         icons = du.icons("pinecone"),
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
-        stack_size = 50,
+        stack_size = 200,
+        fuel_value = "250kJ",
+        fuel_category = "chemical",
     },
     {
         type = "item",
@@ -117,6 +149,8 @@ data:extend({
         icons = du.icons("acorn"),
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
-        stack_size = 50,
+        stack_size = 200,
+        fuel_value = "250kJ",
+        fuel_category = "chemical",
     },
 })

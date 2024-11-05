@@ -147,16 +147,24 @@ dutil.metatable_indicies =
             recipe.results = results
             return recipe
         end,
-        add_ingredient = function (recipe, ingredient)
+        add_generic = function (recipe, generic, tabl)
             ensure_colon_syntax(recipe)
-            for key, present in pairs(recipe.ingredients) do
-                if present.type == (ingredient.type or "item") and present.name == ingredient.name then
-                    table.remove(recipe.ingredients, key)
+            for key, present in pairs(tabl) do
+                if present.type == (generic.type or "item") and present.name == generic.name then
+                    table.remove(tabl, key)
                     break
                 end
             end
-            table.insert(recipe.ingredients, ingredient)
-            return recipe
+            table.insert(tabl, generic)
+            return recipe 
+        end,
+        add_ingredient = function (recipe, ingredient)
+            ensure_colon_syntax(recipe)
+            return recipe:add_generic(ingredient, recipe.ingredients)
+        end,
+        add_result = function (recipe, result)
+            ensure_colon_syntax(recipe)
+            return recipe:add_generic(result, recipe.results)
         end,
         remove_ingredient = function (recipe, ingredient)
             ensure_colon_syntax(recipe)

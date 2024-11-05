@@ -128,9 +128,8 @@ data:extend({
             {type="item", name="wood", amount=10},
         },
         results = {
-            {type="item", name="coal", amount=5},
-            {type="fluid", name="coal-gas", amount=30},
-            {type="fluid", name="wood-oil", amount=20},
+            {type="fluid", name="coal-gas", amount=20},
+            {type="fluid", name="wood-oil", amount=30},
         }
     }
 })
