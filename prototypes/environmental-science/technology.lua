@@ -182,6 +182,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="splitter",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="fluid-mining-drill",
             },
             {
@@ -330,6 +334,32 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="offshore-pump",
             },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "optics",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/lamp.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"glassworking-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
             {
                 type = "unlock-recipe",
                 recipe="evaporator",
@@ -348,7 +378,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"fluid-handling", "coal-processing-1"},
+        prerequisites = {"optics", "coal-processing-1"},
         unit =
         {
             count = 10,
@@ -382,6 +412,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="wastewater-boiling-1",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="water-1",
             },
             {
@@ -406,6 +440,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="sludge-void-1",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="brine-salt-separation-1",
             },
             {
@@ -415,6 +453,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="brine-salt-void-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="mineralized-water-1",
             },
             {
                 type = "unlock-recipe",
@@ -678,18 +720,6 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="sapling-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="tree-growing-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="sap-extraction",
-            },
-            {
-                type = "unlock-recipe",
                 recipe="green-liquor",
             },
             {
@@ -834,6 +864,14 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="aluminum-carbide-reprocessing-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="aluminum-plate-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="aluminum-cable-1",
             },
             
         },
@@ -1045,6 +1083,60 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="lv-generator",
+            },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "electronics",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/electronics.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"electromagnetism"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="fiberboard",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="lv-resistor-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="lv-capacitor-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="solder-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="solder-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="vacuum-tube-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="electronic-circuit",
             },
         },
         order = "b-b"

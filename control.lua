@@ -1,13 +1,25 @@
-Bucketing = require("__GuG2__.scripts.bucketing")
 Cleanroom = require("__GuG2__.scripts.cleanroom")
 CleanroomGUI = require("__GuG2__.scripts.cleanroom-gui")
+Forestry = require("__GuG2__.scripts.forestry")
+
+local function on_created(event)
+    Cleanroom.on_created(event)
+    Forestry.on_created(event)
+end
+
+local function on_destroyed(event)
+    Cleanroom.on_destroyed(event)
+    Forestry.on_destroyed(event)
+end
 
 script.on_init(function ()
-    Bucketing.setup()
     Cleanroom.setup()
+    Forestry.setup()
 end)
 
 script.on_configuration_changed(function ()
+    Cleanroom.setup()
+    Forestry.setup()
 end)
 
 script.on_event(defines.events.on_tick, function(event_data)
@@ -31,23 +43,23 @@ script.on_event(defines.events.on_gui_click, function(event)
 end)
 
 script.on_event(defines.events.on_built_entity, function(event)
-    Cleanroom.on_created(event)
+    on_created(event)
 end)
 
 script.on_event(defines.events.on_robot_built_entity, function(event)
-    Cleanroom.on_created(event)
+    on_created(event)
 end)
 
 script.on_event(defines.events.on_entity_died, function (event)
-    Cleanroom.on_destroyed(event --[[@as EventData.on_entity_died]])
+    on_destroyed(event)
 end)
 
 script.on_event(defines.events.on_player_mined_entity, function(event)
-    Cleanroom.on_destroyed(event)
+    on_destroyed(event)
 end)
 
 script.on_event(defines.events.on_robot_mined_entity, function (event)
-    Cleanroom.on_destroyed(event)
+    on_destroyed(event)
 end)
 
 script.on_event(defines.events.on_gui_opened, function (event)

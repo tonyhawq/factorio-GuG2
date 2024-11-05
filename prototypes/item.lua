@@ -449,6 +449,14 @@ data:extend({
   },
   {
     type = "item",
+    name = "vacuum-tube",
+    icons = du.icons("vacuum-tube"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
     name = "crushed-aluminum-ore",
     icons = du.icons("crushed-aluminum-ore"),
     subgroup = "smelting-machine",
@@ -752,16 +760,6 @@ data:extend({
     stack_size = 50,
     burnt_result = "kelp-ash",
     fuel_value = "0.3MJ",
-    fuel_category = "chemical",
-  },
-  {
-    type = "item",
-    name = "log",
-    icons = du.icons("log"),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
-    stack_size = 50,
-    fuel_value = "3MJ",
     fuel_category = "chemical",
   },
   {

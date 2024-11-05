@@ -134,9 +134,10 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 4,
         ingredients = {
             {type="item", name="iron-oxide", amount=4},
+            {type="item", name="coke", amount=1},
         },
         results = {
             {type="item", name="iron-ingot", amount=1},
@@ -249,6 +250,7 @@ data:extend({
             {type="item", name="mechanical-inserter", amount=3},
             {type="item", name="small-tank", amount=1},
             {type="item", name="pipe", amount=6},
+            {type="item", name="glass", amount=4},
         },
         results = {
             {type="item", name="evaporator", amount=1},
@@ -844,19 +846,16 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
-        name = "sapling-1",
-        icons = du.icons("sapling"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
+        name = "forestry-soil-1",
+        icons = du.icons("forestry-soil"),
         energy_required = 2,
         ingredients = {
-            {type="item", name="planter-box", amount=2},
+            {type="item", name="seaweed", amount=2},
+            {type="item", name="stone", amount=1},
             {type="item", name="soil", amount=6},
-            {type="item", name="sap", amount=3},
         },
         results = {
-            {type="item", name="sapling", amount=2},
+            {type="item", name="forestry-soil", amount=6},
         }
     }
 })
@@ -865,19 +864,37 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "crafting-with-fluid", ---@diagnostic disable-line
-        name = "tree-growing-1",
+        category = "crafting", ---@diagnostic disable-line
+        name = "stone-wall",
+        icons = du.icons{mod="base", name="wall"},
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="stone-brick", amount=2},
+        },
+        results = {
+            {type="item", name="stone-wall", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "forestry-pine-growing", ---@diagnostic disable-line
+        name = "pine-growing-1",
         icons = du.icons("tree-growing"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 200,
+        energy_required = 400,
         ingredients = {
-            {type="item", name="sapling", amount=20},
+            {type="item", name="pine-sapling", amount=20},
             {type="fluid", name="water", amount=600},
         },
         results = {
-            {type="item", name="log", amount=200},
+            {type="item", name="pine-log", amount=200},
+            {type="item", name="pinecone", amount=25},
         }
     }
 })
@@ -938,6 +955,7 @@ data:extend({
             {type="item", name="stone-brick", amount=10},
             {type="item", name="steam-engine", amount=2},
             {type="item", name="burner-mining-drill", amount=3},
+            {type="item", name="analog-circuit", amount=3},
         },
         results = {
             {type="item", name="fluid-mining-drill", amount=1},
@@ -1007,6 +1025,26 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = true,
+        category = "crafting", ---@diagnostic disable-line
+        name = "pine-log-cutting",
+        icons = du.icons{mod="base",name="wood"},
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="pine-log", amount=1},
+        },
+        results = {
+            {type="item", name="wood", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         enabled = false,
         category = "crushing", ---@diagnostic disable-line
         name = "sap-extraction",
@@ -1016,10 +1054,30 @@ data:extend({
         main_product = "",
         energy_required = 4,
         ingredients = {
-            {type="item", name="log", amount=1},
+            {type="item", name="log", amount=2},
         },
         results = {
-            {type="item", name="sap", amount=1, probability=0.5},
+            {type="item", name="sap", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crushing", ---@diagnostic disable-line
+        name = "sap-extraction-pine",
+        icons = du.icons("sap"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="pine-log", amount=2},
+        },
+        results = {
+            {type="item", name="sap", amount=1},
         }
     }
 })
@@ -1036,6 +1094,7 @@ data:extend({
             {type="item", name="glass", amount=16},
             {type="item", name="small-tank", amount=4},
             {type="item", name="treated-wood", amount=10},
+            {type="item", name="analog-circuit", amount=3},
             {type="item", name="wrought-iron-rod", amount=6},
         },
         results = {
@@ -1234,6 +1293,48 @@ data:extend({
         results = {
             {type="fluid", name="steam", amount=100, temperature=165},
             {type="item", name="sodium-hydroxide", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "boiling", ---@diagnostic disable-line
+        name = "wastewater-boiling-1",
+        icons = du.icons{mod="base",name="fluid/steam"}:add_corner("wastewater"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 200/60,
+        ingredients = {
+            {type="fluid", name="wastewater", amount=10},
+        },
+        results = {
+            {type="fluid", name="steam", amount=80, temperature=165},
+            {type="fluid", name="sludge", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "sludge-void-1",
+        icons = du.icons("sludge"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="fluid", name="sludge", amount=10},
+            {type="fluid", name="water", amount=30},
+        },
+        results = {
+            {type="fluid", name="wastewater", amount=40},
         }
     }
 })
@@ -1579,6 +1680,27 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "mineralized-water-1",
+        icons = du.icons("mineralized-water"):add_corner("iron-oxide"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 10,
+        ingredients = {
+            {type="fluid", name="water", amount=100},
+            {type="item", name="iron-oxide", amount=10},
+        },
+        results = {
+            {type="fluid", name="mineralized-water", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "evaporating", ---@diagnostic disable-line
         name = "mineralized-water-void",
         icons = du.icons("evaporate"):add_corner("mineralized-water"),
@@ -1853,12 +1975,52 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        name = "aluminum-plate-1",
+        icons = du.icons("aluminum-plate"),
+        enabled = false,
+        category = "smithing",
+        subgroup = "aluminum-ingot-processing",
+        energy_required = 1,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="aluminum-ingot", amount=1},
+        },
+        results ={
+            {type="item", name="aluminum-plate", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "aluminum-cable-1",
+        icons = du.icons("aluminum-cable"),
+        enabled = false,
+        category = "crafting",
+        subgroup = "aluminum-ingot-processing",
+        energy_required = 1,
+        order = "b",
+        main_product = "",
+        ingredients = {
+            {type="item", name="aluminum-plate", amount=1},
+        },
+        results ={
+            {type="item", name="aluminum-cable", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         name = "aluminum-ingot-1",
         icons = du.icons("aluminum-ingot"),
         enabled = false,
         category = "smelting",
         subgroup = "aluminum-smelting",
-        energy_required = 2,
+        energy_required = 20,
         order = "1",
         main_product = "",
         ingredients = {
@@ -1868,7 +2030,7 @@ data:extend({
         },
         results ={
             {type="fluid", name="carbon-monoxide", amount=5},
-            {type="item", name="aluminum-ingot", amount=6},
+            {type="item", name="aluminum-ingot", amount=2},
             {type="item", name="aluminum-carbide", amount=8},
         }
     }
@@ -1882,7 +2044,7 @@ data:extend({
         enabled = false,
         category = "smelting",
         subgroup = "aluminum-smelting",
-        energy_required = 4,
+        energy_required = 24,
         order = "2",
         main_product = "",
         ingredients = {
@@ -1892,7 +2054,7 @@ data:extend({
         },
         results ={
             {type="fluid", name="carbon-monoxide", amount=5},
-            {type="item", name="aluminum-ingot", amount=3},
+            {type="item", name="aluminum-ingot", amount=1},
             {type="item", name="aluminum-carbide", amount=18},
         }
     }
@@ -1914,9 +2076,9 @@ data:extend({
             {type="fluid", name="water", amount=60},
         },
         results ={
-            {type="item", name="aluminum-hydroxide", amount=10},
-            {type="fluid", name="methane", amount=30},
-            {type="fluid", name="wastewater", amount=40},
+            {type="item", name="aluminum-hydroxide", amount=2},
+            {type="fluid", name="methane", amount=6},
+            {type="fluid", name="wastewater", amount=20},
         }
     }
 })
@@ -2051,7 +2213,7 @@ data:extend({
         name = "refractory-brick-1",
         icons = du.icons("refractory-brick"),
         enabled = false,
-        category = "smelting",
+        category = "crafting",
         subgroup = "raw-material",
         energy_required = 2,
         order = "a",
@@ -2222,8 +2384,8 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
-        name = "vaccuum-tube-1",
-        icons = du.icons("vaccuum-tube"),
+        name = "vacuum-tube-1",
+        icons = du.icons("vacuum-tube"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -2234,7 +2396,7 @@ data:extend({
             {type="item", name="aluminum-cable", amount=1},
         },
         results = {
-            {type="item", name="vaccum-tube", amount=3},
+            {type="item", name="vacuum-tube", amount=3},
         }
     }
 })
@@ -2245,7 +2407,7 @@ data:extend({
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "electronic-circuit",
-        icons = du.icons{mod="base",name="electronic-circuit"}:add_corner("vaccuum-tube"),
+        icons = du.icons{mod="base",name="electronic-circuit"}:add_corner("vacuum-tube"),
         energy_required = 2,
         ingredients = {
             {type="item", name="vacuum-tube", amount=3},
@@ -2270,8 +2432,8 @@ data:extend({
         icons = du.icons{mod="base",name="splitter"},
         energy_required = 2,
         ingredients = {
-            {type="item", name="electronic-circuit", amount=2},
-            {type="item", name="solder", amount=3},
+            {type="item", name="analog-circuit", amount=2},
+            {type="item", name="bronze-plate", amount=10},
             {type="item", name="underground-belt", amount=2},
         },
         results = {
@@ -2348,8 +2510,8 @@ data:extend({
         category = "crafting",
         energy_required = 0.5,
         ingredients = {
-            {type="item", name="treated-wood", amount=20},
-            {type="item", name="steel-beam", amount=8},
+            {type="item", name="analog-circuit", amount=5},
+            {type="item", name="steel-beam", amount=10},
             {type="item", name="iron-gear-wheel", amount=16},
             {type="item", name="small-electric-motor", amount=8},
         },
@@ -2418,19 +2580,19 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        enabled = false,
-        category = "autocrafting", ---@diagnostic disable-line
-        name = "copper-wire-1",
-        icons = du.icons("copper-wire"),
+        enabled = true,
+        category = "crafting", ---@diagnostic disable-line
+        name = "copper-cable-1",
+        icons = du.icons{mod="base", name="copper-cable"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 1,
         ingredients = {
             {type="item", name="copper-ingot", amount=1},
         },
         results = {
-            {type="item", name="copper-wire", amount=3},
+            {type="item", name="copper-cable", amount=3},
         }
     }
 })
@@ -2840,7 +3002,7 @@ data:extend({
             {type="fluid", name="water", amount=300},
         },
         results = {
-            {type="fluid", name="syngas", amount=80},
+            {type="fluid", name="syngas", amount=100},
             {type="fluid", name="flue-gas", amount=80, temperature=300},
         }
     }

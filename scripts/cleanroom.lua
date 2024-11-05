@@ -58,21 +58,21 @@ local controllers =
 
 function cleanroom.setup()
     ---@type table<integer, Bucket.Cleanroom>
-    storage.cbuckets = {{n=0}, {n=0}, {n=0}, {n=0}}
-    storage.cbucket_idx = 0
-    storage.cbucket_adding_idx = 0
+    storage.cbuckets = storage.cbuckets or {{n=0}, {n=0}, {n=0}, {n=0}}
+    storage.cbucket_idx = storage.cbucket_idx or 0
+    storage.cbucket_adding_idx = storage.cbucket_adding_idx or 0
 
     ---@type table<uint32, Cleanroom>
-    storage.cleanrooms = {}
+    storage.cleanrooms = storage.cleanrooms or {}
 
     ---@type table<uint32, uint32>
-    storage.cleanroom_composed_of = {}
+    storage.cleanroom_composed_of = storage.cleanroom_composed_of or {}
 
     ---@type table<integer, table<integer, CleanroomID>>
-    storage.tiles_inside_cleanroom = {}
+    storage.tiles_inside_cleanroom = storage.tiles_inside_cleanroom or {}
 
     ---@type table<integer, CleanroomID>
-    storage.built_inside_cleanroom = {}
+    storage.built_inside_cleanroom = storage.built_inside_cleanroom or {}
 end
 
 ---@param name string

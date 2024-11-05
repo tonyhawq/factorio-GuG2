@@ -64,16 +64,29 @@ end
 
 local function ensure_colon_syntax(first_argument)
     if type(first_argument) == "table" and first_argument.mt_type == "g2" then
-        error("Ensure metatable calls use : syntax")
+        return
     end
+    error("Ensure metatable calls use : syntax")
 end
 
 dutil.metatables = {}
 
+dutil.base_mt =
+{
+    mt_type = "g2",
+    set = function (tabl, k, v)
+        ensure_colon_syntax(tabl)
+        tabl[k] = v
+        return tabl
+    end,
+}
+dutil.base_mt.__index = function(_, key)
+    return dutil.base_mt[key]
+end
+
 dutil.metatable_indicies =
 {
     icons = {
-        mt_type = "g2",
         type = "icons",
         get = function (icons)
             ensure_colon_syntax(icons)
@@ -124,7 +137,6 @@ dutil.metatable_indicies =
     item = {},
     fluid = {},
     recipe = {
-        mt_type = "g2",
         set_ingredients = function (recipe, ingredients)
             ensure_colon_syntax(recipe)
             recipe.ingredients = ingredients
@@ -202,7 +214,6 @@ dutil.metatable_indicies =
         end,
     },
     technology = {
-        mt_type = "g2",
         add_unlock = function (tech, recipe)
             tech.effects = tech.effects or {}
             for _, effect in pairs(tech.effects) do
@@ -225,8 +236,11 @@ function dutil.metatable(name)
         dutil.metatables[name] = {
             __index = function(real_table, key)
                 local value = dutil.metatable_indicies[name][key]
+                if not value then
+                    value = dutil.base_mt[key]
+                end
                 return value 
-            end
+            end,
         }
     end
     return dutil.metatables[name]

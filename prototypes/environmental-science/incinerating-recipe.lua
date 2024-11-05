@@ -76,3 +76,7 @@ incinerate("raw-coal")
 incinerate("tar")
 incinerate("coal-gas")
 incinerate("hydrogen"):set_results{{type="fluid",name="water",amount=1}}
+incinerate("methane")
+incinerate("carbon-monoxide"):set("energy_required", 0.25)
+incinerate("carbon-dioxide"):set("energy_required", 0.25)
+incinerate("flue-gas"):set("energy_required", 0.25)

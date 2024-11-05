@@ -627,6 +627,163 @@ data:extend({
     }
 })
 
+local function forestry_box(side_length)
+    data:extend({
+        {
+            no_fix = true,
+            type = "simple-entity",
+            name = "g2-tree-"..side_length.."x"..side_length,
+            localised_name = {"label.tree-airspace"},
+            flags = {"not-on-map", "not-deconstructable", "not-blueprintable", "not-in-kill-statistics"},
+            selectable_in_game = false,
+            remove_decoratives = "true",
+            collision_mask = {
+                layers = {
+                    non_farmland = true
+                },
+            },
+            collision_box = {
+                {side_length / -2 + 0.1, side_length / -2 + 0.1}, {side_length/2 - 0.1, side_length/2 - 0.1}  
+            },
+            selection_box = {
+                {side_length / -2 + 0.1, side_length / -2 + 0.1}, {side_length/2 - 0.1, side_length/2 - 0.1}
+            },
+        }
+    })
+end
+
+local function ensure(def, item)
+    if not def[item] then
+        error("Missing "..tostring(item))
+    end
+end
+
+local function forestry_tree(def)
+    ensure(def, "name")
+    ensure(def, "result")
+    ensure(def, "categories")
+    ensure(def, "animation")
+    ensure(def, "side_length")
+    forestry_box(def.side_length)
+    local boxed_anim = table.deepcopy(def.animation)
+    table.insert(boxed_anim.layers, 1,
+    {
+        filename = "__GuG2__/graphics/entity/forestry/visualization.png",
+        width = 32,
+        height = 32,
+        scale = def.side_length
+    })
+    data:extend({
+        {
+            no_fix = true,
+            type = "assembling-machine",
+            name = def.name,
+            icons = du.icons(def.name),
+            flags = {"placeable-neutral", "player-creation"},
+            minable = {mining_time = 1, result = def.result},
+            placeable_by = {item=def.result, count=1},
+            fast_replaceable_group = "forestry-tree",
+            max_health = 300,
+            corpse = "big-remnants",
+            dying_explosion = "medium-explosion",
+            collision_mask = {
+                layers = {
+                    non_farmland = true,
+                    water_tile = true,
+                    cleanroom_tile = true,
+                    item=true,
+                    meltable=true,
+                    object=true,
+                    player=true,
+                    is_object=true,
+                    is_lower_object=true
+                }
+            },
+            collision_box = {{-1.3, -1.3}, {1.3, 1.3}},
+            selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+            match_animation_speed_to_activity = false,
+            crafting_categories = def.categories,
+            crafting_speed = 1,
+            energy_source = {
+                type = "void",
+            },
+            energy_usage = "1kW",
+            graphics_set = {
+                animation = def.animation
+            },
+            fluid_boxes = {
+                {
+                    production_type = "output",
+                    pipe_covers = pipecoverspictures(),
+                    volume = 100,
+                    pipe_picture = assembler2pipepictures(), --.05
+                    pipe_connections = {{flow_direction = "input-output", position = {0, -1}, direction=defines.direction.north}, {flow_direction = "input-output", position = {0, 1}, direction=defines.direction.south}}
+                },
+                {
+                    production_type = "input",
+                    pipe_covers = pipecoverspictures(),
+                    volume = 100,
+                    pipe_picture = assembler2pipepictures(), --.05
+                    pipe_connections = {{flow_direction = "input-output", position = {-1, 0}, direction=defines.direction.west}, {flow_direction = "input-output", position = {1, 0}, direction=defines.direction.east}}
+                },
+            },
+            vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
+            working_sound = {
+                sound = {filename = "__pycoalprocessinggraphics__/sounds/distilator.ogg", volume = 1.2},
+                idle_sound = {filename = "__pycoalprocessinggraphics__/sounds/distilator.ogg", volume = 0.3},
+                apparent_volume = 2.5
+            },
+        }
+    })
+end
+
+local function forestry_tree_base()
+    return {
+        filename = "__GuG2__/graphics/entity/forestry/base.png",
+        width=196,
+        height=196,
+        scale = 0.5,
+        frame_count = 1,
+        line_length = 1
+    }
+end
+
+data:extend({
+    {
+        type = "recipe-category",
+        name = "forestry-generic-growing"
+    },
+    {
+        type = "recipe-category",
+        name = "forestry-pine-growing"
+    },
+    {
+        type = "recipe-category",
+        name = "forestry-oak-growing"
+    },
+})
+
+forestry_tree{
+    name = "forestry-pine",
+    result = "pine-sapling",
+    categories = {"forestry-generic-growing", "forestry-pine-growing"},
+    side_length = 9,
+    animation = {
+        layers = {
+            forestry_tree_base(),
+            {
+                filename = "__GuG2__/graphics/entity/forestry/pine/tree.png",
+                width = 188,
+                height = 306,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5,
+                shift = util.by_pixel(0, -40)
+            },
+        }
+    }
+}
+
 local gf_boiler_entity = util.table.deepcopy(data.raw.boiler.boiler)
 gf_boiler_entity.name = "scale-boiler"
 gf_boiler_entity.icon = "__GuG2__/graphics/icons/scale-boiler.png"
@@ -3723,6 +3880,24 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         place_result = "blast-furnace"
+    },
+    {
+        type = "item",
+        name = "pine-sapling",
+        icons = du.icons("pine-sapling"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "forestry-pine"
+    },
+    {
+        type = "item",
+        name = "oak-sapling",
+        icons = du.icons("oak-sapling"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        --place_result = "forestry-pine"
     },
     {
         type = "recipe-category",

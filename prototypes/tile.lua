@@ -4,7 +4,11 @@ data:extend({
     {
         type = "collision-layer",
         name = "cleanroom_tile"    
-    }
+    },
+    {
+        type = "collision-layer",
+        name = "non_farmland"    
+    },
 })
 
 data:extend({
@@ -83,6 +87,38 @@ data:extend({
             condition_size = 1,
             condition = {
                 layers = {water_tile = true},
+            },
+        }
+    },
+})
+local forestry_soil = table.deepcopy(data.raw.tile.landfill)
+forestry_soil.name = "forestry-soil"
+forestry_soil.check_collision_with_entities = true
+forestry_soil.minable = {mining_time = 0.1, result = "forestry-soil"}
+forestry_soil.collision_mask = {
+    layers = {
+        ground_tile = true,
+    }
+}
+forestry_soil.is_farmland = true
+forestry_soil.walking_speed_modifier = 0.9
+forestry_soil.decorative_removal_probability = 0
+data:extend({forestry_soil})
+
+data:extend({
+    {
+        type = "item",
+        name = "forestry-soil",
+        icons = du.icons("forestry-soil"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_as_tile =
+        {
+            result = "forestry-soil",
+            condition_size = 1,
+            condition = {
+                layers = {water_tile = true, cleanroom_tile = true},
             },
         }
     },

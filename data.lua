@@ -11,8 +11,11 @@ table.insert(data.raw.lab.lab.inputs, "environmental-science-pack")
 require("prototypes.groups")
 
 require("prototypes.pre-science.recipe")
+
 require("prototypes.environmental-science.recipe")
 require("prototypes.environmental-science.technology")
+require("prototypes.environmental-science.forestry")
+
 require("prototypes.automation-science.recipe")
 
 require("prototypes.minibuffer-entity")

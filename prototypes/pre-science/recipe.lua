@@ -281,13 +281,13 @@ data:extend({
         order = "a[a]",
         main_product = "",
         enabled = true,
-        energy_required = 2,
+        energy_required = 4,
         ingredients = {
-            {type="item", name="lead-ore", amount=4},
+            {type="item", name="lead-ore", amount=8},
         },
         results = {
-            {type="item", name="lead-ingot", amount=2},
-            {type="item", name="raw-silver-dust", amount=1, probability=0.25},
+            {type="item", name="lead-ingot", amount=1},
+            {type="item", name="raw-silver-dust", amount=1, probability=0.125},
         }
     }
 })
@@ -304,10 +304,10 @@ data:extend({
         enabled = true,
         energy_required = 2,
         ingredients = {
-            {type="item", name="lead-ingot", amount=4},
+            {type="item", name="lead-ingot", amount=1},
         },
         results = {
-            {type="item", name="lead-plate", amount=3},
+            {type="item", name="lead-plate", amount=2},
         }
     }
 })
