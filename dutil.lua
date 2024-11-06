@@ -160,8 +160,12 @@ dutil.metatable_indicies =
         end,
         has_generic = function (recipe, generic, tabl)
             ensure_colon_syntax(recipe)
+            log("hola senor")
+            if type(generic) == "string" then
+                generic = {name=generic}
+            end
+            generic.type = data.raw.fluid[generic.name] and "fluid" or "item"
             for key, present in pairs(tabl) do
-                _G.log("does "..tostring(generic.type or "item")..":"..tostring(generic.name).." = "..tostring(present.type)..":"..tostring(present.name))
                 if present.type == (generic.type or "item") and present.name == generic.name then
                     return key
                 end
@@ -169,19 +173,8 @@ dutil.metatable_indicies =
             return nil
         end,
         get_generic = function (recipe, generic, tabl)
-            local was = generic
-            if type(generic) == "string" then
-                generic = {name=generic}
-            end
-            generic.type = data.raw.fluid[generic.name] and "fluid" or "item"
-            local log = _G.log
-            if type(_G.log) == "string" then
-                error(serpent.block(_G))
-            end
-            _G.log("looking for "..generic.name.. " ("..tostring(was)")")
             local idx = recipe:has_generic(generic, tabl)
-            local ingredient = recipe.ingredients[idx]
-            _G.log("found "..generic.name)
+            local ingredient = tabl[idx]
             return ingredient
         end,
         adjust_generic_amount = function (recipe, by, tabl)
@@ -199,7 +192,7 @@ dutil.metatable_indicies =
         end,
         adjust_ingredient_amount = function (recipe, by)
             ensure_colon_syntax(recipe)
-            return recipe:adjust_generic_amount(by, recipe.results)
+            return recipe:adjust_generic_amount(by, recipe.ingredients)
         end,
         adjust_product_amount = function (recipe, by)
             ensure_colon_syntax(recipe)
@@ -255,8 +248,8 @@ dutil.metatable_indicies =
             recipe.enabled = false
             for _, tech in pairs(data.raw.technology) do
                 for i = 1, #(tech.effects or {}) do
-                    local effect = tech.effects
-                    if effect.type == "unlock-recipe" and effect.name == recipe then
+                    local effect = tech.effects[i]
+                    if effect.type == "unlock-recipe" and effect.recipe == recipe then
                         table.remove(tech.effects, i)
                         i = i - 1
                     end
