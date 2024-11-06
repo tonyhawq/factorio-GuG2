@@ -158,6 +158,61 @@ dutil.metatable_indicies =
             table.insert(tabl, generic)
             return recipe 
         end,
+        has_generic = function (recipe, generic, tabl)
+            ensure_colon_syntax(recipe)
+            for key, present in pairs(tabl) do
+                _G.log("does "..tostring(generic.type or "item")..":"..tostring(generic.name).." = "..tostring(present.type)..":"..tostring(present.name))
+                if present.type == (generic.type or "item") and present.name == generic.name then
+                    return key
+                end
+            end
+            return nil
+        end,
+        get_generic = function (recipe, generic, tabl)
+            local was = generic
+            if type(generic) == "string" then
+                generic = {name=generic}
+            end
+            generic.type = data.raw.fluid[generic.name] and "fluid" or "item"
+            local log = _G.log
+            if type(_G.log) == "string" then
+                error(serpent.block(_G))
+            end
+            _G.log("looking for "..generic.name.. " ("..tostring(was)")")
+            local idx = recipe:has_generic(generic, tabl)
+            local ingredient = recipe.ingredients[idx]
+            _G.log("found "..generic.name)
+            return ingredient
+        end,
+        adjust_generic_amount = function (recipe, by, tabl)
+            ensure_colon_syntax(recipe)
+            for _, generic in pairs(tabl) do
+                generic.amount = generic.amount * by
+            end
+            return recipe
+        end,
+        get_ingredient = function (recipe, ingredient)
+            return recipe:get_generic(ingredient, recipe.ingredients)
+        end,
+        get_result = function (recipe, result)
+            return recipe:get_generic(result, recipe.results)
+        end,
+        adjust_ingredient_amount = function (recipe, by)
+            ensure_colon_syntax(recipe)
+            return recipe:adjust_generic_amount(by, recipe.results)
+        end,
+        adjust_product_amount = function (recipe, by)
+            ensure_colon_syntax(recipe)
+            return recipe:adjust_generic_amount(by, recipe.results)
+        end,
+        has_ingredient = function (recipe, ingredient)
+            ensure_colon_syntax(recipe)
+            return recipe:has_generic(ingredient, recipe.ingredients)
+        end,
+        has_result = function (recipe, result)
+            ensure_colon_syntax(recipe)
+            return recipe:has_generic(result, recipe.results)
+        end,
         add_ingredient = function (recipe, ingredient)
             ensure_colon_syntax(recipe)
             return recipe:add_generic(ingredient, recipe.ingredients)

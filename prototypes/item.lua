@@ -788,6 +788,14 @@ data:extend({
   },
   {
     type = "item",
+    name = "ureic-feces",
+    icons = du.icons("ureic-feces"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+  },
+  {
+    type = "item",
     name = "synthetic-resin",
     icons = du.icons("synthetic-resin"),
     subgroup = "smelting-machine",

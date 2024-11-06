@@ -1019,6 +1019,32 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "urea-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/plastics.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"zinc-processing"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "polymers-1",
         icons = {
             {

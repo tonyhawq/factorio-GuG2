@@ -1,6 +1,7 @@
 local du = require("dutil")
 
 local function make_logs(names)
+    local created = {growing={}, sapling={}}
     for _, log in pairs(names) do
         local category = "forestry-"..log.name.."-growing"
         local dash = "-"
@@ -31,6 +32,7 @@ local function make_logs(names)
             },
         })
         local sapling_recp = du.recipe(sapling_item_name.."-1")
+        created.sapling[sapling_item_name.."-1"] = sapling_recp
         for _, additional in pairs(log.sapling_ingredients or {}) do
             sapling_recp:add_ingredient{type=data.raw.fluid[additional[1]] and "fluid" or "item", name=additional[1], amount=additional[2]}
         end
@@ -60,6 +62,8 @@ local function make_logs(names)
             }
         })
         local tree_recp = du.recipe(tree_item_name.."-1")
+        tree_recp.growing_log_type = log.name..dash.."log"
+        created.growing[tree_item_name.."-1"] = tree_recp
         for _, additional in pairs(log.drops or {}) do
             tree_recp:add_result{type=data.raw.fluid[additional[1]] and "fluid" or "item", name=additional[1], amount=additional[2] * sapling_amount}
         end
@@ -80,6 +84,7 @@ local function make_logs(names)
             tree_recp:add_unlock(log.technology)    
         end
     end
+    return created
 end
 
 local function set_tree_drops(cfg)
@@ -100,7 +105,7 @@ local function set_tree_drops(cfg)
     end
 end
 
-make_logs{
+local created_recipes = make_logs{
     {name="", sapling_ingredients={{"sap", 2}}, technology="wood-processing"},
     {name="pine", sapling_ingredients={{"pinecone", 1}}, drops={{"pinecone", 3/2}}, technology="wood-processing"},
     {name="oak", sapling_ingredients={{"acorn", 2}}, drops={{"acorn", 3}}, technology="wood-processing"},
@@ -108,6 +113,26 @@ make_logs{
 du.recipe"oak-sapling-1":add_ingredient{type="item", name="acorn", amount=2}
 du.recipe"pine-sapling-1":add_ingredient{type="item", name="pinecone", amount=1}
 du.recipe"oak-tree-growing-1".energy_required = du.recipe"oak-tree-growing-1".energy_required * 2
+
+-- create ureic feces
+for _, recipe in pairs(created_recipes.growing) do
+    local ureic = table.deepcopy(recipe)
+    ureic.type = "recipe"
+    ureic.name = ureic.name.."-ureic-1"
+    data:extend{ureic}
+    local log_amount = recipe:get_result(recipe.growing_log_type).amount or 999
+    if ureic:has_ingredient("water") then
+        local water_cost = ureic:get_ingredient("water").amount
+        ureic:adjust_ingredient_amount(1/2)
+        ureic:add_ingredient{type="fluid",name="water",amount=water_cost}
+    else
+        ureic:adjust_ingredient_amount(1/2)
+    end
+    ureic:add_result{type="item", name=recipe.growing_log_type, amount=log_amount / 10}
+    ureic:adjust_product_amount(1/2)
+    ureic:add_result{type="item", name="ureic-feces", amount=2}
+    ureic:add_unlock("urea-1")
+end
 
 local trees = {
     "tree-03", "tree-04", "tree-05", "tree-06", "tree-06-brown", "tree-07", "tree-08", "tree-08-brown", "tree-08-red"
