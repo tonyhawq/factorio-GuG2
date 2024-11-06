@@ -783,6 +783,29 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "chemistry", ---@diagnostic disable-line
+        name = "urea-ureic-feces",
+        icons = du.icons("urea"):add_corner("ureic-feces"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="ureic-feces", amount=3},
+            {type="item", name="agar-dish", amount=1},
+        },
+        results = {
+            {type="item", name="urea", amount=1},
+            {type="item", name="petri-dish", amount=1},
+            {type="fluid", name="organic-wastewater", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
         name = "synthetic-resin-1",
         icons = du.icons("synthetic-resin"),
         subgroup = "raw-material",
@@ -833,10 +856,30 @@ data:extend({
         main_product = "",
         energy_required = 20,
         ingredients = {
-            {type="fluid", name="mineralized-water", amount=20},
+            {type="fluid", name="seawater", amount=200},
         },
         results = {
-            {type="item", name="seaweed", amount=1},
+            {type="item", name="seaweed", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "seaweed-2",
+        icons = du.icons("seaweed"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 10,
+        ingredients = {
+            {type="fluid", name="mineralized-water", amount=50},
+        },
+        results = {
+            {type="item", name="seaweed", amount=10},
         }
     }
 })

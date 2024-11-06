@@ -177,10 +177,23 @@ dutil.metatable_indicies =
             local ingredient = tabl[idx]
             return ingredient
         end,
-        adjust_generic_amount = function (recipe, by, tabl)
+        adjust_generic_amount = function (recipe, tabl, by_or_name, optional_by)
             ensure_colon_syntax(recipe)
+            local ingredient = type(by_or_name) == "string" and {name=by_or_name} or type(by_or_name) == "table" and by_or_name
+            if ingredient then
+                if not optional_by then
+                    error("Expected number as argument 3, got nil")
+                end
+                if recipe:has_generic(ingredient, tabl) then
+                    local present = recipe:get_generic(ingredient, tabl)
+                    recipe:add_generic({type=present.type, name=present.name, amount=present.amount * optional_by}, tabl)
+                else
+                    error("Recipe "..tostring(recipe.name).." does not contain an ingredient with name "..tostring(ingredient.name))
+                end
+                return recipe
+            end
             for _, generic in pairs(tabl) do
-                generic.amount = generic.amount * by
+                generic.amount = generic.amount * by_or_name
             end
             return recipe
         end,
@@ -190,13 +203,13 @@ dutil.metatable_indicies =
         get_result = function (recipe, result)
             return recipe:get_generic(result, recipe.results)
         end,
-        adjust_ingredient_amount = function (recipe, by)
+        adjust_ingredient_amount = function (recipe, by_or_name, optional_by)
             ensure_colon_syntax(recipe)
-            return recipe:adjust_generic_amount(by, recipe.ingredients)
+            return recipe:adjust_generic_amount(recipe.ingredients, by_or_name, optional_by)
         end,
-        adjust_product_amount = function (recipe, by)
+        adjust_product_amount = function (recipe, by_or_name, optional_by)
             ensure_colon_syntax(recipe)
-            return recipe:adjust_generic_amount(by, recipe.results)
+            return recipe:adjust_generic_amount(recipe.results, by_or_name, optional_by)
         end,
         has_ingredient = function (recipe, ingredient)
             ensure_colon_syntax(recipe)

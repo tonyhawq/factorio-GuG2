@@ -600,6 +600,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="stone-brick-1",
             },
+            {
+                type = "unlock-recipe",
+                recipe="stone-wall",
+            },
         },
         order = "b-b"
     },
@@ -783,6 +787,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="seaweed-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="seaweed-2",
             },
             {
                 type = "unlock-recipe",
@@ -1038,6 +1046,10 @@ data:extend({
         },
         effects =
         {
+            {
+                type = "unlock-recipe",
+                recipe="urea-ureic-feces",
+            },
         },
         order = "b-b"
     },

@@ -63,6 +63,7 @@ local function make_logs(names)
         })
         local tree_recp = du.recipe(tree_item_name.."-1")
         tree_recp.growing_log_type = log.name..dash.."log"
+        tree_recp.sapling = sapling_item_name
         created.growing[tree_item_name.."-1"] = tree_recp
         for _, additional in pairs(log.drops or {}) do
             tree_recp:add_result{type=data.raw.fluid[additional[1]] and "fluid" or "item", name=additional[1], amount=additional[2] * sapling_amount}
@@ -101,7 +102,7 @@ local function set_tree_drops(cfg)
             drop.type = drop.type or (data.raw.fluid[drop.name] and "fluid") or "item"
             table.insert(tree.minable.results, table.deepcopy(drop))    
         end
-        tree.g2_set_drops = true
+        tree.g2_set_drops = true ---@diagnostic disable-line
     end
 end
 
@@ -120,15 +121,17 @@ for _, recipe in pairs(created_recipes.growing) do
     ureic.type = "recipe"
     ureic.name = ureic.name.."-ureic-1"
     data:extend{ureic}
-    local log_amount = recipe:get_result(recipe.growing_log_type).amount or 999
-    if ureic:has_ingredient("water") then
+    local log_amount = recipe:get_ingredient(ureic.sapling).amount or 1
+    --[[if ureic:has_ingredient("water") then
         local water_cost = ureic:get_ingredient("water").amount
         ureic:adjust_ingredient_amount(1/2)
         ureic:add_ingredient{type="fluid",name="water",amount=water_cost}
     else
         ureic:adjust_ingredient_amount(1/2)
-    end
-    ureic:add_result{type="item", name=recipe.growing_log_type, amount=log_amount / 10}
+    end]]
+    ureic:adjust_ingredient_amount(1/2)
+    ureic:adjust_ingredient_amount("water", 1/2)
+    ureic:add_result{type="item", name=recipe.growing_log_type, amount=log_amount}
     ureic:adjust_product_amount(1/2)
     ureic:add_result{type="item", name="ureic-feces", amount=2}
     ureic:add_unlock("urea-1")
