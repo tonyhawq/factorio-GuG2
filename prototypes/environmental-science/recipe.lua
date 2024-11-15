@@ -738,8 +738,8 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
-        name = "automation-science-pack",
-        icons = du.icons{mod="base", name="automation-science-pack"},
+        name = "mechanical-science-pack-1",
+        icons = du.icons("mechanical-science-pack"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -750,12 +750,10 @@ data:extend({
             {type="item", name="stone-brick", amount=3},
         },
         results = {
-            {type="item", name="automation-science-pack", amount=2},
+            {type="item", name="mechanical-science-pack", amount=2},
         }
     }
 })
-local du = require("dutil")
-
 data:extend({
     {
         type = "recipe", 
@@ -797,6 +795,29 @@ data:extend({
             {type="item", name="urea", amount=1},
             {type="item", name="petri-dish", amount=1},
             {type="fluid", name="organic-wastewater", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "urea-organic-wastewater",
+        icons = du.icons("urea"):add_corner("organic-wastewater"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="organic-wastewater", amount=12},
+            {type="item", name="glass", amount=1},
+            {type="item", name="coal", amount=1},
+        },
+        results = {
+            {type="item", name="urea", amount=1},
+            {type="fluid", name="wastewater", amount=12},
         }
     }
 })

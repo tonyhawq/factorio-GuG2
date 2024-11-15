@@ -1,38 +1,62 @@
 local du = require("dutil")
 
 data:extend({
-    {
-        type = "item",
-        name = "bitumen",
-        icons = du.icons("bitumen"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
-        stack_size = 50
-      },
+  {
+    type = "item",
+    name = "bitumen",
+    icons = du.icons("bitumen"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
 })
 data:extend({
   {
-      type = "item",
-      name = "rubber",
-      icons = du.icons("rubber"),
-      subgroup = "smelting-machine",
-      order = "a[stone-furnace]",
-      stack_size = 50
-    },
+    type = "item",
+    name = "rubber",
+    icons = du.icons("rubber"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
 })
 data:extend({
   {
-      type = "tool",
-      name = "environmental-science-pack",
-      localised_description = {"item-description.science-pack"},
-      icons = du.icons("environmental-science-pack"),
-      subgroup = "science-pack",
-      order = "a[a]",
-      stack_size = 200,
-      durability = 1,
-      durability_description_key = "description.science-pack-remaining-amount-key",
-      durability_description_value = "description.science-pack-remaining-amount-value"
-    },
+    type = "tool",
+    name = "environmental-science-pack",
+    localised_description = {"item-description.science-pack"},
+    icons = du.icons("environmental-science-pack"),
+    subgroup = "science-pack",
+    order = "a[a]",
+    stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount-key",
+    durability_description_value = "description.science-pack-remaining-amount-value"
+  },
+  {
+    type = "tool",
+    name = "mechanical-science-pack",
+    localised_description = {"item-description.science-pack"},
+    icons = du.icons("mechanical-science-pack"),
+    subgroup = "science-pack",
+    order = "a[a]",
+    stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount-key",
+    durability_description_value = "description.science-pack-remaining-amount-value"
+  },
+  {
+    type = "tool",
+    name = "automation-science-pack",
+    localised_description = {"item-description.science-pack"},
+    icons = du.icons("automation-science-pack"),
+    subgroup = "science-pack",
+    order = "a[a]",
+    stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount-key",
+    durability_description_value = "description.science-pack-remaining-amount-value"
+  },
 })
 data:extend({
   {
@@ -251,7 +275,7 @@ data:extend({
     order = "a[stone-furnace]",
     stack_size = 50
   },
-
+  
   {
     type = "item",
     name = "wrought-iron-plate",
@@ -268,7 +292,7 @@ data:extend({
     order = "a[stone-furnace]",
     stack_size = 200
   },
-
+  
   {
     type = "item",
     name = "copper-sheet",
@@ -333,7 +357,7 @@ data:extend({
     order = "a[stone-furnace]",
     stack_size = 50
   },
-
+  
   {
     type = "item",
     name = "lead-ingot",
@@ -358,7 +382,7 @@ data:extend({
     order = "a[stone-furnace]",
     stack_size = 50
   },
-
+  
   {
     type = "item",
     name = "copper-wire",
@@ -806,6 +830,14 @@ data:extend({
     type = "item",
     name = "cellulose",
     icons = du.icons("cellulose"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+  },
+  {
+    type = "item",
+    name = "evaporite",
+    icons = du.icons("evaporite"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50,

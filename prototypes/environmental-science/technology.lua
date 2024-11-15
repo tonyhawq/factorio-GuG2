@@ -174,6 +174,10 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
+                recipe="mechanical-science-pack-1",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="screws",
             },
             {
@@ -204,6 +208,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="soil-2",
             },
+            {
+                type = "mining-with-fluid",
+                modifier = true
+            }
         },
         order = "b-b"
     },
@@ -503,6 +511,7 @@ data:extend({
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
@@ -667,6 +676,7 @@ data:extend({
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
@@ -725,6 +735,7 @@ data:extend({
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
@@ -775,6 +786,7 @@ data:extend({
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
@@ -817,6 +829,7 @@ data:extend({
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
@@ -850,7 +863,7 @@ data:extend({
 data:extend({
     {
         type = "technology",
-        name = "aluminum-processing",
+        name = "aluminum-processing-1",
         icons = {
             {
                 icon = "__core__/graphics/icons/force/neutral-force-icon.png",
@@ -864,6 +877,7 @@ data:extend({
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
@@ -901,7 +915,6 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="aluminum-cable-1",
             },
-            
         },
         order = "b-b"
     },
@@ -916,13 +929,14 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"aluminum-processing"},
+        prerequisites = {"aluminum-processing-1"},
         unit =
         {
             count = 10,
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
@@ -957,6 +971,7 @@ data:extend({
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
@@ -999,6 +1014,7 @@ data:extend({
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
@@ -1034,13 +1050,14 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"zinc-processing"},
+        prerequisites = {"wood-processing"},
         unit =
         {
             count = 10,
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
@@ -1049,6 +1066,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="urea-ureic-feces",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="urea-organic-wastewater",
             },
         },
         order = "b-b"
@@ -1064,13 +1085,14 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"zinc-processing"},
+        prerequisites = {"urea-1"},
         unit =
         {
             count = 10,
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
@@ -1109,6 +1131,7 @@ data:extend({
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
@@ -1167,6 +1190,7 @@ data:extend({
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },

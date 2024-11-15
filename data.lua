@@ -6,7 +6,8 @@ for _, recipe in pairs(data.raw.recipe) do
     recipe.enabled = false
 end
 
-table.insert(data.raw.lab.lab.inputs, "environmental-science-pack")
+table.insert(data.raw.lab.lab.inputs, 1, "environmental-science-pack")
+table.insert(data.raw.lab.lab.inputs, 2, "mechanical-science-pack")
 
 require("prototypes.groups")
 
@@ -31,6 +32,7 @@ require("prototypes.styles")
 require("prototypes.yafc-fixes")
 require("prototypes.fixes")
 require("prototypes.environmental-science.incinerating-recipe")
+require("prototypes.resource.evaporite")
 
 for _, type in pairs(data.raw) do
     for _, proto in pairs(data.raw[type] or {}) do
