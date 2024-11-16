@@ -3338,7 +3338,7 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="ferrite", amount=1},
-            {type="item", name="copper-wire", amount=3},
+            {type="item", name="copper-cable", amount=3},
             {type="item", name="glass", amount=1},
         },
         results = {

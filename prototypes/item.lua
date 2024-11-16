@@ -402,31 +402,6 @@ data:extend({
     order = "a[stone-furnace]",
     stack_size = 50
   },
-  
-  {
-    type = "item",
-    name = "copper-wire",
-    icons = du.icons("copper-wire"),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
-    stack_size = 50
-  },
-  {
-    type = "item",
-    name = "tinned-copper-wire",
-    icons = du.icons("tinned-copper-wire"),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
-    stack_size = 50
-  },
-  {
-    type = "item",
-    name = "annealed-copper-wire",
-    icons = du.icons("annealed-copper-wire"),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
-    stack_size = 50
-  },
   {
     type = "item",
     name = "latex",

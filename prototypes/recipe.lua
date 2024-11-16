@@ -57,7 +57,7 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="item", name="brick", amount=20},
-            {type="item", name="copper-wire", amount=10},
+            {type="item", name="copper-cable", amount=10},
             {type="item", name="pipe", amount=20},
             {type="item", name="iron-sheet", amount=10},
         },
