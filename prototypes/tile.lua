@@ -103,7 +103,15 @@ forestry_soil.collision_mask = {
 forestry_soil.is_farmland = true
 forestry_soil.walking_speed_modifier = 0.9
 forestry_soil.decorative_removal_probability = 0
+forestry_soil.autoplace = {
+    probability_expression =
+    "if(moisture > 0.5,"..
+    "if(elevation < (0.5 - multioctave_noise{x=x, y=y, persistence=0.75,seed0=map_seed, seed1=0, octaves=2, input_scale = 0.25}),"..
+    "water_base(2 - multioctave_noise{x = x, y = y, persistence = 0.75, seed0 = map_seed, seed1 = 0, octaves = 1} * moisture ^ 2 * 2 + moisture ^ 2 * 10, 50),"..
+    "-inf), -inf)",
+}
 data:extend({forestry_soil})
+data.raw.planet.nauvis.map_gen_settings.autoplace_settings.tile.settings["forestry-soil"] = {}
 
 data:extend({
     {

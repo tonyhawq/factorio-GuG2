@@ -157,8 +157,8 @@ set_tree_name(pine_trees, "pine")
 set_tree_name(oak_trees, "oak")
 
 set_tree_drops{trees=trees, drops={{name="log", amount=2}, {name="sap", amount=1, probability=0.25}}}
-set_tree_drops{trees=pine_trees, drops={{name="pine-log", amount=2}, {name="pinecone", amount=1, probability=0.25}}}
-set_tree_drops{trees=oak_trees, drops={{name="oak-log", amount=2}, {name="acorn", amount=1, probability=0.25}}}
+set_tree_drops{trees=pine_trees, drops={{name="pine-log", amount=2}, {name="pinecone", amount=1, probability=0.5}}}
+set_tree_drops{trees=oak_trees, drops={{name="oak-log", amount=2}, {name="acorn", amount=1, probability=0.5}}}
 
 data:extend({
     {

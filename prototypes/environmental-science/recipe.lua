@@ -1850,6 +1850,28 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "sulfuric-acid-flue-gas",
+        icons = du.icons("sulfuric-acid"):add_corner("flue-gas"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 6,
+        ingredients = {
+            {type="fluid", name="flue-gas", amount=100},
+            {type="fluid", name="water", amount=10},
+        },
+        results = {
+            {type="fluid", name="sulfuric-acid", amount=10},
+            {type="fluid", name="steam", temperature=165, amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "evaporating", ---@diagnostic disable-line
         name = "mineralized-water-void",
         icons = du.icons("evaporate"):add_corner("mineralized-water"),
