@@ -93,19 +93,26 @@ dutil.metatable_indicies =
             if #icons == 0 then
                 error("Cannot get from empty icons table", 2)
             end
-            return icons[#icons]
+            return (icons[#icons])
         end,
         add = function (icons, name, size, discard)
             ensure_colon_syntax(icons)
             if type(name) == "table" then
                 local config = name
-                return icons:add(get_icon_path_from_config(config), config.size, true)
+                return (icons:add(get_icon_path_from_config(config), config.size, true))
             end
+            local specced_size = size
+            local specced_discard = discard
+            if type(specced_size) == "boolean" then
+                specced_discard = specced_size
+                specced_size = dutil.size
+            end
+            specced_size = specced_size or dutil.size
             table.insert(icons, {
-                icon = get_icon_path(name, discard),
-                icon_size = size or dutil.size
+                icon = get_icon_path(name, specced_discard),
+                icon_size = specced_size
             })
-            return icons
+            return (icons)
         end,
         add_corner = function(icons, name, size, discard)
             ensure_colon_syntax(icons)
@@ -114,7 +121,7 @@ dutil.metatable_indicies =
                 icons:add(config)
                 icons:get().scale = config.scale or dutil.corner_scale
                 icons:get().shift = dutil.get_corner_offset(config.corner or dutil.default_corner)
-                return icons
+                return (icons)
             end
             table.insert(icons, {
                 icon = get_icon_path(name, discard),
@@ -122,7 +129,7 @@ dutil.metatable_indicies =
                 scale = dutil.corner_scale,
                 shift = dutil.get_corner_offset(dutil.default_corner)
             })
-            return icons
+            return (icons)
         end,
         tint = function(icons, tint)
             ensure_colon_syntax(icons)
@@ -130,7 +137,7 @@ dutil.metatable_indicies =
                 error("Tint requires a table")
             end
             icons:get().tint = tint
-            return icons
+            return (icons)
         end
     },
     assembling_machine = {},
@@ -140,12 +147,12 @@ dutil.metatable_indicies =
         set_ingredients = function (recipe, ingredients)
             ensure_colon_syntax(recipe)
             recipe.ingredients = ingredients
-            return recipe
+            return (recipe)
         end,
         set_results = function (recipe, results)
             ensure_colon_syntax(recipe)
             recipe.results = results
-            return recipe
+            return (recipe)
         end,
         add_generic = function (recipe, generic, tabl)
             ensure_colon_syntax(recipe)
@@ -156,7 +163,7 @@ dutil.metatable_indicies =
                 end
             end
             table.insert(tabl, generic)
-            return recipe 
+            return (recipe)
         end,
         has_generic = function (recipe, generic, tabl)
             ensure_colon_syntax(recipe)
@@ -167,7 +174,7 @@ dutil.metatable_indicies =
             generic.type = data.raw.fluid[generic.name] and "fluid" or "item"
             for key, present in pairs(tabl) do
                 if present.type == (generic.type or "item") and present.name == generic.name then
-                    return key
+                    return (key)
                 end
             end
             return nil
@@ -175,7 +182,7 @@ dutil.metatable_indicies =
         get_generic = function (recipe, generic, tabl)
             local idx = recipe:has_generic(generic, tabl)
             local ingredient = tabl[idx]
-            return ingredient
+            return (ingredient)
         end,
         adjust_generic_amount = function (recipe, tabl, by_or_name, optional_by)
             ensure_colon_syntax(recipe)
@@ -190,42 +197,42 @@ dutil.metatable_indicies =
                 else
                     error("Recipe "..tostring(recipe.name).." does not contain an ingredient with name "..tostring(ingredient.name))
                 end
-                return recipe
+                return (recipe)
             end
             for _, generic in pairs(tabl) do
                 generic.amount = generic.amount * by_or_name
             end
-            return recipe
+            return (recipe)
         end,
         get_ingredient = function (recipe, ingredient)
-            return recipe:get_generic(ingredient, recipe.ingredients)
+            return (recipe:get_generic(ingredient, recipe.ingredients))
         end,
         get_result = function (recipe, result)
-            return recipe:get_generic(result, recipe.results)
+            return (recipe:get_generic(result, recipe.results))
         end,
         adjust_ingredient_amount = function (recipe, by_or_name, optional_by)
             ensure_colon_syntax(recipe)
-            return recipe:adjust_generic_amount(recipe.ingredients, by_or_name, optional_by)
+            return (recipe:adjust_generic_amount(recipe.ingredients, by_or_name, optional_by))
         end,
         adjust_product_amount = function (recipe, by_or_name, optional_by)
             ensure_colon_syntax(recipe)
-            return recipe:adjust_generic_amount(recipe.results, by_or_name, optional_by)
+            return (recipe:adjust_generic_amount(recipe.results, by_or_name, optional_by))
         end,
         has_ingredient = function (recipe, ingredient)
             ensure_colon_syntax(recipe)
-            return recipe:has_generic(ingredient, recipe.ingredients)
+            return (recipe:has_generic(ingredient, recipe.ingredients))
         end,
         has_result = function (recipe, result)
             ensure_colon_syntax(recipe)
-            return recipe:has_generic(result, recipe.results)
+            return (recipe:has_generic(result, recipe.results))
         end,
         add_ingredient = function (recipe, ingredient)
             ensure_colon_syntax(recipe)
-            return recipe:add_generic(ingredient, recipe.ingredients)
+            return (recipe:add_generic(ingredient, recipe.ingredients))
         end,
         add_result = function (recipe, result)
             ensure_colon_syntax(recipe)
-            return recipe:add_generic(result, recipe.results)
+            return (recipe:add_generic(result, recipe.results))
         end,
         remove_ingredient = function (recipe, ingredient)
             ensure_colon_syntax(recipe)
@@ -248,13 +255,13 @@ dutil.metatable_indicies =
                     end
                 end
             end
-            return recipe
+            return (recipe)
         end,
         add_unlock = function (recipe, technology)
             ensure_colon_syntax(recipe)
             recipe.enabled = false
             dutil.technology(technology):add_unlock(recipe.name)
-            return recipe
+            return (recipe)
         end,
         set_unlock = function (recipe, technology)
             ensure_colon_syntax(recipe)
@@ -269,17 +276,17 @@ dutil.metatable_indicies =
                 end
             end
             dutil.technology(technology):add_unlock(recipe.name)
-            return recipe
+            return (recipe)
         end,
         show = function (recipe)
             ensure_colon_syntax(recipe)
             recipe.hidden = false
-            return recipe
+            return (recipe)
         end,
         hide = function (recipe)
             ensure_colon_syntax(recipe)
             recipe.hidden = true
-            return recipe
+            return (recipe)
         end,
     },
     technology = {
@@ -287,11 +294,11 @@ dutil.metatable_indicies =
             tech.effects = tech.effects or {}
             for _, effect in pairs(tech.effects) do
                 if effect.recipe and effect.recipe.name == recipe then
-                    return tech
+                    return (tech)
                 end
             end
             table.insert(tech.effects, {type="unlock-recipe", recipe=recipe})
-            return tech
+            return (tech)
         end,
     },
     inserter = {},

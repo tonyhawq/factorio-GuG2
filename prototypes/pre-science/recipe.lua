@@ -253,6 +253,29 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = true,
+        category = "crafting", ---@diagnostic disable-line
+        name = "lab-1",
+        icons = du.icons("burner-lab"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="glass", amount=8},
+            {type="item", name="mechanical-inserter", amount=3},
+            {type="item", name="transport-belt", amount=3},
+            {type="item", name="brick", amount=15},
+        },
+        results = {
+            {type="item", name="burner-lab", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "environmental-science-pack",
         icons = du.icons("environmental-science-pack"),

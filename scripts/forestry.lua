@@ -43,7 +43,7 @@ function forestry.spawn_decoratives(cfg)
 end
 
 function forestry.on_created(event)
-    local entity = event.entity
+    local entity = event.source_entity
     local box = forestry.boxes_by_tree[entity.name]
     if not box then
         return
@@ -59,16 +59,17 @@ function forestry.on_created(event)
         draw_on_ground = true,
     }
     forestry.spawn_decoratives{position=entity.position, radius=box.side_length / 2, set=box.decoratives, surface=entity.surface}
-    storage.forestry_trees[entity.unit_number] = {box=created_box, render=created_render}
+    local destruct_id = script.register_on_object_destroyed(entity)
+    storage.forestry_trees[destruct_id] = {box=created_box, render=created_render}
 end
 
 function forestry.on_destroyed(event)
-    local tree = storage.forestry_trees[event.entity.unit_number]
-    if not tree then
-        return
+    local tree = storage.forestry_trees[event.registration_number]
+    if tree then
+        tree.box.destroy()
+        tree.render.destroy()
+        tree = nil
     end
-    tree.box.destroy()
-    tree.render.destroy()
 end
 
 return forestry

@@ -47,6 +47,18 @@ data:extend({
   },
   {
     type = "tool",
+    name = "electromagnetic-science-pack",
+    localised_description = {"item-description.science-pack"},
+    icons = du.icons("electromagnetic-science-pack"),
+    subgroup = "science-pack",
+    order = "a[a]",
+    stack_size = 200,
+    durability = 1, 
+    durability_description_key = "description.science-pack-remaining-amount-key",
+    durability_description_value = "description.science-pack-remaining-amount-value"
+  },
+  {
+    type = "tool",
     name = "automation-science-pack",
     localised_description = {"item-description.science-pack"},
     icons = du.icons("automation-science-pack"),
@@ -141,7 +153,7 @@ data:extend({
     order = "a[stone-furnace]",
     stack_size = 50,
     fuel_category = "chemical",
-    fuel_value = "2MJ"
+    fuel_value = "4MJ"
   },
   {
     type = "item",
@@ -151,7 +163,7 @@ data:extend({
     order = "a[stone-furnace]",
     stack_size = 50,
     fuel_category = "chemical",
-    fuel_value = "4MJ"
+    fuel_value = "8MJ"
   },
   {
     type = "item",
@@ -161,7 +173,7 @@ data:extend({
     order = "a[stone-furnace]",
     stack_size = 50,
     fuel_category = "chemical",
-    fuel_value = "8MJ"
+    fuel_value = "16MJ"
   },
   {
     type = "item",
@@ -305,6 +317,14 @@ data:extend({
     type = "item",
     name = "steel-ingot",
     icons = du.icons("steel-ingot"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "manganese-ingot",
+    icons = du.icons("manganese-ingot"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 200

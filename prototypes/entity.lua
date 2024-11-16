@@ -6,6 +6,19 @@ require ("__core__.lualib.circuit-connector-sprites")
 
 require ("__base__.prototypes.entity.pipecovers") ---@diagnostic disable-line
 
+local function composite_trigger()
+    return {
+        type = "direct",
+        action_delivery = {
+            type = "instant",
+            source_effects = {
+                type = "script",
+                effect_id = "g2cc",
+            }
+        }
+    }
+end
+
 local distillation_rig = table.deepcopy(data.raw["assembling-machine"]["oil-refinery"])
 table.insert(distillation_rig.crafting_categories, "distillation")
 distillation_rig.fluid_boxes = {
@@ -158,16 +171,14 @@ data:extend({
         collision_box = {{-2.9, -2.9}, {2.9, 2.9}},
         selection_box = {{-3.0, -3.0}, {3.0, 3.0}},
         match_animation_speed_to_activity = false,
-        module_specification = {
-            module_slots = 1
-        },
-        allowed_effects = {"consumption", "speed", "productivity", "pollution"},
         crafting_categories = {"smithing"},
         crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution"},
         energy_source =
         {
             type = "fluid",
-            effectivity = 1,
+            effectivity = 0.5,
             emissions_per_minute = {pollution=8},
             scale_fluid_usage = true,
             burns_fluid = true,
@@ -180,7 +191,7 @@ data:extend({
                 secondary_draw_orders = { north = -1 }
             },
         },
-        energy_usage = "0.6MW",
+        energy_usage = "0.4MW",
         graphics_set = {
             animation = {
                 layers = {
@@ -256,14 +267,13 @@ data:extend({
         collision_box = {{-3.9, -3.9}, {3.9, 3.9}},
         selection_box = {{-4, -4}, {4, 4}},
         match_animation_speed_to_activity = false,
-        module_specification = {
-            module_slots = 1
-        },
-        allowed_effects = {"consumption", "speed", "pollution", "productivity"},
         crafting_categories = {"destructive-distillation"},
         crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution"},
         energy_source = {
             type = "burner",
+            effectivity = 0.5,
             fuel_categories = {"chemical"},
             fuel_inventory_size = 1,
             emissions_per_minute = {pollution=6},
@@ -388,12 +398,10 @@ data:extend({
         collision_box = {{-3.3, -3.3}, {3.3, 3.3}},
         selection_box = {{-3.5, -3.5}, {3.5, 3.5}},
         match_animation_speed_to_activity = false,
-        module_specification = {
-            module_slots = 1
-        },
-        allowed_effects = {"consumption", "speed", "pollution", "productivity"},
         crafting_categories = {"glassworking"},
         crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution"},
         energy_source =
         {
             type = "fluid",
@@ -413,7 +421,7 @@ data:extend({
                 pipe_picture = assembler2pipepictures(),
                 production_type = "input",
             },
-            effectivity = 1,
+            effectivity = 0.8,
             burns_fluid = true,
             light_flicker =
             {
@@ -448,7 +456,7 @@ data:extend({
                 },
             }
         },
-        energy_usage = "12MW",
+        energy_usage = "10MW",
         graphics_set = {
             animation = {
                 layers = {
@@ -563,12 +571,10 @@ data:extend({
         collision_box = {{-3.45, -3.45}, {3.45, 3.45}},
         selection_box = {{-3.5, -3.5}, {3.5, 3.5}},
         match_animation_speed_to_activity = false,
-        module_specification = {
-            module_slots = 1
-        },
-        allowed_effects = {"consumption", "speed", "productivity", "pollution"},
         crafting_categories = {"heat-exchanging"},
         crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution"},
         energy_source = {
             type = "void",
         },
@@ -686,6 +692,7 @@ local function forestry_tree(def)
             max_health = 300,
             corpse = "big-remnants",
             dying_explosion = "medium-explosion",
+            created_effect = composite_trigger(),
             collision_mask = {
                 layers = {
                     non_farmland = true,
@@ -960,9 +967,12 @@ data:extend({
         crafting_categories = {"crushing"},
         crafting_speed = 1,
         energy_usage = "250kW",
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution"},
         energy_source =
         {
             type = "fluid",
+            effectivity = 0.6,
             scale_fluid_usage = true,
             fluid_box = {
                 filter = "steam",
@@ -1107,12 +1117,13 @@ data:extend({
         type = "wall",
         name = "cleanroom-wall",
         icon = "__GuG2__/graphics/icons/cleanroom-wall.png",
-        icon_size = 64, icon_mipmaps = 4,
+        icon_size = 64,
         flags = {"placeable-neutral", "player-creation"},
         collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
         selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
         damaged_trigger_effect = hit_effects.wall(),
         minable = {mining_time = 0.2, result = "cleanroom-wall"},
+        created_effect = composite_trigger(),
         fast_replaceable_group = "cleanroom-wall",
         max_health = 350,
         repair_speed_modifier = 2,
@@ -1841,11 +1852,6 @@ data:extend({
             emissions_per_minute = {pollution=0}
         },
         energy_usage = "675kW",
-        module_specification =
-        {
-            module_slots = 4
-        },
-        allowed_effects = {"consumption", "speed", "productivity"}
     },
     {
         g2_clean = true, ---@diagnostic disable-line
@@ -2542,6 +2548,7 @@ steam_engine.graphics_set = {
 steam_engine.energy_source = {
     type = "fluid",
     maximum_temperature=165,
+    effectivity = 0.5,
     fluid_box = {
         volume=100,
         height = 1,
@@ -2562,7 +2569,7 @@ steam_engine.energy_source = {
             name = "light-smoke",
             north_position = {0.9, 0.0},
             east_position = {-2.0, -2.0},
-            frequency = 10 / 32,
+            frequency = 3,
             starting_vertical_speed = 0.08,
             starting_frame_deviation = 60
         }
@@ -2573,6 +2580,8 @@ steam_engine.energy_source = {
         light_intensity_to_size_coefficient = 1
     }
 }
+steam_engine.produces_temperature = 1200
+steam_engine.produces_amount = (du.J(steam_engine.energy_usage) * 60) / (du.J(du.fluid("rotational-force").heat_capacity) * steam_engine.produces_temperature)
 data:extend({steam_engine})
 
 data:extend({
@@ -2592,7 +2601,7 @@ data:extend({
         ingredients = {
         },
         results = {
-            {type="fluid", name="rotational-force", amount=((du.J(du.assembling_machine("steam-engine").energy_usage) * 60) / (du.J(du.fluid("rotational-force").heat_capacity) * 1200)) * 0.1, temperature=1200},
+            {type="fluid", name="rotational-force", amount= steam_engine.produces_amount * 0.1, temperature=steam_engine.produces_temperature},
         }
     }
 })
@@ -2608,7 +2617,7 @@ data:extend({
         corpse = "steam-engine-remnants",
         dying_explosion = "steam-engine-explosion",
         alert_icon_shift = util.by_pixel(0, -12),
-        effectivity = 1,
+        effectivity = 0.8,
         fluid_usage_per_tick = 2,
         maximum_temperature = 1200,
         resistances =
@@ -2694,9 +2703,43 @@ data:extend({
     }
 })
 
+local function watts_from_rotational_force(per_second, temperature)
+    return du.J(du.fluid("rotational-force").heat_capacity) * temperature * per_second
+end
+
+local function kW_from_rotational_force(per_second, temperature)
+    return watts_from_rotational_force(per_second, temperature) / 1000
+end
+
+local lv_generator = data.raw.generator["lv-generator"]
+lv_generator.localised_description = {"",
+{"entity-description.lv-generator"},
+"\n",
+{
+    "label.consumes-rotational-force-amount",
+    tostring(lv_generator.maximum_temperature),
+    tostring(kW_from_rotational_force(lv_generator.fluid_usage_per_tick * 60, lv_generator.maximum_temperature)),
+    "kW"
+},
+"\n",
+{"label.no-cleanroom"}}
+
+local steam_engine = data.raw["assembling-machine"]["steam-engine"]
+steam_engine.localised_description = {"",
+{"entity-description.lv-generator"},
+"\n",
+{
+    "label.produces-rotational-force-amount",
+    tostring(steam_engine.produces_temperature),
+    tostring(kW_from_rotational_force(steam_engine.produces_amount, steam_engine.produces_temperature)),
+    "kW"
+},
+"\n",
+{"label.no-cleanroom"}}
+
 data.raw["assembling-machine"]["assembling-machine-1"].energy_source = {
     type = "fluid",
-    effectivity = 1,
+    effectivity = 0.6,
     emissions_per_minute = {pollution=8},
     scale_fluid_usage = true,
     burns_fluid = false,
@@ -2710,7 +2753,7 @@ data.raw["assembling-machine"]["assembling-machine-1"].energy_source = {
         secondary_draw_orders = { north = -1 }
     },
 }
-data.raw["assembling-machine"]["assembling-machine-1"].crafting_categories = {"crafting", "crafting-with-fluid", "autocrafting"}
+data.raw["assembling-machine"]["assembling-machine-1"].crafting_categories = {"crafting", "crafting-with-fluid", "advanced-crafting", "machining"}
 data.raw["assembling-machine"]["assembling-machine-1"].fluid_boxes = table.deepcopy(data.raw["assembling-machine"]["assembling-machine-2"].fluid_boxes)
 data.raw["assembling-machine"]["assembling-machine-1"].energy_usage = "200kW"
 
@@ -2734,10 +2777,12 @@ data:extend({
         scale_entity_info_icon = true,
         crafting_categories = {"boiling"},
         crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution"},
         energy_source =
         {
             type = "fluid",
-            effectivity = 1,
+            effectivity = 0.8,
             emissions_per_minute = {pollution=8},
             scale_fluid_usage = true,
             burns_fluid = true,
@@ -2904,6 +2949,7 @@ steam_inserter.icons = du.icons("steam-inserter")
 steam_inserter.energy_source =
 {
     type = "fluid",
+    effectivity = 0.5,
     scale_fluid_usage = true,
     fluid_box = {
         filter = "steam",
@@ -2956,6 +3002,8 @@ stone_furnace.crafting_categories = {"smelting"}
 stone_furnace.collision_box = {{-1.3, -1.3}, {1.3, 1.3}}
 stone_furnace.selection_box = {{-1.3, -1.5}, {1.3, 1.5}}
 stone_furnace.energy_usage = "400kW"
+stone_furnace.module_slots = 2
+stone_furnace.allowed_effects = {"consumption", "pollution"}
 for _, layer in pairs(stone_furnace.graphics_set.animation.layers) do
     layer.scale = (layer.scale or 1) * 1.5
 end
@@ -3003,15 +3051,14 @@ data:extend({
         collision_box = {{-3.48, -3.48}, {3.48, 3.48}},
         selection_box = {{-3.5, -3.5}, {3.5, 3.5}},
         match_animation_speed_to_activity = false,
-        module_specification = {
-            module_slots = 1
-        },
-        allowed_effects = {"consumption", "speed", "productivity", "pollution"},
         crafting_categories = {"extracting"},
         crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution"},
         energy_source =
         {
             type = "fluid",
+            effectivity = 0.5,
             scale_fluid_usage = true,
             fluid_box = {
                 filter = "steam",
@@ -3098,8 +3145,8 @@ data:extend({
         energy_source =
         {
             type = "burner",
+            effectivity = 0.5,
             fuel_categories = {"chemical"},
-            effectivity = 1,
             fuel_inventory_size = 1,
             emissions_per_minute = { pollution = 12 },
             light_flicker = {color = {0,0,0}},
@@ -3277,8 +3324,6 @@ data:extend({
         collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
         selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         match_animation_speed_to_activity = false,
-        module_slots = 1,
-        allowed_effects = {"consumption", "speed", "productivity", "pollution"},
         crafting_categories = {"evaporating"},
         crafting_speed = 1,
         energy_source = {type = "void"},
@@ -3390,11 +3435,12 @@ data:extend({
         collision_box = {{-3.4, -3.4}, {3.4, 3.4}},
         selection_box = {{-3.5, -3.5}, {3.5, 3.5}},
         match_animation_speed_to_activity = false,
-        module_slots = 1,
-        allowed_effects = {"consumption", "speed", "productivity", "pollution"},
         crafting_categories = {"smelting", "blasting"},
         crafting_speed = 4,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution"},
         energy_source = {
+            effectivity = 0.5,
             type = "burner",
             fuel_categories = {"chemical"},
             fuel_inventory_size = 1,
@@ -3517,6 +3563,8 @@ data:extend({
         corpse = "big-remnants",
         crafting_categories = {"incinerating"},
         crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution"},
         resistances = {
             {
                 type = "fire",
@@ -3528,6 +3576,7 @@ data:extend({
         fluid_boxes = table.deepcopy(data.raw["assembling-machine"]["assembling-machine-1"].fluid_boxes),
         energy_source = {
             type = "burner",
+            effectivity = 0.5,
             fuel_categories = {"chemical"},
             fuel_inventory_size = 1,
             emissions_per_minute = {pollution=30},
@@ -3602,7 +3651,718 @@ data:extend({
     }
 })
 
+local burner_lab = table.deepcopy(data.raw.lab.lab)
+burner_lab.name = "burner-lab"
+burner_lab.minable.result = "burner-lab"
+burner_lab.icons = du.icons("burner-lab")
+burner_lab.energy_source = {
+    type="burner",
+    fuel_inventory_size=1,
+    fuel_categories = {"chemical"},
+    smoke = {
+        {
+            name = "smoke",
+            frequency = 12,
+            position = util.by_pixel(0, -32),
+            deviation = util.by_pixel(8,8),
+            starting_vertical_speed = 0.08,
+            starting_frame_deviation = 60
+        }
+    }
+}
+data:extend({burner_lab})
+
+data.raw.lab["burner-lab"].inputs = {
+    "environmental-science-pack",
+    "mechanical-science-pack",
+    "electromagnetic-science-pack",
+}
+
+data.raw.lab.lab.inputs = {
+    "environmental-science-pack",
+    "mechanical-science-pack",
+    "electromagnetic-science-pack",
+    "automation-science-pack",
+}
+
 data:extend({
+    {
+        type = "assembling-machine",
+        name = "fabricator-1",
+        icons = du.icons("__Krastorio2Assets__/icons/entities/advanced-assembling-machine.png", true),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "fabricator-1"},
+        max_health = 400,
+        corpse = "assembling-machine-3-remnants",
+        dying_explosion = "assembling-machine-3-explosion",
+        alert_icon_shift = util.by_pixel(-3, -12),
+        resistances =
+        {
+            {
+                type = "acid",
+                percent = 95
+            }
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {-1.5, -1.5}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {0.5, -1.5}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {-0.5, 1.5}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {1.5, 1.5}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                    volume = 0.45
+                }
+            },
+            audible_distance_modifier = 0.5,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
+        selection_box = {{-2, -2}, {2, 2}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
+        fast_replaceable_group = "fabricator",
+        graphics_set = {
+            animation =
+            {
+                layers =
+                {
+                    {
+                        filename = "__Krastorio2Assets__/buildings/advanced-assembling-machine/advanced-assembling-machine.png",
+                        priority = "high",
+                        width = 320,
+                        height = 320,
+                        frame_count = 1,
+                        line_length = 1,
+                        scale = 0.4,
+                        repeat_count = 32,
+                    },
+                    {
+                        filename = "__Krastorio2Assets__/buildings/advanced-assembling-machine/advanced-assembling-machine-w1.png",
+                        priority = "high",
+                        width = 128,
+                        height = 144,
+                        frame_count = 32,
+                        line_length = 8,
+                        shift = util.by_pixel(-26, 8),
+                        scale = 0.4,
+                    },
+                    {
+                        filename = "__Krastorio2Assets__/buildings/advanced-assembling-machine/advanced-assembling-machine-w2.png",
+                        priority = "high",
+                        width = 37,
+                        height = 25,
+                        frame_count = 8,
+                        line_length = 4,
+                        shift = util.by_pixel(5, -38),
+                        scale = 0.4,
+                        repeat_count = 4,
+                    },
+                    {
+                        filename = "__Krastorio2Assets__/buildings/advanced-assembling-machine/advanced-assembling-machine-sh.png",
+                        priority = "high",
+                        width = 346,
+                        height = 302,
+                        frame_count = 1,
+                        line_length = 1,
+                        draw_as_shadow = true,
+                        shift = util.by_pixel(16, 0),
+                        scale = 0.4,
+                        repeat_count = 32,
+                    },
+                }
+            },
+        },
+        crafting_categories = {"crafting", "crafting-with-fluid", "advanced-crafting", "fabricating"},
+        crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source =
+        {
+            type = "electric",
+            usage_priority = "secondary-input",
+            emissions_per_minute = {pollution=0}
+        },
+        energy_usage = "675kW",
+    }
+})
+
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "electrolyzer",
+        icons = du.icons("__Krastorio2Assets__/icons/entities/electrolysis-plant.png", true),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "electrolyzer"},
+        max_health = 400,
+        corpse = "assembling-machine-3-remnants",
+        dying_explosion = "assembling-machine-3-explosion",
+        alert_icon_shift = util.by_pixel(-3, -12),
+        resistances =
+        {
+            {
+                type = "acid",
+                percent = 95
+            }
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {-1, -2}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {1, -2}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {-2, 0}, direction=defines.direction.west }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {-1, 2}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {1, 2}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {2, 0}, direction=defines.direction.east }},
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                    volume = 0.45
+                }
+            },
+            audible_distance_modifier = 0.5,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
+        fast_replaceable_group = "electrolyzer",
+        graphics_set = {
+            animation =
+            {
+                layers =
+                {
+                    {
+                        filename = "__Krastorio2Assets__/buildings/electrolysis-plant/electrolysis-plant.png",
+                        priority = "high",
+                        width = 380,
+                        height = 380,
+                        frame_count = 1,
+                        line_length = 1,
+                        scale = 0.5,
+                        repeat_count = 12,
+                    },
+                    {
+                        filename = "__Krastorio2Assets__/buildings/electrolysis-plant/electrolysis-plant-work.png",
+                        priority = "high",
+                        width = 380,
+                        height = 380,
+                        frame_count = 12,
+                        line_length = 6,
+                        scale = 0.5,
+                    },
+                    {
+                        filename = "__Krastorio2Assets__/buildings/electrolysis-plant/electrolysis-plant-work-light.png",
+                        priority = "high",
+                        width = 380,
+                        height = 380,
+                        frame_count = 12,
+                        line_length = 6,
+                        scale = 0.5,
+                        draw_as_light = true,
+                    },
+                    {
+                        filename = "__Krastorio2Assets__/buildings/electrolysis-plant/electrolysis-plant-sh.png",
+                        priority = "high",
+                        width = 380,
+                        height = 380,
+                        frame_count = 1,
+                        line_length = 1,
+                        scale = 0.5,
+                        repeat_count = 12,
+                        draw_as_shadow = true,
+                    },
+                }
+            },
+        },
+        crafting_categories = {"electrolysis"},
+        crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source =
+        {
+            type = "electric",
+            usage_priority = "secondary-input",
+            emissions_per_minute = {pollution=0}
+        },
+        energy_usage = "6MW",
+    }
+})
+local function algae_plant_horizontal_anim()
+    return {
+        layers = {
+            {
+                filename = "__GuG2__/graphics/entity/algae-plant/mspaint-back-layer.png",
+                width = 320,
+                height = 192,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5,
+            },
+            {
+                filename = "__GuG2__/graphics/entity/algae-plant/mspaint-front-layer.png",
+                width = 320,
+                height = 192,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5,
+            },
+        }
+    }
+end
+
+local function algae_plant_vertical_anim()
+    return {
+        layers = {
+            {
+                filename = "__GuG2__/graphics/entity/algae-plant/mspaint-vertical-back-layer.png",
+                width = 192,
+                height = 320,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5,
+            },
+            {
+                filename = "__GuG2__/graphics/entity/algae-plant/mspaint-vertical-mid-layer-2.png",
+                width = 192,
+                height = 320,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5,
+            },
+            {
+                filename = "__GuG2__/graphics/entity/algae-plant/mspaint-vertical-mid-layer.png",
+                width = 192,
+                height = 320,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5,
+            },
+            {
+                filename = "__GuG2__/graphics/entity/algae-plant/mspaint-vertical-front-layer.png",
+                width = 192,
+                height = 320,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5,
+            },
+        }
+    }
+end
+
+data:extend({
+    {
+        selectable_in_game = false,
+        type = "solar-panel",
+        name = "algae-plant-energy-source",
+        icon = "__base__/graphics/icons/solar-panel.png",
+        flags = {"not-on-map", "not-deconstructable", "not-blueprintable", "not-in-kill-statistics"},
+        max_health = 2000,
+        collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+        selection_box = {{-0.5, -1.5}, {0.5, 0.5}},
+        no_fix = true,
+        collision_mask = {layers = {}},
+        energy_source =
+        {
+          type = "electric",
+          usage_priority = "solar"
+        },
+        production = "10kW",
+        impact_category = "glass",
+    }
+})
+data:extend({
+    {
+        selectable_in_game = false,
+        type = "electric-pole",
+        name = "internal-energy-spreading-pole",
+        icon = "__base__/graphics/icons/small-electric-pole.png",
+        quality_indicator_scale = 0.75,
+        flags = {"not-on-map", "not-deconstructable", "not-blueprintable", "not-in-kill-statistics"},
+        max_health = 2000,
+        no_fix = true,
+        collision_mask = {layers = {}},
+        collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+        selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+        maximum_wire_distance = 0,
+        supply_area_distance = 2,
+        connection_points = data.raw["electric-pole"]["small-electric-pole"].connection_points,
+        impact_category = "wood",
+        picture = util.empty_sprite(),
+    }
+})
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "simple-algae-plant",
+        icons = du.icons("simple-algae-plant"),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "simple-algae-plant"},
+        max_health = 400,
+        corpse = "assembling-machine-3-remnants",
+        dying_explosion = "assembling-machine-3-explosion",
+        created_effect = composite_trigger(),
+        resistances =
+        {
+            {
+                type = "acid",
+                percent = 95
+            }
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {-1, -1}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {1, -1}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {-1, 1}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {1, 1}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                    volume = 0.45
+                }
+            },
+            audible_distance_modifier = 0.5,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        collision_box = {{-2.3, -1.3}, {2.3, 1.3}},
+        selection_box = {{-2.5, -1.5}, {2.5, 1.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        fast_replaceable_group = "algae-plant",
+        graphics_set = {
+            animation =
+            {
+                north = algae_plant_horizontal_anim(),
+                east = algae_plant_vertical_anim(),
+                south = algae_plant_horizontal_anim(),
+                west = algae_plant_vertical_anim(),
+            },
+        },
+        crafting_categories = {"algae-growing"},
+        crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source =
+        {
+            type = "electric",
+            usage_priority = "secondary-input",
+            emissions_per_minute = {pollution=0},
+            drain = "2kW",
+        },
+        energy_usage = "20kW",
+    }
+})
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "smart-farm",
+        icons = du.icons("smart-farm"),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "smart-farm"},
+        max_health = 400,
+        corpse = "assembling-machine-3-remnants",
+        dying_explosion = "assembling-machine-3-explosion",
+        alert_icon_shift = util.by_pixel(-3, -12),
+        resistances =
+        {
+            {
+                type = "acid",
+                percent = 95
+            }
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {-1, -2}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {1, -2}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {-2, 0}, direction=defines.direction.west }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {-1, 2}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {1, 2}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {2, 0}, direction=defines.direction.east }},
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                    volume = 0.45
+                }
+            },
+            audible_distance_modifier = 0.5,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
+        fast_replaceable_group = "electrolyzer",
+        graphics_set = {
+            animation =
+            {
+                layers =
+                {
+                    {
+                        filename = "__GuG2__/graphics/entity/smart-farm/chemical-stager-hr.png",
+                        priority = "high",
+                        width = 320,
+                        height = 320,
+                        frame_count = 1,
+                        line_length = 1,
+                        scale = 0.5,
+                    },
+                    {
+                        filename = "__GuG2__/graphics/entity/smart-farm/chemical-stager-hr-shadow.png",
+                        priority = "high",
+                        width = 460,
+                        height = 340,
+                        frame_count = 1,
+                        line_length = 1,
+                        scale = 0.5,
+                        shift = util.by_pixel(-70, 0),
+                        draw_as_shadow = true,
+                    },
+                }
+            },
+        },
+        crafting_categories = {"farming"},
+        crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source =
+        {
+            type = "electric",
+            usage_priority = "secondary-input",
+            emissions_per_minute = {pollution=0}
+        },
+        energy_usage = "120kW",
+    }
+})
+
+data:extend({
+    {
+        type = "item",
+        name = "fabricator-1",
+        icons = du.icons("__Krastorio2Assets__/icons/entities/advanced-assembling-machine.png", true),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "fabricator-1"
+    },
+    {
+        type = "item",
+        name = "electrolyzer",
+        icons = du.icons("__Krastorio2Assets__/icons/entities/electrolysis-plant.png", true),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "electrolyzer"
+    },
+    {
+        type = "item",
+        name = "burner-lab",
+        icons = du.icons("burner-lab"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "burner-lab"
+    },
+    {
+        type = "item",
+        name = "lab",
+        icons = du.icons{mod="base",name="lab"},
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "lab"
+    },
     {
         type = "item",
         name = "incinerator",
@@ -3900,6 +4660,36 @@ data:extend({
         --place_result = "forestry-pine"
     },
     {
+        type = "item",
+        name = "smart-farm",
+        icons = du.icons("smart-farm"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "smart-farm"
+    },
+    {
+        type = "item",
+        name = "simple-algae-plant",
+        icons = du.icons("simple-algae-plant"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "simple-algae-plant"
+    },
+    {
+        type = "recipe-category",
+        name = "algae-growing"
+    },
+    {
+        type = "recipe-category",
+        name = "farming"
+    },
+    {
+        type = "recipe-category",
+        name = "electrolysis"
+    },
+    {
         type = "recipe-category",
         name = "extracting"
     },
@@ -3914,10 +4704,6 @@ data:extend({
     {
         type = "recipe-category",
         name = "smithing"
-    },
-    {
-        type = "recipe-category",
-        name = "autocrafting"
     },
     {
         type = "recipe-category",
@@ -3958,5 +4744,13 @@ data:extend({
     {
         type = "recipe-category",
         name = "evaporating"
+    },
+    {
+        type = "recipe-category",
+        name = "machining"
+    },
+    {
+        type = "recipe-category",
+        name = "fabricating"
     },
 })

@@ -652,7 +652,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "0.3MJ",
+        fuel_value = "0.6MJ",
         icons = du.icons("tar"),
         order = "a[fluid]-j[sludge]"
     },
@@ -663,7 +663,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "0.25MJ",
+        fuel_value = "0.5MJ",
         icons = du.icons("coal-gas"),
         order = "a[fluid]-j[sludge]"
     },
@@ -932,10 +932,19 @@ data:extend({
     },
     {
         type = "fluid",
+        name = "chlorine",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("chlorine"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
         name = "rotational-force",
         default_temperature = 0,
         max_temperature = 5000,
-        heat_capacity = "8J",
+        heat_capacity = "10J",
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         icons = du.icons("rotational-force"),

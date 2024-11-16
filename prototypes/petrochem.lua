@@ -504,6 +504,7 @@ data:extend({
 })
 data:extend({
     {
+        enabled = false,
         type = "recipe",
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
@@ -524,6 +525,7 @@ data:extend({
 })
 data:extend({
     {
+        enabled = false,
         type = "recipe",
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
@@ -545,6 +547,7 @@ data:extend({
 })
 data:extend({
     {
+        enabled = false,
         type = "recipe",
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line
@@ -566,6 +569,7 @@ data:extend({
 })
 data:extend({
     {
+        enabled = false,
         type = "recipe",
         always_show_made_in = true,
         category = "crafting-with-fluid", ---@diagnostic disable-line

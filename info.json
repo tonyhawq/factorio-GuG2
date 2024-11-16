@@ -9,6 +9,7 @@
     "dependencies": [
       "base >= 2.0",
       "pycoalprocessinggraphics",
-      "configurable-valves"
+      "configurable-valves",
+      "Krastorio2Assets >= 2.0.0"
     ]
   }

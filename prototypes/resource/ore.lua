@@ -45,7 +45,10 @@ data:extend({
         -- args: max_elevation, influence
         autoplace = {
             local_expressions = {
-                shoreline = "water_base(2 - multioctave_noise{x = x, y = y, persistence = 0.75, seed0 = map_seed, seed1 = 0, octaves = 1} * moisture ^ 2 * 2 - moisture ^ 2 * 10, 50)",
+                shoreline =
+                "if(elevation > (0.5 - multioctave_noise{x=x, y=y, persistence=0.75,seed0=map_seed, seed1=0, octaves=2, input_scale = 0.25}),"..
+                "water_base(2 - multioctave_noise{x = x, y = y, persistence = 0.75, seed0 = map_seed, seed1 = 0, octaves = 1} * moisture ^ 2 * 2 - moisture ^ 2 * 10, 50),"..
+                "-inf)",
             },
             probability_expression = "shoreline",
             richness_expression = "shoreline * 25",

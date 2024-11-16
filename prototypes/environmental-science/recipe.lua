@@ -464,7 +464,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "autocrafting", ---@diagnostic disable-line
+        category = "advanced-crafting", ---@diagnostic disable-line
         name = "wrought-iron-gear",
         icons = du.icons{mod="base", name="iron-gear-wheel"},
         subgroup = "raw-material",
@@ -695,7 +695,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "autocrafting", ---@diagnostic disable-line
+        category = "machining", ---@diagnostic disable-line
         name = "screws",
         icons = du.icons("screws"),
         subgroup = "raw-material",
@@ -751,6 +751,51 @@ data:extend({
         },
         results = {
             {type="item", name="mechanical-science-pack", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "electromagnetic-science-pack-1",
+        icons = du.icons("electromagnetic-science-pack"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="crude-oil", amount=2},
+            {type="item", name="arithmetic-combinator", amount=1},
+            {type="item", name="small-electric-motor", amount=3},
+        },
+        results = {
+            {type="item", name="electromagnetic-science-pack", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "lab-2",
+        icons = du.icons{mod="base",name="lab"},
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="glass", amount=16},
+            {type="item", name="inserter", amount=3},
+            {type="item", name="electronic-circuit", amount=6},
+            {type="item", name="stone-brick", amount=15},
+        },
+        results = {
+            {type="item", name="lab", amount=1},
         }
     }
 })
@@ -869,7 +914,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "crafting-with-fluid", ---@diagnostic disable-line
+        category = "algae-growing", ---@diagnostic disable-line
         name = "seaweed-1",
         icons = du.icons("seaweed"),
         subgroup = "raw-material",
@@ -889,7 +934,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "crafting-with-fluid", ---@diagnostic disable-line
+        category = "algae-growing", ---@diagnostic disable-line
         name = "seaweed-2",
         icons = du.icons("seaweed"),
         subgroup = "raw-material",
@@ -1151,7 +1196,7 @@ data:extend({
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "smart-farm",
-        icons = du.icons("seaweed"),
+        icons = du.icons("smart-farm"),
         energy_required = 4,
         ingredients = {
             {type="item", name="glass", amount=16},
@@ -1160,7 +1205,7 @@ data:extend({
             {type="item", name="stone-brick", amount=10},
         },
         results = {
-            {type="item", name="stone-brick", amount=1},
+            {type="item", name="smart-farm", amount=1},
         }
     }
 })
@@ -1684,6 +1729,50 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "electrolysis", ---@diagnostic disable-line
+        name = "saline-water-electrolysis",
+        icons = du.icons("saline-water"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="fluid", name="saline-water", amount=1},
+        },
+        results = {
+            {type="item", name="sodium-hydroxide", amount=1, probability=0.25},
+            {type="fluid", name="chlorine", amount=10},
+            {type="fluid", name="hydrogen", amount=10},
+            {type="fluid", name="oxygen", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "electrolysis", ---@diagnostic disable-line
+        name = "water-electrolysis",
+        icons = du.icons{mod="base",name="fluid/water"},
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="fluid", name="water", amount=1},
+        },
+        results = {
+            {type="fluid", name="hydrogen", amount=10},
+            {type="fluid", name="oxygen", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "evaporating", ---@diagnostic disable-line
         name = "seawater-void",
         icons = du.icons("evaporate"):add_corner("seawater"),
@@ -2035,6 +2124,29 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        enabled = false,
+        category = "electrolysis", ---@diagnostic disable-line
+        name = "alumina-2",
+        icons = du.icons("alumina"),
+        subgroup = "aluminum-ore-processing",
+        order = "c[alumina]-2",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="clay", amount=5},
+            {type="item", name="kelp-ash", amount=1},
+            {type="fluid", name="coal-gas", amount=5},
+            {type="fluid", name="sulfuric-acid", amount=2},
+        },
+        results = {
+            {type="item", name="alumina", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         name = "aluminum-plate-1",
         icons = du.icons("aluminum-plate"),
         enabled = false,
@@ -2182,6 +2294,51 @@ data:extend({
         results ={
             {type="item", name="steel-ingot", amount=1},
             {type="fluid", name="carbon-dioxide", amount=40},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "steel-ingot-2",
+        icons = du.icons("steel-ingot"):add_corner("manganese-oxides"),
+        enabled = false,
+        category = "blasting",
+        subgroup = "raw-material",
+        energy_required = 12,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="iron-ingot", amount=12},
+            {type="item", name="manganese-ingot", amount=1},
+            {type="item", name="coke", amount=3},
+            {type="item", name="lime", amount=6},
+        },
+        results ={
+            {type="item", name="steel-ingot", amount=6},
+            {type="fluid", name="carbon-dioxide", amount=40},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "manganese-ingot-1",
+        icons = du.icons("manganese-ingot"),
+        enabled = false,
+        category = "blasting",
+        subgroup = "raw-material",
+        energy_required = 12,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="manganese-oxides", amount=12},
+            {type="item", name="coke", amount=3},
+        },
+        results ={
+            {type="item", name="manganese-ingot", amount=1},
         }
     }
 })
@@ -2465,7 +2622,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "crafting", ---@diagnostic disable-line
+        category = "fabricating", ---@diagnostic disable-line
         name = "electronic-circuit",
         icons = du.icons{mod="base",name="electronic-circuit"}:add_corner("vacuum-tube"),
         energy_required = 2,
@@ -2479,6 +2636,26 @@ data:extend({
         },
         results = {
             {type="item", name="electronic-circuit", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "electrolyzer",
+        icons = du.icons("__Krastorio2Assets__/icons/entities/electrolysis-plant.png", true),
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="small-electric-pole", amount=12},
+            {type="item", name="small-tank", amount=6},
+            {type="item", name="steel-beam", amount=8},
+            {type="item", name="stone-brick", amount=12},
+        },
+        results = {
+            {type="item", name="electrolyzer", amount=1},
         }
     }
 })
@@ -3110,3 +3287,100 @@ data:extend({
         }
     }
 })
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "efficiency-module-1",
+        icons = du.icons{mod="base",name="efficiency-module"},
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 3,
+        ingredients = {
+            {type="item", name="analog-circuit", amount=2},
+            {type="item", name="glass", amount=3},
+        },
+        results = {
+            {type="item", name="efficiency-module", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "small-lamp",
+        icons = du.icons{mod="base",name="small-lamp"},
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="aluminum-cable", amount=16},
+            {type="item", name="wrought-iron-sheet", amount=2},
+            {type="item", name="glass", amount=2},
+        },
+        results = {
+            {type="item", name="small-lamp", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "constant-combinator",
+        icons = du.icons{mod="base",name="constant-combinator"},
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="ferrite", amount=1},
+            {type="item", name="copper-wire", amount=3},
+            {type="item", name="glass", amount=1},
+        },
+        results = {
+            {type="item", name="constant-combinator", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "arithmetic-combinator",
+        icons = du.icons{mod="base",name="arithmetic-combinator"},
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="electronic-circuit", amount=2},
+            {type="item", name="constant-combinator", amount=1},
+        },
+        results = {
+            {type="item", name="arithmetic-combinator", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "decider-combinator",
+        icons = du.icons{mod="base",name="decider-combinator"},
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="electronic-circuit", amount=2},
+            {type="item", name="decider-combinator", amount=3},
+        },
+        results = {
+            {type="item", name="decider-combinator", amount=4},
+        }
+    }
+})
+
+data.raw.module["efficiency-module"].effect = {consumption = -0.1}

@@ -67,16 +67,30 @@ local unclean_types = {
     "inserter",
 }
 
+local exempt_buildings = {
+    "transport-belt", "transport-belt",
+    "transport-belt", "fast-transport-belt",
+    "transport-belt", "express-transport-belt",
+    "splitter", "splitter",
+    "splitter", "fast-splitter",
+    "splitter", "express-splitter",
+    "container", "crash-site-spaceship",
+    "container", "crash-site-spaceship-wreck-big-1",
+    "container", "crash-site-spaceship-wreck-big-2",
+    "container", "crash-site-spaceship-wreck-medium-1",
+    "container", "crash-site-spaceship-wreck-medium-2",
+    "container", "crash-site-spaceship-wreck-medium-3",
+}
+
 local function make_clean(prototype)
     prototype.g2_clean = true
 end
 
-make_clean(data.raw["transport-belt"]["transport-belt"])
-make_clean(data.raw["transport-belt"]["fast-transport-belt"])
-make_clean(data.raw["transport-belt"]["express-transport-belt"])
-make_clean(data.raw["splitter"]["splitter"])
-make_clean(data.raw["splitter"]["fast-splitter"])
-make_clean(data.raw["splitter"]["express-splitter"])
+for i = 1, #exempt_buildings / 2 do
+    local type = exempt_buildings[i * 2 - 1]
+    local building = exempt_buildings[i * 2]
+    make_clean(data.raw[type][building])
+end
 
 for _, dtype in pairs(unclean_types) do
     if not data.raw[dtype] then

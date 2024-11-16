@@ -1,25 +1,18 @@
 Cleanroom = require("__GuG2__.scripts.cleanroom")
 CleanroomGUI = require("__GuG2__.scripts.cleanroom-gui")
 Forestry = require("__GuG2__.scripts.forestry")
-
-local function on_created(event)
-    Cleanroom.on_created(event)
-    Forestry.on_created(event)
-end
-
-local function on_destroyed(event)
-    Cleanroom.on_destroyed(event)
-    Forestry.on_destroyed(event)
-end
+AlgaeFarm = require("__GuG2__.scripts.algae-farm")
 
 script.on_init(function ()
     Cleanroom.setup()
     Forestry.setup()
+    AlgaeFarm.setup()
 end)
 
 script.on_configuration_changed(function ()
     Cleanroom.setup()
     Forestry.setup()
+    AlgaeFarm.setup()
 end)
 
 script.on_event(defines.events.on_tick, function(event_data)
@@ -42,24 +35,16 @@ script.on_event(defines.events.on_gui_click, function(event)
     CleanroomGUI.player_clicked_gui(event, player)
 end)
 
-script.on_event(defines.events.on_built_entity, function(event)
-    on_created(event)
+script.on_event(defines.events.on_script_trigger_effect, function (event)
+    if event.effect_id == "g2cc" then
+        Forestry.on_created(event)
+        AlgaeFarm.on_created(event)
+    end
 end)
 
-script.on_event(defines.events.on_robot_built_entity, function(event)
-    on_created(event)
-end)
-
-script.on_event(defines.events.on_entity_died, function (event)
-    on_destroyed(event)
-end)
-
-script.on_event(defines.events.on_player_mined_entity, function(event)
-    on_destroyed(event)
-end)
-
-script.on_event(defines.events.on_robot_mined_entity, function (event)
-    on_destroyed(event)
+script.on_event(defines.events.on_object_destroyed, function (event)
+    Forestry.on_destroyed(event)
+    AlgaeFarm.on_destroyed(event)
 end)
 
 script.on_event(defines.events.on_gui_opened, function (event)

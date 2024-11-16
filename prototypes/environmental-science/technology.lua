@@ -174,10 +174,6 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="mechanical-science-pack-1",
-            },
-            {
-                type = "unlock-recipe",
                 recipe="screws",
             },
             {
@@ -212,6 +208,36 @@ data:extend({
                 type = "mining-with-fluid",
                 modifier = true
             }
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "mechanical-science",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/chemical-science-pack.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"mechanics-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="mechanical-science-pack-1",
+            },
         },
         order = "b-b"
     },
@@ -655,6 +681,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="float-glass",
             },
+            {
+                type = "unlock-recipe",
+                recipe="lab-1",
+            },
         },
         order = "b-b"
     },
@@ -870,7 +900,7 @@ data:extend({
                 icon_size = 128,
             }
         },
-        prerequisites = {"mechanics-2"},
+        prerequisites = {"electrolysis"},
         unit =
         {
             count = 10,
@@ -897,6 +927,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="alumina-2",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="aluminum-ingot-1",
             },
             {
@@ -914,6 +948,45 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="aluminum-cable-1",
+            },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "electrolysis",
+        icons = {
+            {
+                icon = "__Krastorio2Assets__/technologies/fluids-chemistry.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"electromagnetism"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="electrolyzer",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="saline-water-electrolysis",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="water-electrolysis",
             },
         },
         order = "b-b"
@@ -979,7 +1052,15 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
+                recipe="manganese-ingot-1",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="steel-ingot-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="steel-ingot-2",
             },
             {
                 type = "unlock-recipe",
@@ -1147,6 +1228,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="constant-combinator",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="small-electric-motor-1",
             },
             {
@@ -1223,6 +1308,49 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="electronic-circuit",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="decider-combinator",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="arithmetic-combinator",
+            },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "electromagnetic-science",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/production-science-pack.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"electronics"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="lab-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="electromagnetic-science-pack-1",
             },
         },
         order = "b-b"
