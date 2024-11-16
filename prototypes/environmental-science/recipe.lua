@@ -1195,17 +1195,17 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
-        name = "smart-farm",
-        icons = du.icons("smart-farm"),
+        name = "simple-algae-plant",
+        icons = du.icons("simple-algae-plant"),
         energy_required = 4,
         ingredients = {
             {type="item", name="glass", amount=16},
             {type="item", name="screws", amount=5},
-            {type="item", name="steam-engine", amount=1},
+            {type="item", name="small-tank", amount=4},
             {type="item", name="stone-brick", amount=10},
         },
         results = {
-            {type="item", name="smart-farm", amount=1},
+            {type="item", name="simple-algae-plant", amount=1},
         }
     }
 })

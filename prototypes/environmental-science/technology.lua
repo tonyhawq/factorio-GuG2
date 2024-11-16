@@ -824,7 +824,7 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="smart-farm",
+                recipe="simple-algae-plant",
             },
             {
                 type = "unlock-recipe",

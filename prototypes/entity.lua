@@ -4059,12 +4059,12 @@ data:extend({
         selection_box = {{-0.5, -1.5}, {0.5, 0.5}},
         no_fix = true,
         collision_mask = {layers = {}},
-        energy_source =
+        energy_source = 
         {
           type = "electric",
           usage_priority = "solar"
         },
-        production = "10kW",
+        production = "100kW",
         impact_category = "glass",
         picture = du.missing_sprite(),
     }
@@ -4184,9 +4184,9 @@ data:extend({
             type = "electric",
             usage_priority = "secondary-input",
             emissions_per_minute = {pollution=0},
-            drain = "2kW",
+            drain = "20kW",
         },
-        energy_usage = "20kW",
+        energy_usage = "200kW",
     }
 })
 data:extend({
@@ -4307,7 +4307,7 @@ data:extend({
                         frame_count = 1,
                         line_length = 1,
                         scale = 0.5,
-                        shift = util.by_pixel(-70, 0),
+                        shift = util.by_pixel(32, 0),
                         draw_as_shadow = true,
                     },
                 }
