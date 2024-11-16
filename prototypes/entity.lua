@@ -2726,7 +2726,7 @@ lv_generator.localised_description = {"",
 
 local steam_engine = data.raw["assembling-machine"]["steam-engine"]
 steam_engine.localised_description = {"",
-{"entity-description.lv-generator"},
+{"entity-description.steam-engine"},
 "\n",
 {
     "label.produces-rotational-force-amount",
@@ -4066,6 +4066,7 @@ data:extend({
         },
         production = "10kW",
         impact_category = "glass",
+        picture = du.missing_sprite(),
     }
 })
 data:extend({
@@ -4085,7 +4086,7 @@ data:extend({
         supply_area_distance = 2,
         connection_points = data.raw["electric-pole"]["small-electric-pole"].connection_points,
         impact_category = "wood",
-        picture = util.empty_sprite(),
+        picture = du.missing_sprite(),
     }
 })
 data:extend({

@@ -17,6 +17,14 @@ dutil.right_bottom = 4
 
 dutil.default_corner = dutil.right_top
 
+function dutil.missing_sprite()
+    return {
+        filename = "__GuG2__/graphics/missing.png",
+        width = 64,
+        height = 64,
+    }
+end
+
 function dutil.get_corner_offset(direction)
     if direction == dutil.left_top then
         return {-10, -10}

@@ -1,3 +1,4 @@
+HiddenSurf = require("__GuG2__.scripts.hidden-surface")
 Cleanroom = require("__GuG2__.scripts.cleanroom")
 CleanroomGUI = require("__GuG2__.scripts.cleanroom-gui")
 Forestry = require("__GuG2__.scripts.forestry")
