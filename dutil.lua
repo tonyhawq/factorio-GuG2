@@ -1,6 +1,31 @@
 require("util")
 
+GuG2 = GuG2 or {aliases={}}
+
 local dutil = {}
+
+function dutil.alias(name, as, make_copies)
+    if not as then
+        if not GuG2.aliases[name] then
+            error("No alias for name "..name)
+        end
+        if type(GuG2.aliases[name]) == "table" then
+            if GuG2.aliases[name].copy then
+                return table.deepcopy(GuG2.aliases[name].tab)
+            end
+            return GuG2.aliases[name].tab
+        end
+        return GuG2.aliases[name]
+    end
+    if GuG2.aliases[name] then
+        error("Alias already exists with name "..name)
+    end
+    if type(as) == "table" then
+        GuG2.aliases[name] = {tab=as, copy=make_copies or false}
+    else
+        GuG2.aliases[name] = as
+    end
+end
 
 dutil.show_on_modify = true
 dutil.mod = "GuG2"

@@ -11,7 +11,6 @@ function farm.on_created(event)
     if not farm.entities[entity.name] then
         return
     end
-    game.print("Creating")
     local surface = entity.surface
     local source_surface = HiddenSurf.get()
     local output_pole = surface.create_entity{name="internal-energy-spreading-pole", position=entity.position, force=entity.force}

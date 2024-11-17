@@ -605,6 +605,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="syngas-redox",
             },
+            {
+                type = "unlock-recipe",
+                recipe="flue-gas-sulfuric-acid",
+            },
         },
         order = "b-b"
     },
@@ -948,6 +952,112 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="aluminum-cable-1",
+            },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "automation-2",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/automation-2.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"aluminum-processing-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="fabricator-1",
+            },
+        },
+        order = "b-b"
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "heat-exchange",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/automation-2.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"aluminum-processing-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="counterflow-heat-exchanger",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="200c-production",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="300c-production",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="400c-production",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="500c-production",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="500c-to-400c",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="500c-to-300c",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="500c-to-200c",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="400c-to-300c",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="400c-to-200c",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="300c-to-200c",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="200c-to-water",
             },
         },
         order = "b-b"

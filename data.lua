@@ -6,6 +6,8 @@ for _, recipe in pairs(data.raw.recipe) do
     recipe.enabled = false
 end
 
+require("prototypes.alias")
+
 require("prototypes.groups")
 
 require("prototypes.pre-science.recipe")

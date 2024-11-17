@@ -6,7 +6,7 @@ function hidden.create()
     if game.surfaces[hidden.name] then
         return
     end
-    game.create_surface(hidden.name, {
+    local surf = game.create_surface(hidden.name, {
         seed=0,
         autoplace_controls={},
         autoplace_settings={["tile"] = {settings = {["grass-1"] = {frequency=1,size=1,richness=1}}}},
@@ -21,6 +21,12 @@ function hidden.create()
         territory_settings={}, ---@diagnostic disable-line
         property_expression_names = {["tile:grass-1:probability"] = "1"},
     })
+    local nauvis = game.surfaces["nauvis"]
+    if nauvis.always_day then
+        surf.always_day = true
+    else
+        surf.daytime = nauvis.daytime
+    end
 end
 
 function hidden.get()

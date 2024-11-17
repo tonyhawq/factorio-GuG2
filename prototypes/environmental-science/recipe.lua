@@ -341,6 +341,48 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
+        name = "fabricator-1",
+        icons = du.alias("fabricator-1"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="assembling-machine-1", amount=1},
+            {type="item", name="aluminum-plate", amount=12},
+            {type="item", name="inserter", amount=4},
+            {type="item", name="steel-beam", amount=12},
+            {type="item", name="screws", amount=8},
+        },
+        results = {
+            {type="item", name="fabricator-1", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "counterflow-heat-exchanger",
+        icons = du.alias("counterflow-heat-exchanger"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="aluminum-plate", amount=10},
+            {type="item", name="copper-sheet", amount=10},
+            {type="item", name="pipe", amount=20},
+            {type="item", name="steel-beam", amount=12},
+            {type="item", name="screws", amount=8},
+        },
+        results = {
+            {type="item", name="counterflow-heat-exchanger", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
         name = "tube-boiler",
         icons = du.icons("tube-boiler"),
         energy_required = 0.5,
@@ -1858,12 +1900,13 @@ data:extend({
         main_product = "",
         energy_required = 6,
         ingredients = {
-            {type="fluid", name="flue-gas", amount=100},
-            {type="fluid", name="water", amount=10},
+            {type="fluid", name="flue-gas", amount=300},
+            {type="fluid", name="water", amount=50},
+            {type="item", name="manganese-oxides", amount=1},
         },
         results = {
-            {type="fluid", name="sulfuric-acid", amount=10},
-            {type="fluid", name="steam", temperature=165, amount=100},
+            {type="fluid", name="sulfuric-acid", amount=50},
+            {type="fluid", name="steam", temperature=165, amount=500},
         }
     }
 })

@@ -3689,7 +3689,7 @@ data:extend({
     {
         type = "assembling-machine",
         name = "fabricator-1",
-        icons = du.icons("__Krastorio2Assets__/icons/entities/advanced-assembling-machine.png", true),
+        icons = du.alias("fabricator-1"),
         flags = {"placeable-neutral","placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "fabricator-1"},
         max_health = 400,
@@ -4331,7 +4331,7 @@ data:extend({
     {
         type = "item",
         name = "fabricator-1",
-        icons = du.icons("__Krastorio2Assets__/icons/entities/advanced-assembling-machine.png", true),
+        icons = du.alias("fabricator-1"),
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
