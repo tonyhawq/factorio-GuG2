@@ -607,7 +607,7 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
-                recipe="flue-gas-sulfuric-acid",
+                recipe="sulfuric-acid-flue-gas",
             },
         },
         order = "b-b"
