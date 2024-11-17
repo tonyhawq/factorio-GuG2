@@ -273,6 +273,46 @@ data:extend({
   },
   {
     type = "item",
+    name = "battery-alloy-plate",
+    icons = du.icons("battery-alloy-plate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "antimony-ore",
+    icons = du.icons("antimony-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "glowing-mangaloy-ingot",
+    icons = du.icons("glowing-mangaloy-ingot"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "antimony-oxide",
+    icons = du.icons("antimony-oxide"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "antimony",
+    icons = du.icons("antimony"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
     name = "copper-ingot",
     icons = du.icons("copper-ingot"),
     subgroup = "smelting-machine",

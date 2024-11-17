@@ -4326,6 +4326,144 @@ data:extend({
         energy_usage = "120kW",
     }
 })
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "solid-separator",
+        icons = du.icons("solid-separator"),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "solid-separator"},
+        max_health = 400,
+        corpse = "assembling-machine-3-remnants",
+        dying_explosion = "assembling-machine-3-explosion",
+        alert_icon_shift = util.by_pixel(-3, -12),
+        resistances =
+        {
+            {
+                type = "acid",
+                percent = 95
+            }
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {-1, -2}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {1, -2}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {-2, 0}, direction=defines.direction.west }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {-1, 2}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {1, 2}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {2, 0}, direction=defines.direction.east }},
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                    volume = 0.45
+                }
+            },
+            audible_distance_modifier = 0.5,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
+        fast_replaceable_group = "electrolyzer",
+        graphics_set = {
+            animation =
+            {
+                layers =
+                {
+                    {
+                        filename = "__GuG2__/graphics/entity/solid-separator/convector-hr-animation-1.png",
+                        priority = "high",
+                        width = 360,
+                        height = 350,
+                        frame_count = 64,
+                        line_length = 8,
+                        scale = 0.5,
+                        run_mode = "forward-th".."en-backward",
+                    },
+                    {
+                        filename = "__GuG2__/graphics/entity/solid-separator/convector-hr-shadow.png",
+                        priority = "high",
+                        width = 360,
+                        height = 350,
+                        frame_count = 1,
+                        line_length = 1,
+                        scale = 0.5,
+                        draw_as_shadow = true,
+                        repeat_count = 126,
+                    },
+                }
+            },
+        },
+        crafting_categories = {"solid-separation"},
+        crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source =
+        {
+            type = "electric",
+            usage_priority = "secondary-input",
+            emissions_per_minute = {pollution=0}
+        },
+        energy_usage = "300kW",
+    }
+})
 
 data:extend({
     {
@@ -4677,6 +4815,19 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         place_result = "simple-algae-plant"
+    },
+    {
+        type = "item",
+        name = "solid-separator",
+        icons = du.icons("solid-separator"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "solid-separator"
+    },
+    {
+        type = "recipe-category",
+        name = "solid-separation"
     },
     {
         type = "recipe-category",

@@ -809,7 +809,7 @@ data:extend({
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="fluid", name="crude-oil", amount=2},
+            {type="item", name="battery", amount=4},
             {type="item", name="arithmetic-combinator", amount=1},
             {type="item", name="small-electric-motor", amount=3},
         },
