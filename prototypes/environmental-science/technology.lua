@@ -1303,7 +1303,7 @@ data:extend({
         {
             {
                 type = "unlock-circuit-network",
-                modified = true,
+                modifier = true,
             },
             {
                 type = "unlock-recipe",
