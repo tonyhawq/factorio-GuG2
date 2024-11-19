@@ -160,7 +160,29 @@ data:extend({
             {type="fluid", name="molten-glass", amount=3},
         }
     }
-})
+})--[[
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "glassworking", ---@diagnostic disable-line
+        name = "lens-1",
+        icons = du.icons("lens"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-glass", amount=6},
+            {type="item", name="tin-plate", amount=1},
+            {type="item", name="antimony-oxide", amount=1},
+        },
+        results = {
+            {type="item", name="lens", amount=2},
+        }
+    }
+})]]
 data:extend({
     {
         type = "recipe", 

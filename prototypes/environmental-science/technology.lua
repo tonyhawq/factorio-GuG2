@@ -35,7 +35,6 @@ data:extend({
                 recipe="mechanical-inserter",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -77,7 +76,6 @@ data:extend({
                 recipe="pipe",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -147,7 +145,6 @@ data:extend({
                 recipe = "wood-oil-separation",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -209,7 +206,6 @@ data:extend({
                 modifier = true
             }
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -239,7 +235,6 @@ data:extend({
                 recipe="mechanical-science-pack-1",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -285,7 +280,6 @@ data:extend({
                 recipe="bound-porcelain",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -335,7 +329,6 @@ data:extend({
                 recipe="wrought-iron-rod-1",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -373,7 +366,6 @@ data:extend({
                 recipe="offshore-pump",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -403,7 +395,6 @@ data:extend({
                 recipe="evaporator",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -517,7 +508,6 @@ data:extend({
                 recipe="fluid-mining-drill",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -568,7 +558,6 @@ data:extend({
                 recipe="stone-brick-crushing",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -610,7 +599,6 @@ data:extend({
                 recipe="sulfuric-acid-flue-gas",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -644,7 +632,6 @@ data:extend({
                 recipe="stone-wall",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -690,7 +677,6 @@ data:extend({
                 recipe="lab-1",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -749,7 +735,6 @@ data:extend({
                 recipe="silica-1",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -800,7 +785,6 @@ data:extend({
                 recipe="black-liquor-regeneration",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -843,7 +827,6 @@ data:extend({
                 recipe="agar",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -891,7 +874,6 @@ data:extend({
             },
             
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -904,7 +886,7 @@ data:extend({
                 icon_size = 128,
             }
         },
-        prerequisites = {"electrolysis"},
+        prerequisites = {"basic-chemistry"},
         unit =
         {
             count = 10,
@@ -954,7 +936,6 @@ data:extend({
                 recipe="aluminum-cable-1",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -967,7 +948,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"aluminum-processing-1"},
+        prerequisites = {"electromagnetism"},
         unit =
         {
             count = 10,
@@ -985,7 +966,6 @@ data:extend({
                 recipe="fabricator-1",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -1060,13 +1040,12 @@ data:extend({
                 recipe="200c-to-water",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
     {
         type = "technology",
-        name = "electrolysis",
+        name = "fluid-handling-2",
         icons = {
             {
                 icon = "__Krastorio2Assets__/technologies/fluids-chemistry.png",
@@ -1099,7 +1078,6 @@ data:extend({
                 recipe="water-electrolysis",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -1134,7 +1112,6 @@ data:extend({
                 recipe="blast-furnace",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -1185,7 +1162,6 @@ data:extend({
                 recipe="steel-beam-1",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -1228,7 +1204,6 @@ data:extend({
                 recipe="zinc-plate-1",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -1263,7 +1238,6 @@ data:extend({
                 recipe="urea-organic-wastewater",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -1302,7 +1276,6 @@ data:extend({
                 recipe="fiberboard",
             },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -1315,7 +1288,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"polymers-1"},
+        prerequisites = {"polymers-1", "steel-processing"},
         unit =
         {
             count = 10,
@@ -1328,6 +1301,10 @@ data:extend({
         },
         effects =
         {
+            {
+                type = "unlock-circuit-network",
+                modified = true,
+            },
             {
                 type = "unlock-recipe",
                 recipe="magnet-wire-1",
@@ -1364,8 +1341,11 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="lv-generator",
             },
+            {
+                type = "unlock-recipe",
+                recipe="small-lamp",
+            },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -1391,6 +1371,18 @@ data:extend({
         },
         effects =
         {
+            {
+                type = "unlock-recipe",
+                recipe="electric-mining-drill",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="decider-combinator",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="arithmetic-combinator",
+            },
             {
                 type = "unlock-recipe",
                 recipe="fiberboard",
@@ -1419,16 +1411,7 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="electronic-circuit",
             },
-            {
-                type = "unlock-recipe",
-                recipe="decider-combinator",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="arithmetic-combinator",
-            },
         },
-        order = "b-b"
     },
 })
 data:extend({
@@ -1463,6 +1446,5 @@ data:extend({
                 recipe="electromagnetic-science-pack-1",
             },
         },
-        order = "b-b"
     },
 })

@@ -1857,9 +1857,9 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 20,
+        energy_required = 10,
         ingredients = {
-            {type="fluid", name="brine", amount=100},
+            {type="fluid", name="brine", amount=30},
         },
         results = {
             {type="item", name="brine-salt", amount=2},
