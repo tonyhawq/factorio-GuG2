@@ -39,7 +39,7 @@ data:extend({
     localised_description = {"item-description.science-pack"},
     icons = du.icons("mechanical-science-pack"),
     subgroup = "science-pack",
-    order = "a[a]",
+    order = "a[b]",
     stack_size = 200,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
@@ -51,7 +51,7 @@ data:extend({
     localised_description = {"item-description.science-pack"},
     icons = du.icons("electromagnetic-science-pack"),
     subgroup = "science-pack",
-    order = "a[a]",
+    order = "a[c]",
     stack_size = 200,
     durability = 1, 
     durability_description_key = "description.science-pack-remaining-amount-key",
@@ -63,7 +63,7 @@ data:extend({
     localised_description = {"item-description.science-pack"},
     icons = du.icons("automation-science-pack"),
     subgroup = "science-pack",
-    order = "a[a]",
+    order = "a[d]",
     stack_size = 200,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
@@ -174,6 +174,14 @@ data:extend({
     stack_size = 50,
     fuel_category = "chemical",
     fuel_value = "16MJ"
+  },
+  {
+    type = "item",
+    name = "activated-carbon",
+    icons = du.icons("activated-carbon"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
   },
   {
     type = "item",
@@ -585,6 +593,16 @@ data:extend({
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50
+  },
+  {
+    type = "item",
+    name = "rotten-log",
+    icons = du.icons("rotten-log"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200,
+    fuel_value = "2MJ",
+    fuel_category = "chemical"
   },
   {
     type = "item",

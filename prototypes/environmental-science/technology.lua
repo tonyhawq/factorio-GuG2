@@ -371,6 +371,44 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "coal-processing-2",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/coal-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"crushing"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="coarse-coal-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="crushed-coal-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="coal-2",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "optics",
         icons = {
             {
@@ -469,6 +507,14 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="sludge-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="sludge-2",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="sludge-void-1",
             },
             {
@@ -490,6 +536,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="mineralized-water-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="mineralized-water-2",
             },
             {
                 type = "unlock-recipe",
@@ -783,6 +833,18 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="black-liquor-regeneration",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="log-treatment",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pine-log-treatment",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="oak-log-treatment",
             },
         },
     },
@@ -1288,7 +1350,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"polymers-1", "steel-processing"},
+        prerequisites = {"polymers-1", "steel-processing", "zinc-processing"},
         unit =
         {
             count = 10,
@@ -1312,6 +1374,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="ferrite-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="battery-1",
             },
             {
                 type = "unlock-recipe",
@@ -1348,6 +1414,10 @@ data:extend({
         },
     },
 })
+du.technology("electromagnetism"):add_label_unlock{
+    name = {"tech-effects.simple-algae-plant-speed-boost"},
+    icon = du.icons("simple-algae-plant"),
+}
 data:extend({
     {
         type = "technology",
@@ -1417,6 +1487,128 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "coal-processing-3",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/coal-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"heat-exchange", "fluid-handling-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="creosote-oil-void",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="gasoline-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="gasoline-pyrolysis",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="lubricant-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "engine",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/engine.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"coal-processing-3", "electronics", "automation-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="engine-unit",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pumpjack",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "railway",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/railway.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"engine"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="rail",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="rail-signal",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="rail-chain-signal",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="locomotive",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="cargo-wagon",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "electromagnetic-science",
         icons = {
             {
@@ -1424,7 +1616,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"electronics"},
+        prerequisites = {"engine"},
         unit =
         {
             count = 10,

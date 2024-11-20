@@ -40,7 +40,7 @@ data:extend({
         type = "storage-tank",
         name = "one-way-valve",
         icon = "__GuG2__/graphics/icons/one-way-valve.png",
-        icon_size = 64, icon_mipmaps = 4,
+        icon_size = 64,
         flags = {"placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "one-way-valve"},
         max_health = 500,
@@ -1519,7 +1519,7 @@ data:extend({
         type = "electric-energy-interface",
         name = "cleanroom-controller",
         icon = "__GuG2__/graphics/icons/cleanroom-controller.png",
-        icon_size = 64, icon_mipmaps = 4,
+        icon_size = 64,
         flags = {"placeable-neutral", "player-creation"},
         minable = {mining_time = 0.2, result = "cleanroom-controller"},
         max_health = 350,
@@ -1610,7 +1610,7 @@ data:extend({
         type = "storage-tank",
         name = "cleanroom-vent",
         icon = "__GuG2__/graphics/icons/cleanroom-vent.png",
-        icon_size = 64, icon_mipmaps = 4,
+        icon_size = 64,
         flags = {"placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "cleanroom-vent"},
         max_health = 500,
@@ -1662,7 +1662,7 @@ data:extend({
         type = "storage-tank",
         name = "cleanroom-fluid-interface",
         icon = "__GuG2__/graphics/icons/cleanroom-fluid-interface.png",
-        icon_size = 64, icon_mipmaps = 4,
+        icon_size = 64,
         flags = {"placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "cleanroom-vent"},
         max_health = 500,
@@ -1718,7 +1718,7 @@ data:extend({
         type = "assembling-machine",
         name = "clean-assembling-machine",
         icon = "__GuG2__/graphics/icons/clean-assembling-machine.png",
-        icon_size = 64, icon_mipmaps = 4,
+        icon_size = 64,
         flags = {"placeable-neutral","placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "clean-assembling-machine"},
         max_health = 400,
@@ -1859,7 +1859,7 @@ data:extend({
         name = "clean-inserter",
         filter_count = 5,
         icon = "__GuG2__/graphics/icons/clean-inserter.png",
-        icon_size = 64, icon_mipmaps = 4,
+        icon_size = 64,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
         minable = { mining_time = 0.1, result = "clean-inserter" },
         max_health = 150,
@@ -2012,7 +2012,7 @@ data:extend({
         name = "clean-long-handed-inserter",
         filter_count = 5,
         icon = "__GuG2__/graphics/icons/clean-long-handed-inserter.png",
-        icon_size = 64, icon_mipmaps = 4,
+        icon_size = 64,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
         minable = {mining_time = 0.1, result = "clean-long-handed-inserter"},
         max_health = 160,
@@ -2167,7 +2167,7 @@ data:extend({
         type = "pipe",
         name = "clean-pipe",
         icon = "__GuG2__/graphics/icons/clean-pipe.png",
-        icon_size = 64, icon_mipmaps = 4,
+        icon_size = 64,
         flags = {"placeable-neutral", "player-creation"},
         minable = {mining_time = 0.1, result = "clean-pipe"},
         max_health = 100,
@@ -2410,7 +2410,7 @@ data:extend({
         type = "pipe-to-ground",
         name = "clean-pipe-to-ground",
         icon = "__GuG2__/graphics/icons/clean-pipe-to-ground.png",
-        icon_size = 64, icon_mipmaps = 4,
+        icon_size = 64,
         flags = {"placeable-neutral", "player-creation"},
         minable = {mining_time = 0.1, result = "clean-pipe-to-ground"},
         max_health = 150,
@@ -2484,7 +2484,7 @@ data:extend({
         name = "cleanroom-item-interface",
         localised_description = {"", {"entity-description.cleanroom-item-interface"}, "\n", {"label.cleanroom-tile-required"}},
         icon = "__GuG2__/graphics/icons/cleanroom-item-interface.png",
-        icon_size = 64, icon_mipmaps = 4,
+        icon_size = 64,
         flags = {"placeable-neutral", "player-creation"},
         minable = {mining_time = 0.2, result = "cleanroom-item-interface"},
         max_health = 350,
@@ -2991,6 +2991,105 @@ burner_chem.energy_source = {
             starting_frame_deviation = 60
         }
     }
+}
+burner_chem.graphics_set = {
+    animation = {
+        north = {
+            layers = {
+                {
+                    filename = "__GuG2__/graphics/entity/chemical-plant/chemical-plant.png",
+                    width = 220,
+                    height = 292,
+                    frame_count = 24,
+                    line_length = 12,
+                    shift = util.by_pixel(0.5, -9),
+                    scale = 0.5
+                },
+                {
+                    filename = "__GuG2__/graphics/entity/chemical-plant/chemical-plant-shadow.png",
+                    width = 312,
+                    height = 222,
+                    repeat_count = 24,
+                    shift = util.by_pixel(27, 6),
+                    draw_as_shadow = true,
+                    scale = 0.5
+                },
+            }
+        },
+        east = {
+            layers = {
+                {
+                    filename = "__GuG2__/graphics/entity/chemical-plant/chemical-plant.png",
+                    width = 220,
+                    height = 292,
+                    frame_count = 24,
+                    line_length = 12,
+                    shift = util.by_pixel(0.5, -9),
+                    scale = 0.5,
+                    y = 292 * 2,
+                },
+                {
+                    filename = "__GuG2__/graphics/entity/chemical-plant/chemical-plant-shadow.png",
+                    width = 312,
+                    height = 222,
+                    repeat_count = 24,
+                    shift = util.by_pixel(27, 6),
+                    draw_as_shadow = true,
+                    scale = 0.5,
+                    x = 312 * 1,
+                },
+            },
+        },
+        south = {
+            layers = {
+                {
+                    filename = "__GuG2__/graphics/entity/chemical-plant/chemical-plant.png",
+                    width = 220,
+                    height = 292,
+                    frame_count = 24,
+                    line_length = 12,
+                    shift = util.by_pixel(0.5, -9),
+                    scale = 0.5,
+                    y = 292 * 4,
+                },
+                {
+                    filename = "__GuG2__/graphics/entity/chemical-plant/chemical-plant-shadow.png",
+                    width = 312,
+                    height = 222,
+                    repeat_count = 24,
+                    shift = util.by_pixel(27, 6),
+                    draw_as_shadow = true,
+                    scale = 0.5,
+                    x = 312 * 2,
+                },
+            },
+        },
+        west = {
+            layers = {
+                {
+                    filename = "__GuG2__/graphics/entity/chemical-plant/chemical-plant.png",
+                    width = 220,
+                    height = 292,
+                    frame_count = 24,
+                    line_length = 12,
+                    shift = util.by_pixel(0.5, -9),
+                    scale = 0.5,
+                    y = 292 * 6,
+                },
+                {
+                    filename = "__GuG2__/graphics/entity/chemical-plant/chemical-plant-shadow.png",
+                    width = 312,
+                    height = 222,
+                    repeat_count = 24,
+                    shift = util.by_pixel(27, 6),
+                    draw_as_shadow = true,
+                    scale = 0.5,
+                    x = 312 * 3,
+                },
+            },
+        },
+    },
+    working_visualisations = table.deepcopy(data.raw["assembling-machine"]["chemical-plant"].graphics_set.working_visualisations),
 }
 data:extend({burner_chem})
 
@@ -4061,8 +4160,8 @@ data:extend({
         collision_mask = {layers = {}},
         energy_source = 
         {
-          type = "electric",
-          usage_priority = "solar"
+            type = "electric",
+            usage_priority = "solar"
         },
         production = "100kW",
         impact_category = "glass",
@@ -4464,6 +4563,184 @@ data:extend({
         energy_usage = "300kW",
     }
 })
+-- oil refinery
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "oil-refinery",
+        icons = du.alias("oil-refinery"),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "oil-refinery"},
+        max_health = 400,
+        corpse = "assembling-machine-3-remnants",
+        dying_explosion = "assembling-machine-3-explosion",
+        alert_icon_shift = util.by_pixel(-3, -12),
+        resistances =
+        {
+            {
+                type = "acid",
+                percent = 95
+            }
+        },
+        fluid_boxes =
+        {
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={0, 4},
+                        direction=defines.direction.south,
+                        flow_direction="input"
+                    }
+                },
+                production_type="input"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={2, 4},
+                        direction=defines.direction.south,
+                        flow_direction="input"
+                    }
+                },
+                production_type="input"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={-2, 4},
+                        direction=defines.direction.south,
+                        flow_direction="input"
+                    }
+                },
+                production_type="input"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={0, -4},
+                        direction=defines.direction.north,
+                        flow_direction="output"
+                    }
+                },
+                production_type="output"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={2, -4},
+                        direction=defines.direction.north,
+                        flow_direction="output"
+                    }
+                },
+                production_type="output"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={-2, -4},
+                        direction=defines.direction.north,
+                        flow_direction="output"
+                    }
+                },
+                production_type="output"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={-4, -4},
+                        direction=defines.direction.north,
+                        flow_direction="output"
+                    }
+                },
+                production_type="output"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={4, -4},
+                        direction=defines.direction.north,
+                        flow_direction="output"
+                    }
+                },
+                production_type="output"
+            },
+        },
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                    volume = 0.45
+                }
+            },
+            audible_distance_modifier = 0.5,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        collision_box = {{-4.3, -4.3}, {4.3, 4.3}},
+        selection_box = {{-4.5, -4.5}, {4.5, 4.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
+        fast_replaceable_group = "oil-refinery",
+        graphics_set = {
+            animation =
+            {
+                layers =
+                {
+                    {
+                        filename = "__pypetroleumhandlinggraphics__/graphics/entity/heavy-oil-refinery-mk01/off-mk01.png",
+                        priority = "high",
+                        width = 448,
+                        height = 551,
+                        frame_count = 1,
+                        line_length = 1,
+                        scale = 0.7,
+                        shift = util.by_pixel(8, -36),
+                    },
+                }
+            },
+        },
+        crafting_categories = {"oil-processing"},
+        crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source =
+        {
+            type = "electric",
+            usage_priority = "secondary-input",
+            emissions_per_minute = {pollution=0}
+        },
+        energy_usage = "500kW",
+    }
+})
 
 data:extend({
     {
@@ -4824,6 +5101,15 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         place_result = "solid-separator"
+    },
+    {
+        type = "item",
+        name = "oil-refinery",
+        icons = du.alias("oil-refinery"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "oil-refinery"
     },
     {
         type = "recipe-category",

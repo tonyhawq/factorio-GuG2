@@ -78,6 +78,8 @@ local function make_logs(names)
                 stack_size = 50,
                 fuel_value = "3MJ",
                 fuel_category = "chemical",
+                spoil_result = "rotten-log",
+                spoil_ticks = 30 * 60 * 60,
             },
         })
         if log.technology then
@@ -122,13 +124,6 @@ for _, recipe in pairs(created_recipes.growing) do
     ureic.name = ureic.name.."-ureic-1"
     data:extend{ureic}
     local log_amount = recipe:get_ingredient(ureic.sapling).amount or 1
-    --[[if ureic:has_ingredient("water") then
-        local water_cost = ureic:get_ingredient("water").amount
-        ureic:adjust_ingredient_amount(1/2)
-        ureic:add_ingredient{type="fluid",name="water",amount=water_cost}
-    else
-        ureic:adjust_ingredient_amount(1/2)
-    end]]
     ureic:adjust_ingredient_amount(1/2)
     ureic:adjust_ingredient_amount("water", 1/2)
     ureic:add_result{type="item", name=recipe.growing_log_type, amount=log_amount}

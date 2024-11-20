@@ -108,6 +108,7 @@ data:extend({
             {type="item", name="battery-alloy-plate", amount=3},
             {type="item", name="steel-ingot", amount=4},
             {type="item", name="manganese-ingot", amount=3},
+            {type="fluid", name="heavy-oil", amount=12},
         },
         results ={
             {type="item", name="glowing-mangaloy-ingot", amount=1},
@@ -160,7 +161,115 @@ data:extend({
             {type="fluid", name="molten-glass", amount=3},
         }
     }
-})--[[
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "chemical-plant",
+        icons = du.icons{mod="base", name="chemical-plant"},
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="burner-chemical-plant", amount=1},
+            {type="item", name="small-electric-motor", amount=3},
+            {type="item", name="aluminum-plate", amount=3},
+            {type="item", name="steel-beam", amount=4},
+        },
+        results = {
+            {type="item", name="chemical-plant", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "oil-refinery",
+        icons = du.alias("oil-refinery"),
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="chemical-plant", amount=2},
+            {type="item", name="destructive-distillation-tower", amount=2},
+            {type="item", name="electronic-circuit", amount=6},
+        },
+        results = {
+            {type="item", name="oil-refinery", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "heat-exchanging", ---@diagnostic disable-line
+        name = "steam-geothermal-water",
+        icons = du.icons("hot-geothermal-water"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 4,
+        ingredients = {
+            {type="fluid", name="hot-geothermal-water", amount=100, fluidbox_index = 1},
+            {type="fluid", name="water", amount=100, fluidbox_index = 2},
+        },
+        results = {
+            {type="fluid", name="geothermal-water", amount=100, fluidbox_index = 2},
+            {type="fluid", name="steam", temperature=165, amount=1000, fluidbox_index = 1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "geothermal-water-treatment",
+        icons = du.icons("geothermal-water"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 4,
+        ingredients = {
+            {type="fluid", name="geothermal-water", amount=100},
+        },
+        results = {
+            {type="fluid", name="mineralized-water", amount=20},
+            {type="fluid", name="water", amount=80},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "mineralized-water-treatment",
+        icons = du.icons("mineralized-water"):add_corner("manganese-oxides"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 4,
+        ingredients = {
+            {type="fluid", name="mineralized-water", amount=100},
+            {type="fluid", name="chlorine", amount=20},
+            {type="item", name="coal-dust", amount=5},
+        },
+        results = {
+            {type="fluid", name="water", amount=40},
+            {type="item", name="stone", amount=3},
+            {type="item", name="manganese-oxides", amount=2},
+            {type="item", name="evaporite", amount=1},
+        }
+    }
+})
+--[[
 data:extend({
     {
         type = "recipe", 
@@ -202,6 +311,90 @@ data:extend({
         results = {
             {type="fluid", name="sludge", amount=2},
             {type="fluid", name="water", amount=18},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blasting", ---@diagnostic disable-line
+        name = "activated-carbon-1",
+        icons = du.icons("activated-carbon"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 8,
+        ingredients = {
+            {type="item", name="coke", amount=1},
+        },
+        results = {
+            {type="item", name="activated-carbon", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "activated-carbon-2",
+        icons = du.icons("activated-carbon"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="coke", amount=3},
+            {type="item", name="zinc-plate", amount=1},
+            {type="item", name="sodium-hydroxide", amount=1},
+            {type="fluid", name="hydrogen-chloride", amount=10},
+        },
+        results = {
+            {type="item", name="activated-carbon", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "accumulator",
+        icons = du.icons{mod="base", name="accumulator"},
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="stone-brick", amount=5},
+            {type="item", name="battery", amount=4},
+            {type="item", name="aluminum-cable", amount=24},
+            {type="fluid", name="lubricant", amount=6},
+        },
+        results = {
+            {type="item", name="accumulator", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "solid-separator",
+        icons = du.icons("solid-separator"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="steam-crusher", amount=1},
+            {type="item", name="magnet-wire", amount=60},
+            {type="item", name="ferrite", amount=12},
+            {type="item", name="splitter", amount=4},
+            {type="item", name="electronic-circuit", amount=2},
+        },
+        results = {
+            {type="item", name="solid-separator", amount=1},
         }
     }
 })

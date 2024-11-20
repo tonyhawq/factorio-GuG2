@@ -5,6 +5,9 @@ GuG2 = GuG2 or {aliases={}}
 local dutil = {}
 
 function dutil.alias(name, as, make_copies)
+    if type(make_copies) == "nil" then
+        make_copies = dutil.default_copy
+    end
     if not as then
         if not GuG2.aliases[name] then
             error("No alias for name "..name)
@@ -27,6 +30,7 @@ function dutil.alias(name, as, make_copies)
     end
 end
 
+dutil.default_copy = false
 dutil.show_on_modify = true
 dutil.mod = "GuG2"
 dutil.path = "/graphics/icons/"
@@ -171,10 +175,34 @@ dutil.metatable_indicies =
             end
             icons:get().tint = tint
             return (icons)
-        end
+        end,
+        scale = function(icons, scale)
+            ensure_colon_syntax(icons)
+            icons:get().scale = scale
+            return (icons)
+        end,
     },
     assembling_machine = {},
-    item = {},
+    item = {
+        retrieve = function (name)
+            return
+            data.raw.item[name] or
+            data.raw.ammo[name] or
+            data.raw.capsule[name] or
+            data.raw.gun[name] or
+            data.raw["item-with-entity-data"][name] or
+            data.raw["item-with-label"][name] or
+            data.raw["item-with-inventory"][name] or
+            data.raw["item-with-tags"][name] or
+            data.raw["spidertron-remote"][name] or
+            data.raw["module"][name] or
+            data.raw["rail-planner"][name] or
+            data.raw["space-platform-starter-pack"][name] or
+            data.raw.tool[name] or
+            data.raw.armor[name] or
+            data.raw["repair-tool"][name]
+        end,
+    },
     fluid = {},
     recipe = {
         set_ingredients = function (recipe, ingredients)
@@ -200,7 +228,6 @@ dutil.metatable_indicies =
         end,
         has_generic = function (recipe, generic, tabl)
             ensure_colon_syntax(recipe)
-            log("hola senor")
             if type(generic) == "string" then
                 generic = {name=generic}
             end
@@ -300,11 +327,18 @@ dutil.metatable_indicies =
             ensure_colon_syntax(recipe)
             recipe.enabled = false
             for _, tech in pairs(data.raw.technology) do
-                for i = 1, #(tech.effects or {}) do
+                local len = #(tech.effects or {})
+                local i = 0
+                while i < len do
+                    i = i + 1
                     local effect = tech.effects[i]
-                    if effect.type == "unlock-recipe" and effect.recipe == recipe then
+                    if not effect then
+                        error(serpent.block(tech).."\nat "..i)
+                    end
+                    if effect.type == "unlock-recipe" and effect.recipe == recipe.name then
                         table.remove(tech.effects, i)
                         i = i - 1
+                        len = len - 1
                     end
                 end
             end
@@ -332,6 +366,10 @@ dutil.metatable_indicies =
             end
             table.insert(tech.effects, {type="unlock-recipe", recipe=recipe})
             return (tech)
+        end,
+        add_label_unlock = function (tech, cfg)
+            tech.effects = tech.effects or {}
+            table.insert(tech.effects, {type="nothing", icons = cfg.icons or cfg.icon, effect_description=cfg.name})
         end,
     },
     inserter = {},
@@ -373,20 +411,30 @@ local function_types = {
 
 for _, type in pairs(function_types) do
     local keyable = type:gsub("-", "_")
-    dutil[keyable] = function(name)
-        if not data.raw[type][name] then
+    dutil[keyable] = function(name, ignore_error)
+        local retrieved = data.raw[type][name]
+        if dutil.metatable_constructable(keyable) then
+            local mt = dutil.metatable(keyable)
+            if mt.retrieve then
+                retrieved = mt.retrieve(name)
+            end
+        end
+        if not retrieved then
+            if ignore_error then
+                return nil
+            end
             error("No "..type.." exists with name "..tostring(name))
         end
-        if getmetatable(data.raw[type][name]) then
-            if tostring(data.raw[type][name].mt_type) ~= "g2" then
+        if getmetatable(retrieved) then
+            if tostring(retrieved.mt_type) ~= "g2" then
                 error(tostring(name).." ("..tostring(type)..") already has a conflicting metatable.")
             end
         else
             if dutil.metatable_constructable(keyable) then
-                setmetatable(data.raw[type][name], dutil.metatable(keyable))
+                setmetatable(retrieved, dutil.metatable(keyable))
             end
         end
-        return data.raw[type][name]
+        return retrieved
     end
 end
 

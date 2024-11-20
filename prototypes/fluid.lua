@@ -7,8 +7,6 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        fuel_category = "chemical",
-        fuel_value = "5MJ",
         icons = du.icons("heavy-distillates"),
         order = "a[fluid]-j[sludge]"
     },
@@ -21,7 +19,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "1MJ",
         icons = du.icons("medium-distillates"),
         order = "a[fluid]-j[sludge]"
     },
@@ -34,7 +32,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "1MJ",
         icons = du.icons("light-distillates"),
         order = "a[fluid]-j[sludge]"
     },
@@ -46,8 +44,6 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        fuel_category = "chemical",
-        fuel_value = "5MJ",
         icons = du.icons("condensates"),
         order = "a[fluid]-j[sludge]"
     },
@@ -60,7 +56,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "0.5MJ",
         icons = du.icons("light-naphtha"),
         order = "a[fluid]-j[sludge]"
     },
@@ -73,7 +69,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "0.5MJ",
         icons = du.icons("heavy-naphtha"),
         order = "a[fluid]-j[sludge]"
     },
@@ -86,7 +82,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "1.5MJ",
         icons = du.icons("gas-oil"),
         order = "a[fluid]-j[sludge]"
     },
@@ -99,7 +95,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "1MJ",
         icons = du.icons("heavy-gas-oil"),
         order = "a[fluid]-j[sludge]"
     },
@@ -112,7 +108,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "1.1MJ",
         icons = du.icons("light-gas-oil"),
         order = "a[fluid]-j[sludge]"
     },
@@ -137,7 +133,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "2MJ",
         icons = du.icons("diesel"),
         order = "a[fluid]-j[sludge]"
     },
@@ -150,7 +146,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "4MJ",
         icons = du.icons("kerosene"),
         order = "a[fluid]-j[sludge]"
     },
@@ -176,7 +172,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "0.5MJ",
         icons = du.icons("raw-kerosene"),
         order = "a[fluid]-j[sludge]"
     },
@@ -201,8 +197,6 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        fuel_category = "chemical",
-        fuel_value = "5MJ",
         icons = du.icons("hydrogen-sulfide"),
         order = "a[fluid]-j[sludge]"
     },
@@ -214,8 +208,6 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        fuel_category = "chemical",
-        fuel_value = "5MJ",
         icons = du.icons("hydrogen-chloride"),
         order = "a[fluid]-j[sludge]"
     },
@@ -227,8 +219,6 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        fuel_category = "chemical",
-        fuel_value = "5MJ",
         icons = du.icons("residuals"),
         order = "a[fluid]-j[sludge]"
     },
@@ -241,7 +231,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "3MJ",
         icons = du.icons("gasoline"),
         order = "a[fluid]-j[sludge]"
     },
@@ -254,7 +244,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "0.5MJ",
         icons = du.icons("butane"),
         order = "a[fluid]-j[sludge]"
     },
@@ -267,7 +257,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "0.25MJ",
         icons = du.icons("btx"),
         order = "a[fluid]-j[sludge]"
     },
@@ -280,7 +270,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "2MJ",
         icons = du.icons("fuel-oil"),
         order = "a[fluid]-j[sludge]"
     },
@@ -293,7 +283,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "0.5MJ",
         icons = du.icons("benzene"),
         order = "a[fluid]-j[sludge]"
     },
@@ -305,8 +295,6 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        fuel_category = "chemical",
-        fuel_value = "5MJ",
         icons = du.icons("toluene"),
         order = "a[fluid]-j[sludge]"
     },
@@ -318,8 +306,6 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        fuel_category = "chemical",
-        fuel_value = "5MJ",
         icons = du.icons("toluene"),
         order = "a[fluid]-j[sludge]"
     },
@@ -332,7 +318,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "0.25MJ",
         icons = du.icons("styrene"),
         order = "a[fluid]-j[sludge]"
     },
@@ -345,7 +331,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "0.25MJ",
         icons = du.icons("ethylene"),
         order = "a[fluid]-j[sludge]"
     },
@@ -358,7 +344,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "0.25MJ",
         icons = du.icons("propylene"),
         order = "a[fluid]-j[sludge]"
     },
@@ -371,7 +357,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "0.25MJ",
         icons = du.icons("butadiene"),
         order = "a[fluid]-j[sludge]"
     },
@@ -383,8 +369,6 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        fuel_category = "chemical",
-        fuel_value = "5MJ",
         icons = du.icons("raw-lubricating-oil"),
         order = "a[fluid]-j[sludge]"
     },
@@ -397,7 +381,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "0.5MJ",
         icons = du.icons("methane"),
         order = "a[fluid]-j[sludge]"
     },
@@ -409,8 +393,6 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        fuel_category = "chemical",
-        fuel_value = "5MJ",
         icons = du.icons("hvgo"),
         order = "a[fluid]-j[sludge]"
     },
@@ -423,7 +405,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "1.8MJ",
         icons = du.icons("lvgo"),
         order = "a[fluid]-j[sludge]"
     },
@@ -436,7 +418,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         fuel_category = "chemical",
-        fuel_value = "5MJ",
+        fuel_value = "1MJ",
         icons = du.icons("natural-gas"),
         order = "a[fluid]-j[sludge]"
     },
@@ -460,6 +442,9 @@ data:extend({
         base_color = {r=0, g=0.73, b=0.76},
         flow_color = {r=1, g=1, b=1},
         icons = du.icons("saline-water"),
+        default_temperature = 15,
+        max_temperature = 100,
+        heat_capacity = "2kJ",
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -469,6 +454,9 @@ data:extend({
         base_color = {r=0, g=0.73, b=0.76},
         flow_color = {r=1, g=1, b=1},
         icons = du.icons("brine"),
+        default_temperature = 15,
+        max_temperature = 100,
+        heat_capacity = "2kJ",
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -478,6 +466,9 @@ data:extend({
         base_color = {r=0, g=0.73, b=0.76},
         flow_color = {r=1, g=1, b=1},
         icons = du.icons("mineralized-water"),
+        default_temperature = 15,
+        max_temperature = 100,
+        heat_capacity = "2kJ",
         order = "a[fluid]-j[sludge]"
     },
 })
@@ -948,6 +939,29 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         icons = du.icons("rotational-force"),
+        order = "a[fluid]-j[sludge]",
+        auto_barrel = false,
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "hot-geothermal-water",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("hot-geothermal-water"),
+        order = "a[fluid]-j[sludge]"
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "geothermal-water",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("geothermal-water"),
         order = "a[fluid]-j[sludge]"
     },
 })

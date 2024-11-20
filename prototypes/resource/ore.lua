@@ -193,5 +193,119 @@ add_resource_to_nauvis("lead-ore")
 add_resource_to_nauvis("tin-ore")
 add_resource_to_nauvis("sandstone")
 add_resource_to_nauvis("limestone")
+add_resource_to_nauvis("geothermal-geyser")
 remove_resource_from_nauvis("stone")
 data.raw["autoplace-control"].stone.hidden = true
+
+data:extend({
+    {
+        type = "autoplace-control",
+        name = "geothermal-geyser",
+        localised_name = {"", "[entity=geothermal-geyser] ", {"entity-name.geothermal-geyser"}},
+        richness = true,
+        order = "b-a",
+        category = "resource"
+    },
+    {
+        type = "resource",
+        name = "geothermal-geyser",
+        icon = "__base__/graphics/icons/crude-oil-resource.png",
+        flags = {"placeable-neutral"},
+        category = "basic-fluid",
+        subgroup = "mineable-fluids",
+        order="a-b-a",
+        infinite = true,
+        highlight = true,
+        minimum = 60000,
+        normal = 300000,
+        infinite_depletion_amount = 10,
+        resource_patch_search_radius = 12,
+        tree_removal_probability = 0.7,
+        tree_removal_max_distance = 32 * 32,
+        minable =
+        {
+            mining_time = 1,
+            results =
+            {
+                {
+                    type = "fluid",
+                    name = "hot-geothermal-water",
+                    amount_min = 100,
+                    amount_max = 100,
+                    probability = 1
+                }
+            }
+        },
+        collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+        selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+        autoplace = resource_autoplace.resource_autoplace_settings
+        {
+            name = "geothermal-geyser",
+            order = "a", -- Other resources are "b"; oil won't get placed if something else is already there.
+            base_density = 8.2,
+            base_spots_per_km2 = 1.8,
+            random_probability = 1/48,
+            random_spot_size_minimum = 1,
+            random_spot_size_maximum = 1, -- don't randomize spot size
+            additional_richness = 220000, -- this increases the total everywhere, so base_density needs to be decreased to compensate
+            has_starting_area_placement = false,
+            regular_rq_factor_multiplier = 1
+        },
+        stage_counts = {0},
+        stages = {
+            layers = {
+                {
+                    variation_count = 4,
+                    filename = "__GuG2__/graphics/entity/geyser/sulfuric-acid-geyser.png",
+                    width = 254,
+                    height = 178,
+                    shift = util.by_pixel( 9.5, 5.0),
+                    line_length = 4,
+                    frame_count = 4,
+                    scale = 0.5,
+                }
+            }
+        },
+        draw_stateless_visualisation_under_building = false,
+        stateless_visualisation =
+        {
+          -- expanded 2 animation layers into 2 visualisations to demo multiple visualisations
+          {
+            fade_out_progress_duration = 1,
+            count = 1,
+            render_layer = "smoke",
+            animation =
+            {
+              filename = "__GuG2__/graphics/entity/geyser/sulfuric-acid-geyser-gas-outer.png",
+              frame_count = 47,
+              line_length = 16,
+              width = 90,
+              height = 188,
+              animation_speed = 0.9,
+              shift = util.by_pixel(-6, -120),
+              scale = 1.5,
+              tint = util.multiply_color({r=0.9, g=0.9, b=1}, 0.6)
+            }
+          },
+          {
+            fade_out_progress_duration = 1,
+            count = 1,
+            render_layer = "smoke",
+            animation =
+            {
+               filename = "__GuG2__/graphics/entity/geyser/sulfuric-acid-geyser-gas-inner.png",
+               frame_count = 47,
+               line_length = 16,
+               width = 40,
+               height = 84,
+               animation_speed = 1,
+               shift = util.by_pixel(-4, -60),
+               scale = 1.5,
+               tint = util.multiply_color({r=0.9, g=0.9, b=1}, 0.6)
+            }
+          }
+        },
+        map_color = {1, 0.55, 0},
+        map_grid = false
+    },
+})
