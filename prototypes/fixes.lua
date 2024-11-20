@@ -1,6 +1,7 @@
 local du = require("dutil")
 
-du.recipe("wooden-chest").hidden = false
+du.recipe"wooden-chest".hidden = false
+du.recipe"wooden-chest".enabled = true
 
 du.inserter"mechanical-inserter".order = "a[basic]-a"
 du.inserter"burner-inserter".order =     "a[basic]-b"
