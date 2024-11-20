@@ -8,7 +8,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"electromagnetic-science"},
+        prerequisites = {"automation-3"},
         unit =
         {
             count = 10,
@@ -122,7 +122,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"oil-refining"},
+        prerequisites = {"electromagnetic-science"},
         unit =
         {
             count = 10,
@@ -158,6 +158,45 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "automation-3",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/automation-3.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"antimony-1", "masonry-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="machine-chassis",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="chemical-plant",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="assembling-machine-2",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "separation",
         icons = {
             {
@@ -186,6 +225,22 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="evaporite-separation-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="water-treatment-plant",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="seawater-treatment",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="saline-water-treatment",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="brine-treatment",
             },
         },
     },

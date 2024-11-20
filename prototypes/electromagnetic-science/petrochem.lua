@@ -569,6 +569,211 @@ data:extend({
 
 
 
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "oil-processing", ---@diagnostic disable-line
+        name = "cumene",
+        icons = du.icons("cumene"):add_corner("propylene"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="propylene", amount=50},
+            {type="fluid", name="benzene", amount=70},
+            {type="fluid", name="sulfuric-acid", amount=10},
+            {type="item", name="aluminum-plate", amount=1}, -- aluminum trichloride
+        },
+        results = {
+            {type="fluid", name="cumene", amount=60},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "oil-processing", ---@diagnostic disable-line
+        name = "phenol-2",
+        icons = du.icons("phenol"):add_corner("cumene"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="cumene", amount=50},
+            {type="fluid", name="oxygen", amount=50},
+        },
+        results = {
+            {type="item", name="phenol", amount=10},
+            {type="fluid", name="acetone", amount=50},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "oil-processing", ---@diagnostic disable-line
+        name = "phenol-3",
+        icons = du.icons("isopropyl-alcohol"):add_corner("phenol"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="cumene", amount=50},
+            {type="fluid", name="oxygen", amount=50},
+            {type="item", name="nickel-plate", amount=6},
+        },
+        results = {
+            {type="item", name="phenol", amount=3},
+            {type="fluid", name="acetone", amount=30},
+            {type="fluid", name="isopropyl-alcohol", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "oil-processing", ---@diagnostic disable-line
+        name = "epichlorohydrin-1",
+        icons = du.icons("epichlorohydrin"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="propylene", amount=20},
+            {type="fluid", name="chlorine", amount=50},
+            {type="fluid", name="water", amount=20},
+            {type="item", name="cobalt-dust", amount=1},
+            {type="item", name="sodium-hydroxide", amount=1},
+        },
+        results = {
+            {type="fluid", name="epichlorohydrin", amount=20},
+            {type="fluid", name="wastewater", amount=40},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "oil-processing", ---@diagnostic disable-line
+        name = "bpa-1",
+        icons = du.icons("bpa"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="organic-solvent", amount=20},
+            {type="fluid", name="acetone", amount=36},
+            {type="fluid", name="sulfuric-acid", amount=10},
+            {type="item", name="phenol", amount=6},
+            {type="item", name="cobalt-dust", amount=1},
+        },
+        results = {
+            {type="fluid", name="bpa", amount=20},
+            {type="fluid", name="water", amount=20},
+            {type="fluid", name="sulfuric-acid", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "oil-processing", ---@diagnostic disable-line
+        name = "epoxy-1",
+        icons = du.icons("epoxy"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="bpa", amount=20},
+            {type="fluid", name="epichlorohydrin", amount=20},
+        },
+        results = {
+            {type="fluid", name="epoxy", amount=20},
+        }
+    }
+})
+
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fuel-refining", ---@diagnostic disable-line
+        name = "solid-fuel-fuel-oil",
+        icons = du.icons{mod="base",name="solid-fuel"}:add_corner("fuel-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="petroleum-gas", amount=20},
+            {type="fluid", name="fuel-oil", amount=20},
+        },
+        results = {
+            {type="item", name="solid-fuel", amount=5},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fuel-refining", ---@diagnostic disable-line
+        name = "solid-fuel-kerosene",
+        icons = du.icons{mod="base",name="solid-fuel"}:add_corner("kerosene"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="petroleum-gas", amount=20},
+            {type="fluid", name="kerosene", amount=5},
+        },
+        results = {
+            {type="item", name="solid-fuel", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fuel-refining", ---@diagnostic disable-line
+        name = "solid-fuel-gas-oil",
+        icons = du.icons{mod="base",name="solid-fuel"}:add_corner("gas-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="petroleum-gas", amount=20},
+            {type="fluid", name="gas-oil", amount=40},
+        },
+        results = {
+            {type="item", name="solid-fuel", amount=3},
+        }
+    }
+})
 
 
 
@@ -649,30 +854,6 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "oil-processing", ---@diagnostic disable-line
-        name = "plastic-pvc-1",
-        icons = du.icons{name="plastic-bar", mod="base"}:add_corner("acetylene"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="fluid", name="acetylene", amount=100},
-            {type="fluid", name="hydrogen-chloride", amount=200},
-            {type="item", name="lead-sulfate", amount=2},
-            {type="item", name="coal-dust", amount=2},
-            {type="item", name="bound-porcelain", amount=1},
-        },
-        results = {
-            {type="item", name="plastic-bar", amount=3},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "oil-processing", ---@diagnostic disable-line
         name = "plastic-pvc-2",
         icons = du.icons{name="plastic-bar", mod="base"}:add_corner("ethylene"),
         subgroup = "raw-material",
@@ -741,7 +922,7 @@ data:extend({
         enabled = false,
         category = "oil-processing", ---@diagnostic disable-line
         name = "polymer-additives-2",
-        icons = du.icons("polymer-additives"):add_corner("styrene"),
+        icons = du.icons("polymer-additives"):add_corner("glycerol"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -765,7 +946,7 @@ data:extend({
         enabled = false,
         category = "oil-processing", ---@diagnostic disable-line
         name = "low-quality-plastic",
-        icons = du.icons("rubber"):add_corner("styrene"),
+        icons = du.icons{mod="base",name="plastic-bar"}:add_corner("polymer-additives"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -787,7 +968,7 @@ data:extend({
         enabled = false,
         category = "oil-processing", ---@diagnostic disable-line
         name = "finished-plastic",
-        icons = du.icons("rubber"):add_corner("styrene"),
+        icons = du.icons{mod="base",name="plastic-bar"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -808,7 +989,7 @@ data:extend({
         enabled = false,
         category = "oil-processing", ---@diagnostic disable-line
         name = "high-quality-plastic",
-        icons = du.icons("rubber"):add_corner("styrene"),
+        icons = du.icons{mod="base",name="plastic-bar"}:add_corner("hals"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -831,7 +1012,7 @@ data:extend({
         enabled = false,
         category = "oil-processing", ---@diagnostic disable-line
         name = "hals", -- 2,2,6,6-Tetramethylpiperidine
-        icons = du.icons("rubber"):add_corner("styrene"),
+        icons = du.icons("hals"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

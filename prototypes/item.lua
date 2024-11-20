@@ -22,6 +22,26 @@ data:extend({
 })
 data:extend({
   {
+    type = "item",
+    name = "cladding",
+    icons = du.icons("cladding"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+})
+data:extend({
+  {
+    type = "item",
+    name = "phenol",
+    icons = du.icons("phenol"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+})
+data:extend({
+  {
     type = "tool",
     name = "environmental-science-pack",
     localised_description = {"item-description.science-pack"},
@@ -548,6 +568,22 @@ data:extend({
   },
   {
     type = "item",
+    name = "nickel-plate",
+    icons = du.icons("nickel-plate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "cobalt-dust",
+    icons = du.icons("cobalt-dust"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
     name = "manganese-oxides",
     icons = du.icons("manganese-oxides"),
     subgroup = "smelting-machine",
@@ -558,6 +594,30 @@ data:extend({
     type = "item",
     name = "aluminum-ingot",
     icons = du.icons("aluminum-ingot"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "small-parts",
+    icons = du.icons("small-parts"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "cement",
+    icons = du.icons("cement"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "mortar",
+    icons = du.icons("mortar"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 200

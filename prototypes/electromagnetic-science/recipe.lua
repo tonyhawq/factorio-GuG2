@@ -188,16 +188,54 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
+        name = "assembling-machine-2",
+        icons = du.icons{mod="base", name="assembling-machine-2"},
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="assembling-machine-1", amount=1},
+            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="steam-engine", amount=1},
+        },
+        results = {
+            {type="item", name="assembling-machine-2", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
         name = "oil-refinery",
         icons = du.alias("oil-refinery"),
         energy_required = 1,
         ingredients = {
-            {type="item", name="chemical-plant", amount=2},
+            {type="item", name="water-treatment-plant", amount=2},
             {type="item", name="destructive-distillation-tower", amount=2},
-            {type="item", name="electronic-circuit", amount=6},
+            {type="item", name="machine-chassis", amount=3},
         },
         results = {
             {type="item", name="oil-refinery", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "fuel-refinery",
+        icons = du.alias("fuel-refinery"),
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="oil-refinery", amount=1},
+            {type="item", name="chemical-plant", amount=1},
+            {type="item", name="machine-chassis", amount=1},
+        },
+        results = {
+            {type="item", name="fuel-refinery", amount=2},
         }
     }
 })
@@ -266,6 +304,94 @@ data:extend({
             {type="item", name="stone", amount=3},
             {type="item", name="manganese-oxides", amount=2},
             {type="item", name="evaporite", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "small-parts-1",
+        icons = du.icons("small-parts"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 10,
+        ingredients = {
+            {type="item", name="plastic-bar", amount=12},
+            {type="item", name="aluminum-plate", amount=12},
+            {type="item", name="aluminum-carbide", amount=6},
+            {type="item", name="iron-gear-wheel", amount=10},
+            {type="item", name="fiberboard", amount=6},
+            {type="fluid", name="lubricant", amount=6},
+        },
+        results = {
+            {type="item", name="small-parts", amount=60},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "water-treatment", ---@diagnostic disable-line
+        name = "seawater-treatment",
+        icons = du.icons("desalination"):add_corner("seawater"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 4,
+        ingredients = {
+            {type="fluid", name="seawater", amount=100},
+        },
+        results = {
+            {type="fluid", name="water", amount=80},
+            {type="fluid", name="saline-water", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "water-treatment", ---@diagnostic disable-line
+        name = "saline-water-treatment",
+        icons = du.icons("desalination"):add_corner("saline-water"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 4,
+        ingredients = {
+            {type="fluid", name="saline-water", amount=100},
+        },
+        results = {
+            {type="fluid", name="water", amount=80},
+            {type="fluid", name="brine", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "water-treatment", ---@diagnostic disable-line
+        name = "brine-treatment",
+        icons = du.icons("desalination"):add_corner("brine"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 4,
+        ingredients = {
+            {type="fluid", name="brine", amount=100},
+        },
+        results = {
+            {type="fluid", name="water", amount=80},
+            {type="item", name="brine-salt", amount=2},
         }
     }
 })
@@ -362,6 +488,213 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "cladding",
+        icons = du.icons("cladding"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="plastic-bar", amount=3},
+            {type="item", name="rubber", amount=3},
+            {type="item", name="glowing-mangaloy-ingot", amount=1},
+            {type="item", name="glass", amount=6},
+        },
+        results = {
+            {type="item", name="cladding", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "cleanroom-tile",
+        icons = du.icons("cleanroom-tile"),
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="concrete", amount=3},
+            {type="item", name="cladding", amount=3},
+        },
+        results = {
+            {type="item", name="cleanroom-tile", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "cleanroom-wall",
+        icons = du.icons("cleanroom-wall"),
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="cleanroom-tile", amount=1},
+            {type="item", name="stone-wall", amount=1},
+            {type="item", name="cladding", amount=2},
+        },
+        results = {
+            {type="item", name="cleanroom-wall", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "cleanroom-fluid-interface",
+        icons = du.icons("cleanroom-fluid-interface"),
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="cleanroom-wall", amount=1},
+            {type="item", name="pump", amount=2},
+            {type="item", name="cladding", amount=2},
+        },
+        results = {
+            {type="item", name="cleanroom-fluid-interface", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "cleanroom-fluid-interface",
+        icons = du.icons("cleanroom-fluid-interface"),
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="cleanroom-wall", amount=1},
+            {type="item", name="pump", amount=2},
+            {type="item", name="cladding", amount=2},
+        },
+        results = {
+            {type="item", name="cleanroom-fluid-interface", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "cleanroom-controller",
+        icons = du.icons("cleanroom-controller"),
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="computer-1", amount=1},
+            {type="item", name="cladding", amount=2},
+            {type="item", name="aluminum-cable", amount=12},
+        },
+        results = {
+            {type="item", name="cleanroom-controller", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "clean-assembling-machine",
+        icons = du.icons("clean-assembling-machine"),
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="cleanroom-controller", amount=1},
+            {type="item", name="fabricator-1", amount=1},
+        },
+        results = {
+            {type="item", name="clean-assembling-machine", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "clean-inserter",
+        icons = du.icons("clean-inserter"),
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="cleanroom-controller", amount=1},
+            {type="item", name="fast-inserter", amount=1},
+        },
+        results = {
+            {type="item", name="clean-inserter", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "clean-long-handed-inserter",
+        icons = du.icons("clean-long-handed-inserter"),
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="glowing-mangaloy-ingot", amount=1},
+            {type="item", name="clean-inserter", amount=1},
+        },
+        results = {
+            {type="item", name="clean-long-handed-inserter", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "clean-pipe",
+        icons = du.icons("clean-pipe"),
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="pipe", amount=1},
+            {type="item", name="cladding", amount=1},
+        },
+        results = {
+            {type="item", name="clean-pipe", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "clean-pipe-to-ground",
+        icons = du.icons("clean-pipe-to-ground"),
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="clean-pipe", amount=12},
+            {type="item", name="cladding", amount=12},
+        },
+        results = {
+            {type="item", name="clean-pipe-to-ground", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "accumulator",
         icons = du.icons{mod="base", name="accumulator"},
@@ -391,10 +724,53 @@ data:extend({
             {type="item", name="magnet-wire", amount=60},
             {type="item", name="ferrite", amount=12},
             {type="item", name="splitter", amount=4},
-            {type="item", name="electronic-circuit", amount=2},
+            {type="item", name="machine-chassis", amount=1},
         },
         results = {
             {type="item", name="solid-separator", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "machine-chassis",
+        icons = du.icons("machine-chassis"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="concrete", amount=20},
+            {type="item", name="steel-beam", amount=10},
+            {type="item", name="glowing-mangaloy-ingot", amount=5},
+            {type="item", name="aluminum-cable", amount=5},
+            {type="item", name="electronic-circuit", amount=5},
+            {type="item", name="pipe", amount=10},
+        },
+        results = {
+            {type="item", name="machine-chassis", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "water-treatment-plant",
+        icons = du.icons("water-treatment-plant"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="small-tank", amount=4},
+            {type="item", name="chemical-plant", amount=1},
+            {type="item", name="small-electric-motor", amount=10},
+            {type="item", name="small-parts", amount=20},
+            {type="item", name="machine-chassis", amount=1},
+        },
+        results = {
+            {type="item", name="water-treatment-plant", amount=1},
         }
     }
 })

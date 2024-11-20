@@ -8,6 +8,14 @@ script.on_init(function ()
     Cleanroom.setup()
     Forestry.setup()
     AlgaeFarm.setup()
+    if remote.interfaces["freeplay"] then
+        remote.call("freeplay", "set_created_items", {
+            ["lead-plate"] = 100,
+            ["wood"] = 20,
+            ["stone-furnace"] = 12,
+            ["steel-beam"] = 30,
+        })
+    end
 end)
 
 script.on_configuration_changed(function ()

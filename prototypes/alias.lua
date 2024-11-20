@@ -8,3 +8,4 @@ du.alias("destructive-distillation-tower", du.icons{discard=true, name="__pycoal
 du.alias("glassworks", du.icons{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/glassworks-mk01.png"}, true)
 du.alias("smithy", du.icons{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/advanced-foundry-mk01.png"}, true)
 du.alias("oil-refinery", du.icons{discard=true, name="__pypetroleumhandlinggraphics__/graphics/icons/hor-mk01.png"}, true)
+du.alias("fuel-refinery", du.icons{discard=true, name="__base__/graphics/icons/oil-refinery.png"}, true)

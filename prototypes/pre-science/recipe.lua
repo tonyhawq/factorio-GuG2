@@ -242,7 +242,7 @@ data:extend({
         energy_required = 1,
         ingredients = {
             {type="item", name="wood", amount=2},
-            {type="item", name="tin-plate", amount=1},
+            {type="item", name="lead-plate", amount=1},
         },
         results = {
             {type="item", name="planter-box", amount=1},
@@ -262,7 +262,6 @@ data:extend({
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="item", name="glass", amount=8},
             {type="item", name="mechanical-inserter", amount=3},
             {type="item", name="transport-belt", amount=3},
             {type="item", name="brick", amount=15},
@@ -286,7 +285,7 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="item", name="planter-box", amount=2},
-            {type="item", name="iron-ore", amount=6},
+            {type="item", name="bronze-plate", amount=2},
         },
         results = {
             {type="item", name="environmental-science-pack", amount=2},

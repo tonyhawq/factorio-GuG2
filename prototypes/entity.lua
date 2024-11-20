@@ -948,6 +948,74 @@ gf_boiler_entity.fire_glow.west.blend_mode = "additive-soft"]]
 
 data:extend({gf_boiler_entity})
 
+local function scale_layer(layer, scale)
+    layer.scale = (layer.scale or 1) * scale
+    --[[if layer.shift then
+        layer.shift[1] = layer.shift[1] * scale
+        layer.shift[2] = layer.shift[2] * scale
+    end]]
+end
+
+local fuel_refinery = table.deepcopy(data.raw["assembling-machine"]["oil-refinery"])
+fuel_refinery.name = "fuel-refinery"
+fuel_refinery.icons = du.alias("fuel-refinery")
+fuel_refinery.collision_box = {{-4.4, -4.4}, {4.4, 4.4}}
+fuel_refinery.selection_box = {{-4.4, -4.4}, {4.4, 4.4}}
+fuel_refinery.minable.result = "fuel-refinery"
+fuel_refinery.crafting_categories = {"fuel-refining"}
+fuel_refinery.crafting_speed = 1
+fuel_refinery.energy_usage = "400kW"
+fuel_refinery.fast_replaceable_group = "fuel-refinery"
+fuel_refinery.next_upgrade = nil
+scale_layer(fuel_refinery.graphics_set.animation.north.layers[1], 1.8)
+scale_layer(fuel_refinery.graphics_set.animation.north.layers[2], 1.8)
+scale_layer(fuel_refinery.graphics_set.animation.south.layers[1], 1.8)
+scale_layer(fuel_refinery.graphics_set.animation.south.layers[2], 1.8)
+scale_layer(fuel_refinery.graphics_set.animation.east.layers[1], 1.8)
+scale_layer(fuel_refinery.graphics_set.animation.east.layers[2], 1.8)
+scale_layer(fuel_refinery.graphics_set.animation.west.layers[1], 1.8)
+scale_layer(fuel_refinery.graphics_set.animation.west.layers[2], 1.8)
+fuel_refinery.fluid_boxes = {
+  {
+    production_type = "input",
+    pipe_covers = pipecoverspictures(),
+    volume = 100,
+    pipe_connections = {{ flow_direction="input", position = {0, 4}, direction=defines.direction.south }}
+  },
+  {
+    production_type = "input",
+    pipe_covers = pipecoverspictures(),
+    volume = 100,
+    pipe_connections = {{ flow_direction="input", position = {2, 4}, direction=defines.direction.south }}
+  },
+  {
+    production_type = "input",
+    pipe_covers = pipecoverspictures(),
+    volume = 100,
+    pipe_connections = {{ flow_direction="input", position = {4, 4}, direction=defines.direction.south }}
+  },
+  {
+    production_type = "output",
+    pipe_covers = pipecoverspictures(),
+    volume = 100,
+    pipe_connections = {{ flow_direction="output", position = {0, -4}, direction=defines.direction.north }}
+  },
+  {
+    production_type = "output",
+    pipe_covers = pipecoverspictures(),
+    volume = 100,
+    pipe_connections = {{ flow_direction="output", position = {2, -4}, direction=defines.direction.north }}
+  },
+  {
+    production_type = "output",
+    pipe_covers = pipecoverspictures(),
+    volume = 100,
+    pipe_connections = {{ flow_direction="output", position = {4, -4}, direction=defines.direction.north }}
+  },
+}
+fuel_refinery.off_when_no_fluid_recipe = false
+
+data:extend({fuel_refinery})
 
 data:extend({
     {
@@ -2518,6 +2586,41 @@ data:extend({
     },
 })
 
+data:extend({
+    {
+        type = "container",
+        name = "machine-chassis",
+        icons = du.icons("machine-chassis"),
+        flags = {"placeable-neutral", "player-creation"},
+        minable = {mining_time = 0.2, result = "machine-chassis"},
+        max_health = 350,
+        corpse = "steel-chest-remnants",
+        dying_explosion = "steel-chest-explosion",
+        open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
+        close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
+        collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
+        selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        fast_replaceable_group = "chassis",
+        inventory_size = 1,
+        vehicle_impact_sound = sounds.generic_impact,
+        picture =
+        {
+            layers = {
+                {
+                    filename = "__GuG2__/graphics/entity/machine-chassis.png",
+                    width = 196,
+                    height = 196,
+                    scale = 0.5,
+                }
+            }
+        },
+        circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
+        circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
+        circuit_wire_max_distance = default_circuit_wire_max_distance
+    },
+})
+
 local steam_engine = data.raw.generator["steam-engine"]
 data.raw.generator["steam-engine"] = nil
 steam_engine.type = "assembling-machine"
@@ -2737,25 +2840,33 @@ steam_engine.localised_description = {"",
 "\n",
 {"label.no-cleanroom"}}
 
-data.raw["assembling-machine"]["assembling-machine-1"].energy_source = {
-    type = "fluid",
-    effectivity = 0.6,
-    emissions_per_minute = {pollution=8},
-    scale_fluid_usage = true,
-    burns_fluid = false,
-    fluid_box = {
-        filter = "steam",
-        production_type = "input",
-        pipe_covers = pipecoverspictures(),
-        volume = 100,
-        base_level = -1,
-        pipe_connections = {{ flow_direction="input", position = {1, 0}, direction=defines.direction.east }},
-        secondary_draw_orders = { north = -1 }
-    },
-}
-data.raw["assembling-machine"]["assembling-machine-1"].crafting_categories = {"crafting", "crafting-with-fluid", "advanced-crafting", "machining"}
-data.raw["assembling-machine"]["assembling-machine-1"].fluid_boxes = table.deepcopy(data.raw["assembling-machine"]["assembling-machine-2"].fluid_boxes)
-data.raw["assembling-machine"]["assembling-machine-1"].energy_usage = "200kW"
+local assembler_fluidboxes = table.deepcopy(data.raw["assembling-machine"]["assembling-machine-2"].fluid_boxes)
+
+local function fix_assembler(assembler, properties)
+    assembler.energy_source = {
+        type = "fluid",
+        effectivity = 0.6,
+        emissions_per_minute = {pollution=8},
+        scale_fluid_usage = true,
+        burns_fluid = false,
+        fluid_box = {
+            filter = "steam",
+            production_type = "input",
+            pipe_covers = pipecoverspictures(),
+            volume = 100,
+            base_level = -1,
+            pipe_connections = {{ flow_direction="input", position = {1, 0}, direction=defines.direction.east }},
+            secondary_draw_orders = { north = -1 }
+        },
+    }
+    assembler.crafting_categories = {"crafting", "crafting-with-fluid", "advanced-crafting", "machining"}
+    assembler.fluid_boxes = assembler_fluidboxes
+    return assembler
+end
+
+fix_assembler(data.raw["assembling-machine"]["assembling-machine-1"], {energy_usage="200kW"})
+fix_assembler(data.raw["assembling-machine"]["assembling-machine-2"], {energy_usage="300kW"}).energy_source.effectivity = 0.8
+fix_assembler(data.raw["assembling-machine"]["assembling-machine-3"], {energy_usage="600kW"}).energy_source.effectivity = 0.9
 
 data.raw["offshore-pump"]["offshore-pump"].fluid = "seawater"
 data.raw["offshore-pump"]["offshore-pump"].fluid_box.filter = "seawater"
@@ -3209,7 +3320,7 @@ data:extend({
 local function forward_then_backward()
     return "forward-th".."en-backward"
 end
-
+data.raw["mining-drill"]["burner-mining-drill"].energy_source.effectivity = 0.5
 data:extend({
     {
         type = "mining-drill",
@@ -4741,8 +4852,184 @@ data:extend({
         energy_usage = "500kW",
     }
 })
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "water-treatment-plant",
+        icons = du.icons("water-treatment-plant"),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "water-treatment-plant"},
+        max_health = 400,
+        corpse = "assembling-machine-3-remnants",
+        dying_explosion = "assembling-machine-3-explosion",
+        alert_icon_shift = util.by_pixel(-3, -12),
+        fluid_boxes =
+        {
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={-2, 2},
+                        direction=defines.direction.west,
+                        flow_direction="input-output"
+                    },
+                    {
+                        position={2, 2},
+                        direction=defines.direction.east,
+                        flow_direction="input-output"
+                    }
+                },
+                production_type="input"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={1, 2},
+                        direction=defines.direction.south,
+                        flow_direction="input"
+                    }
+                },
+                production_type="input"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={-1, 2},
+                        direction=defines.direction.south,
+                        flow_direction="input"
+                    }
+                },
+                production_type="input"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={-2, -2},
+                        direction=defines.direction.west,
+                        flow_direction="input-output"
+                    },
+                    {
+                        position={2, -2},
+                        direction=defines.direction.east,
+                        flow_direction="input-output"
+                    }
+                },
+                production_type="output"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={1, -2},
+                        direction=defines.direction.north,
+                        flow_direction="output"
+                    }
+                },
+                production_type="output"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={-1, -2},
+                        direction=defines.direction.north,
+                        flow_direction="output"
+                    }
+                },
+                production_type="output"
+            },
+        },
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                    volume = 0.45
+                }
+            },
+            audible_distance_modifier = 0.5,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
+        fast_replaceable_group = "water-treatment",
+        graphics_set = {
+            animation =
+            {
+                layers =
+                {
+                    {
+                        filename = "__GuG2__/graphics/entity/water-treatment-plant/thermal-plant-hr-animation-1.png",
+                        priority = "high",
+                        width = 410,
+                        height = 410,
+                        frame_count = 64,
+                        line_length = 8,
+                        scale = 0.5,
+                        shift = util.by_pixel(0, -32),
+                    },
+                    {
+                        filename = "__GuG2__/graphics/entity/water-treatment-plant/thermal-plant-hr-shadow.png",
+                        priority = "high",
+                        width = 900,
+                        height = 500,
+                        frame_count = 1,
+                        line_length = 1,
+                        repeat_count = 64,
+                        scale = 0.5,
+                        shift = util.by_pixel(0, 0),
+                        draw_as_shadow = true,
+                    },
+                }
+            },
+        },
+        crafting_categories = {"water-treatment"},
+        crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source =
+        {
+            type = "electric",
+            usage_priority = "secondary-input",
+            emissions_per_minute = {pollution=0},
+            drain = "50kW",
+        },
+        energy_usage = "1MW",
+    }
+})
 
 data:extend({
+    {
+        type = "item",
+        name = "machine-chassis",
+        icons = du.icons("machine-chassis"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+        place_result = "machine-chassis"
+    },
     {
         type = "item",
         name = "fabricator-1",
@@ -5112,6 +5399,32 @@ data:extend({
         place_result = "oil-refinery"
     },
     {
+        type = "item",
+        name = "water-treatment-plant",
+        icons = du.icons("water-treatment-plant"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "water-treatment-plant"
+    },
+    {
+        type = "item",
+        name = "fuel-refinery",
+        icons = du.alias("fuel-refinery"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "fuel-refinery"
+    },
+    {
+        type = "recipe-category",
+        name = "fuel-refining"
+    },
+    {
+        type = "recipe-category",
+        name = "water-treatment"
+    },
+    {
         type = "recipe-category",
         name = "solid-separation"
     },
@@ -5190,5 +5503,9 @@ data:extend({
     {
         type = "recipe-category",
         name = "fabricating"
+    },
+    {
+        type = "recipe-category",
+        name = "water-treatment"
     },
 })

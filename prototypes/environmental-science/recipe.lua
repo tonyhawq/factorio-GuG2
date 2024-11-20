@@ -4,7 +4,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        enabled = false,
+        enabled = true,
         category = "smelting", ---@diagnostic disable-line
         name = "bronze-ingot-1",
         icons = du.icons("bronze-ingot"),
@@ -12,6 +12,7 @@ data:extend({
         order = "a[a]",
         main_product = "",
         energy_required = 2,
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="tin-ingot", amount=1},
             {type="item", name="copper-ingot", amount=4},
@@ -114,6 +115,7 @@ data:extend({
         order = "a[a]",
         main_product = "",
         energy_required = 2,
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="iron-ore", amount=4},
         },
@@ -135,6 +137,7 @@ data:extend({
         order = "a[a]",
         main_product = "",
         energy_required = 4,
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="iron-oxide", amount=4},
             {type="item", name="coke", amount=1},
@@ -566,6 +569,7 @@ data:extend({
         order = "a[a]",
         main_product = "",
         energy_required = 10,
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="iron-ingot", amount=3},
             {type="item", name="coke", amount=1},
@@ -989,7 +993,7 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="item", name="glass", amount=16},
-            {type="item", name="inserter", amount=3},
+            {type="item", name="small-parts", amount=10},
             {type="item", name="electronic-circuit", amount=6},
             {type="item", name="stone-brick", amount=15},
         },
@@ -1441,6 +1445,96 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        name = "mortar-1",
+        icons = du.icons("mortar"),
+        enabled = false,
+        category = "crafting-with-fluid",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="gravel", amount=6},
+            {type="item", name="sand", amount=12},
+            {type="item", name="cement", amount=6},
+            {type="fluid", name="water", amount=12},
+        },
+        results ={
+            {type="item", name="mortar", amount=24},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "cement-1",
+        icons = du.icons("cement"),
+        enabled = false,
+        category = "smelting",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="silica", amount=10},
+            {type="item", name="limestone", amount=24},
+            {type="item", name="clay", amount=10},
+            {type="item", name="evaporite", amount=2},
+        },
+        results ={
+            {type="item", name="cement", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "concrete-1",
+        icons = du.icons{mod="base",name="concrete"},
+        enabled = false,
+        category = "crushing",
+        subgroup = "raw-material",
+        energy_required = 8,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="cement", amount=2},
+            {type="item", name="lime", amount=5},
+            {type="item", name="steel-beam", amount=4},
+            {type="item", name="mortar", amount=8},
+            {type="fluid", name="water", amount=32},
+        },
+        results ={
+            {type="item", name="concrete", amount=8},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = true,
+        category = "crafting", ---@diagnostic disable-line
+        name = "oak-log-cutting",
+        icons = du.icons{mod="base",name="wood"},
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="oak-log", amount=2},
+        },
+        results = {
+            {type="item", name="wood", amount=5},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         enabled = false,
         category = "crushing", ---@diagnostic disable-line
         name = "sap-extraction",
@@ -1790,6 +1884,7 @@ data:extend({
         energy_required = 1,
         ingredients = {
             {type="item", name="limestone", amount=3},
+            {type="item", name="coke", amount=1},
         },
         results = {
             {type="item", name="lime", amount=2},
@@ -1815,6 +1910,7 @@ data:extend({
         },
         results = {
             {type="fluid", name="slaked-lime", amount=20},
+            {type="fluid", name="acetylene", amount=10},
         }
     }
 })
@@ -2633,6 +2729,7 @@ data:extend({
         energy_required = 20,
         order = "1",
         main_product = "",
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="alumina", amount=8},
             {type="item", name="coke", amount=3},
@@ -2657,6 +2754,7 @@ data:extend({
         energy_required = 24,
         order = "2",
         main_product = "",
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="alumina", amount=8},
             {type="item", name="coke", amount=3},
@@ -2704,6 +2802,7 @@ data:extend({
         energy_required = 4,
         order = "a",
         main_product = "",
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="nickel-ore", amount=8},
         },
@@ -2724,6 +2823,7 @@ data:extend({
         energy_required = 8,
         order = "a",
         main_product = "",
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="iron-ingot", amount=3},
             {type="item", name="coke", amount=1},
@@ -2747,6 +2847,7 @@ data:extend({
         energy_required = 12,
         order = "a",
         main_product = "",
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="iron-ingot", amount=12},
             {type="item", name="manganese-ingot", amount=1},
@@ -2771,6 +2872,7 @@ data:extend({
         energy_required = 12,
         order = "a",
         main_product = "",
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="manganese-oxides", amount=12},
             {type="item", name="coke", amount=3},
@@ -2833,6 +2935,7 @@ data:extend({
         energy_required = 0.5,
         order = "a",
         main_product = "",
+        allow_decomposition = false,
         ingredients = {
             {type="fluid", name="zinc-gas", amount=24},
         },
@@ -3387,6 +3490,7 @@ data:extend({
         order = "a[a]",
         main_product = "",
         energy_required = 2,
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="clay", amount=3},
             {type="fluid", name="tar", amount=16},
@@ -3408,6 +3512,7 @@ data:extend({
         order = "a[a]",
         main_product = "",
         energy_required = 2,
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="stone", amount=5},
             {type="item", name="gravel", amount=10},
@@ -3430,6 +3535,7 @@ data:extend({
         order = "a[a]",
         main_product = "",
         energy_required = 2,
+        allow_decomposition = false,
         ingredients = {
             {type="item", name="stone-brick", amount=1},
         },
@@ -3869,6 +3975,30 @@ data:extend({
             {type="item", name="oak-log", amount=1, probability=0.75, percent_spoiled=0},
         }
     },
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "plastic-pvc-1",
+        icons = du.icons{name="plastic-bar", mod="base"}:add_corner("acetylene"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="acetylene", amount=20},
+            {type="fluid", name="hydrogen-chloride", amount=80},
+            {type="item", name="lead-plate", amount=1}, -- lead sulfate
+            {type="item", name="coal-dust", amount=2},
+            {type="item", name="bound-porcelain", amount=1},
+        },
+        results = {
+            {type="item", name="plastic-bar", amount=3},
+        }
+    }
 })
 data:extend({
     {

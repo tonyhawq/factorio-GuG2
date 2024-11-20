@@ -11,21 +11,13 @@ data:extend({
             }
         },
         prerequisites = {},
-        unit =
-        {
-            count = 10,
-            ingredients =
-            {
-                {"environmental-science-pack", 1},
-            },
-            time = 10
+        research_trigger = {
+            type = "craft-item",
+            item = "bronze-ingot",
+            count = 1,
         },
         effects =
         {
-            {
-                type = "unlock-recipe",
-                recipe="bronze-ingot-1",
-            },
             {
                 type = "unlock-recipe",
                 recipe="bronze-plate-1",
@@ -50,7 +42,7 @@ data:extend({
         prerequisites = {"alloying-1"},
         unit =
         {
-            count = 10,
+            count = 3,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -91,7 +83,7 @@ data:extend({
         prerequisites = {"steam-power"},
         unit =
         {
-            count = 10,
+            count = 12,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -160,7 +152,7 @@ data:extend({
         prerequisites = {"tar-processing", "glassworking-1"},
         unit =
         {
-            count = 10,
+            count = 20,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -221,7 +213,7 @@ data:extend({
         prerequisites = {"mechanics-2"},
         unit =
         {
-            count = 10,
+            count = 30,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -250,7 +242,7 @@ data:extend({
         prerequisites = {"mechanics"},
         unit =
         {
-            count = 10,
+            count = 6,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -295,7 +287,7 @@ data:extend({
         prerequisites = {"mechanics"},
         unit =
         {
-            count = 10,
+            count = 8,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -448,7 +440,7 @@ data:extend({
         prerequisites = {"optics", "coal-processing-1"},
         unit =
         {
-            count = 10,
+            count = 20,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -657,7 +649,7 @@ data:extend({
         name = "masonry-1",
         icons = {
             {
-                icon = "__base__/graphics/technology/lamp.png",
+                icon = "__base__/graphics/technology/concrete.png",
                 icon_size = 256,
             }
         },
@@ -680,6 +672,44 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="stone-wall",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "masonry-2",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/concrete.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"steel-processing"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="cement-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="mortar-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="concrete-1",
             },
         },
     },
@@ -1523,6 +1553,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="lubricant-1",
             },
+            {
+                type = "unlock-recipe",
+                recipe="plastic-pvc-1",
+            },
         },
     },
 })
@@ -1629,6 +1663,10 @@ data:extend({
         },
         effects =
         {
+            {
+                type = "unlock-recipe",
+                recipe="small-parts-1",
+            },
             {
                 type = "unlock-recipe",
                 recipe="lab-2",
