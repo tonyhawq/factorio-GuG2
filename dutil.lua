@@ -157,15 +157,17 @@ dutil.metatable_indicies =
                 local config = name
                 icons:add(config)
                 icons:get().scale = config.scale or dutil.corner_scale
-                icons:get().shift = dutil.get_corner_offset(config.corner or dutil.default_corner)
+                if not config.shift then
+                    icons:get().shift = dutil.get_corner_offset(config.corner or dutil.default_corner)
+                else
+                    icons:get().shift = config.shift
+                end
                 return (icons)
             end
-            table.insert(icons, {
-                icon = get_icon_path(name, discard),
-                icon_size = size or dutil.size,
-                scale = dutil.corner_scale,
-                shift = dutil.get_corner_offset(dutil.default_corner)
-            })
+            icons:add(name, size, discard)
+            local icon = icons:get()
+            icon.scale = dutil.corner_scale
+            icon.shift = dutil.get_corner_offset(dutil.default_corner)
             return (icons)
         end,
         tint = function(icons, tint)
@@ -180,6 +182,13 @@ dutil.metatable_indicies =
             ensure_colon_syntax(icons)
             icons:get().scale = scale
             return (icons)
+        end,
+        name = function(icons)
+            local got = icons:get().icon
+            if type(got) ~= "string" then
+                error("Could not get name of icons, was "..type(got)..(type(got) == "table" and serpent.block(got) or ""))
+            end
+            return got
         end,
     },
     assembling_machine = {},

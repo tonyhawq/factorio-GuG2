@@ -76,6 +76,69 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "computation",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/oil-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"automation-3", "electromagnetism-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "give-item",
+                item = "dead-process",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="computer-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="processor-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="revive-process-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="cpu-time",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="memories",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="interrupts",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="program",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="program-2",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "geothermal-power",
         icons = {
             {

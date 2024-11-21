@@ -774,3 +774,103 @@ data:extend({
         }
     }
 })
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "computer-1",
+        icons = du.alias("computer-1"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="electronic-circuit", amount=20},
+            {type="item", name="solder", amount=10},
+            {type="item", name="aluminum-plate", amount=20},
+            {type="item", name="copper-cable", amount=40},
+        },
+        results = {
+            {type="item", name="computer-1", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "processor-1",
+        icons = du.alias("processor-1"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="computer-1", amount=4},
+            {type="item", name="arithmetic-combinator", amount=12},
+            {type="item", name="accumulator", amount=4},
+            {type="item", name="small-parts", amount=20},
+        },
+        results = {
+            {type="item", name="processor-1", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "medium-electric-pole",
+        icons = du.icons{mod="base",name="medium-electric-pole"},
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="glowing-mangaloy-ingot", amount=1},
+            {type="item", name="plastic-bar", amount=8},
+            {type="item", name="small-electric-pole", amount=4},
+        },
+        results = {
+            {type="item", name="medium-electric-pole", amount=4},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "storage-tank",
+        icons = du.icons{mod="base",name="storage-tank"},
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="glowing-mangaloy-ingot", amount=2},
+            {type="item", name="plastic-bar", amount=8},
+            {type="item", name="glass", amount=6},
+            {type="item", name="steel-beam", amount=6},
+        },
+        results = {
+            {type="item", name="storage-tank", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "fast-inserter",
+        icons = du.icons{mod="base",name="fast-inserter"},
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="inserter", amount=1},
+            {type="item", name="small-electric-motor", amount=2},
+            {type="item", name="battery", amount=1},
+            {type="item", name="glowing-mangaloy-ingot", amount=1},
+        },
+        results = {
+            {type="item", name="fast-inserter", amount=1},
+        }
+    }
+})
