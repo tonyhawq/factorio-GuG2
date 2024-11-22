@@ -409,7 +409,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 3,
+        energy_required = 2,
         ingredients = {
             {type="item", name="process", amount=1},
         },

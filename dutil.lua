@@ -448,7 +448,7 @@ for _, type in pairs(function_types) do
 end
 
 function dutil.MJ(string)
-    return dutil.J(string)
+    return dutil.J(string) / 1000 / 1000
 end
 
 function dutil.J(string)

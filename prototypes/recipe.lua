@@ -277,7 +277,7 @@ data:extend({
         ingredients = {
             {type="item", name="silicon-boule", amount=1},
             {type="fluid", name="acetone", amount=36},
-            {type="fluid", name="methanol", amount=36},
+            {type="fluid", name="isopropyl-alcohol", amount=36},
         },
         results = {
             {type="item", name="silicon-wafer", amount=12},

@@ -296,7 +296,6 @@ data:extend({
         energy_required = 4,
         ingredients = {
             {type="fluid", name="mineralized-water", amount=100},
-            {type="fluid", name="chlorine", amount=20},
             {type="item", name="coal-dust", amount=5},
         },
         results = {
@@ -304,6 +303,52 @@ data:extend({
             {type="item", name="stone", amount=3},
             {type="item", name="manganese-oxides", amount=2},
             {type="item", name="evaporite", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "water-treatment", ---@diagnostic disable-line
+        name = "organic-wastewater-treatment",
+        icons = du.icons("organic-wastewater"):add_corner("chlorine"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 4,
+        ingredients = {
+            {type="fluid", name="organic-wastewater", amount=100},
+            {type="fluid", name="chlorine", amount=300},
+        },
+        results = {
+            {type="fluid", name="water", amount=80},
+            {type="fluid", name="nutriment-sludge", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "water-treatment", ---@diagnostic disable-line
+        name = "nutriment-sludge-treatment",
+        icons = du.icons("nutriment-sludge"):add_corner("oxygen"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 4,
+        ingredients = {
+            {type="fluid", name="nutriment-sludge", amount=100},
+            {type="fluid", name="chlorine", amount=300},
+            {type="item", name="cultivated-methanobacteria", amount=4},
+        },
+        results = {
+            {type="fluid", name="water", amount=100},
+            {type="fluid", name="methane", amount=100},
+            {type="item", name="petri-dish", amount=4},
         }
     }
 })

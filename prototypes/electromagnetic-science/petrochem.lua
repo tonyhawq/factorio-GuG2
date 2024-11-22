@@ -582,13 +582,34 @@ data:extend({
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="fluid", name="propylene", amount=50},
+            {type="fluid", name="propylene", amount=20},
             {type="fluid", name="benzene", amount=70},
             {type="fluid", name="sulfuric-acid", amount=10},
             {type="item", name="aluminum-plate", amount=1}, -- aluminum trichloride
         },
         results = {
             {type="fluid", name="cumene", amount=60},
+            {type="fluid", name="wastewater", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "oil-processing", ---@diagnostic disable-line
+        name = "phenol-1",
+        icons = du.icons("phenol"):add_corner("carbolic-acid"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="carbolic-acid", amount=50},
+        },
+        results = {
+            {type="item", name="phenol", amount=2},
         }
     }
 })
@@ -774,7 +795,31 @@ data:extend({
         }
     }
 })
-
+local function solid_fuel_localised_desc(recp)
+    local got = du.recipe(recp)
+    local in_mj = 0
+    for _, ingred in pairs(got.ingredients) do
+        if ingred.type == "fluid" then
+            local fluid = du.fluid(ingred.name)
+            if fluid.fuel_value then
+                in_mj = in_mj + du.MJ(fluid.fuel_value) * ingred.amount
+            end
+        end
+    end
+    local out_mj = 0
+    for _, result in pairs(got.results) do
+        if result.type == "item" then
+            local item = du.item(result.name)
+            if item.fuel_value then
+                out_mj = out_mj + du.MJ(item.fuel_value) * result.amount
+            end
+        end
+    end
+    got.localised_description = {"label.fluid_input_to_solid_output", tostring(in_mj), "MJ", tostring(out_mj), "MJ"}
+end
+solid_fuel_localised_desc("solid-fuel-fuel-oil")
+solid_fuel_localised_desc("solid-fuel-gas-oil")
+solid_fuel_localised_desc("solid-fuel-kerosene")
 
 
 

@@ -753,6 +753,15 @@ data:extend({
     },
     {
         type = "fluid",
+        name = "nutriment-sludge",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("nutriment-sludge"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
         name = "phosphine",
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},

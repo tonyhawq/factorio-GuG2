@@ -3,11 +3,13 @@ Cleanroom = require("__GuG2__.scripts.cleanroom")
 CleanroomGUI = require("__GuG2__.scripts.cleanroom-gui")
 Forestry = require("__GuG2__.scripts.forestry")
 AlgaeFarm = require("__GuG2__.scripts.algae-farm")
+Nodules = require("__GuG2__.scripts.nodule-harvesting")
 
 script.on_init(function ()
     Cleanroom.setup()
     Forestry.setup()
     AlgaeFarm.setup()
+    Nodules.setup()
     if remote.interfaces["freeplay"] then
         remote.call("freeplay", "set_created_items", {
             ["lead-plate"] = 100,
@@ -22,6 +24,7 @@ script.on_configuration_changed(function ()
     Cleanroom.setup()
     Forestry.setup()
     AlgaeFarm.setup()
+    Nodules.setup()
 end)
 
 script.on_event(defines.events.on_tick, function(event_data)
@@ -48,12 +51,14 @@ script.on_event(defines.events.on_script_trigger_effect, function (event)
     if event.effect_id == "g2cc" then
         Forestry.on_created(event)
         AlgaeFarm.on_created(event)
+        Nodules.on_created(event)
     end
 end)
 
 script.on_event(defines.events.on_object_destroyed, function (event)
     Forestry.on_destroyed(event)
     AlgaeFarm.on_destroyed(event)
+    Nodules.on_destroyed(event)
 end)
 
 script.on_event(defines.events.on_gui_opened, function (event)

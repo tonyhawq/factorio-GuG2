@@ -19,6 +19,12 @@ local function composite_trigger()
     }
 end
 
+local function make_into_composite(entity)
+    entity.created_effect = composite_trigger()
+end
+
+make_into_composite(data.raw["assembling-machine"]["assembling-machine-2"])
+
 local distillation_rig = table.deepcopy(data.raw["assembling-machine"]["oil-refinery"])
 table.insert(distillation_rig.crafting_categories, "distillation")
 distillation_rig.fluid_boxes = {
