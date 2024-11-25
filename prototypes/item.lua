@@ -42,6 +42,16 @@ data:extend({
 })
 data:extend({
   {
+    type = "item",
+    name = "cobalt-nodule",
+    icons = du.icons("cobalt-nodule"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 3
+  },
+})
+data:extend({
+  {
     type = "tool",
     name = "environmental-science-pack",
     localised_description = {"item-description.science-pack"},

@@ -308,4 +308,65 @@ data:extend({
         map_color = {1, 0.55, 0},
         map_grid = false
     },
+    {
+        type = "autoplace-control",
+        name = "cobalt-nodule",
+        localised_name = {"", "[entity=cobalt-nodule] ", {"entity-name.cobalt-nodule"}},
+        richness = true,
+        order = "b-a",
+        category = "resource"
+    },
+    {
+        no_fix = true, ---@diagnostic disable-line
+        type = "resource",
+        name = "cobalt-nodule",
+        icon = "__base__/graphics/icons/crude-oil-resource.png",
+        flags = {"placeable-neutral"},
+        collision_mask = {
+            layers = {resource=true},
+        },
+        category = "nodules",
+        subgroup = "mineable-fluids",
+        order="a-b-a",
+        infinite = true,
+        highlight = true,
+        minimum = 100,
+        normal = 200,
+        infinite_depletion_amount = 0.2,
+        resource_patch_search_radius = 12,
+        tree_removal_probability = 0.7,
+        tree_removal_max_distance = 32 * 32,
+        minable =
+        {
+            mining_time = 0.5,
+            result = "cobalt-nodule",
+        },
+        collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+        selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+        autoplace = {
+            probability_expression = "1",
+            richness_expression = "1",
+        },
+        stage_counts = {0},
+        stages = {
+            layers = {
+                {
+                    variation_count = 4,
+                    filename = "__GuG2__/graphics/entity/geyser/sulfuric-acid-geyser.png",
+                    width = 254,
+                    height = 178,
+                    shift = util.by_pixel( 9.5, 5.0),
+                    line_length = 4,
+                    frame_count = 4,
+                    scale = 0.5,
+                    tint = util.multiply_color({r=0.4, g=0.8, b=1}, 0.6),
+                }
+            }
+        },
+        map_color = {0, 0.2, 0.5},
+        map_grid = false
+    },
 })
+
+data.raw.tile.water.collision_mask.layers.resource = nil
+data.raw.tile.deepwater.collision_mask.layers.resource = nil

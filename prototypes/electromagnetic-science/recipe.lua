@@ -357,6 +357,27 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "sulfur-dioxide-1",
+        icons = du.icons("sulfur-dioxide"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 4,
+        ingredients = {
+            {type="fluid", name="hydrogen-sulfide", amount=100},
+            {type="fluid", name="oxygen", amount=100},
+        },
+        results = {
+            {type="fluid", name="sulfur-dioxide", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "fabricating", ---@diagnostic disable-line
         name = "small-parts-1",
         icons = du.icons("small-parts"),
@@ -525,6 +546,93 @@ data:extend({
         },
         results = {
             {type="item", name="activated-carbon", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "acid-gas-1",
+        icons = du.icons("acid-gas"):add_corner("methanol"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="fluid", name="methanol", amount=10},
+            {type="fluid", name="flue-gas", amount=20},
+        },
+        results = {
+            {type="fluid", name="acid-gas", amount=6},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "acid-gas-treatment-1",
+        icons = du.icons("hydrogen-sulfide"):add_corner("acid-gas"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="fluid", name="acid-gas", amount=10},
+            {type="fluid", name="steam", amount=40, temperature=165},
+        },
+        results = {
+            {type="fluid", name="hydrogen-sulfide", amount=3},
+            {type="fluid", name="saturated-gas", amount=7},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "acid-gas-treatment-2",
+        icons = du.icons("hydrogen-sulfide"):add_corner("mdea"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="fluid", name="acid-gas", amount=10},
+            {type="fluid", name="mdea", amount=2},
+        },
+        results = {
+            {type="fluid", name="hydrogen-sulfide", amount=6},
+            {type="fluid", name="carbon-dioxide", amount=6},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "saturated-gas-separation-1",
+        icons = du.icons("saturated-gas"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="fluid", name="saturated-gas", amount=60},
+            {type="item", name="manganese-oxides", amount=1},
+        },
+        results = {
+            {type="fluid", name="carbon-dioxide", amount=60},
+            {type="fluid", name="steam", temperature=80, amount=240},
         }
     }
 })

@@ -414,7 +414,6 @@ data:extend({
     {
         type = "fluid",
         name = "saline-water",
-        default_temperature = 15,
         base_color = {r=0, g=0.73, b=0.76},
         flow_color = {r=1, g=1, b=1},
         icons = du.icons("saline-water"),
@@ -426,7 +425,6 @@ data:extend({
     {
         type = "fluid",
         name = "brine",
-        default_temperature = 15,
         base_color = {r=0, g=0.73, b=0.76},
         flow_color = {r=1, g=1, b=1},
         icons = du.icons("brine"),
@@ -438,7 +436,6 @@ data:extend({
     {
         type = "fluid",
         name = "mineralized-water",
-        default_temperature = 15,
         base_color = {r=0, g=0.73, b=0.76},
         flow_color = {r=1, g=1, b=1},
         icons = du.icons("mineralized-water"),
@@ -902,6 +899,51 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         icons = du.icons("zinc-gas"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "acid-gas",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("acid-gas"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "methylamine",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("methylamine"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "trimethylamine",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("trimethylamine"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "mdea",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("mdea"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "saturated-gas",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("saturated-gas"),
         order = "a[fluid]-j[sludge]"
     },
     {

@@ -30,11 +30,20 @@ local function update_mask(prototype_name, prototype_type)
     end
     if ptype.requires_farmland then
         ptype.collision_mask.layers.non_farmland = true
-        if ptype.localised_description and ptype.localised_description[1] == "" then
-            table.insert(ptype.localised_description, {"", "\n", {"label.requires-farmland"}})
+        if ptype.localised_description and type(ptype.localised_description) == "table" and ptype.localised_description[1] == "" then
+            table.insert(ptype.localised_description --[[@as table<string>]], {"", "\n", {"label.requires-farmland"}})
         end
         if not ptype.localised_description then
             ptype.localised_description = {"", {"?", {"", {"entity-description."..ptype.name}, "\n"}, ""}, {"label.requires-farmland"}}
+        end
+    end
+    if ptype.requires_vertical_integration then
+        ptype.collision_mask.layers.vertically_integratable = true
+        if ptype.localised_description and type(ptype.localised_description) == "table" and ptype.localised_description[1] == "" then
+            table.insert(ptype.localised_description --[[@as table<string>]], {"", "\n", {"label.requires-vertical-integration"}})
+        end
+        if not ptype.localised_description then
+            ptype.localised_description = {"", {"?", {"", {"entity-description."..ptype.name}, "\n"}, ""}, {"label.requires-vertical-integration"}}
         end
     end
     ::continue::
@@ -103,8 +112,13 @@ end
 
 for _, tile in pairs(data.raw.tile) do
     if tile.collision_mask then
-        if not tile.is_farmland then
-            tile.collision_mask.layers.non_farmland = true
+        if not tile.no_fix then ---@diagnostic disable-line
+            if not tile.is_farmland then ---@diagnostic disable-line
+                tile.collision_mask.layers.non_farmland = true
+            end
+            if not tile.vertically_enabled then ---@diagnostic disable-line
+                tile.collision_mask.layers.vertically_integratable = true
+            end
         end
     end
 end
@@ -112,7 +126,7 @@ end
 update_mask("cleanroom-controller", "electric-energy-interface")
 
 for _, tree in pairs(data.raw.tree) do
-    if tree.g2_set_drops then
+    if tree.g2_set_drops then ---@diagnostic disable-line
         goto continue
     end
     tree.minable = {
@@ -120,4 +134,15 @@ for _, tree in pairs(data.raw.tree) do
         results = {{type="item", name="log", amount=2}},
     }
     ::continue::
+end
+
+for _, resource in pairs(data.raw["resource"]) do
+    if not resource.no_fix then  ---@diagnostic disable-line
+        resource.collision_mask = {
+            layers = {
+                resource = true,
+                water_tile = true,
+            }
+        }
+    end
 end

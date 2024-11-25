@@ -150,11 +150,11 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="fluid", name="raw-kerosene", amount=100},
-            {type="fluid", name="hydrogen", amount=100},
+            {type="fluid", name="hydrogen", amount=40},
         },
         results = {
             {type="fluid", name="kerosene", amount=100},
-            {type="fluid", name="hydrogen-sulfide", amount=100},
+            {type="fluid", name="acid-gas", amount=30},
         }
     }
 })
@@ -728,6 +728,73 @@ data:extend({
         },
         results = {
             {type="fluid", name="epoxy", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "organic-solvent-1",
+        icons = du.icons("organic-solvent"):add_corner("tar"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="carbolic-acid", amount=20},
+            {type="fluid", name="btx", amount=10},
+        },
+        results = {
+            {type="fluid", name="organic-solvent", amount=20},
+            {type="fluid", name="btx", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "methlyamine-1",
+        icons = du.icons("methylamine"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="ammonia", amount=20},
+            {type="fluid", name="methanol", amount=10},
+            -- {type="item", name="aluminosilicate-catalyst", amount=1},
+        },
+        results = {
+            {type="fluid", name="methylamine", amount=20},
+            {type="fluid", name="trimethylamine", amount=20}, -- used in tetramethylammonium hydroxide
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "mdea",
+        icons = du.icons("mdea"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="methylamine", amount=20},
+            {type="fluid", name="ethylene", amount=20},
+            -- {type="item", name="aluminosilicate-catalyst", amount=1},
+        },
+        results = {
+            {type="fluid", name="mdea", amount=20},
         }
     }
 })

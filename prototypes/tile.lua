@@ -9,6 +9,10 @@ data:extend({
         type = "collision-layer",
         name = "non_farmland"    
     },
+    {
+        type = "collision-layer",
+        name = "vertically_integratable",
+    }
 })
 
 data:extend({
@@ -20,7 +24,7 @@ data:extend({
         minable = {mining_time = 0.1, result = "cleanroom-tile"},
         collision_mask = {
             layers = {
-                cleanroom_tile = true
+                cleanroom_tile = true,
             }
         },
         walking_speed_modifier = 1,
@@ -110,8 +114,52 @@ forestry_soil.autoplace = {
     "water_base(2 - multioctave_noise{x = x, y = y, persistence = 0.75, seed0 = map_seed, seed1 = 0, octaves = 1} * moisture ^ 2 * 2 + moisture ^ 2 * 10, 50),"..
     "-inf), -inf)",
 }
+forestry_soil.autoplace.probability_expression = "10000000 * ("..forestry_soil.autoplace.probability_expression..")"
 data:extend({forestry_soil})
 data.raw.planet.nauvis.map_gen_settings.autoplace_settings.tile.settings["forestry-soil"] = {}
+
+local harvesting_platform = table.deepcopy(data.raw.tile["tutorial-grid"])
+harvesting_platform.name = "harvesting-platform"
+harvesting_platform.minable = nil
+harvesting_platform.vertically_enabled = true
+harvesting_platform.collision_mask = {layers = {ground_tile = true}}
+data:extend({harvesting_platform})
+
+local marine_water = table.deepcopy(data.raw.tile["deepwater"])
+marine_water.name = "marine-water"
+marine_water.order = "a[water]-b[deep-water]-b"
+marine_water.autoplace = {probability_expression = "water_base(-8, 400)"}
+marine_water.variants =
+{
+  main =
+  {
+    {
+      picture = "__base__/graphics/terrain/water/water1.png",
+      count = 1,
+      scale = 0.5,
+      size = 1
+    },
+    {
+      picture = "__base__/graphics/terrain/water/water2.png",
+      count = 1,
+      scale = 0.5,
+      size = 2
+    },
+    {
+      picture = "__base__/graphics/terrain/water/water4.png",
+      count = 1,
+      scale = 0.5,
+      size = 4
+    }
+  },
+  empty_transitions = true
+}
+marine_water.map_color={20, 40, 53}
+marine_water.allowed_neighbors = {"deepwater"}
+marine_water.effect_color = {20, 95, 110}
+data:extend({marine_water})
+
+data.raw.planet.nauvis.map_gen_settings.autoplace_settings.tile.settings["marine-water"] = {}
 
 data:extend({
     {

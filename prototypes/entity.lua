@@ -19,11 +19,9 @@ local function composite_trigger()
     }
 end
 
-local function make_into_composite(entity)
+local function make_composite(entity)
     entity.created_effect = composite_trigger()
 end
-
-make_into_composite(data.raw["assembling-machine"]["assembling-machine-2"])
 
 local distillation_rig = table.deepcopy(data.raw["assembling-machine"]["oil-refinery"])
 table.insert(distillation_rig.crafting_categories, "distillation")
@@ -39,6 +37,18 @@ distillation_rig.fluid_boxes = {
 }
 distillation_rig.name = "distillation-rig"
 data:extend({distillation_rig})
+
+local nodule_harvester = table.deepcopy(data.raw["mining-drill"]["pumpjack"])
+nodule_harvester.icons = du.icons("nodule-harvester")
+nodule_harvester.name = "nodule-harvester"
+nodule_harvester.minable.result = "nodule-harvester"
+nodule_harvester.resource_categories = {"nodules"}
+nodule_harvester.vector_to_place_result = {1,-1.7}
+nodule_harvester.output_fluid_box = nil
+nodule_harvester.collision_mask = {layers = {object = true}}
+make_composite(nodule_harvester)
+data:extend({nodule_harvester, {type="resource-category", name="nodules"}})
+
 
 data:extend({
     {
@@ -3209,6 +3219,43 @@ burner_chem.graphics_set = {
     working_visualisations = table.deepcopy(data.raw["assembling-machine"]["chemical-plant"].graphics_set.working_visualisations),
 }
 data:extend({burner_chem})
+local chemical_plant = data.raw["assembling-machine"]["chemical-plant"]
+chemical_plant.fluid_boxes = {
+    {
+        production_type="input",
+        pipe_covers = pipecoverspictures(),
+        volume=100,
+        pipe_connections={{position={-1, 1}, direction=defines.direction.south, flow_direction="input"}},
+    },
+    {
+        production_type="input",
+        pipe_covers = pipecoverspictures(),
+        volume=100,
+        pipe_connections={{position={1, 1}, direction=defines.direction.south, flow_direction="input"}},
+    },
+    {
+        production_type="input",
+        pipe_covers = pipecoverspictures(),
+        pipe_picture = assembler2pipepictures(),
+        volume=100,
+        pipe_connections={
+            {position={ 1, 0}, direction=defines.direction.east, flow_direction="input-output"},
+            {position={-1, 0}, direction=defines.direction.west, flow_direction="input-output"},
+        },
+    },
+    {
+        production_type="output",
+        pipe_covers = pipecoverspictures(),
+        volume=100,
+        pipe_connections={{position={-1,-1}, direction=defines.direction.north, flow_direction="output"}},
+    },
+    {
+        production_type="output",
+        pipe_covers = pipecoverspictures(),
+        volume=100,
+        pipe_connections={{position={1,-1}, direction=defines.direction.north, flow_direction="output"}},
+    },
+}
 
 local stone_furnace = data.raw.furnace["stone-furnace"]
 data.raw.furnace["stone-furnace"] = nil
@@ -4043,7 +4090,106 @@ data:extend({
         energy_usage = "675kW",
     }
 })
-
+data:extend({
+    {
+        requires_vertical_integration = true,
+        type = "assembling-machine",
+        name = "vic-1",
+        icons = du.icons("vic-1"),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "vic-1"},
+        max_health = 400,
+        corpse = "assembling-machine-3-remnants",
+        dying_explosion = "assembling-machine-3-explosion",
+        alert_icon_shift = util.by_pixel(-3, -12),
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{ flow_direction="input", position = {0, 0}, direction=defines.direction.east }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{ flow_direction="input", position = {0, 0}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{ flow_direction="output", position = {0, 0}, direction=defines.direction.west }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{ flow_direction="output", position = {0, 0}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                    volume = 0.45
+                }
+            },
+            audible_distance_modifier = 0.5,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
+        selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-0.9, -0.9}, {0.9, 0.9}},
+        fast_replaceable_group = "vic",
+        graphics_set = {
+            animation =
+            {
+                layers =
+                {
+                    {
+                        filename = "__GuG2__/graphics/entity/vic/vertically-integrated-crafter-1.png",
+                        priority = "high",
+                        width = 107,
+                        height = 237,
+                        frame_count = 32,
+                        line_length = 8,
+                        scale = 0.3,
+                        repeat_count = 1,
+                        shift = util.by_pixel(0,-8)
+                    },
+                }
+            },
+        },
+        crafting_categories = {"crafting", "crafting-with-fluid", "advanced-crafting", "fabricating"},
+        crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source =
+        {
+            type = "electric",
+            usage_priority = "secondary-input",
+            emissions_per_minute = {pollution=0}
+        },
+        energy_usage = "205kW",
+    }
+})
 data:extend({
     {
         type = "assembling-machine",
@@ -5236,6 +5382,15 @@ data:extend({
     },
     {
         type = "item",
+        name = "nodule-harvester",
+        icons = du.icons("nodule-harvester"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "nodule-harvester",
+    },
+    {
+        type = "item",
         name = "scale-boiler",
         icons = du.icons{mod="base", name="boiler"},
         subgroup = "smelting-machine",
@@ -5412,6 +5567,15 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         place_result = "water-treatment-plant"
+    },
+    {
+        type = "item",
+        name = "vic-1",
+        icons = du.icons("vic-1"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "vic-1"
     },
     {
         type = "item",
