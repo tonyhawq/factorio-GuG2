@@ -2877,12 +2877,19 @@ local function fix_assembler(assembler, properties)
     }
     assembler.crafting_categories = {"crafting", "crafting-with-fluid", "advanced-crafting", "machining"}
     assembler.fluid_boxes = assembler_fluidboxes
+    for key, property in pairs(properties) do
+        assembler[key] = property
+    end
     return assembler
 end
 
-fix_assembler(data.raw["assembling-machine"]["assembling-machine-1"], {energy_usage="200kW"})
-fix_assembler(data.raw["assembling-machine"]["assembling-machine-2"], {energy_usage="300kW"}).energy_source.effectivity = 0.8
-fix_assembler(data.raw["assembling-machine"]["assembling-machine-3"], {energy_usage="600kW"}).energy_source.effectivity = 0.9
+fix_assembler(data.raw["assembling-machine"]["assembling-machine-1"], {energy_usage="400kW"})
+fix_assembler(data.raw["assembling-machine"]["assembling-machine-2"], {energy_usage="600kW"}).energy_source.effectivity = 0.8
+fix_assembler(data.raw["assembling-machine"]["assembling-machine-3"], {energy_usage="900kW"}).energy_source.effectivity = 0.9
+
+local assembling_machine_1 = data.raw["assembling-machine"]["assembling-machine-1"]
+assembling_machine_1.crafting_speed = 1
+assembling_machine_1.energy_source.fluid_usage_per_tick = du.as_real_watts(assembling_machine_1.energy_usage) / assembling_machine_1.energy_source.effectivity / ((165 - 15) * du.J(data.raw.fluid.steam.heat_capacity)) / 60 / 2
 
 data.raw["offshore-pump"]["offshore-pump"].fluid = "seawater"
 data.raw["offshore-pump"]["offshore-pump"].fluid_box.filter = "seawater"

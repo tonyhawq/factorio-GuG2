@@ -447,6 +447,13 @@ for _, type in pairs(function_types) do
     end
 end
 
+function dutil.as_real_watts(val)
+    if type(val) == "string" then
+        return dutil.as_real_watts(dutil.J(val))
+    end
+    return val * 60
+end
+
 function dutil.MJ(string)
     return dutil.J(string) / 1000 / 1000
 end

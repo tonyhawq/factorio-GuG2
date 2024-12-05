@@ -620,6 +620,51 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "chemistry", ---@diagnostic disable-line
+        name = "sulfur-dioxide-1",
+        icons = du.icons("sulfur-dioxide"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="hydrogen-sulfide", amount=100},
+            {type="fluid", name="oxygen", amount=100},
+            {type="item", name="alumina", amount=1},
+        },
+        results = {
+            {type="fluid", name="sulfuric-wastewater", amount=10},
+            {type="fluid", name="sulfur-dioxide", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "sulfuric-acid-1",
+        icons = du.icons{mod="base", name="fluid/sulfuric-acid"},
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="sulfur-dioxide", amount=100},
+            {type="fluid", name="sulfuric-acid", amount=2},
+            {type="fluid", name="water", amount=1},
+        },
+        results = {
+            {type="fluid", name="sulfuric-acid", amount=12},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
         name = "saturated-gas-separation-1",
         icons = du.icons("saturated-gas"),
         subgroup = "raw-material",
