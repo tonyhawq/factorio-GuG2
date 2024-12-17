@@ -2883,7 +2883,7 @@ local function fix_assembler(assembler, properties)
     return assembler
 end
 
-fix_assembler(data.raw["assembling-machine"]["assembling-machine-1"], {energy_usage="400kW"})
+fix_assembler(data.raw["assembling-machine"]["assembling-machine-1"], {energy_usage="200kW"})
 fix_assembler(data.raw["assembling-machine"]["assembling-machine-2"], {energy_usage="600kW"}).energy_source.effectivity = 0.8
 fix_assembler(data.raw["assembling-machine"]["assembling-machine-3"], {energy_usage="900kW"}).energy_source.effectivity = 0.9
 

@@ -176,6 +176,7 @@ data:extend({
             {type="item", name="small-electric-motor", amount=3},
             {type="item", name="aluminum-plate", amount=3},
             {type="item", name="steel-beam", amount=4},
+            {type="item", name="small-parts", amount=12},
         },
         results = {
             {type="item", name="chemical-plant", amount=1},
@@ -287,6 +288,27 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "solid-separation", ---@diagnostic disable-line
+        name = "geothermal-water-treatment-2",
+        icons = du.icons("geothermal-water"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 4,
+        ingredients = {
+            {type="fluid", name="geothermal-water", amount=100},
+        },
+        results = {
+            {type="item", name="iron-oxide", amount=6},
+            {type="fluid", name="water", amount=40},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "chemistry", ---@diagnostic disable-line
         name = "mineralized-water-treatment",
         icons = du.icons("mineralized-water"):add_corner("manganese-oxides"),
@@ -325,6 +347,27 @@ data:extend({
         results = {
             {type="fluid", name="water", amount=80},
             {type="fluid", name="nutriment-sludge", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "water-treatment", ---@diagnostic disable-line
+        name = "sulfuric-wastewater-treatment-1",
+        icons = du.icons("sulfuric-wastewater"):add_corner{mod="base",name="fluid/water"},
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 20,
+        ingredients = {
+            {type="fluid", name="sulfuric-wastewater", amount=100},
+            {type="fluid", name="water", amount=300},
+        },
+        results = {
+            {type="fluid", name="wastewater", amount=400},
         }
     }
 })
@@ -562,7 +605,7 @@ data:extend({
         main_product = "",
         energy_required = 1,
         ingredients = {
-            {type="fluid", name="methanol", amount=10},
+            {type="fluid", name="methanol", amount=2},
             {type="fluid", name="flue-gas", amount=20},
         },
         results = {
@@ -584,7 +627,7 @@ data:extend({
         energy_required = 1,
         ingredients = {
             {type="fluid", name="acid-gas", amount=10},
-            {type="fluid", name="steam", amount=40, temperature=165},
+            {type="fluid", name="steam", amount=40, min_temperature=165},
         },
         results = {
             {type="fluid", name="hydrogen-sulfide", amount=3},
@@ -620,6 +663,27 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "chemistry", ---@diagnostic disable-line
+        name = "acid-gas-treatment-3",
+        icons = du.icons("hydrogen-sulfide"):add_corner("filter"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="fluid", name="acid-gas", amount=10},
+            {type="item", name="filter", amount=1},
+        },
+        results = {
+            {type="fluid", name="hydrogen-sulfide", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
         name = "sulfur-dioxide-1",
         icons = du.icons("sulfur-dioxide"),
         subgroup = "raw-material",
@@ -632,7 +696,7 @@ data:extend({
             {type="item", name="alumina", amount=1},
         },
         results = {
-            {type="fluid", name="sulfuric-wastewater", amount=10},
+            {type="fluid", name="wastewater", amount=10},
             {type="fluid", name="sulfur-dioxide", amount=100},
         }
     }
@@ -652,10 +716,85 @@ data:extend({
         ingredients = {
             {type="fluid", name="sulfur-dioxide", amount=100},
             {type="fluid", name="sulfuric-acid", amount=2},
-            {type="fluid", name="water", amount=1},
+            {type="fluid", name="water", amount=10},
         },
         results = {
             {type="fluid", name="sulfuric-acid", amount=12},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crushing", ---@diagnostic disable-line
+        name = "copper-hydroxide",
+        icons = du.icons("copper-hydroxide"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="copper-sulfate", amount=1},
+            {type="item", name="sodium-hydroxide", amount=1},
+            {type="fluid", name="ammonium-chloride", amount=10},
+        },
+        results = {
+            {type="item", name="copper-hydroxide", amount=1},
+            {type="item", name="sodium-sulfate", amount=1},
+            {type="fluid", name="wastewater", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "rayon-1",
+        icons = du.icons("rayon"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="copper-hydroxide", amount=1},
+            {type="fluid", name="ammonia", amount=20},
+            {type="fluid", name="sulfuric-acid", amount=20},
+            {type="fluid", name="water", amount=100},
+            {type="item", name="cellulose", amount=6},
+            {type="item", name="zinc-oxide", amount=1},
+        },
+        results = {
+            {type="item", name="rayon", amount=1},
+            {type="fluid", name="sulfuric-wastewater", amount=100},
+            {type="fluid", name="acid-gas", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "filter-1",
+        icons = du.icons("filter"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="zinc-plate", amount=6},
+            {type="item", name="rayon", amount=4},
+            {type="item", name="activated-carbon", amount=4},
+            {type="item", name="silica", amount=12},
+            {type="item", name="zinc-oxide", amount=1},
+        },
+        results = {
+            {type="item", name="filter", amount=2},
         }
     }
 })
@@ -694,10 +833,11 @@ data:extend({
         main_product = "",
         energy_required = 4,
         ingredients = {
-            {type="item", name="plastic-bar", amount=3},
-            {type="item", name="rubber", amount=3},
+            {type="item", name="filter", amount=3},
+            {type="item", name="small-parts", amount=3},
             {type="item", name="glowing-mangaloy-ingot", amount=1},
             {type="item", name="glass", amount=6},
+            {type="item", name="rubylith", amount=12},
         },
         results = {
             {type="item", name="cladding", amount=3},
@@ -809,6 +949,23 @@ data:extend({
         energy_required = 4,
         ingredients = {
             {type="item", name="cleanroom-controller", amount=1},
+            {type="item", name="fabricator-1", amount=1},
+        },
+        results = {
+            {type="item", name="clean-assembling-machine", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "vic-1",
+        icons = du.icons("vic-1"),
+        energy_required = 4,
+        ingredients = {
             {type="item", name="fabricator-1", amount=1},
         },
         results = {
@@ -1069,6 +1226,30 @@ data:extend({
         },
         results = {
             {type="item", name="fast-inserter", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "automation-science-pack-1",
+        icons = du.icons("automation-science-pack"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 40,
+        ingredients = {
+            {type="item", name="program", amount=20},
+            {type="item", name="locomotive", amount=1},
+            {type="item", name="cladding", amount=30},
+            {type="item", name="barrel", amount=20},
+            {type="fluid", name="hydrochloric-acid", amount=200},
+        },
+        results = {
+            {type="item", name="automation-science-pack", amount=20},
         }
     }
 })

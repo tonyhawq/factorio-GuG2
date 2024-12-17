@@ -398,6 +398,16 @@ data:extend({
         icons = du.icons("natural-gas"),
         order = "a[fluid]-j[sludge]"
     },
+    {
+        type = "fluid",
+        name = "refined-gas",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        fuel_value = "2MJ",
+        icons = du.icons("refined-gas"),
+        order = "a[fluid]-j[sludge]"
+    },
 })
 data:extend({
     {
@@ -1007,6 +1017,86 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         icons = du.icons("cumene"),
+        order = "a[fluid]-j[sludge]"
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "aniline",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("aniline"),
+        fuel_value = "1MJ",
+        order = "a[fluid]-j[sludge]"
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "cyclohexanone",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("cyclohexanone"),
+        fuel_value = "1MJ",
+        order = "a[fluid]-j[sludge]"
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "aniline",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("aniline"),
+        fuel_value = "1MJ",
+        order = "a[fluid]-j[sludge]"
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "ammonium-chloride",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("ammonium-chloride"),
+        order = "a[fluid]-j[sludge]"
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "pet-solution",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("pet-solution"),
+        order = "a[fluid]-j[sludge]"
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "ethylene-glycol",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("ethylene-glycol"),
+        order = "a[fluid]-j[sludge]"
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "acetic-acid",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("acetic-acid"),
         order = "a[fluid]-j[sludge]"
     },
 })

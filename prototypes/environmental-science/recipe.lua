@@ -1285,12 +1285,57 @@ data:extend({
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="fluid", name="tar", amount=100},
+            {type="fluid", name="middle-oil", amount=100},
+            {type="fluid", name="green-oil", amount=50},
             {type="fluid", name="light-oil", amount=100},
         },
         results = {
             {type="fluid", name="gasoline", amount=150},
             {type="fluid", name="tar-pitch", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "gasoline-destructive-distillation",
+        icons = du.icons{mod="base", name="fluid/heavy-oil"}:add_corner("gasoline"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="gasoline", amount=20},
+            {type="item", name="manganese-oxides", amount=1},
+        },
+        results = {
+            {type="fluid", name="condensates", amount=2},
+            {type="fluid", name="heavy-oil", amount=5},
+            {type="fluid", name="middle-oil", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "refined-gas-1",
+        icons = du.icons{name="refined-gas"}:add_corner("condensates"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="condensates", amount=20},
+            {type="fluid", name="hydrogen", amount=200},
+        },
+        results = {
+            {type="fluid", name="refined-gas", amount=20},
         }
     }
 })
@@ -1772,7 +1817,7 @@ data:extend({
         enabled = false,
         category = "boiling", ---@diagnostic disable-line
         name = "caustic-solution-boiling-1",
-        icons = du.icons("caustic-solution"),
+        icons = du.icons{mod="base",name="fluid/steam"}:add_corner("caustic-solution"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -1783,6 +1828,27 @@ data:extend({
         results = {
             {type="fluid", name="steam", amount=100, temperature=165},
             {type="item", name="sodium-hydroxide", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "caustic-solution-2",
+        icons = du.icons("caustic-solution"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="fluid", name="water", amount=10},
+            {type="item", name="sodium-hydroxide", amount=1},
+        },
+        results = {
+            {type="fluid", name="caustic-solution", amount=10},
         }
     }
 })
@@ -2189,6 +2255,70 @@ data:extend({
         },
         results = {
             {type="fluid", name="hydrogen-chloride", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "hydrochloric-acid-1",
+        icons = du.icons("hydrochloric-acid"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="fluid", name="hydrogen-chloride", amount=100},
+            {type="fluid", name="water", amount=10},
+        },
+        results = {
+            {type="fluid", name="hydrochloric-acid", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "hydrochloric-acid-2",
+        icons = du.icons("hydrochloric-acid"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="fluid", name="chlorine", amount=10},
+            {type="fluid", name="hydrogen", amount=10},
+            {type="fluid", name="water", amount=1},
+        },
+        results = {
+            {type="fluid", name="hydrochloric-acid", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "hydrochloric-acid-void",
+        icons = du.icons("saline-water"):add_corner("hydrochloric-acid"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="fluid", name="hydrochloric-acid", amount=4},
+            {type="fluid", name="caustic-solution", amount=1},
+        },
+        results = {
+            {type="fluid", name="saline-water", amount=4},
         }
     }
 })

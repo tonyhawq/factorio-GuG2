@@ -305,6 +305,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="brine-treatment",
             },
+            {
+                type = "unlock-recipe",
+                recipe="geothermal-water-treatment-2",
+            },
         },
     },
 })

@@ -646,6 +646,52 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "sulfur-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/sulfur-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"syngas", "wood-processing", "aluminum-processing-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="acid-gas-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="acid-gas-treatment-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="sulfur-dioxide-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="sulfuric-acid-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="saturated-gas-separation-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "masonry-1",
         icons = {
             {

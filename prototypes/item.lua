@@ -359,6 +359,22 @@ data:extend({
   },
   {
     type = "item",
+    name = "copper-sulfate",
+    icons = du.icons("copper-sulfate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "copper-hydroxide",
+    icons = du.icons("copper-hydroxide"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
     name = "wrought-iron-sheet",
     icons = du.icons("wrought-iron-sheet"),
     subgroup = "smelting-machine",
@@ -604,6 +620,30 @@ data:extend({
     type = "item",
     name = "aluminum-ingot",
     icons = du.icons("aluminum-ingot"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "rayon",
+    icons = du.icons("rayon"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "rubylith",
+    icons = du.icons("rubylith"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "filter",
+    icons = du.icons("filter"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 200

@@ -618,6 +618,55 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "aniline-1",
+        icons = du.icons("aniline"):add_corner("phenol"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="ammonia", amount=50},
+            {type="fluid", name="hydrochloric-acid", amount=5},
+            {type="fluid", name="organic-solvent", amount=5},
+            {type="item", name="phenol", amount=5},
+            {type="item", name="alumina", amount=1},
+        },
+        results = {
+            {type="fluid", name="aniline", amount=50},
+            {type="fluid", name="brine", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "aniline-2",
+        icons = du.icons("aniline"):add_corner("phenol"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="ammonia", amount=50},
+            {type="item", name="phenol", amount=10},
+            {type="item", name="alumina", amount=1},
+            {type="item", name="silica", amount=1},
+        },
+        results = {
+            {type="fluid", name="aniline", amount=100},
+            {type="fluid", name="cyclohexanone", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "oil-processing", ---@diagnostic disable-line
         name = "phenol-2",
         icons = du.icons("phenol"):add_corner("cumene"),
@@ -935,6 +984,163 @@ data:extend({
         },
         results = {
             {type="fluid", name="molten-plastic", amount=25},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "oil-processing", ---@diagnostic disable-line
+        name = "plastic-pet",
+        icons = du.icons{name="plastic-bar", mod="base"}:add_corner("pet-solution"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="pet-solution", amount=50},
+        },
+        results = {
+            {type="fluid", name="molten-plastic", amount=25},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "rubylith",
+        icons = du.icons("rubylith"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="pet-solution", amount=30},
+            {type="fluid", name="naphthalene", amount=100},
+            -- add a different (interesting) dye
+        },
+        results = {
+            {type="item", name="rubylith", amount=6},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "ethylene-glycol-1",
+        icons = du.icons("ethylene-glycol"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="ethylene", amount=20},
+            {type="fluid", name="water", amount=400},
+            -- more interesting recipes possible
+        },
+        results = {
+            {type="fluid", name="ethylene-glycol", amount=20},
+            {type="fluid", name="wastewater", amount=400},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "acetic-acid-1",
+        icons = du.icons("acetic-acid"):add_corner("acetylene"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="acetylene", amount=20},
+            {type="fluid", name="oxygen", amount=30},
+        },
+        results = {
+            {type="fluid", name="acetic-acid", amount=15},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "acetic-acid-2",
+        icons = du.icons("acetic-acid"):add_corner("light-naphtha"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="light-naphtha", amount=20},
+            {type="fluid", name="oxygen", amount=30},
+            {type="item", name="manganese-oxides", amount=1},
+        },
+        results = {
+            {type="fluid", name="acetic-acid", amount=25},
+            {type="fluid", name="formaldehyde", amount=25},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "acetic-acid-3",
+        icons = du.icons("acetic-acid"):add_corner("methanol"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="methanol", amount=20},
+            {type="fluid", name="carbon-monoxide", amount=50},
+        },
+        results = {
+            {type="fluid", name="acetic-acid", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "pet-solution-1",
+        icons = du.icons("pet-solution"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="xylenes", amount=20},
+            {type="fluid", name="ethylene-glycol", amount=30},
+            {type="fluid", name="acetic-acid", amount=30},
+            {type="item", name="glass", amount=4},
+            {type="item", name="manganese-oxides", amount=2},
+            -- highly corrosive, requires more advanced chemical plants?
+            -- produced with three catalysts, bromide, cobalt, manganese.
+        },
+        results = {
+            {type="fluid", name="pet-solution", amount=20},
+            {type="fluid", name="sludge", amount=50},
         }
     }
 })
