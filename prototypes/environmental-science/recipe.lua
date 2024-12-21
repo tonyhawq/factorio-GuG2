@@ -1277,6 +1277,28 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "ammonia-from-gasoline",
+        icons = du.icons("ammonia"):add_corner("gasoline"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="tar", amount=100},
+            {type="fluid", name="gasoline", amount=5},
+        },
+        results = {
+            {type="fluid", name="steam", temperature=165, amount=150},
+            {type="fluid", name="ammonia", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "gasoline-1",
         icons = du.icons("gasoline"):add_corner("tar"),

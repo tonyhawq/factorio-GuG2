@@ -106,6 +106,54 @@ local function ensure_colon_syntax(first_argument)
     error("Ensure metatable calls use : syntax")
 end
 
+function dutil.get_icons_from_recipe(from)
+    if from.type ~= "recipe" then
+        error("Cannot get icons from a recipe which is not a recipe")
+        return {}
+    end
+    if from.icon or from.icons then
+        return dutil.get_icons(from)
+    end
+    local main_product = nil
+    if from.main_product then
+        main_product = dutil.get_item_or_fluid_errorno(from.main_product)
+        if not main_product then
+            error("Recipe "..tostring(from.name).." has main product "..tostring(from.main_product).." but no such item/fluid exists.")
+        end
+    end
+    if #from.results == 1 then
+        local result = from.results[1]
+        local product = result.type == "fluid" and dutil.fluid(result.name, true) or dutil.item(result.name, true)
+        if not product then
+            error("Recipe "..tostring(from.name).." has one product "..tostring(result.name).." but no such item/fluid exists.")
+        end
+    end
+    return dutil.get_icons(main_product)
+end
+
+function dutil.get_icons(from)
+    if not from.icons or from.icon then
+        if from.type ~= "recipe" then
+            error("Cannot get icons from table without icons or icon or recipe:\n"..serpent.block(from))
+            return {}
+        end
+        return dutil.get_icons_from_recipe(from)
+    end
+    if from.icons then
+        return table.deepcopy(from.icons)
+    end
+    return {
+        {
+            icon = from.icon,
+            icon_size = from.icon_size
+        }
+    }
+end
+
+function dutil.get_item_or_fluid_errorno(name)
+    return dutil.item(name, true) or dutil.fluid(name, true)
+end
+
 dutil.metatables = {}
 
 dutil.base_mt =
@@ -131,6 +179,13 @@ dutil.metatable_indicies =
                 error("Cannot get from empty icons table", 2)
             end
             return (icons[#icons])
+        end,
+        add_icons = function (icons, new_icons)
+            ensure_colon_syntax(icons)
+            for _, icon in pairs(new_icons) do
+                table.insert(icons, icon)
+            end
+            return (icons)
         end,
         add = function (icons, name, size, discard)
             ensure_colon_syntax(icons)
@@ -212,7 +267,11 @@ dutil.metatable_indicies =
             data.raw["repair-tool"][name]
         end,
     },
-    fluid = {},
+    fluid = {
+        retrieve = function (name)
+            return data.raw.fluid[name]
+        end,
+    },
     recipe = {
         set_ingredients = function (recipe, ingredients)
             ensure_colon_syntax(recipe)

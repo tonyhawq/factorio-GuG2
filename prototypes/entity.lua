@@ -5179,6 +5179,16 @@ data:extend({
     }
 })
 
+local lamp = table.deepcopy(data.raw.lamp["small-lamp"])
+lamp.name = "high-discharge-lamp"
+lamp.icons = du.icons("high-discharge-lamp")
+lamp.minable.result = "high-discharge-lamp"
+lamp.light.intensity = lamp.light.intensity * 1.5
+lamp.light.size = lamp.light.size * 1.5
+lamp.light.color = {r=1,g=0.6,b=1}
+lamp.energy_usage = "100kW"
+data:extend({lamp})
+
 data:extend({
     {
         type = "item",
@@ -5529,6 +5539,15 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         --place_result = "forestry-pine"
+    },
+    {
+        type = "item",
+        name = "high-discharge-lamp",
+        icons = du.icons("high-discharge-lamp"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "high-discharge-lamp"
     },
     {
         type = "item",

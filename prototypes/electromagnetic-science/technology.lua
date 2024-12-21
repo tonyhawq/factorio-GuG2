@@ -221,6 +221,97 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "nickel-processing",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/steel-processing.png",
+                icon_size = 256,
+                tint = {128, 255, 128}
+            }
+        },
+        prerequisites = {"separation-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="impure-nickel-concentrate-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="nickel-ingot-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="nickel-plate-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "coal-processing-4",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/coal-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"nickel-processing"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="organic-solvent-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="phenol-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="phenol-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="phenol-3",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="aniline-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="aniline-2",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "automation-3",
         icons = {
             {
@@ -244,6 +335,10 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
+                recipe="small-parts-1",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="machine-chassis",
             },
             {
@@ -260,14 +355,14 @@ data:extend({
 data:extend({
     {
         type = "technology",
-        name = "separation",
+        name = "separation-1",
         icons = {
             {
                 icon = "__base__/graphics/technology/steel-processing.png",
                 icon_size = 256,
             }
         },
-        prerequisites = {"antimony-1"},
+        prerequisites = {"electromagnetic-science"},
         unit =
         {
             count = 10,
@@ -289,6 +384,33 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="evaporite-separation-1",
             },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "separation-2",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/steel-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"geothermal-power", "automation-3"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
             {
                 type = "unlock-recipe",
                 recipe="water-treatment-plant",

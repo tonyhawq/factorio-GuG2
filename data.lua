@@ -1,3 +1,7 @@
+G2_wafer_recipes = {}
+
+local du = require("dutil")
+
 for _, technology in pairs(data.raw.technology) do
     technology.hidden = true
 end
@@ -29,6 +33,7 @@ require("prototypes.environmental-science.incinerating-recipe")
 
 require("prototypes.electromagnetic-science.recipe")
 require("prototypes.electromagnetic-science.petrochem")
+require("prototypes.electromagnetic-science.wafers")
 require("prototypes.electromagnetic-science.technology")
 
 require("prototypes.fixes")
@@ -76,4 +81,39 @@ for _, technology in pairs(data.raw.technology) do
             technology.order = tostring(curr_order).."-"..technology.order
         end
     end
+end
+
+for _, fluid in pairs(data.raw.fluid) do
+    if not fluid.fuel_value or fluid.no_canister or data.raw.item[fluid.name.."-canister"] then
+        goto continue
+    end
+    local canister_name = fluid.name.."-canister"
+    local canister_item = {
+        type = "item",
+        name = canister_name,
+        fuel_value = (du.MJ(fluid.fuel_value) * 8).."MJ",
+        localised_name = {"label.filled-canister", {"fluid-name."..fluid.name}},
+        fuel_category = "chemical",
+        subgroup = "smelting-machine",
+        order = "a",
+        stack_size = 20,
+        burnt_result = "empty-canister",
+        icons = du.icons("empty-canister"):add_icons(du.get_icons(fluid)),
+    }
+    local canister_recipe = {
+        type = "recipe",
+        name = fluid.name.."-canister-filling",
+        localised_name = {"label.canister-filling", {"fluid-name."..fluid.name}},
+        category = "crafting-with-fluid",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="empty-canister", amount=1},
+            {type="fluid", name=fluid.name, amount=10},
+        },
+        results = {{type="item", name=canister_name, amount=1}}
+    }
+    data:extend({canister_item, canister_recipe})
+    local canister_tech = data.raw.technology.canisters
+    table.insert(canister_tech.effects, {type="unlock-recipe", recipe=canister_recipe.name})
+    ::continue::
 end

@@ -795,10 +795,11 @@ data:extend({
         ingredients = {
             {type="fluid", name="carbolic-acid", amount=20},
             {type="fluid", name="btx", amount=10},
+            {type="item", name="urea", amount=2},
         },
         results = {
             {type="fluid", name="organic-solvent", amount=20},
-            {type="fluid", name="btx", amount=20},
+            {type="fluid", name="btx", amount=5},
         }
     }
 })
@@ -1021,7 +1022,7 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="fluid", name="pet-solution", amount=30},
-            {type="fluid", name="naphthalene", amount=100},
+            {type="fluid", name="middle-oil", amount=100},
             -- add a different (interesting) dye
         },
         results = {
@@ -1373,6 +1374,94 @@ data:extend({
         },
         results = {
             {type="item", name="rubber", amount=3},
+        }
+    }
+})
+
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "sulfur-1",
+        icons = du.icons{mod="base",name="sulfur"},
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="fluid", name="hydrogen-sulfide", amount=30},
+            {type="fluid", name="sulfur-dioxide", amount=30},
+        },
+        results = {
+            {type="item", name="sulfur", amount=3},
+            {type="fluid", name="sulfuric-wastewater", amount=30},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "sulfur-dioxide-2",
+        icons = du.icons("sulfur-dioxide"):add_corner{mod="base",name="sulfur"},
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="sulfur", amount=3},
+            {type="fluid", name="oxygen", amount=30},
+        },
+        results = {
+            {type="fluid", name="sulfur-dioxide", amount=30},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "alcohol-solvent-1",
+        icons = du.icons("alcohol-solvent"):add_corner("isopropyl-alcohol"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="sulfur", amount=1},
+            {type="fluid", name="isopropyl-alcohol", amount=30},
+            {type="fluid", name="methanol", amount=30},
+        },
+        results = {
+            {type="fluid", name="alcohol-solvent", amount=30},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "alcohol-solvent-2",
+        icons = du.icons("alcohol-solvent"):add_corner("ethanol"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="sulfur", amount=1},
+            {type="fluid", name="ethanol", amount=30},
+            {type="fluid", name="methanol", amount=30},
+        },
+        results = {
+            {type="fluid", name="alcohol-solvent", amount=30},
         }
     }
 })

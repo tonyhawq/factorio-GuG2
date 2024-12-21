@@ -650,6 +650,39 @@ data:extend({
   },
   {
     type = "item",
+    name = "impure-nickel-concentrate",
+    icons = du.icons("impure-nickel-concentrate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "empty-canister",
+    icons = du.icons("empty-canister"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "oxygen-canister",
+    localised_name = {"label.filled-canister", {"fluid-name.oxygen"}},
+    icons = du.icons("empty-canister"):add_icons({{icon="__GuG2__/graphics/icons/oxygen.png"}}),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "brazing-kit",
+    icons = du.icons("brazing-kit"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
     name = "small-parts",
     icons = du.icons("small-parts"),
     subgroup = "smelting-machine",
@@ -668,6 +701,46 @@ data:extend({
     type = "item",
     name = "mortar",
     icons = du.icons("mortar"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "molybdenum-special-alloy",
+    icons = du.icons("molybdenum-special-alloy"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "molybdenum-ingot",
+    icons = du.icons("molybdenum-ingot"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "molybdenum-ore",
+    icons = du.icons("molybdenum-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "impure-molybdenum-concentrate",
+    icons = du.icons("impure-molybdenum-concentrate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "phosphate-rock",
+    icons = du.icons("phosphate-rock"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 200
@@ -1033,6 +1106,22 @@ data:extend({
     type = "item",
     name = "calcium-chloride",
     icons = du.icons("calcium-chloride"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+  },
+  {
+    type = "item",
+    name = "white-phosphorous",
+    icons = du.icons("white-phosphorous"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+  },
+  {
+    type = "item",
+    name = "disodium-phosphate",
+    icons = du.icons("disodium-phosphate"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50,

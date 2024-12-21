@@ -144,6 +144,69 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        name = "impure-nickel-concentrate-1",
+        icons = du.icons("impure-nickel-concentrate"),
+        enabled = false,
+        category = "solid-separation",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="nickel-ore", amount=8},
+        },
+        results ={
+            {type="item", name="impure-nickel-concentrate", amount=7},
+            {type="item", name="sulfur", amount=1},
+            {type="item", name="iron-oxide", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "nickel-ingot-1",
+        icons = du.icons("nickel-ingot"),
+        enabled = false,
+        category = "blasting",
+        subgroup = "raw-material",
+        energy_required = 12,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="impure-nickel-concentrate", amount=6},
+            {type="fluid", name="ammonia", amount=12},
+        },
+        results ={
+            {type="item", name="nickel-ingot", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "nickel-plate-1",
+        icons = du.icons("nickel-plate"),
+        enabled = false,
+        category = "smelting",
+        subgroup = "raw-material",
+        energy_required = 3,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="nickel-ingot", amount=1},
+        },
+        results ={
+            {type="item", name="nickel-plate", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         enabled = false,
         category = "glassworking", ---@diagnostic disable-line
         name = "soda-glass",
@@ -421,6 +484,72 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "empty-canister",
+        icons = du.icons("empty-canister"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="plastic-bar", amount=4},
+        },
+        results = {
+            {type="item", name="empty-canister", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "brazing-kit-acetylene",
+        icons = du.icons("brazing-kit"):add_corner("acetylene"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="bronze-plate", amount=4},
+            {type="item", name="zinc-plate", amount=4},
+            {type="item", name="acetylene-canister", amount=4},
+            {type="item", name="oxygen-canister", amount=4},
+        },
+        results = {
+            {type="item", name="brazing-kit", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "brazing-kit-aniline",
+        icons = du.icons("brazing-kit"):add_corner("aniline"),
+        main_product = "",
+        subgroup = "raw-material",
+        order = "a[a]",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="bronze-plate", amount=4},
+            {type="item", name="zinc-plate", amount=4},
+            {type="item", name="aniline-canister", amount=4},
+            {type="item", name="oxygen-canister", amount=4},
+        },
+        results = {
+            {type="item", name="brazing-kit", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "fabricating", ---@diagnostic disable-line
         name = "small-parts-1",
         icons = du.icons("small-parts"),
@@ -429,7 +558,7 @@ data:extend({
         order = "a[a]",
         energy_required = 10,
         ingredients = {
-            {type="item", name="plastic-bar", amount=12},
+            {type="item", name="brazing-kit", amount=6},
             {type="item", name="aluminum-plate", amount=12},
             {type="item", name="aluminum-carbide", amount=6},
             {type="item", name="iron-gear-wheel", amount=10},
@@ -779,6 +908,28 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "photomask-1",
+        icons = du.icons("photomask"):add_corner("rubylith"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="rubylith", amount=1},
+            {type="fluid", name="organic-solvent", amount=20},
+            {type="item", name="zinc-oxide", amount=5},
+        },
+        results = {
+            {type="item", name="photomask", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "fabricating", ---@diagnostic disable-line
         name = "filter-1",
         icons = du.icons("filter"),
@@ -1002,6 +1153,7 @@ data:extend({
         energy_required = 4,
         ingredients = {
             {type="item", name="glowing-mangaloy-ingot", amount=1},
+            {type="item", name="molybdenum-special-alloy", amount=1},
             {type="item", name="clean-inserter", amount=1},
         },
         results = {
@@ -1079,7 +1231,8 @@ data:extend({
             {type="item", name="magnet-wire", amount=60},
             {type="item", name="ferrite", amount=12},
             {type="item", name="splitter", amount=4},
-            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="small-parts", amount=10},
+            {type="item", name="steel-plate", amount=25},
         },
         results = {
             {type="item", name="solid-separator", amount=1},
@@ -1242,14 +1395,315 @@ data:extend({
         main_product = "",
         energy_required = 40,
         ingredients = {
-            {type="item", name="program", amount=20},
-            {type="item", name="locomotive", amount=1},
-            {type="item", name="cladding", amount=30},
-            {type="item", name="barrel", amount=20},
-            {type="fluid", name="hydrochloric-acid", amount=200},
+            {type="item", name="wave-gap-simulation", amount=20},
+            {type="item", name="nitric-acid-barrel", amount=20},
+            {type="item", name="nitric-acid-barrel", amount=20},
+            {type="item", name="nitric-acid-barrel", amount=20},
+            {type="item", name="nitric-acid-barrel", amount=20},
         },
         results = {
             {type="item", name="automation-science-pack", amount=20},
         }
     }
 })
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blasting", ---@diagnostic disable-line
+        name = "white-phosphorous-1",
+        icons = du.icons("white-phosphorous"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 20,
+        ingredients = {
+            {type="item", name="coke", amount=20},
+            {type="item", name="silica", amount=7},
+            {type="item", name="phosphate-rock", amount=4},
+            {type="fluid", name="oxygen", amount=100},
+        },
+        results = {
+            {type="fluid", name="carbon-monoxide", amount=200},
+            {type="fluid", name="steam", amount=50, temperature=500},
+            {type="item", name="limestone", amount=18},
+            {type="item", name="silica-sand", amount=6},
+            {type="item", name="white-phosphorous", amount=4},
+        }
+    }
+})
+-- add recipe from bone ash
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "phosphine-1",
+        icons = du.icons("phosphine"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="white-phosphorous", amount=1},
+            {type="item", name="sodium-hydroxide", amount=1},
+        },
+        results = {
+            {type="fluid", name="phosphine", amount=4},
+            {type="item", name="disodium-phosphate", probability=0.5, amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "water-treatment", ---@diagnostic disable-line
+        name = "disodium-phosphate-void",
+        icons = du.icons("wastewater"):add_corner("disodium-phosphate"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="disodium-phosphate", amount=1},
+            {type="item", name="limestone", amount=1},
+            {type="fluid", name="caustic-solution", amount=2},
+        },
+        results = {
+            {type="fluid", name="wastewater", amount=4},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "solid-separation", ---@diagnostic disable-line
+        name = "impure-molybdenum-concentrate",
+        icons = du.icons("impure-molybdenum-concentrate"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 8,
+        ingredients = {
+            {type="item", name="molybdenum-ore", amount=8},
+            {type="item", name="sulfur", amount=1},
+            {type="fluid", name="ammonia", amount=36},
+        },
+        results = {
+            {type="item", name="impure-molybdenum-concentrate", amount=6},
+            {type="fluid", name="ammonia", amount=48},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blasting", ---@diagnostic disable-line
+        name = "molybdenum-ingot",
+        icons = du.icons("molybdenum-ingot"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 24,
+        ingredients = {
+            {type="item", name="impure-molybdenum-concentrate", amount=8},
+            {type="fluid", name="hydrogen", amount=100},
+        },
+        results = {
+            {type="item", name="molybdenum-ingot", amount=1},
+            {type="fluid", name="steam", amount=100, temperature=500},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blasting", ---@diagnostic disable-line
+        name = "molybdenum-special-alloy",
+        icons = du.icons("molybdenum-special-alloy"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 24,
+        ingredients = {
+            {type="item", name="molybdenum-ingot", amount=1},
+            {type="item", name="aluminum-ingot", amount=1},
+            {type="item", name="steel-ingot", amount=1},
+            {type="item", name="programatical-metalloid-analysis", amount=1},
+            {type="item", name="nickel-ingot", amount=4},
+        },
+        results = {
+            {type="item", name="molybdenum-special-alloy", amount=1},
+            {type="item", name="program-harness", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "program-harness",
+        icons = du.icons("program-harness"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="small-lamp", amount=1},
+            {type="item", name="constant-combinator", amount=1},
+            {type="item", name="electronic-circuit", amount=1},
+            {type="item", name="memories", amount=8},
+        },
+        results = {
+            {type="item", name="program-harness", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blasting", ---@diagnostic disable-line
+        name = "nitric-oxide-1",
+        icons = du.icons("nitric-oxide"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="ammonia", amount=4},
+            {type="fluid", name="oxygen", amount=5},
+            {type="item", name="nickel-plate", amount=1}, -- really uses platnium
+        },
+        results = {
+            {type="fluid", name="nitric-oxide", amount=4},
+            {type="fluid", name="nitrogen", amount=4},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "nitrogen-dioxide-1",
+        icons = du.icons("nitrogen-dioxide"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="nitric-oxide", amount=10},
+            {type="fluid", name="oxygen", amount=10},
+        },
+        results = {
+            {type="fluid", name="nitrogen-dioxide", amount=10},
+            {type="fluid", name="steam", temperature=500, amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "dilute-nitric-acid-1",
+        icons = du.icons("dilute-nitric-acid"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="fluid", name="nitrogen-dioxide", amount=10},
+            {type="fluid", name="water", amount=10},
+        },
+        results = {
+            {type="fluid", name="dilute-nitric-acid", amount=5},
+            {type="fluid", name="nitric-oxide", amount=5},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "boiling", ---@diagnostic disable-line
+        name = "nitric-acid-1",
+        icons = du.icons("nitric-acid"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = du.J(data.raw["assembling-machine"]["tube-boiler"].energy_usage) * 60 / data.raw["assembling-machine"]["tube-boiler"].energy_source.effectivity / (du.J(du.fluid("dilute-nitric-acid").heat_capacity) * 10 * (100 - du.fluid("dilute-nitric-acid").default_temperature)),
+        ingredients = {
+            {type="fluid", name="dilute-nitric-acid", amount=10},
+            {type="item", name="nickel-plate", amount=1}, -- onsite repairs? or something ? nitric acid cannot be good for the boiler
+        },
+        results = {
+            {type="fluid", name="steam", temperature=165, amount=100},
+            {type="fluid", name="nitric-acid", amount=5},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "high-discharge-lamp",
+        energy_required = 2,
+        ingredients = {
+            -- metal halide UV light (tungsten comes later, cant use that, no mercury)
+            -- refrigerant comes later, so no xenon/argon/noble gases
+            {type="item", name="gaskets", amount=3},
+            {type="item", name="small-lamp", amount=1},
+            {type="item", name="cobalt-dust", amount=1},
+            {type="item", name="molybdenum-special-alloy", amount=1},
+            {type="item", name="lead-plate", amount=2},
+            -- {type="fluid", name="xenon", amount=10}, -- (perhaps)
+            {type="fluid", name="molten-glass", amount=20},
+        },
+        results = {
+            {type="item", name="high-discharge-lamp", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "gaskets-1",
+        icons = du.icons("gaskets"),
+        enabled = false,
+        category = "crafting-with-fluid",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="rubber", amount=3},
+            {type="item", name="plastic-bar", amount=1},
+            {type="fluid", name="lubricant", amount=1},
+        },
+        results = {
+            {type="item", name="gaskets", amount=1},
+        }
+    }
+})
+

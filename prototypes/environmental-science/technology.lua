@@ -866,6 +866,44 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "canisters",
+        icons = {
+            {
+                icon = "__core__/graphics/icons/force/neutral-force-icon.png",
+                icon_size = 128,
+            }
+        },
+        prerequisites = {"zinc-processing", "coal-processing-3"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="empty-canister",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="brazing-kit-acetylene",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="brazing-kit-aniline",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "wood-processing",
         icons = {
             {
@@ -1583,6 +1621,10 @@ data:extend({
         },
         effects =
         {
+            {
+                type = "unlock-recipe",
+                recipe="ammonia-from-gasoline",
+            },
             {
                 type = "unlock-recipe",
                 recipe="creosote-oil-void",

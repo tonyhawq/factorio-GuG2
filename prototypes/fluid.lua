@@ -1110,6 +1110,15 @@ data:extend({
         icons = du.icons("organic-solvent"),
         order = "a[fluid]-j[sludge]"
     },
+    {
+        type = "fluid",
+        name = "alcohol-solvent",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("alcohol-solvent"),
+        order = "a[fluid]-j[sludge]"
+    },
 })
 data:extend({
     {
@@ -1152,6 +1161,62 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         icons = du.icons("epoxy"),
+        order = "a[fluid]-j[sludge]"
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "nitrogen",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("nitrogen"),
+        order = "a[fluid]-j[sludge]"
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "nitric-oxide",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("nitric-oxide"),
+        order = "a[fluid]-j[sludge]"
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "nitrogen-dioxide",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("nitrogen-dioxide"),
+        order = "a[fluid]-j[sludge]"
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "dilute-nitric-acid",
+        default_temperature = 35,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("dilute-nitric-acid"),
+        order = "a[fluid]-j[sludge]",
+        heat_capacity = "2kJ",
+    },
+})
+data:extend({
+    {
+        type = "fluid",
+        name = "nitric-acid",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("nitric-acid"),
         order = "a[fluid]-j[sludge]"
     },
 })

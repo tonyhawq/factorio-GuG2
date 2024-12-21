@@ -285,6 +285,22 @@ data:extend({
     },
     {
         type = "item",
+        name = "program-harness",
+        icons = du.icons("program-harness"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50
+    },
+    {
+        type = "item",
+        name = "programatical-metalloid-analysis",
+        icons = du.icons("programatical-metalloid-analysis"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50
+    },
+    {
+        type = "item",
         name = "io-expander",
         icons = du.icons("program"),
         subgroup = "smelting-machine",
@@ -475,7 +491,7 @@ data:extend({
         main_product = "",
         energy_required = 5,
         ingredients = {
-            {type="item", name="electronic-circuit", amount=5},
+            {type="item", name="program-harness", amount=5},
             {type="item", name="memories", amount=50},
             {type="item", name="priority-interrupt", amount=4},
             {type="item", name="deferred-interrupt", amount=8},
@@ -492,6 +508,30 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "computing", ---@diagnostic disable-line
+        name = "programatical-metalloid-analysis",
+        icons = du.icons("programatical-metalloid-analysis"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="item", name="program", amount=5},
+            {type="item", name="silicon", amount=5},
+            {type="item", name="tin-ingot", amount=5},
+            {type="fluid", name="cpu-time", amount=100},
+        },
+        results = {
+            {type="item", name="programatical-metalloid-analysis", amount=2},
+            {type="item", name="program-harness", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "computing", ---@diagnostic disable-line
         name = "program-2",
         icons = du.icons("program"),
         subgroup = "raw-material",
@@ -499,7 +539,7 @@ data:extend({
         main_product = "",
         energy_required = 5,
         ingredients = {
-            {type="item", name="electronic-circuit", amount=5},
+            {type="item", name="program-harness", amount=5},
             {type="item", name="memories", amount=50},
             {type="item", name="priority-interrupt", amount=8},
             {type="item", name="deferred-interrupt", amount=6},
@@ -507,6 +547,30 @@ data:extend({
         },
         results = {
             {type="item", name="program", amount=5},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "computing", ---@diagnostic disable-line
+        name = "wave-gap-simulation",
+        icons = du.icons("wave-gap-simulation"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="item", name="integrated-circuit-die", amount=6},
+            {type="item", name="program", amount=2},
+            {type="item", name="electronic-circuit", amount=8},
+            {type="item", name="accumulator", amount=1},
+            {type="fluid", name="cpu-time", amount=300},
+        },
+        results = {
+            {type="item", name="wave-gap-simulation", amount=5},
         }
     }
 })
