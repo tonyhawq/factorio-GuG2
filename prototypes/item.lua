@@ -39,6 +39,22 @@ data:extend({
     order = "a[stone-furnace]",
     stack_size = 50
   },
+  {
+    type = "item",
+    name = "phenolic-resin",
+    icons = du.icons("phenolic-resin"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "phenolic-board",
+    icons = du.icons("phenolic-board"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
 })
 data:extend({
   {
@@ -885,6 +901,38 @@ data:extend({
   },
   {
     type = "item",
+    name = "mv-resistor",
+    icons = du.icons("mv-resistor"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "mv-capacitor",
+    icons = du.icons("mv-capacitor"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "impure-zinc-concentrate",
+    icons = du.icons("impure-zinc-concentrate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "fiberglass",
+    icons = du.icons("fiberglass"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
     name = "small-electric-motor",
     icons = du.icons("small-electric-motor"),
     subgroup = "smelting-machine",
@@ -1016,6 +1064,33 @@ data:extend({
   },
   {
     type = "item",
+    name = "crushed-lead-ore",
+    icons = du.icons("crushed-lead-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+    formula = "(PbS)6(Pb5(AsO4)3Cl)3(Ag3AsS3)1"
+  },
+  {
+    type = "item",
+    name = "impure-lead-concentrate",
+    icons = du.icons("impure-lead-concentrate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+    formula = "(PbS)6(Pb5(AsO4)3Cl)2"
+  },
+  {
+    type = "item",
+    name = "lead-oxite",
+    icons = du.icons("lead-oxite"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+    formula = "Pb3SO3Cl2"
+  },
+  {
+    type = "item",
     name = "raw-silver-dust",
     icons = du.icons("raw-silver-dust"),
     subgroup = "smelting-machine",
@@ -1024,8 +1099,32 @@ data:extend({
   },
   {
     type = "item",
+    name = "silver-slime",
+    icons = du.icons("silver-slime"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "silver-plate",
+    icons = du.icons("silver-plate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
     name = "limestone",
     icons = du.icons("limestone"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "transistor",
+    icons = du.icons("transistor"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50

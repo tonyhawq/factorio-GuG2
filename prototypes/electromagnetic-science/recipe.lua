@@ -2160,7 +2160,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "crafting", ---@diagnostic disable-line
+        category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "mv-capacitor-1",
         icons = du.icons("mv-capacitor"),
         subgroup = "raw-material",
@@ -2197,7 +2197,7 @@ data:extend({
             {type="item", name="mv-resistor", amount=2},
             {type="item", name="mv-capacitor", amount=3},
             {type="item", name="solder", amount=3},
-            {type="item", name="copper-wire", amount=3},
+            {type="item", name="copper-cable", amount=3},
             {type="item", name="silver-plate", amount=1},
         },
         results = {
@@ -2210,24 +2210,133 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "blasting", ---@diagnostic disable-line
+        category = "smelting", ---@diagnostic disable-line
         name = "silver-plate-1",
         icons = du.icons("silver-plate"),
-        subgroup = "raw-material",
+        subgroup = "silver-smelting",
         order = "a[a]",
         main_product = "",
-        energy_required = 1,
+        energy_required = 24,
         ingredients = {
-            {type="item", name="phenolic-board", amount=1},
-            {type="item", name="transistor", amount=6},
-            {type="item", name="mv-resistor", amount=2},
-            {type="item", name="mv-capacitor", amount=3},
-            {type="item", name="solder", amount=3},
-            {type="item", name="copper-wire", amount=3},
-            {type="item", name="silver-plate", amount=1},
+            {type="item", name="raw-silver-dust", amount=6},
+            {type="item", name="lime", amount=6},
+            {type="item", name="white-phosphorous", amount=1},
         },
         results = {
             {type="item", name="silver-plate", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smelting", ---@diagnostic disable-line
+        name = "silver-plate-2",
+        icons = du.icons("silver-plate"):add_corner("silver-slime"),
+        subgroup = "silver-smelting",
+        order = "a[b]",
+        main_product = "",
+        energy_required = 24,
+        ingredients = {
+            {type="item", name="silver-slime", amount=1},
+            {type="item", name="lime", amount=6},
+            {type="item", name="white-phosphorous", amount=1},
+        },
+        results = {
+            {type="item", name="silver-plate", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smelting", ---@diagnostic disable-line
+        name = "silver-slime-1",
+        icons = du.icons("silver-slime"):add_corner("raw-silver-dust"),
+        subgroup = "silver-ore-processing",
+        order = "a-a",
+        main_product = "",
+        energy_required = 40,
+        ingredients = {
+            {type="item", name="raw-silver-dust", amount=4},
+            {type="fluid", name="acetic-acid", amount=24},
+        },
+        results = {
+            {type="item", name="silver-slime", amount=1},
+            {type="fluid", name="wastewater", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smelting", ---@diagnostic disable-line
+        name = "impure-lead-concentrate-1",
+        icons = du.icons("impure-lead-concentrate"):add_corner("silver-slime"),
+        subgroup = "lead-ore-processing",
+        order = "b",
+        main_product = "",
+        energy_required = 6,
+        ingredients = {
+            -- lead should be molten
+            -- should remove all silver
+            {type="item", name="crushed-lead-ore", amount=8},
+            {type="fluid", name="zinc-gas", amount=20},
+        },
+        results = {
+            {type="item", name="impure-lead-concentrate", amount=4},
+            {type="item", name="silver-slime", probability=0.5, amount=1},
+            {type="item", name="zinc-ingot", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crushing", ---@diagnostic disable-line
+        name = "crushed-lead-ore-1",
+        icons = du.icons("crushed-lead-ore"),
+        subgroup = "lead-ore-processing",
+        order = "a",
+        main_product = "",
+        energy_required = 6,
+        ingredients = {
+            {type="item", name="lead-ore", amount=4},
+        },
+        results = {
+            {type="item", name="crushed-lead-ore", amount=6},
+            {type="item", name="stone", amount=1},
+        }
+    }
+})
+-- TODO: Add lead to more recipes
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "lead-oxite-1",
+        icons = du.icons("lead-oxite"),
+        subgroup = "lead-ore-processing",
+        order = "d",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="impure-lead-concentrate", amount=2},
+            {type="fluid", name="oxygen", amount=40},
+        },
+        results = {
+            {type="item", name="lead-oxite", amount=4},
+            {type="item", name="impure-zinc-concentrate", amount=1},
         }
     }
 })
