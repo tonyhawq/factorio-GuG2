@@ -52,6 +52,36 @@ data:extend({
 })
 data:extend({
   {
+    type = "item",
+    name = "silicon",
+    icons = du.icons("silicon"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+})
+data:extend({
+  {
+    type = "item",
+    name = "gaskets",
+    icons = du.icons("gaskets"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+})
+data:extend({
+  {
+    type = "item",
+    name = "wind-turbine-1",
+    icons = du.icons("base.stone-brick"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 3
+  },
+})
+data:extend({
+  {
     type = "tool",
     name = "environmental-science-pack",
     localised_description = {"item-description.science-pack"},
@@ -94,6 +124,18 @@ data:extend({
     icons = du.icons("automation-science-pack"),
     subgroup = "science-pack",
     order = "a[d]",
+    stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount-key",
+    durability_description_value = "description.science-pack-remaining-amount-value"
+  },
+  {
+    type = "tool",
+    name = "nuclear-science-pack",
+    localised_description = {"item-description.science-pack"},
+    icons = du.icons("nuclear-science-pack"),
+    subgroup = "science-pack",
+    order = "a[e]",
     stack_size = 200,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
@@ -658,6 +700,62 @@ data:extend({
   },
   {
     type = "item",
+    name = "crushed-manganese-ore",
+    icons = du.icons("crushed-manganese-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "impure-manganese-concentrate",
+    icons = du.icons("impure-manganese-concentrate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "manganese-calcite",
+    icons = du.icons("manganese-calcite"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "manganese-precipitate",
+    icons = du.icons("manganese-precipitate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "high-purity-manganese-concentrate",
+    icons = du.icons("high-purity-manganese-concentrate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "manganese-slime",
+    icons = du.icons("manganese-slime"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "manganese-ore",
+    icons = du.icons("manganese-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
     name = "empty-canister",
     icons = du.icons("empty-canister"),
     subgroup = "smelting-machine",
@@ -669,6 +767,22 @@ data:extend({
     name = "oxygen-canister",
     localised_name = {"label.filled-canister", {"fluid-name.oxygen"}},
     icons = du.icons("empty-canister"):add_icons({{icon="__GuG2__/graphics/icons/oxygen.png"}}),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "stainless-steel-plate",
+    icons = du.icons("stainless-steel-plate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "computed-automation-science-pack",
+    icons = du.icons("computed-automation-science-pack"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 200
@@ -727,7 +841,7 @@ data:extend({
     icons = du.icons("molybdenum-ore"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 200
+    stack_size = 200,
   },
   {
     type = "item",
@@ -897,7 +1011,8 @@ data:extend({
     icons = du.icons("lead-ore"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50
+    stack_size = 50,
+    formula = "(PbS)6(Pb5(AsO4)3Cl)3(Ag3AsS3)1"
   },
   {
     type = "item",

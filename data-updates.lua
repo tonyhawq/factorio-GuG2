@@ -1,3 +1,4 @@
+local du = require("dutil")
 local collision_mask_util = require("__core__.lualib.collision-mask-util")
 
 ---@param prototype_name string
@@ -144,5 +145,85 @@ for _, resource in pairs(data.raw["resource"]) do
                 water_tile = true,
             }
         }
+    end
+end
+
+for _, recipe in pairs(data.raw.recipe) do
+    for _, product in pairs(recipe.results or {}) do
+        local product_amount = 0
+        if product.name == "steam" then
+            if product.temperature or 0 > 100 then
+                product_amount = product.amount
+                if not product_amount then
+                    if not product.amount_min or not product.amount_max then
+                        goto continue
+                    end
+                    product_amount = (product.amount_min + product.amount_max) / 2
+                end
+                product_amount = product_amount * (product.probability or 1)
+                if not recipe.localised_description then
+                    recipe.localised_description = {
+                        "",
+                        {"?", {"", {"recipe-description."..recipe.name}, "\n"}, ""},
+                        {"label.creates_steam_with_power", du.truncate_decimals(product_amount / recipe.energy_required * (product.temperature - 15) * du.MJ(data.raw.fluid.steam.heat_capacity), 2), "MW"}
+                    }
+                end
+            end
+        end
+    end
+    ::continue::
+end
+
+local tag_length = string.len("[font=default-tiny-bold]") + string.len("[/font]")
+local function convert_formula_into_rich_text(formula)
+    local i = 1
+    local localised_string = {""}
+    while i <= formula:len() do
+        local character = formula:sub(i, i)
+        local len = 0
+        log("character "..character)
+        while true do
+            character = formula:sub(i, i + len)
+            if not tonumber(character) or ((i + len) > formula:len()) then
+                len = len - 1
+                break
+            end
+            len = len + 1
+            log("stretching "..character)
+        end
+        if len < 0 then
+            goto continue
+        end
+        do
+            character = formula:sub(i, i + len)
+            log("number character = "..character)
+            local before_character = formula:sub(1, i - 1)
+            local after_character = formula:sub(i + len + 1, formula:len())
+            log("ba")
+            log(before_character)
+            log(after_character)
+            before_character = before_character.."[font=default-tiny-bold]"..character.."[/font]"
+            table.insert(localised_string, before_character)
+            formula = after_character
+            i = 0
+        end
+        ::continue::
+        i = i + 1
+    end
+    return localised_string
+end
+
+for item_type, _ in pairs(defines.prototypes.item) do
+    for _, item in pairs(data.raw[item_type] or {}) do
+        if not item.formula then
+            goto continue
+        end
+        -- TODO : make it respect existing descriptions!!
+        if item.localised_description then
+            item.localised_description = {"", item.localised_description, "\n", convert_formula_into_rich_text(item.formula)}
+        else
+            item.localised_description = convert_formula_into_rich_text(item.formula)
+        end
+        ::continue::
     end
 end

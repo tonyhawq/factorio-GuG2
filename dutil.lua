@@ -81,22 +81,39 @@ end
 ---@field size number?
 ---@field discard boolean?
 
-local function get_icon_path(name, discard)
-    if not discard then
-        name = "__"..dutil.mod.."__"..dutil.path..name..dutil.ext
+local function get_mod_from_namestring(name)
+    local _, has_mod = name:find("^.-%.")
+    if not has_mod then
+        return
     end
-    return name
+    local modname = name:sub(1, has_mod - 1)
+    if modname:len() == 0 then
+        return
+    end
+    if not mods[modname] then
+        return
+    end
+    return modname, has_mod
 end
 
 local function get_icon_path_from_config(config)
     local name = config.name
+    local override_mod, remove = get_mod_from_namestring(config.name)
+    if override_mod and (not config.mod) then
+        log("now removing")
+        name = config.name:sub(remove + 1, config.name:len())
+    end
     if not config.discard then
-        local mod = config.mod or dutil.mod
+        local mod = config.mod or override_mod or dutil.mod
         local path = config.path or dutil.path
         local ext = config.ext or dutil.ext
         name = "__"..mod.."__"..path..name..ext
     end
     return name
+end
+
+local function get_icon_path(name, discard)
+    return get_icon_path_from_config({name=name, discard=discard})
 end
 
 local function ensure_colon_syntax(first_argument)
@@ -132,7 +149,7 @@ function dutil.get_icons_from_recipe(from)
 end
 
 function dutil.get_icons(from)
-    if not from.icons or from.icon then
+    if (not from.icons) and (not from.icon) then
         if from.type ~= "recipe" then
             error("Cannot get icons from table without icons or icon or recipe:\n"..serpent.block(from))
             return {}
@@ -548,6 +565,10 @@ function dutil.fuel_value(name)
         return 0
     end
     return util.parse_energy(prototype.fuel_value)
+end
+
+function dutil.truncate_decimals(number, places)
+    return string.format("%."..(places or 3).."f", number)
 end
 
 return dutil

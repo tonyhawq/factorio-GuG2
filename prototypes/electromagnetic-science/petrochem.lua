@@ -1156,14 +1156,14 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 6,
         ingredients = {
-            {type="fluid", name="ethylene", amount=30},
+            {type="fluid", name="ethylene", amount=60},
             {type="fluid", name="propylene", amount=100},
-            {type="fluid", name="anthracene", amount=15},
+            {type="fluid", name="anthracene", amount=200},
         },
         results = {
-            {type="fluid", name="molten-plastic", amount=40},
+            {type="fluid", name="molten-plastic", amount=60},
         }
     }
 })

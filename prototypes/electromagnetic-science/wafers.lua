@@ -1,5 +1,155 @@
 local du = require("dutil")
 
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "trichlorosilane-1",
+        icons = du.icons("trichlorosilane"),
+        enabled = false,
+        main_product = "",
+        category = "chemistry",
+        subgroup = "raw-material",
+        energy_required = 10,
+        order = "a",
+        ingredients = {
+            {type="fluid", name="hydrogen", amount=200},
+            {type="fluid", name="silicon-tetrachloride", amount=300},
+            {type="item", name="silicon", amount=10},
+        },
+        results ={
+            {type="fluid", name="trichlorosilane", amount=400},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "silicon-tetrachloride-jump-1",
+        icons = du.icons("trichlorosilane"):add_corner("chlorine"),
+        enabled = false,
+        main_product = "",
+        category = "chemistry",
+        subgroup = "raw-material",
+        energy_required = 20,
+        order = "a",
+        ingredients = {
+            {type="fluid", name="chlorine", amount=400},
+            {type="item", name="silicon", amount=20},
+        },
+        results ={
+            {type="fluid", name="trichlorosilane", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "trichlorosilane-dichlorosilane-1",
+        icons = du.icons("dichlorosilane"):add_corner("trichlorosilane"),
+        enabled = false,
+        main_product = "",
+        category = "chemistry",
+        subgroup = "raw-material",
+        energy_required = 10,
+        order = "a",
+        ingredients = {
+            {type="fluid", name="trichlorosilane", amount=200},
+        },
+        results ={
+            {type="fluid", name="dichlorosilane", amount=100},
+            {type="fluid", name="silicon-tetrachloride", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "dichlorosilane-1",
+        icons = du.icons("dichlorosilane"),
+        enabled = false,
+        main_product = "",
+        category = "chemistry",
+        subgroup = "raw-material",
+        energy_required = 10,
+        order = "a",
+        ingredients = {
+            {type="fluid", name="trichlorosilane", amount=200},
+        },
+        results ={
+            {type="fluid", name="dichlorosilane", amount=100},
+            {type="fluid", name="silicon-tetrachloride", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "dichlorosilane-chlorosilane-1",
+        icons = du.icons("chlorosilane"):add_corner("dichlorosilane"),
+        enabled = false,
+        main_product = "",
+        category = "chemistry",
+        subgroup = "raw-material",
+        energy_required = 10,
+        order = "a",
+        ingredients = {
+            {type="fluid", name="dichlorosilane", amount=200},
+        },
+        results ={
+            {type="fluid", name="trichlorosilane", amount=100},
+            {type="fluid", name="chlorosilane", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "silane-1",
+        icons = du.icons("silane"),
+        enabled = false,
+        main_product = "",
+        category = "chemistry",
+        subgroup = "raw-material",
+        energy_required = 10,
+        order = "a",
+        ingredients = {
+            {type="fluid", name="chlorosilane", amount=200},
+        },
+        results ={
+            {type="fluid", name="silane", amount=100},
+            {type="fluid", name="dichlorosilane", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "polysilicon-1",
+        icons = du.icons("polysilicon"),
+        enabled = false,
+        main_product = "",
+        category = "blasting",
+        subgroup = "raw-material",
+        energy_required = 100,
+        order = "a",
+        ingredients = {
+            {type="fluid", name="silane", amount=1000},
+            {type="item", name="zinc-plate", amount=50},
+        },
+        results ={
+            {type="item", name="polysilicon", amount=10},
+            {type="fluid", name="hydrogen", amount=2000},
+        }
+    }
+})
+
 -- wafer production begins with treatment of the wafer
 -- simple-wafer has large enough feature size to not require Hexamethyldisilazane
 -- cleaning is done with pure water, acetone and methanol
@@ -13,7 +163,8 @@ local du = require("dutil")
 -- tetramethylammonium hydroxide
 -- more potassium hydroxide
 
--- TODO: meaningful byproducts that are "realistic"!!
+-- TODO: meaningful byproducts that are "realistic"!
+
 data:extend({
     {
         type = "recipe", 

@@ -2051,6 +2051,28 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "evaporating", ---@diagnostic disable-line
+        name = "hydrogen-manganese",
+        icons = du.icons("hydrogen"):add_corner("manganese-oxides"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 8,
+        ingredients = {
+            {type="fluid", name="water", amount=50},
+            {type="item", name="manganese-oxides", amount=2},
+        },
+        results = {
+            {type="fluid", name="mineralized-water", amount=30},
+            {type="fluid", name="hydrogen", amount=30},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "glassworking", ---@diagnostic disable-line
         name = "petri-dish-1",
         icons = du.icons("petri-dish"),

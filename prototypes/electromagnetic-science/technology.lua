@@ -70,6 +70,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="mixed-gas-oil-from-kerosene",
             },
+            {
+                type = "unlock-recipe",
+                recipe="btx-separation",
+            },
         },
     },
 })
@@ -171,6 +175,170 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="mineralized-water-treatment",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "nitrogen-chemistry-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/oil-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"nickel-processing"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="nitric-oxide-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="nitrogen-dioxide-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="dilute-nitric-acid-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="nitric-acid-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "silicon-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/oil-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"separation-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="silicon-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="silicon-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="silicon-3",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "silicon-2",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/oil-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"separation-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="silicon-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="silicon-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="silicon-3",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "molybdenum-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/oil-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"nitrogen-chemistry-1", "silicon-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="impure-molybdenum-concentrate",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="molybdenum-ingot",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="molybdenum-special-alloy",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="programatical-metalloid-analysis",
             },
         },
     },
@@ -465,6 +633,194 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="accumulator",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "polymers-2",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/plastics.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"oil-refining"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="polymer-additives-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="finished-plastic",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="plastic-polypropylene",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="plastic-polypropylene-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="rubber-sbr",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "cracking-1",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/research-productivity.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"oil-refining"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="gas-oil-separation",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fuel-oil-from-light-gas-oil",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fuel-oil-from-heavy-gas-oil",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fuel-oil-cracking",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="gasoline-to-styrene",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "refined-fuels-1",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/research-productivity.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"oil-refining"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="solid-fuel-fuel-oil",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="solid-fuel-gas-oil",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="solid-fuel-kerosene",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="gasoline-from-heavy-naphtha",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="gasoline-from-light-naphtha",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "cracking-2",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/research-productivity.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"oil-refining"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="diesel-cracking",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fcc-heavy-oil",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fcc-gasoline",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="hvgo-cracking",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="condensates-fractioning",
             },
         },
     },

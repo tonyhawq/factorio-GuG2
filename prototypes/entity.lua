@@ -2703,6 +2703,72 @@ steam_engine.produces_temperature = 1200
 steam_engine.produces_amount = (du.J(steam_engine.energy_usage) * 60) / (du.J(du.fluid("rotational-force").heat_capacity) * steam_engine.produces_temperature)
 data:extend({steam_engine})
 
+local steam_turbine = table.deepcopy(data.raw.generator["steam-turbine"])
+data.raw.generator["steam-turbine"] = nil
+steam_turbine.type = "assembling-machine"
+steam_turbine.crafting_categories = {"generating"}
+steam_turbine.fixed_recipe = "steam-turbine-rotation-generation"
+steam_turbine.energy_usage = "5820kW"
+steam_turbine.crafting_speed = 1
+steam_turbine.fluid_boxes = {
+    {
+        volume = 200,
+        pipe_covers = pipecoverspictures(),
+        pipe_connections =
+        {
+            { flow_direction = "output", direction = defines.direction.north, position = {0, -2} }
+        },
+        production_type = "output",
+        filter = "rotational-force",
+    }
+}
+steam_turbine.graphics_set = {
+    animation = {
+        north = steam_turbine.vertical_animation,
+        east = steam_turbine.horizontal_animation,
+        south = steam_turbine.vertical_animation,
+        west = steam_turbine.horizontal_animation,
+    }
+}
+steam_turbine.energy_source = {
+    type = "fluid",
+    maximum_temperature=165,
+    effectivity = 0.5,
+    fluid_box = {
+        volume=100,
+        height = 1,
+        base_level = -1,
+        pipe_covers = pipecoverspictures(),
+        pipe_connections = {
+            {flow_direction = "input", position = {0, 2}, direction=defines.direction.south},
+        },
+        filter="steam",
+        minimum_temperature=100,
+    },
+    burns_fluid = false,
+    scale_fluid_usage = true,
+    destroy_non_fuel_fluid = false,
+    smoke =
+    {
+        {
+            name = "light-smoke",
+            north_position = {0.9, 0.0},
+            east_position = {-2.0, -2.0},
+            frequency = 3,
+            starting_vertical_speed = 0.08,
+            starting_frame_deviation = 60
+        }
+    },
+    light_flicker = {
+        color = {0.8,0.6,0.4},
+        minimum_light_size = 0.1,
+        light_intensity_to_size_coefficient = 1
+    }
+}
+steam_turbine.produces_temperature = 2000
+steam_turbine.produces_amount = (du.J(steam_turbine.energy_usage) * 60) / (du.J(du.fluid("rotational-force").heat_capacity) * steam_turbine.produces_temperature)
+data:extend({steam_turbine})
+
 data:extend({
     {
         type = "recipe-category",
@@ -2721,6 +2787,21 @@ data:extend({
         },
         results = {
             {type="fluid", name="rotational-force", amount= steam_engine.produces_amount * 0.1, temperature=steam_engine.produces_temperature},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "generating", ---@diagnostic disable-line
+        name = "steam-turbine-rotation-generation",
+        icons = du.icons("rotational-force"),
+        hidden = true,
+        energy_required = 0.1,
+        ingredients = {
+        },
+        results = {
+            {type="fluid", name="rotational-force", amount= steam_turbine.produces_amount * 0.1, temperature=steam_turbine.produces_temperature},
         }
     }
 })
@@ -2851,6 +2932,19 @@ steam_engine.localised_description = {"",
     "label.produces-rotational-force-amount",
     tostring(steam_engine.produces_temperature),
     tostring(kW_from_rotational_force(steam_engine.produces_amount, steam_engine.produces_temperature)),
+    "kW"
+},
+"\n",
+{"label.no-cleanroom"}}
+
+local steam_turbine = data.raw["assembling-machine"]["steam-turbine"]
+steam_turbine.localised_description = {"",
+{"entity-description.steam-turbine"},
+"\n",
+{
+    "label.produces-rotational-force-amount",
+    tostring(steam_turbine.produces_temperature),
+    tostring(kW_from_rotational_force(steam_turbine.produces_amount, steam_turbine.produces_temperature)),
     "kW"
 },
 "\n",

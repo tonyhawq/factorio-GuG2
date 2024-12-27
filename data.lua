@@ -117,3 +117,4 @@ for _, fluid in pairs(data.raw.fluid) do
     table.insert(canister_tech.effects, {type="unlock-recipe", recipe=canister_recipe.name})
     ::continue::
 end
+table.insert(data.raw.technology.canisters.effects, {type="unlock-recipe", recipe="oxygen-canister-filling"})

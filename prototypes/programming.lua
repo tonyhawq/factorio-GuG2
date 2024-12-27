@@ -301,6 +301,14 @@ data:extend({
     },
     {
         type = "item",
+        name = "wave-gap-simulation",
+        icons = du.icons("wave-gap-simulation"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50
+    },
+    {
+        type = "item",
         name = "io-expander",
         icons = du.icons("program"),
         subgroup = "smelting-machine",
