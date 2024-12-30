@@ -724,7 +724,7 @@ data:extend({
             {type="fluid", name="propylene", amount=20},
             {type="fluid", name="chlorine", amount=50},
             {type="fluid", name="water", amount=20},
-            {type="item", name="cobalt-dust", amount=1},
+            --{type="item", name="cobalt-dust", amount=1},
             {type="item", name="sodium-hydroxide", amount=1},
         },
         results = {
@@ -750,7 +750,7 @@ data:extend({
             {type="fluid", name="acetone", amount=36},
             {type="fluid", name="sulfuric-acid", amount=10},
             {type="item", name="phenol", amount=6},
-            {type="item", name="cobalt-dust", amount=1},
+            --{type="item", name="cobalt-dust", amount=1},
         },
         results = {
             {type="fluid", name="bpa", amount=20},
@@ -943,6 +943,95 @@ solid_fuel_localised_desc("solid-fuel-kerosene")
 
 
 
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "oil-processing", ---@diagnostic disable-line
+        name = "lubricant-2",
+        icons = du.icons("base.fluid/lubricant"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="raw-lubricating-oil", amount=100},
+            {type="fluid", name="btx", amount=20},
+            {type="item", name="aluminum-hydroxide", amount=20},
+        },
+        results = {
+            {type="fluid", name="lubricant", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "oil-processing", ---@diagnostic disable-line
+        name = "lubricant-3",
+        icons = du.icons("base.fluid/lubricant"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="raw-lubricating-oil", amount=100},
+            {type="fluid", name="propylene", amount=200},
+            {type="fluid", name="toluene", amount=60},
+            {type="item", name="aluminum-hydroxide", amount=10},
+        },
+        results = {
+            {type="fluid", name="lubricant", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "oil-processing", ---@diagnostic disable-line
+        name = "lubricant-4",
+        icons = du.icons("base.fluid/lubricant"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="raw-lubricating-oil", amount=10},
+            {type="item", name="aluminum-hydroxide", amount=10},
+            {type="item", name="graphite-dust", amount=60},
+        },
+        results = {
+            {type="fluid", name="lubricant", amount=60},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "oil-processing", ---@diagnostic disable-line
+        name = "lubricant-5",
+        icons = du.icons("base.fluid/lubricant"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="raw-lubricating-oil", amount=40},
+            {type="item", name="sulfur", amount=10},
+            {type="item", name="molybdenum-ingot", amount=2},
+        },
+        results = {
+            {type="fluid", name="lubricant", amount=100},
+        }
+    }
+})
 data:extend({
     {
         type = "recipe", 

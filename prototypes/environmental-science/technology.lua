@@ -210,7 +210,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"mechanics-2"},
+        prerequisites = {"logistics"},
         unit =
         {
             count = 30,
@@ -535,6 +535,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="sand-void",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="steam-engine",
             },
             {
@@ -562,7 +566,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"mechanics-2", "masonry-1"},
+        prerequisites = {"mechanical-science", "masonry-1"},
         unit =
         {
             count = 10,
@@ -598,6 +602,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="stone-brick-crushing",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="crushed-quartz-1",
             },
         },
     },
@@ -815,7 +823,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"mechanics-2"},
+        prerequisites = {"mechanical-science"},
         unit =
         {
             count = 10,
@@ -973,7 +981,7 @@ data:extend({
                 icon_size = 128,
             }
         },
-        prerequisites = {"mechanics-2"},
+        prerequisites = {"mechanical-science"},
         unit =
         {
             count = 10,
@@ -1062,7 +1070,7 @@ data:extend({
                 icon_size = 128,
             }
         },
-        prerequisites = {"basic-chemistry"},
+        prerequisites = {"basic-chemistry", "crushing"},
         unit =
         {
             count = 10,
@@ -1256,6 +1264,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="hydrogen-chloride",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pump",
             },
         },
     },
@@ -1696,7 +1708,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"engine"},
+        prerequisites = {"engine", "canisters"},
         unit =
         {
             count = 10,
@@ -1766,6 +1778,39 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="electromagnetic-science-pack-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "logistics",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/logistics-1.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"mechanics-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="transport-belt-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="splitter",
             },
         },
     },

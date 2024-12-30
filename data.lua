@@ -36,6 +36,8 @@ require("prototypes.electromagnetic-science.petrochem")
 require("prototypes.electromagnetic-science.wafers")
 require("prototypes.electromagnetic-science.technology")
 
+require("prototypes.nuclear-science.recipe")
+
 require("prototypes.fixes")
 require("prototypes.yafc-fixes")
 

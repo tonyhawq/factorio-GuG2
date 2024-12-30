@@ -571,10 +571,11 @@ data:extend({
         main_product = "",
         energy_required = 5,
         ingredients = {
-            {type="item", name="integrated-circuit-die", amount=6},
+            {type="item", name="transistor", amount=20},
             {type="item", name="program", amount=2},
-            {type="item", name="electronic-circuit", amount=8},
             {type="item", name="accumulator", amount=1},
+            {type="item", name="memories", amount=100},
+            {type="item", name="priority-interrupt", amount=10},
             {type="fluid", name="cpu-time", amount=300},
         },
         results = {

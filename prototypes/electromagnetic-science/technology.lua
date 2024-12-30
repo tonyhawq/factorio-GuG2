@@ -131,11 +131,50 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="program-harness",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="program",
             },
             {
                 type = "unlock-recipe",
                 recipe="program-2",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "advanced-material-processing",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/advanced-material-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"antimony-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="steel-furnace",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="boiler",
             },
         },
     },
@@ -228,7 +267,7 @@ data:extend({
         name = "silicon-1",
         icons = {
             {
-                icon = "__base__/graphics/technology/oil-processing.png",
+                icon = "__GuG2__/graphics/technology/pm/silicon-processing.png",
                 icon_size = 256,
             }
         },
@@ -248,6 +287,14 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
+                recipe="sand-upgrading",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="silica-sand-crushed-quartz",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="silicon-1",
             },
             {
@@ -257,6 +304,264 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="silicon-3",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="silicon-to-silica",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "phosphorous",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/pm/silicon-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"separation-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="white-phosphorous-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="phosphine-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "silver-1",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/pm/silicon-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"phosphorous", "acids-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="silver-slime-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="silver-plate-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="silver-plate-2",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "acids-1",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/pm/silicon-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"automation-3"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="acetic-acid-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="acetic-acid-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="acetic-acid-3",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="hydrochloric-acid-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="hydrochloric-acid-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="hydrochloric-acid-void",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "lubricant",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/lubricant.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"oil-refining"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="lubricant-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="lubricant-3",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "uranium-processing",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/lubricant.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"separation-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="yellowcake-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="urania-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="graphite-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="graphite-dust-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="graphite-block-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="graphite-electrode-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="silicon-carbide-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "lubricant-2",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/lubricant.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"uranium-processing"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="lubricant-4",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="lubricant-5",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="grease-1",
             },
         },
     },
@@ -267,11 +572,11 @@ data:extend({
         name = "silicon-2",
         icons = {
             {
-                icon = "__base__/graphics/technology/oil-processing.png",
+                icon = "__GuG2__/graphics/technology/pm/silicon-processing.png",
                 icon_size = 256,
             }
         },
-        prerequisites = {"separation-1"},
+        prerequisites = {"silver-1", "acids-1"},
         unit =
         {
             count = 10,
@@ -287,15 +592,132 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="silicon-1",
+                recipe="wave-gap-simulation",
             },
             {
                 type = "unlock-recipe",
-                recipe="silicon-2",
+                recipe="transistor-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "synthetic-fibers-1",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/pm/advanced-electronic-components.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"nitrogen-chemistry-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="ammonium-chloride-1",
             },
             {
                 type = "unlock-recipe",
-                recipe="silicon-3",
+                recipe="copper-sulfate",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="copper-hydroxide",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="rayon-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "phenolics",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/pm/advanced-electronic-components.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"coal-processing-4"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="phenolic-resin-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="mv-resistor-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="phenolic-board-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "electronic-components-1",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/pm/advanced-electronic-components.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"separation-1", "molybdenum-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="mv-capacitor-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="mv-resistor-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="phenolic-board-1",
             },
         },
     },
@@ -389,6 +811,53 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "manganese-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/steel-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"antimony-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="impure-manganese-concentrate-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="manganese-dioxide-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="manganese-dioxide-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="ferrite-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="battery-3",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "nickel-processing",
         icons = {
             {
@@ -453,6 +922,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="organic-solvent-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="cumene",
             },
             {
                 type = "unlock-recipe",
@@ -687,6 +1160,49 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "polymers-3",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/plastics.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"polymers-2", "silicon-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="bpa-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="epichlorohydrin-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="epoxy-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fiberglass-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "cracking-1",
         icons = {
             {
@@ -821,6 +1337,146 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="condensates-fractioning",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "advanced-electronics",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/advanced-circuit.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"electronic-components-1", "silicon-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="advanced-circuit-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "electromagnetism-3",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/electric-engine.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"polymers-3", "electronic-components-1", "silicon-2", "lubricant-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="medium-electric-motor-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="gearbox-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="mv-generator",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "electric-energy-distribution-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/electric-energy-distribution-1.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"electromagnetism-2", "molybdenum-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="medium-electric-pole",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="big-electric-pole",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "automation-science",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/automation-science-pack.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"electromagnetism-3", "advanced-electronics"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="computed-automation-science-pack-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="automation-science-pack",
             },
         },
     },

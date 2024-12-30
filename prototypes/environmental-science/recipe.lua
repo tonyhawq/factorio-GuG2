@@ -429,7 +429,7 @@ data:extend({
         ingredients = {
             {type="item", name="rail-signal", amount=1},
             {type="item", name="electronic-circuit", amount=5},
-            {type="item", name="steel-plate", amount=10},
+            {type="item", name="steel-beam", amount=10},
         },
         results = {
             {type="item", name="train-stop", amount=1},
@@ -526,7 +526,7 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="aluminum-plate", amount=10},
-            {type="item", name="copper-sheet", amount=10},
+            {type="item", name="copper-plate", amount=10},
             {type="item", name="pipe", amount=20},
             {type="item", name="steel-beam", amount=12},
             {type="item", name="screws", amount=8},
@@ -837,7 +837,7 @@ data:extend({
         enabled = false,
         category = "glassworking", ---@diagnostic disable-line
         name = "raw-quartz-glass",
-        icons = du.icons("glass"),
+        icons = du.icons("glass"):add_corner("raw-quartz"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -857,16 +857,122 @@ data:extend({
         enabled = false,
         category = "glassworking", ---@diagnostic disable-line
         name = "crushed-quartz-glass",
-        icons = du.icons("glass"),
+        icons = du.icons("glass"):add_corner("crushed-quartz"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 1.5,
         ingredients = {
-            {type="item", name="raw-quartz", amount=3},
+            {type="item", name="crushed-quartz", amount=3},
         },
         results = {
             {type="fluid", name="molten-glass", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crushing", ---@diagnostic disable-line
+        name = "crushed-quartz-1",
+        icons = du.icons("crushed-quartz"):add_corner("crushing"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 3,
+        ingredients = {
+            {type="item", name="raw-quartz", amount=1},
+        },
+        results = {
+            {type="item", name="crushed-quartz", amount=1},
+            {type="item", name="sand", probability=0.5,amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "pump",
+        icons = du.icons("base.pump"),
+        enabled = false,
+        category = "crafting",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="bronze-plate", amount=4},
+            {type="item", name="aluminum-plate", amount=4},
+            {type="item", name="small-electric-motor", amount=2},
+            {type="item", name="small-tank", amount=1},
+        },
+        results ={
+            {type="item", name="pump", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "evaporating", ---@diagnostic disable-line
+        name = "silica-sand-crushed-quartz",
+        icons = du.icons("silica-sand"):add_corner("crushed-quartz"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="crushed-quartz", amount=1},
+            {type="fluid", name="water", amount=3},
+        },
+        results = {
+            {type="item", name="silica-sand", amount=1},
+            {type="item", name="stone", probability=0.5,amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crushing", ---@diagnostic disable-line
+        name = "sand-upgrading",
+        icons = du.icons("silica-sand"):add_corner("sand"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="sand", amount=1},
+            {type="item", name="crushed-quartz", amount=1},
+        },
+        results = {
+            {type="item", name="silica-sand", probability=0.5, amount=1},
+            {type="item", name="sand", probability=0.5, amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "boiling", ---@diagnostic disable-line
+        name = "sand-void",
+        icons = du.icons("sand"):add_corner("base.fluid/water"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.1,
+        ingredients = {
+            {type="item", name="sand", amount=1},
+            {type="fluid", name="water", amount=6},
+        },
+        results = {
+            {type="fluid", name="seawater", amount=7},
         }
     }
 })
@@ -948,7 +1054,8 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="item", name="glass", amount=2},
-            {type="item", name="analog-circuit", amount=1},
+            {type="item", name="splitter", amount=1},
+            {type="item", name="steam-inserter", amount=1},
             {type="item", name="stone-brick", amount=3},
         },
         results = {
@@ -973,6 +1080,7 @@ data:extend({
             {type="item", name="engine-unit", amount=3},
             {type="item", name="arithmetic-combinator", amount=2},
             {type="item", name="small-electric-motor", amount=1},
+            {type="item", name="plastic-bar", amount=2},
         },
         results = {
             {type="item", name="electromagnetic-science-pack", amount=4},
@@ -1567,6 +1675,7 @@ data:extend({
         order = "a",
         main_product = "",
         ingredients = {
+            {type="item", name="refractory-brick", amount=2},
             {type="item", name="cement", amount=2},
             {type="item", name="lime", amount=5},
             {type="item", name="steel-beam", amount=4},
@@ -4248,5 +4357,21 @@ data:extend({
         }
     }
 })
-
-data.raw.module["efficiency-module"].effect = {consumption = -0.1}
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "crafting", ---@diagnostic disable-line
+        name = "transport-belt-2",
+        icons = du.icons{mod = "base", name = "transport-belt"},
+        enabled = true,
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="wrought-iron-plate", amount=2},
+            {type="item", name="iron-gear-wheel", amount=1},
+        },
+        results = {
+            {type="item", name="transport-belt", amount=5},
+        }
+    }
+})

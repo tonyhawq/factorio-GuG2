@@ -58,6 +58,24 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
+        name = "barrel",
+        icons = du.icons{mod = "base", name = "barrel"},
+        enabled = true,
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="small-tank", amount=1},
+            {type="item", name="steel-beam", amount=1},
+        },
+        results = {
+            {type="item", name="barrel", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "crafting", ---@diagnostic disable-line
         name = "clay-collecting",
         icons = du.icons("clay"),
         subgroup = "raw-material",

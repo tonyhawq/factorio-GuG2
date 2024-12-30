@@ -967,9 +967,9 @@ data:extend({gf_boiler_entity})
 local function scale_layer(layer, scale)
     layer.scale = (layer.scale or 1) * scale
     --[[if layer.shift then
-        layer.shift[1] = layer.shift[1] * scale
-        layer.shift[2] = layer.shift[2] * scale
-    end]]
+    layer.shift[1] = layer.shift[1] * scale
+    layer.shift[2] = layer.shift[2] * scale
+end]]
 end
 
 local fuel_refinery = table.deepcopy(data.raw["assembling-machine"]["oil-refinery"])
@@ -992,42 +992,42 @@ scale_layer(fuel_refinery.graphics_set.animation.east.layers[2], 1.8)
 scale_layer(fuel_refinery.graphics_set.animation.west.layers[1], 1.8)
 scale_layer(fuel_refinery.graphics_set.animation.west.layers[2], 1.8)
 fuel_refinery.fluid_boxes = {
-  {
-    production_type = "input",
-    pipe_covers = pipecoverspictures(),
-    volume = 100,
-    pipe_connections = {{ flow_direction="input", position = {0, 4}, direction=defines.direction.south }}
-  },
-  {
-    production_type = "input",
-    pipe_covers = pipecoverspictures(),
-    volume = 100,
-    pipe_connections = {{ flow_direction="input", position = {2, 4}, direction=defines.direction.south }}
-  },
-  {
-    production_type = "input",
-    pipe_covers = pipecoverspictures(),
-    volume = 100,
-    pipe_connections = {{ flow_direction="input", position = {4, 4}, direction=defines.direction.south }}
-  },
-  {
-    production_type = "output",
-    pipe_covers = pipecoverspictures(),
-    volume = 100,
-    pipe_connections = {{ flow_direction="output", position = {0, -4}, direction=defines.direction.north }}
-  },
-  {
-    production_type = "output",
-    pipe_covers = pipecoverspictures(),
-    volume = 100,
-    pipe_connections = {{ flow_direction="output", position = {2, -4}, direction=defines.direction.north }}
-  },
-  {
-    production_type = "output",
-    pipe_covers = pipecoverspictures(),
-    volume = 100,
-    pipe_connections = {{ flow_direction="output", position = {4, -4}, direction=defines.direction.north }}
-  },
+    {
+        production_type = "input",
+        pipe_covers = pipecoverspictures(),
+        volume = 100,
+        pipe_connections = {{ flow_direction="input", position = {0, 4}, direction=defines.direction.south }}
+    },
+    {
+        production_type = "input",
+        pipe_covers = pipecoverspictures(),
+        volume = 100,
+        pipe_connections = {{ flow_direction="input", position = {2, 4}, direction=defines.direction.south }}
+    },
+    {
+        production_type = "input",
+        pipe_covers = pipecoverspictures(),
+        volume = 100,
+        pipe_connections = {{ flow_direction="input", position = {4, 4}, direction=defines.direction.south }}
+    },
+    {
+        production_type = "output",
+        pipe_covers = pipecoverspictures(),
+        volume = 100,
+        pipe_connections = {{ flow_direction="output", position = {0, -4}, direction=defines.direction.north }}
+    },
+    {
+        production_type = "output",
+        pipe_covers = pipecoverspictures(),
+        volume = 100,
+        pipe_connections = {{ flow_direction="output", position = {2, -4}, direction=defines.direction.north }}
+    },
+    {
+        production_type = "output",
+        pipe_covers = pipecoverspictures(),
+        volume = 100,
+        pipe_connections = {{ flow_direction="output", position = {4, -4}, direction=defines.direction.north }}
+    },
 }
 fuel_refinery.off_when_no_fluid_recipe = false
 
@@ -2703,7 +2703,7 @@ steam_engine.produces_temperature = 1200
 steam_engine.produces_amount = (du.J(steam_engine.energy_usage) * 60) / (du.J(du.fluid("rotational-force").heat_capacity) * steam_engine.produces_temperature)
 data:extend({steam_engine})
 
-local steam_turbine = table.deepcopy(data.raw.generator["steam-turbine"])
+local steam_turbine = table.deepcopy(data.raw.generator["steam-turbine"]) --[[@as data.AssemblingMachinePrototype]]
 data.raw.generator["steam-turbine"] = nil
 steam_turbine.type = "assembling-machine"
 steam_turbine.crafting_categories = {"generating"}
@@ -2765,7 +2765,7 @@ steam_turbine.energy_source = {
         light_intensity_to_size_coefficient = 1
     }
 }
-steam_turbine.produces_temperature = 2000
+steam_turbine.produces_temperature = 2500
 steam_turbine.produces_amount = (du.J(steam_turbine.energy_usage) * 60) / (du.J(du.fluid("rotational-force").heat_capacity) * steam_turbine.produces_temperature)
 data:extend({steam_turbine})
 
@@ -2902,6 +2902,13 @@ data:extend({
         perceived_performance = { minimum = 0.25, performance_to_activity_rate = 2.0 },
     }
 })
+local mv_generator = table.deepcopy(data.raw.generator["lv-generator"])
+mv_generator.name = "mv-generator"
+mv_generator.minable.result = "mv-generator"
+mv_generator.fluid_usage_per_tick = 6
+mv_generator.maximum_temperature = 2500
+mv_generator.effectivity = 0.9
+data:extend({mv_generator})
 
 local function watts_from_rotational_force(per_second, temperature)
     return du.J(du.fluid("rotational-force").heat_capacity) * temperature * per_second
@@ -2919,6 +2926,17 @@ lv_generator.localised_description = {"",
     "label.consumes-rotational-force-amount",
     tostring(lv_generator.maximum_temperature),
     tostring(kW_from_rotational_force(lv_generator.fluid_usage_per_tick * 60, lv_generator.maximum_temperature)),
+    "kW"
+},
+"\n",
+{"label.no-cleanroom"}}
+mv_generator.localised_description = {"",
+{"entity-description.lv-generator"},
+"\n",
+{
+    "label.consumes-rotational-force-amount",
+    tostring(mv_generator.maximum_temperature),
+    tostring(kW_from_rotational_force(mv_generator.fluid_usage_per_tick * 60, mv_generator.maximum_temperature)),
     "kW"
 },
 "\n",
@@ -2987,6 +3005,135 @@ assembling_machine_1.energy_source.fluid_usage_per_tick = du.as_real_watts(assem
 
 data.raw["offshore-pump"]["offshore-pump"].fluid = "seawater"
 data.raw["offshore-pump"]["offshore-pump"].fluid_box.filter = "seawater"
+
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "radiator",
+        icons = du.icons("se/radiator"),
+        flags = {"placeable-neutral","player-creation"},
+        minable = {mining_time = 0.2, result = "radiator"},
+        max_health = 350,
+        corpse = "oil-refinery-remnants",
+        dying_explosion = "oil-refinery-explosion",
+        collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+        selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-1.5, -0.5}, {1.5, 0.5}},
+        scale_entity_info_icon = true,
+        crafting_categories = {"radiating"},
+        crafting_speed = 1,
+        module_slots = 4,
+        allowed_effects = {"speed", "consumption"},
+        energy_source =
+        {
+            type = "heat",
+            max_temperature = 500,
+            specific_heat = "0.5MJ",
+            max_transfer = "1GW",
+            default_temperature=15,
+            min_working_temperature=165,
+            connections={
+                {
+                    position={-1,1},
+                    direction=defines.direction.west
+                },
+                {
+                    position={-1,1},
+                    direction=defines.direction.south
+                },
+                {
+                    position={1,1},
+                    direction=defines.direction.east
+                },
+                {
+                    position={1,1},
+                    direction=defines.direction.south
+                },
+                {
+                    position={-1,-1},
+                    direction=defines.direction.west
+                },
+                {
+                    position={-1,-1},
+                    direction=defines.direction.north
+                },
+                {
+                    position={1,-1},
+                    direction=defines.direction.east
+                },
+                {
+                    position={1,-1},
+                    direction=defines.direction.north
+                },
+            }
+        },
+        energy_usage = "4MW",
+        graphics_set = {
+            animation =
+            {
+                layers =
+                {
+                    {
+                        filename = "__GuG2__/graphics/entity/radiator/radiator.png",
+                        priority = "high",
+                        width = 196,
+                        height = 275,
+                        frame_count = 20,
+                        line_length = 10,
+                        scale = 0.5,
+                        shift = util.by_pixel(0, -16),
+                    },
+                    {
+                        filename = "__GuG2__/graphics/entity/radiator/radiator-shadow.png",
+                        priority = "high",
+                        width = 242,
+                        height = 147,
+                        frame_count = 1,
+                        line_length = 1,
+                        repeat_count = 20,
+                        scale = 0.5,
+                        draw_as_shadow = true,
+                        shift = util.by_pixel(48, 0),
+                    },
+                }
+            },
+        },
+        vehicle_impact_sound = sounds.generic_impact,
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        fluid_boxes = {
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{ flow_direction="input", position = {1, 0}, direction=defines.direction.east }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{ flow_direction="input", position = {-1, 0}, direction=defines.direction.west }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{ flow_direction="output", position = {0, 1}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{ flow_direction="output", position = {0, -1}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+    }
+})
 
 data:extend({
     {
@@ -5282,8 +5429,25 @@ lamp.light.size = lamp.light.size * 1.5
 lamp.light.color = {r=1,g=0.6,b=1}
 lamp.energy_usage = "100kW"
 data:extend({lamp})
+data.raw.boiler.boiler.energy_usage = "3.6MW"
+
+-- TODO: new buildings
+-- chemical blender 1 in 1 out
+-- flotation cell
+-- fluidized bed reactor
+-- oil refining buildings
+-- foundries / casting machines / etc
 
 data:extend({
+    {
+        type = "item",
+        name = "radiator",
+        icons = du.icons("se/radiator"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+        place_result = "radiator"
+    },
     {
         type = "item",
         name = "machine-chassis",
@@ -5346,6 +5510,15 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         place_result = "lv-generator"
+    },
+    {
+        type = "item",
+        name = "mv-generator",
+        icons = du.icons("mv-generator"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "mv-generator"
     },
     {
         type = "item",
@@ -5737,6 +5910,10 @@ data:extend({
     {
         type = "recipe-category",
         name = "heat-exchanging"
+    },
+    {
+        type = "recipe-category",
+        name = "radiating"
     },
     {
         type = "recipe-category",

@@ -48,6 +48,7 @@ data:extend({
         }
     },
     -- TODO: eliminate all these recipes
+    creative_recipe("dead-process"),
     creative_recipe("lead-ore"),
     creative_recipe("tin-ore"),
     creative_recipe("raw-quartz"),
@@ -55,7 +56,9 @@ data:extend({
     creative_recipe("aluminum-ore"),
     creative_recipe("zinc-ore"),
     creative_recipe("seaweed"),
+    creative_recipe("phosphate-rock"),
     creative_recipe("antimony-ore"),
+    creative_recipe("molybdenum-ore"),
     creative_recipe("seawater", "fluid"),
     creative_recipe("raw-coal"),
     creative_recipe("crude-oil", "fluid"),

@@ -10,8 +10,6 @@ data:extend({
         icons = du.icons("heavy-distillates"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "medium-distillates",
@@ -22,8 +20,6 @@ data:extend({
         icons = du.icons("medium-distillates"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "light-distillates",
@@ -34,8 +30,6 @@ data:extend({
         icons = du.icons("light-distillates"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "condensates",
@@ -45,8 +39,6 @@ data:extend({
         icons = du.icons("condensates"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "light-naphtha",
@@ -57,8 +49,6 @@ data:extend({
         icons = du.icons("light-naphtha"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "heavy-naphtha",
@@ -69,8 +59,6 @@ data:extend({
         icons = du.icons("heavy-naphtha"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "gas-oil",
@@ -81,8 +69,6 @@ data:extend({
         icons = du.icons("gas-oil"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "heavy-gas-oil",
@@ -93,8 +79,6 @@ data:extend({
         icons = du.icons("heavy-gas-oil"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "light-gas-oil",
@@ -105,8 +89,6 @@ data:extend({
         icons = du.icons("light-gas-oil"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "flue-gas",
@@ -117,8 +99,6 @@ data:extend({
         icons = du.icons("flue-gas"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "diesel",
@@ -129,8 +109,6 @@ data:extend({
         icons = du.icons("diesel"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "kerosene",
@@ -141,8 +119,6 @@ data:extend({
         icons = du.icons("kerosene"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "syngas",
@@ -153,8 +129,6 @@ data:extend({
         icons = du.icons("syngas"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "raw-kerosene",
@@ -165,8 +139,6 @@ data:extend({
         icons = du.icons("raw-kerosene"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "hydrogen",
@@ -177,8 +149,6 @@ data:extend({
         icons = du.icons("hydrogen"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "hydrogen-sulfide",
@@ -188,8 +158,6 @@ data:extend({
         icons = du.icons("hydrogen-sulfide"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "hydrogen-chloride",
@@ -199,8 +167,6 @@ data:extend({
         icons = du.icons("hydrogen-chloride"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "residuals",
@@ -210,8 +176,6 @@ data:extend({
         icons = du.icons("residuals"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "gasoline",
@@ -222,8 +186,6 @@ data:extend({
         icons = du.icons("gasoline"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "butane",
@@ -234,8 +196,6 @@ data:extend({
         icons = du.icons("butane"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "btx",
@@ -246,8 +206,6 @@ data:extend({
         icons = du.icons("btx"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "fuel-oil",
@@ -258,8 +216,6 @@ data:extend({
         icons = du.icons("fuel-oil"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "benzene",
@@ -270,8 +226,6 @@ data:extend({
         icons = du.icons("benzene"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "toluene",
@@ -281,8 +235,6 @@ data:extend({
         icons = du.icons("toluene"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "xylenes",
@@ -292,8 +244,6 @@ data:extend({
         icons = du.icons("toluene"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "styrene",
@@ -304,8 +254,6 @@ data:extend({
         icons = du.icons("styrene"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "ethylene",
@@ -316,8 +264,6 @@ data:extend({
         icons = du.icons("ethylene"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "propylene",
@@ -328,8 +274,6 @@ data:extend({
         icons = du.icons("propylene"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "butadiene",
@@ -340,8 +284,6 @@ data:extend({
         icons = du.icons("butadiene"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "raw-lubricating-oil",
@@ -351,8 +293,6 @@ data:extend({
         icons = du.icons("raw-lubricating-oil"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "methane",
@@ -363,8 +303,6 @@ data:extend({
         icons = du.icons("methane"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "hvgo",
@@ -374,8 +312,6 @@ data:extend({
         icons = du.icons("hvgo"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "lvgo",
@@ -386,8 +322,6 @@ data:extend({
         icons = du.icons("lvgo"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "natural-gas",
@@ -408,8 +342,6 @@ data:extend({
         icons = du.icons("refined-gas"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "seawater",
@@ -454,8 +386,6 @@ data:extend({
         heat_capacity = "2kJ",
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "ammonia",
@@ -1040,8 +970,6 @@ data:extend({
         order = "a[fluid]-j[sludge]",
         auto_barrel = false,
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "hot-geothermal-water",
@@ -1051,8 +979,6 @@ data:extend({
         icons = du.icons("hot-geothermal-water"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "geothermal-water",
@@ -1062,8 +988,6 @@ data:extend({
         icons = du.icons("geothermal-water"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "cumene",
@@ -1073,8 +997,6 @@ data:extend({
         icons = du.icons("cumene"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "aniline",
@@ -1085,8 +1007,6 @@ data:extend({
         fuel_value = "1MJ",
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "cyclohexanone",
@@ -1097,8 +1017,6 @@ data:extend({
         fuel_value = "1MJ",
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "aniline",
@@ -1109,8 +1027,6 @@ data:extend({
         fuel_value = "1MJ",
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "ammonium-chloride",
@@ -1120,8 +1036,6 @@ data:extend({
         icons = du.icons("ammonium-chloride"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "pet-solution",
@@ -1131,8 +1045,6 @@ data:extend({
         icons = du.icons("pet-solution"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "ethylene-glycol",
@@ -1142,8 +1054,6 @@ data:extend({
         icons = du.icons("ethylene-glycol"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "acetic-acid",
@@ -1153,8 +1063,6 @@ data:extend({
         icons = du.icons("acetic-acid"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "organic-solvent",
@@ -1173,8 +1081,6 @@ data:extend({
         icons = du.icons("alcohol-solvent"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "isopropyl-alcohol",
@@ -1184,8 +1090,6 @@ data:extend({
         icons = du.icons("isopropyl-alcohol"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "epichlorohydrin",
@@ -1195,8 +1099,6 @@ data:extend({
         icons = du.icons("epichlorohydrin"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "bpa",
@@ -1206,8 +1108,6 @@ data:extend({
         icons = du.icons("bpa"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "epoxy",
@@ -1217,8 +1117,6 @@ data:extend({
         icons = du.icons("epoxy"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "nitrogen",
@@ -1228,8 +1126,6 @@ data:extend({
         icons = du.icons("nitrogen"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "nitric-oxide",
@@ -1239,8 +1135,6 @@ data:extend({
         icons = du.icons("nitric-oxide"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "nitrogen-dioxide",
@@ -1250,8 +1144,6 @@ data:extend({
         icons = du.icons("nitrogen-dioxide"),
         order = "a[fluid]-j[sludge]"
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "dilute-nitric-acid",
@@ -1262,8 +1154,6 @@ data:extend({
         order = "a[fluid]-j[sludge]",
         heat_capacity = "2kJ",
     },
-})
-data:extend({
     {
         type = "fluid",
         name = "nitric-acid",
@@ -1271,6 +1161,24 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         icons = du.icons("nitric-acid"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "hydrogen-peroxide",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("hydrogen-peroxide"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "grease",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("grease"),
         order = "a[fluid]-j[sludge]"
     },
 })
