@@ -1666,6 +1666,29 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        name = "cement-2",
+        icons = du.icons("cement"):add_corner("base.sulfur"),
+        enabled = false,
+        category = "smelting",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="silica", amount=10},
+            {type="item", name="limestone", amount=24},
+            {type="item", name="clay", amount=10},
+            {type="item", name="sulfur", amount=2},
+        },
+        results ={
+            {type="item", name="cement", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         name = "concrete-1",
         icons = du.icons{mod="base",name="concrete"},
         enabled = false,
@@ -1683,7 +1706,7 @@ data:extend({
             {type="fluid", name="water", amount=32},
         },
         results ={
-            {type="item", name="concrete", amount=8},
+            {type="item", name="concrete", amount=16},
         }
     }
 })
@@ -2686,6 +2709,26 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "boiling", ---@diagnostic disable-line
+        name = "water-boiling",
+        icons = du.icons{mod="base", name="fluid/steam"}:add_corner("base.fluid/water"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = du.J(tube_boiler.energy_usage) * 60 / tube_boiler.energy_source.effectivity / (du.J(du.fluid("water").heat_capacity) * 10 * (100 - 15)),
+        ingredients = {
+            {type="fluid", name="water", amount=10},
+        },
+        results = {
+            {type="fluid", name="steam", amount=100, temperature=165},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "boiling", ---@diagnostic disable-line
         name = "seawater-boiling",
         icons = du.icons{mod="base", name="fluid/steam"}:add_corner("seawater"),
         subgroup = "raw-material",
@@ -3339,19 +3382,19 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        name = "incinerator",
-        icons = du.icons("incinerator"),
+        name = "flare-stack",
+        icons = du.icons("flare-stack"),
         enabled = false,
         category = "crafting",
         energy_required = 0.5,
         ingredients = {
-            {type="item", name="stone-furnace", amount=6},
-            {type="item", name="wrought-iron-sheet", amount=12},
-            {type="item", name="rivets", amount=12},
-            {type="item", name="brick", amount=10},
+            {type="item", name="stone-furnace", amount=1},
+            {type="item", name="steel-beam", amount=10},
+            {type="item", name="rivets", amount=30},
+            {type="item", name="refractory-brick", amount=20},
         },
         results ={
-            {type="item", name="incinerator", amount=1},
+            {type="item", name="flare-stack", amount=1},
         }
     }
 })
@@ -3803,6 +3846,30 @@ data:extend({
         },
         results = {
             {type="item", name="stone-brick", amount=5},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "stone-brick-2",
+        icons = du.icons("base.stone-brick"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        allow_decomposition = false,
+        ingredients = {
+            {type="item", name="stone", amount=5},
+            {type="item", name="gravel", amount=10},
+            {type="item", name="asphalt", amount=2},
+            {type="fluid", name="tar-pitch", amount=12},
+        },
+        results = {
+            {type="item", name="stone-brick", amount=10},
         }
     }
 })
@@ -4332,7 +4399,7 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="electronic-circuit", amount=2},
-            {type="item", name="constant-combinator", amount=1},
+            {type="item", name="decider-combinator", amount=1},
         },
         results = {
             {type="item", name="arithmetic-combinator", amount=1},
@@ -4350,10 +4417,10 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="electronic-circuit", amount=2},
-            {type="item", name="decider-combinator", amount=3},
+            {type="item", name="constant-combinator", amount=1},
         },
         results = {
-            {type="item", name="decider-combinator", amount=4},
+            {type="item", name="decider-combinator", amount=1},
         }
     }
 })

@@ -59,7 +59,7 @@ data:extend({
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
         name = "barrel",
-        icons = du.icons{mod = "base", name = "barrel"},
+        icons = du.icons("base.fluid/barreling/empty-barrel"),
         enabled = true,
         energy_required = 0.5,
         ingredients = {

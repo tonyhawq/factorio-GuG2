@@ -1,4 +1,5 @@
 local du = require("dutil")
+
 local collision_mask_util = require("__core__.lualib.collision-mask-util")
 
 ---@param prototype_name string
@@ -172,4 +173,29 @@ for _, recipe in pairs(data.raw.recipe) do
         end
     end
     ::continue::
+end
+
+local waters_to_seawater = {
+    "water",
+    "deepwater",
+    "marine-water",
+    "water-green",
+    "deepwater-green",
+    "water-shallow",
+    "water-mud"
+}
+
+for _, tile_name in pairs(waters_to_seawater) do
+    data.raw.tile[tile_name].fluid = "seawater"
+end
+
+for _, fluid in pairs(data.raw.fluid) do
+    if fluid.flarable then
+        local description = {"", {"?", {"", {"fluid-description."..fluid.name}, "\n"}, ""}}
+        if fluid.localised_description then
+            description = {"", fluid.localised_description, "\n"}
+        end
+        table.insert(description, {"label.can-flare"})
+        fluid.localised_description = description
+    end
 end

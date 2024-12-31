@@ -96,6 +96,16 @@ local function get_mod_from_namestring(name)
     return modname, has_mod
 end
 
+function dutil.get_desc_from_item(item)
+    if not item.localised_description and not item.place_result then
+        return {"?", {"item-description."..item.name}}
+    end
+    if item.localised_description then
+        return table.deepcopy(item.localised_description)
+    end
+    return {"?", {"entity-description."..item.place_result}}
+end
+
 local function get_icon_path_from_config(config)
     local name = config.name
     local override_mod, remove = get_mod_from_namestring(config.name)

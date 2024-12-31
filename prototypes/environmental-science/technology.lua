@@ -471,6 +471,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="water-boiling",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="wastewater-boiling-1",
             },
             {
@@ -905,6 +909,36 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="brazing-kit-aniline",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "waste-managment",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/flare-stack.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"fluid-handling-2", "automation-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="flare-stack",
             },
         },
     },

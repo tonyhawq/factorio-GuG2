@@ -12,7 +12,9 @@
       "pypetroleumhandlinggraphics",
       "configurable-valves",
       "Krastorio2Assets >= 2.0.0",
-      "formulizer"
+      "formulizer",
+      "zithorian-extra-storage-tanks-port",
+      "est-steel-storage-tank"
     ],
     "spoiling_required": true
   }

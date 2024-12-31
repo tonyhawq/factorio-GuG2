@@ -852,8 +852,8 @@ data:extend({
             {type="fluid", name="seawater", amount=100},
         },
         results = {
-            {type="fluid", name="water", amount=80},
-            {type="fluid", name="saline-water", amount=20},
+            {type="fluid", name="water", amount=80, fluidbox_index = 1},
+            {type="fluid", name="saline-water", amount=20, fluidbox_index = 2},
         }
     }
 })
@@ -873,8 +873,8 @@ data:extend({
             {type="fluid", name="saline-water", amount=100},
         },
         results = {
-            {type="fluid", name="water", amount=80},
-            {type="fluid", name="brine", amount=20},
+            {type="fluid", name="water", amount=80, fluidbox_index = 1},
+            {type="fluid", name="brine", amount=20, fluidbox_index = 2},
         }
     }
 })
@@ -894,7 +894,7 @@ data:extend({
             {type="fluid", name="brine", amount=100},
         },
         results = {
-            {type="fluid", name="water", amount=80},
+            {type="fluid", name="water", amount=80, fluidbox_index = 1},
             {type="item", name="brine-salt", amount=2},
         }
     }
@@ -1748,6 +1748,7 @@ data:extend({
         energy_required = 1,
         ingredients = {
             {type="item", name="process", amount=1},
+            {type="item", name="optimization-science-pack", amount=1},
             {type="item", name="wave-gap-simulation", amount=1},
             {type="item", name="molybdenum-special-alloy", amount=2},
             {type="item", name="battery-alloy-plate", amount=2},
@@ -1781,6 +1782,32 @@ data:extend({
         },
         results = {
             {type="item", name="automation-science-pack", amount=4},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "optimization-science-pack",
+        icons = du.icons("optimization-science-pack"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="fluid", name="cpu-time", amount=500},
+            {type="item", name="decider-combinator", amount=1},
+            {type="item", name="arithmetic-combinator", amount=1},
+            {type="item", name="program", amount=4},
+            {type="item", name="battery", amount=1},
+            {type="item", name="process", amount=1},
+        },
+        results = {
+            {type="item", name="optimization-science-pack", amount=1},
+            {type="item", name="process", amount=1},
         }
     }
 })
@@ -2459,7 +2486,7 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "fabricating", ---@diagnostic disable-line
-        name = "advanced-circuit-1",
+        name = "advanced-circuit",
         icons = du.icons("base.advanced-circuit"),
         subgroup = "raw-material",
         order = "a[a]",
@@ -2807,6 +2834,530 @@ data:extend({
         results ={
             {type="item", name="manganese-dioxide", amount=9},
             {type="fluid", name="sulfur-dioxide", amount=40},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "selector-combinator",
+        icons = du.icons{mod="base",name="selector-combinator"},
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="advanced-circuit", amount=2},
+            {type="item", name="decider-combinator", amount=1},
+        },
+        results = {
+            {type="item", name="selector-combinator", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "pipe-2",
+        icons = du.icons("pipe-2"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="phenolic-resin", amount=1},
+            {type="item", name="steel-beam", amount=1},
+            {type="item", name="glowing-mangaloy-ingot", amount=1},
+            {type="item", name="nickel-plate", amount=6},
+        },
+        results = {
+            {type="item", name="pipe-2", amount=8},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "pipe-to-ground-2",
+        icons = du.icons("pipe-to-ground-2"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="pipe-2", amount=6},
+            {type="item", name="concrete", amount=6},
+        },
+        results = {
+            {type="item", name="pipe-to-ground-2", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "fluid-tank-1x1",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="pipe-2", amount=1},
+            {type="item", name="phenolic-resin", amount=6},
+            {type="item", name="concrete", amount=6},
+        },
+        results = {
+            {type="item", name="fluid-tank-1x1", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "fluid-tank-2x2",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="pipe-2", amount=6},
+            {type="item", name="phenolic-resin", amount=12},
+            {type="item", name="steel-beam", amount=12},
+            {type="item", name="concrete", amount=6},
+        },
+        results = {
+            {type="item", name="fluid-tank-2x2", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "fluid-tank-3x4",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="fluid-tank-2x2", amount=3},
+            {type="item", name="concrete", amount=12},
+            {type="item", name="steel-beam", amount=12},
+        },
+        results = {
+            {type="item", name="fluid-tank-3x4", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "speed-module",
+        icons = du.icons("base.speed-module"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="program", amount=1},
+            {type="item", name="decider-combinator", amount=1},
+            {type="item", name="battery-alloy-plate", amount=1},
+            {type="item", name="engine-unit", amount=1},
+            {type="fluid", name="cpu-time", amount=200},
+        },
+        results = {
+            {type="item", name="speed-module", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "speed-module-2",
+        icons = du.icons("base.speed-module-2"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="speed-module", amount=2},
+            {type="item", name="mv-capacitor", amount=3},
+            {type="item", name="ferrite", amount=2},
+            {type="fluid", name="grease", amount=6},
+        },
+        results = {
+            {type="item", name="speed-module-2", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "efficiency-module",
+        icons = du.icons("base.efficiency-module"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="program", amount=1},
+            {type="item", name="decider-combinator", amount=1},
+            {type="item", name="battery", amount=1},
+            {type="item", name="small-electric-motor", amount=3},
+            {type="fluid", name="cpu-time", amount=200},
+        },
+        results = {
+            {type="item", name="efficiency-module", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "efficiency-module-2",
+        icons = du.icons("base.efficiency-module-2"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="efficiency-module", amount=2},
+            {type="item", name="graphite-block", amount=1},
+            {type="item", name="small-parts", amount=6},
+        },
+        results = {
+            {type="item", name="efficiency-module-2", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "power-switch",
+        icons = du.icons("base.power-switch"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="concrete", amount=2},
+            {type="item", name="molybdenum-special-alloy", amount=6},
+            {type="item", name="transistor", amount=6},
+            {type="item", name="rayon", amount=12},
+            {type="item", name="ferrite", amount=2},
+            -- contactor
+        },
+        results = {
+            {type="item", name="power-switch", amount=1},
+        }
+    }
+})
+
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "yellowcake-1",
+        icons = du.icons("yellowcake"):add_corner("base.fluid/sulfuric-acid"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 6,
+        ingredients = {
+            {type="fluid", name="sulfuric-acid", amount=100},
+            {type="item", name="uranium-ore", amount=4},
+        },
+        results = {
+            {type="fluid", name="sulfuric-acid", amount=90},
+            {type="item", name="yellowcake", amount=4},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "yellowcake-2",
+        icons = du.icons("yellowcake"):add_corner("hydrogen-peroxide"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 6,
+        ingredients = {
+            {type="fluid", name="hydrogen-peroxide", amount=100},
+            {type="item", name="uranium-ore", amount=4},
+        },
+        results = {
+            {type="fluid", name="steam", amount=900, temperature=500},
+            {type="item", name="yellowcake", amount=4},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smelting", ---@diagnostic disable-line
+        name = "urania-1",
+        icons = du.icons("urania"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 6,
+        ingredients = {
+            {type="fluid", name="hydrogen", amount=100},
+            {type="item", name="yellowcake", amount=2},
+        },
+        results = {
+            {type="fluid", name="sulfuric-wastewater", amount=10},
+            {type="item", name="urania", amount=3},
+            {type="item", name="silicon-carbide", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "centrifuging", ---@diagnostic disable-line
+        name = "urania-enrichment-1",
+        icons = du.icons("urania-235"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 30,
+        ingredients = {
+            {type="fluid", name="water", amount=100},
+            {type="item", name="urania", amount=1},
+        },
+        results = {
+            {type="fluid", name="wastewater", amount=100},
+            {type="item", name="urania-235", probability=0.01, amount=1},
+            {type="item", name="urania-238", probability=0.33, amount=1},
+            {type="item", name="urania", probability=0.66, amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "urania-enrichment-2",
+        icons = du.icons("urania-235"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 30,
+        ingredients = {
+            {type="fluid", name="water", amount=100},
+            {type="item", name="urania", amount=1},
+            {type="item", name="clay", amount=1},
+            {type="item", name="white-phosphorous", amount=1},
+            -- ion exchange resins
+        },
+        results = {
+            {type="fluid", name="wastewater", amount=100},
+            {type="item", name="urania-235", probability=0.03, amount=1},
+            {type="item", name="urania-238", probability=0.97, amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "hydrogen-peroxide-1",
+        icons = du.icons("hydrogen-peroxide"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="fluid", name="anthracene", amount=100},
+            {type="fluid", name="hydrogen", amount=100},
+            {type="fluid", name="oxygen", amount=100},
+        },
+        results = {
+            {type="fluid", name="hydrogen-peroxide", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "electrolysis", ---@diagnostic disable-line
+        name = "hydrogen-peroxide-2",
+        icons = du.icons("hydrogen-peroxide"):add_corner("base.fluid/sulfuric-acid"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 15,
+        ingredients = {
+            {type="fluid", name="ammonia", amount=100},
+            {type="fluid", name="sulfuric-acid", amount=100},
+        },
+        results = {
+            {type="fluid", name="hydrogen-peroxide", amount=100},
+            {type="fluid", name="sulfuric-acid", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "electrolysis", ---@diagnostic disable-line
+        name = "silicon-carbide-1",
+        icons = du.icons("silicon-carbide"):add_corner("graphite-electrode"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 60,
+        ingredients = {
+            {type="item", name="silica", amount=16},
+            {type="item", name="graphite-electrode", amount=1},
+        },
+        results = {
+            {type="item", name="graphite-dust", amount=6},
+            {type="item", name="silicon-carbide", amount=16},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smelting", ---@diagnostic disable-line
+        name = "graphite-1",
+        icons = du.icons("graphite"):add_corner("silicon-carbide"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="silicon-carbide", amount=1},
+        },
+        results = {
+            {type="item", name="graphite", amount=1},
+            {type="item", name="silicon", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crushing", ---@diagnostic disable-line
+        name = "graphite-dust-1",
+        icons = du.icons("graphite-dust"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="graphite", amount=1},
+        },
+        results = {
+            {type="item", name="graphite-dust", amount=12},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smithing", ---@diagnostic disable-line
+        name = "graphite-block-1",
+        icons = du.icons("graphite-block"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="graphite-dust", amount=36},
+            {type="fluid", name="epoxy", amount=12},
+        },
+        results = {
+            {type="item", name="graphite-block", amount=1},
+            {type="fluid", name="cyclohexanone", amount=12}, -- what
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smithing", ---@diagnostic disable-line
+        name = "graphite-electrode-1",
+        icons = du.icons("graphite-electrode"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="graphite-dust", amount=36},
+            {type="item", name="graphite-block", amount=1},
+            {type="fluid", name="tar-pitch", amount=60},
+        },
+        results = {
+            {type="item", name="graphite-electrode", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "mv-generator",
+        icons = du.icons("mv-generator"),
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="lv-generator", amount=1},
+            {type="item", name="silver-plate", amount=12},
+            {type="item", name="mv-capacitor", amount=24},
+            {type="item", name="graphite-block", amount=6},
+            {type="item", name="gearbox-1", amount=6},
+        },
+        results = {
+            {type="item", name="mv-generator", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "combustion-generator",
+        icons = du.alias("combustion-generator"),
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="engine-unit", amount=24},
+            {type="item", name="pump", amount=2},
+            {type="item", name="flare-stack", amount=1},
+        },
+        results = {
+            {type="item", name="combustion-generator", amount=1},
         }
     }
 })

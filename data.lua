@@ -29,14 +29,17 @@ require("prototypes.pre-science.recipe")
 require("prototypes.environmental-science.recipe")
 require("prototypes.environmental-science.technology")
 require("prototypes.environmental-science.forestry")
-require("prototypes.environmental-science.incinerating-recipe")
+--require("prototypes.environmental-science.incinerating-recipe")
 
 require("prototypes.electromagnetic-science.recipe")
 require("prototypes.electromagnetic-science.petrochem")
 require("prototypes.electromagnetic-science.wafers")
 require("prototypes.electromagnetic-science.technology")
 
-require("prototypes.nuclear-science.recipe")
+require("prototypes.automation-science.recipe")
+require("prototypes.automation-science.technology")
+
+require("prototypes.environmental-science.flaring")
 
 require("prototypes.fixes")
 require("prototypes.yafc-fixes")

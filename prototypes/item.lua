@@ -166,6 +166,18 @@ data:extend({
   },
   {
     type = "tool",
+    name = "optimization-science-pack",
+    localised_description = {"item-description.science-pack"},
+    icons = du.icons("optimization-science-pack"),
+    subgroup = "science-pack",
+    order = "a[c]",
+    stack_size = 200,
+    durability = 1, 
+    durability_description_key = "description.science-pack-remaining-amount-key",
+    durability_description_value = "description.science-pack-remaining-amount-value"
+  },
+  {
+    type = "tool",
     name = "automation-science-pack",
     localised_description = {"item-description.science-pack"},
     icons = du.icons("automation-science-pack"),

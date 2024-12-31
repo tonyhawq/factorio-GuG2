@@ -48,8 +48,88 @@ nodule_harvester.output_fluid_box = nil
 nodule_harvester.collision_mask = {layers = {object = true}}
 make_composite(nodule_harvester)
 data:extend({nodule_harvester, {type="resource-category", name="nodules"}})
-
-
+data:extend(
+{
+    -- Flare Stack *************************************************************************
+    {
+        type = "furnace",
+        name = "flare-stack",
+        icons = du.icons("flare-stack"),
+        flags = {"placeable-neutral","player-creation"},
+        minable = {mining_time = 1, result = "flare-stack"},
+        fast_replaceable_group = "fluid-incinerator",
+        max_health = 250,
+        corpse = "big-remnants",
+        dying_explosion = "medium-explosion",
+        collision_box = {{-0.6, -0.6}, {0.6, 0.6}},
+        selection_box = {{-1, -1}, {1, 1}},
+        --    drawing_box = {{-0.5, -4.0}, {0.5, 0.5}},
+        crafting_categories = {"flaring"},
+        crafting_speed = 1,
+        energy_source =
+        {
+            type = "electric",
+            usage_priority = "secondary-input",
+            emissions_per_minute = { pollution = 8 }
+        },
+        energy_usage = "1kW",
+        ingredient_count = 1,
+        source_inventory_size = 0,
+        result_inventory_size = 0,
+        graphics_set =
+        {
+            animation =
+            {
+                filename = "__GuG2__/graphics/entity/flare-stack/flare-stack.png",
+                priority = "extra-high",
+                width = 160,
+                height = 160,
+                shift = {1.5*1.5, -1.59375*1.5},
+                scale = 1.5,
+            },
+            working_visualisations =
+            {
+                {
+                    animation =
+                    {
+                        filename = "__GuG2__/graphics/entity/flare-stack/flare-stack-fire.png",
+                        priority = "extra-high",
+                        frame_count = 29,
+                        width = 48,
+                        height = 105,
+                        shift = {0, -6.5},
+                        run_mode="backward",
+                    },
+                    light = {intensity = 1, size = 32},
+                    constant_speed = true,
+                    fadeout=true,
+                }
+            },
+        },
+        vehicle_impact_sound =
+        {
+            filename = "__base__/sound/car-metal-impact.ogg",
+            volume = 0.65
+        },
+        working_sound =
+        {
+            fade_in_ticks=15,
+            fade_out_ticks=120,
+            sound = { filename = "__GuG2__/sound/flare-stack.ogg", min_volume=1.25, max_volume=1.75 },
+            idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
+            apparent_volume = 2.5,
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{ flow_direction="input", direction = defines.direction.north, position = {0.5, -0.5} }},
+            },
+        },
+    },
+})
 data:extend({
     {
         g2_clean = true, ---@diagnostic disable-line
@@ -2636,6 +2716,105 @@ data:extend({
         circuit_wire_max_distance = default_circuit_wire_max_distance
     },
 })
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "combustion-generator",
+        icons = du.alias("combustion-generator"),
+        flags = {"placeable-neutral", "player-creation"},
+        minable = {mining_time = 1, result = "combustion-generator"},
+        fast_replaceable_group = "combustion-generator",
+        max_health = 300,
+        corpse = "big-remnants",
+        dying_explosion = "medium-explosion",
+        collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+        match_animation_speed_to_activity = false,
+        crafting_categories = {"generating"},
+        fixed_recipe = "combustion-generator-rotation-generation",
+        crafting_speed = 1,
+        energy_source = 
+        {
+            type = "fluid",
+            effectivity = 0.65,
+            emissions_per_minute = {pollution=20},
+            scale_fluid_usage = true,
+            burns_fluid = true,
+            fluid_box = {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {
+                    { flow_direction="input-output", position = {0, -2}, direction=defines.direction.north },
+                    { flow_direction="input-output", position = {-2, -1}, direction=defines.direction.west },
+                    { flow_direction="input-output", position = {0, 2}, direction=defines.direction.south },
+                    { flow_direction="input-output", position = {2, 1}, direction=defines.direction.east },
+                },
+                secondary_draw_orders = { north = -1 },
+                filter = "gasoline",
+            },
+            smoke =
+            {
+                {
+                    name = "smoke",
+                    north_position = {1.4, -3.0},
+                    east_position = {1.4, -3.0},
+                    south_position = {1.4, -3.0},
+                    west_position = {1.4, -3.0},
+                    frequency = 6,
+                    starting_vertical_speed = 0.12,
+                    starting_frame_deviation = 60
+                }
+            },
+        },
+        energy_usage = "6MW",
+        graphics_set = {
+            animation = {
+                layers = {
+                    {
+                        filename = "__Krastorio2Assets__/buildings/gas-power-station/gas-power-station.png",
+                        width = 380,
+                        height = 380,
+                        frame_count = 32,
+                        line_length = 8,
+                        scale = 0.5,
+                    },
+                    {
+                        filename = "__Krastorio2Assets__/buildings/gas-power-station/gas-power-station-sh.png",
+                        width = 380,
+                        height = 380,
+                        frame_count = 1,
+                        repeat_count = 32,
+                        draw_as_shadow = true,
+                        scale = 0.5,
+                    },
+                }
+            },
+        },
+        fluid_boxes = {
+            {
+                production_type = "output",
+                pipe_picture = assembler2pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {
+                    {flow_direction = "input-output", position = {-2, 1}, direction = defines.direction.west},
+                    {flow_direction = "input-output", position = {2, -1}, direction = defines.direction.east},
+                }
+            },
+        },
+        vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact-1.ogg", volume = 0.65},
+        working_sound = {
+            sound = {filename = "__Krastorio2Assets__/sounds/buildings/gas-power-station-1.ogg"},
+            idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
+            apparent_volume = 2.5
+        },
+    }
+})
+
+local gfg = data.raw["assembling-machine"]["combustion-generator"]
+gfg.produces_temperature = 1200
+gfg.produces_amount = (du.J(gfg.energy_usage) * 60) / (du.J(du.fluid("rotational-force").heat_capacity) * gfg.produces_temperature)
 
 local steam_engine = data.raw.generator["steam-engine"]
 data.raw.generator["steam-engine"] = nil
@@ -2708,7 +2887,7 @@ data.raw.generator["steam-turbine"] = nil
 steam_turbine.type = "assembling-machine"
 steam_turbine.crafting_categories = {"generating"}
 steam_turbine.fixed_recipe = "steam-turbine-rotation-generation"
-steam_turbine.energy_usage = "5820kW"
+steam_turbine.energy_usage = "5000kW"
 steam_turbine.crafting_speed = 1
 steam_turbine.fluid_boxes = {
     {
@@ -2733,7 +2912,7 @@ steam_turbine.graphics_set = {
 steam_turbine.energy_source = {
     type = "fluid",
     maximum_temperature=165,
-    effectivity = 0.5,
+    effectivity = 0.8,
     fluid_box = {
         volume=100,
         height = 1,
@@ -2803,7 +2982,22 @@ data:extend({
         results = {
             {type="fluid", name="rotational-force", amount= steam_turbine.produces_amount * 0.1, temperature=steam_turbine.produces_temperature},
         }
-    }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "generating", ---@diagnostic disable-line
+        name = "combustion-generator-rotation-generation",
+        icons = du.icons("rotational-force"),
+        hidden = true,
+        energy_required = 0.1,
+        ingredients = {
+        },
+        results = {
+            {type="fluid", name="rotational-force", amount= gfg.produces_amount * 0.1, temperature=gfg.produces_temperature},
+        }
+    },
 })
 
 data:extend({
@@ -2888,7 +3082,7 @@ data:extend({
         {
             sound =
             {
-                filename = "__base__/sound/steam-engine-90bpm.ogg",
+                filename = "__base__/sound/steam-turbine.ogg",
                 volume = 0.55,
                 speed_smoothing_window_size = 60,
                 modifiers = volume_multiplier("tips-and-tricks", 1.1)
@@ -2905,6 +3099,7 @@ data:extend({
 local mv_generator = table.deepcopy(data.raw.generator["lv-generator"])
 mv_generator.name = "mv-generator"
 mv_generator.minable.result = "mv-generator"
+mv_generator.icons = du.icons("mv-generator")
 mv_generator.fluid_usage_per_tick = 6
 mv_generator.maximum_temperature = 2500
 mv_generator.effectivity = 0.9
@@ -2950,6 +3145,18 @@ steam_engine.localised_description = {"",
     "label.produces-rotational-force-amount",
     tostring(steam_engine.produces_temperature),
     tostring(kW_from_rotational_force(steam_engine.produces_amount, steam_engine.produces_temperature)),
+    "kW"
+},
+"\n",
+{"label.no-cleanroom"}}
+
+gfg.localised_description = {"",
+{"entity-description.combustion-generator"},
+"\n",
+{
+    "label.produces-rotational-force-amount",
+    tostring(gfg.produces_temperature),
+    tostring(kW_from_rotational_force(gfg.produces_amount, gfg.produces_temperature)),
     "kW"
 },
 "\n",
@@ -3238,7 +3445,7 @@ data:extend({
         {
             sound =
             {
-                filename = "__base__/sound/oil-refinery.ogg"
+                filename = "__base__/sound/boiler.ogg"
             },
             --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
             fade_in_ticks = 4,
@@ -4065,102 +4272,173 @@ data:extend({
 })
 data:extend({
     {
-        type = "assembling-machine",
-        name = "incinerator",
-        icons = du.icons("incinerator"),
+        type = "pipe",
+        name = "pipe-2",
+        icons = du.icons("pipe-2"),
         flags = {"placeable-neutral", "player-creation"},
-        minable = {mining_time = 1, result = "incinerator"},
-        max_health = 300,
-        corpse = "big-remnants",
-        crafting_categories = {"incinerating"},
-        crafting_speed = 1,
-        module_slots = 2,
-        allowed_effects = {"consumption", "pollution"},
-        resistances = {
+        minable = {mining_time = 0.1, result = "pipe-2"},
+        max_health = 100,
+        corpse = "pipe-remnants",
+        dying_explosion = "pipe-explosion",
+        icon_draw_specification = {scale = 0.5},
+        resistances =
+        {
             {
                 type = "fire",
-                percent = 70
-            }
-        },
-        collision_box = {{-1.49, -1.49}, {1.49, 1.49}},
-        selection_box = {{-1.53, -1.53}, {1.53, 1.53}},
-        fluid_boxes = table.deepcopy(data.raw["assembling-machine"]["assembling-machine-1"].fluid_boxes),
-        energy_source = {
-            type = "burner",
-            effectivity = 0.5,
-            fuel_categories = {"chemical"},
-            fuel_inventory_size = 1,
-            emissions_per_minute = {pollution=30},
-            smoke = {
-                {
-                    name = "light-smoke",
-                    north_position = {-1.2, -2},
-                    east_position = {-0.75, -2},
-                    frequency = 5 / 32,
-                    starting_vertical_speed = 0.08,
-                    slow_down_factor = 1,
-                    starting_frame_deviation = 60
-                },
-                {
-                    name = "light-smoke",
-                    north_position = {1.2, -2},
-                    east_position = {1.2, -2},
-                    frequency = 5 / 32,
-                    starting_vertical_speed = 0.08,
-                    slow_down_factor = 1,
-                    starting_frame_deviation = 60
-                }
+                percent = 80
             },
-        },
-        energy_usage = "1MW",
-        graphics_set = {
-            animation = {
-                north = {
-                    filename = "__pycoalprocessinggraphics__/graphics/entity/gas-turbinemk01/gasturbinemk01_horizontal.png",
-                    width = 131,
-                    height = 288,
-                    frame_count = 25,
-                    line_length = 5,
-                    shift = {0.5, -3.0},
-                    animation_speed = 0.8
-                },
-                east = {
-                    filename = "__pycoalprocessinggraphics__/graphics/entity/gas-turbinemk01/gasturbinemk01_vertical.png",
-                    width = 128,
-                    height = 288,
-                    frame_count = 25,
-                    line_length = 5,
-                    shift = {0.5, -3.0},
-                    animation_speed = 0.8
-                },
-                south = {
-                    filename = "__pycoalprocessinggraphics__/graphics/entity/gas-turbinemk01/gasturbinemk01_horizontal.png",
-                    width = 131,
-                    height = 288,
-                    frame_count = 25,
-                    line_length = 5,
-                    shift = {0.5, -3.0},
-                    animation_speed = 0.8
-                },
-                west = {
-                    filename = "__pycoalprocessinggraphics__/graphics/entity/gas-turbinemk01/gasturbinemk01_vertical.png",
-                    width = 128,
-                    height = 288,
-                    frame_count = 25,
-                    line_length = 5,
-                    shift = {0.5, -3.0},
-                    animation_speed = 0.8
-                },
+            {
+                type = "impact",
+                percent = 30
             }
         },
-        vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact-1.ogg", volume = 0.65},
-        working_sound = {
-            sound = {filename = "__pycoalprocessinggraphics__/sounds/gasturbinemk01.ogg"},
-            idle_sound = {filename = "__pycoalprocessinggraphics__/sounds/gasturbinemk01.ogg", volume = 0.3},
-            apparent_volume = 2.5
-        }
-    }
+        fast_replaceable_group = "pipe",
+        collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
+        selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        fluid_box =
+        {
+            volume = 100,
+            pipe_covers = pipecoverspictures(), -- in case a real pipe is connected to a ghost
+            pipe_connections =
+            {
+                { direction = defines.direction.north, position = {0, 0} },
+                { direction = defines.direction.east, position = {0, 0} },
+                { direction = defines.direction.south, position = {0, 0} },
+                { direction = defines.direction.west, position = {0, 0} }
+            },
+            hide_connection_info = true
+        },
+        impact_category = "metal",
+        pictures = table.deepcopy(data.raw.pipe.pipe.pictures),
+        working_sound = sounds.pipe,
+        open_sound = sounds.metal_small_open,
+        close_sound = sounds.metal_small_close,
+        
+        horizontal_window_bounding_box = {{-0.25, -0.28125}, {0.25, 0.15625}},
+        vertical_window_bounding_box = {{-0.28125, -0.5}, {0.03125, 0.125}}
+    },
 })
+
+for name, picture in pairs(data.raw.pipe["pipe-2"].pictures) do
+    if picture.filename then
+        if not name:find("flow") and not name:find("visualization") and not name:find("steam") and not name:find("fluid") then
+            picture.filename = picture.filename:gsub("%_%_base%_%_", "__GuG2__")
+            picture.filename = picture.filename:gsub("%/pipe%/", "/pipe-2/")
+        end
+    end
+end
+
+local pipe_2_ground = table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"])
+for _, picture in pairs(pipe_2_ground.pictures) do
+    picture.filename = picture.filename:gsub("%_%_base%_%_", "__GuG2__")
+    picture.filename = picture.filename:gsub("%/pipe%-to%-ground%/", "/pipe-2/")
+end
+pipe_2_ground.name = "pipe-to-ground-2"
+pipe_2_ground.icons = du.icons("pipe-to-ground-2")
+pipe_2_ground.minable.result = "pipe-to-ground-2"
+pipe_2_ground.fluid_box.pipe_connections[2].max_underground_distance = 20
+data:extend({pipe_2_ground})
+
+--[[
+data:extend({
+{
+type = "assembling-machine",
+name = "incinerator",
+icons = du.icons("incinerator"),
+flags = {"placeable-neutral", "player-creation"},
+minable = {mining_time = 1, result = "incinerator"},
+max_health = 300,
+corpse = "big-remnants",
+crafting_categories = {"incinerating"},
+crafting_speed = 1,
+module_slots = 2,
+allowed_effects = {"consumption", "pollution"},
+resistances = {
+{
+type = "fire",
+percent = 70
+}
+},
+collision_box = {{-1.49, -1.49}, {1.49, 1.49}},
+selection_box = {{-1.53, -1.53}, {1.53, 1.53}},
+fluid_boxes = table.deepcopy(data.raw["assembling-machine"]["assembling-machine-1"].fluid_boxes),
+energy_source = {
+type = "burner",
+effectivity = 0.5,
+fuel_categories = {"chemical"},
+fuel_inventory_size = 1,
+emissions_per_minute = {pollution=30},
+smoke = {
+{
+name = "light-smoke",
+north_position = {-1.2, -2},
+east_position = {-0.75, -2},
+frequency = 5 / 32,
+starting_vertical_speed = 0.08,
+slow_down_factor = 1,
+starting_frame_deviation = 60
+},
+{
+name = "light-smoke",
+north_position = {1.2, -2},
+east_position = {1.2, -2},
+frequency = 5 / 32,
+starting_vertical_speed = 0.08,
+slow_down_factor = 1,
+starting_frame_deviation = 60
+}
+},
+},
+energy_usage = "1MW",
+graphics_set = {
+animation = {
+north = {
+filename = "__pycoalprocessinggraphics__/graphics/entity/gas-turbinemk01/gasturbinemk01_horizontal.png",
+width = 131,
+height = 288,
+frame_count = 25,
+line_length = 5,
+shift = {0.5, -3.0},
+animation_speed = 0.8
+},
+east = {
+filename = "__pycoalprocessinggraphics__/graphics/entity/gas-turbinemk01/gasturbinemk01_vertical.png",
+width = 128,
+height = 288,
+frame_count = 25,
+line_length = 5,
+shift = {0.5, -3.0},
+animation_speed = 0.8
+},
+south = {
+filename = "__pycoalprocessinggraphics__/graphics/entity/gas-turbinemk01/gasturbinemk01_horizontal.png",
+width = 131,
+height = 288,
+frame_count = 25,
+line_length = 5,
+shift = {0.5, -3.0},
+animation_speed = 0.8
+},
+west = {
+filename = "__pycoalprocessinggraphics__/graphics/entity/gas-turbinemk01/gasturbinemk01_vertical.png",
+width = 128,
+height = 288,
+frame_count = 25,
+line_length = 5,
+shift = {0.5, -3.0},
+animation_speed = 0.8
+},
+}
+},
+vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact-1.ogg", volume = 0.65},
+working_sound = {
+sound = {filename = "__pycoalprocessinggraphics__/sounds/gasturbinemk01.ogg"},
+idle_sound = {filename = "__pycoalprocessinggraphics__/sounds/gasturbinemk01.ogg", volume = 0.3},
+apparent_volume = 2.5
+}
+}
+})]]
 
 local burner_lab = table.deepcopy(data.raw.lab.lab)
 burner_lab.name = "burner-lab"
@@ -4193,6 +4471,7 @@ data.raw.lab.lab.inputs = {
     "environmental-science-pack",
     "mechanical-science-pack",
     "electromagnetic-science-pack",
+    "optimization-science-pack",
     "automation-science-pack",
 }
 
@@ -4336,6 +4615,280 @@ data:extend({
             emissions_per_minute = {pollution=0}
         },
         energy_usage = "675kW",
+    }
+})
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "crystallizer",
+        icons = du.alias("crystallizer"),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "crystallizer"},
+        max_health = 400,
+        corpse = "assembling-machine-3-remnants",
+        dying_explosion = "assembling-machine-3-explosion",
+        alert_icon_shift = util.by_pixel(-3, -12),
+        resistances =
+        {
+            {
+                type = "acid",
+                percent = 95
+            }
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {-2.5, -2.5}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {0.5, -2.5}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {-0.5, 2.5}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {2.5, 2.5}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                    volume = 0.45
+                }
+            },
+            audible_distance_modifier = 0.5,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        collision_box = {{-2.8, -2.8}, {2.8, 2.8}},
+        selection_box = {{-3, -3}, {3, 3}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
+        fast_replaceable_group = "crystallizer",
+        graphics_set = {
+            animation =
+            {
+                layers =
+                {
+                    {
+                        filename = "__pycoalprocessinggraphics__/graphics/entity/desulfurizator-unit/dessulfurizator-anim.png",
+                        priority = "high",
+                        width = 196,
+                        height = 202,
+                        frame_count = 15,
+                        line_length = 5,
+                    },
+                }
+            },
+        },
+        crafting_categories = {"crystallizing"},
+        crafting_speed = 1,
+        module_slots = 4,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source =
+        {
+            type = "electric",
+            usage_priority = "secondary-input",
+            emissions_per_minute = {pollution=0}
+        },
+        energy_usage = "675kW",
+    }
+})
+local function itf_vertical()
+    return {
+        layers = {
+            {
+                filename = "__GuG2__/graphics/entity/industrial-tube-boiler/north-south.png",
+                priority = "high",
+                width = 213,
+                height = 492,
+                frame_count = 1,
+                line_length = 1,
+                repeat_count = 48,
+                scale = 0.5,
+                shift = {0, -0.5}
+            },
+        }
+    }
+end
+local function itf_horizontal()
+    return {
+        layers = {
+            {
+                filename = "__GuG2__/graphics/entity/industrial-tube-boiler/east-west.png",
+                priority = "high",
+                width = 452,
+                height = 255,
+                frame_count = 1,
+                line_length = 1,
+                repeat_count = 48,
+                scale = 0.5,
+                shift = {0, -0.4}
+            },
+        }
+    }
+end
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "industrial-tube-boiler",
+        icons = du.icons("industrial-tube-boiler"),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "industrial-tube-boiler"},
+        max_health = 400,
+        corpse = "assembling-machine-3-remnants",
+        dying_explosion = "assembling-machine-3-explosion",
+        alert_icon_shift = util.by_pixel(-3, -12),
+        resistances =
+        {
+            {
+                type = "acid",
+                percent = 95
+            }
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {0, 3}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {0, -3}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {1, -3}, direction=defines.direction.east }},
+                secondary_draw_orders = { north = -1, east=-1 }
+            },
+        },
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/boiler.ogg",
+                    volume = 2.5
+                }
+            },
+            fade_in_ticks = 60,
+            fade_out_ticks = 60
+        },
+        collision_box = {{-1.4, -3.4}, {1.4, 3.4}},
+        selection_box = {{-1.5, -3.5}, {1.5, 3.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        fast_replaceable_group = "industrial-tube-boiler",
+        graphics_set = {
+            animation =
+            {
+                north = itf_vertical(),
+                east = itf_horizontal(),
+                south = itf_vertical(),
+                west = itf_horizontal(),
+            },
+            working_visualisations =
+            {
+                {
+                    fadeout = true,
+                    effect = "flicker",
+                    animation =
+                    {
+                        filename = "__base__/graphics/entity/steel-furnace/steel-furnace-fire.png",
+                        priority = "high",
+                        line_length = 8,
+                        width = 57,
+                        height = 81,
+                        frame_count = 48,
+                        draw_as_glow = true,
+                        shift = util.by_pixel(-0.75, 5.75),
+                        scale = 0.7,
+                    },
+                    north_position = {-0.1, 0.1},
+                    south_position = {-0.1, 0.1},
+                    east_position = {-0.1, -0.6},
+                    west_position = {-0.1, -0.6},
+                    constant_speed = true,
+                },
+            },
+        },
+        crafting_categories = {"boiling"},
+        crafting_speed = 4,
+        module_slots = 4,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source =
+        {
+            type = "fluid",
+            effectivity = 0.9,
+            emissions_per_minute = {pollution=8},
+            scale_fluid_usage = true,
+            burns_fluid = true,
+            fluid_box = {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{ flow_direction="input", position = {-1, 3}, direction=defines.direction.west }},
+                secondary_draw_orders = { north = -1 }
+            },
+            smoke = {
+                {
+                    name = "smoke",
+                    frequency = 25,
+                    north_position = {1, -3.8},
+                    south_position = {1, -3.8},
+                    east_position = {1.7, -1.2},
+                    west_position = {1.7, -1.2},
+                    starting_vertical_speed = 0.0,
+                    starting_frame_deviation = 60,
+                }
+            }
+        },
+        energy_usage = "7.2MW",
     }
 })
 data:extend({
@@ -5492,16 +6045,16 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         place_result = "lab"
-    },
+    },--[[
     {
-        type = "item",
-        name = "incinerator",
-        icons = du.icons("incinerator"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
-        stack_size = 50,
-        place_result = "incinerator"
-    },
+    type = "item",
+    name = "incinerator",
+    icons = du.icons("incinerator"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+    place_result = "incinerator"
+    },]]
     {
         type = "item",
         name = "lv-generator",
@@ -5555,6 +6108,15 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         place_result = "tube-boiler",
+    },
+    {
+        type = "item",
+        name = "industrial-tube-boiler",
+        icons = du.icons("industrial-tube-boiler"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "industrial-tube-boiler",
     },
     {
         type = "item",
@@ -5764,6 +6326,15 @@ data:extend({
     },
     {
         type = "item",
+        name = "flare-stack",
+        icons = du.icons("flare-stack"),
+        subgroup = "production-machine",
+        order = "e[chemical-plant]b",
+        place_result = "flare-stack",
+        stack_size = 50
+    },
+    {
+        type = "item",
         name = "fluid-mining-drill",
         icons = du.icons("fluid-mining-drill"),
         subgroup = "smelting-machine",
@@ -5827,6 +6398,24 @@ data:extend({
     },
     {
         type = "item",
+        name = "pipe-2",
+        icons = du.icons("pipe-2"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+        place_result = "pipe-2"
+    },
+    {
+        type = "item",
+        name = "pipe-to-ground-2",
+        icons = du.icons("pipe-to-ground-2"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+        place_result = "pipe-to-ground-2"
+    },
+    {
+        type = "item",
         name = "simple-algae-plant",
         icons = du.icons("simple-algae-plant"),
         subgroup = "smelting-machine",
@@ -5863,6 +6452,15 @@ data:extend({
     },
     {
         type = "item",
+        name = "combustion-generator",
+        icons = du.alias("combustion-generator"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "combustion-generator"
+    },
+    {
+        type = "item",
         name = "vic-1",
         icons = du.icons("vic-1"),
         subgroup = "smelting-machine",
@@ -5874,6 +6472,15 @@ data:extend({
         type = "item",
         name = "fuel-refinery",
         icons = du.alias("fuel-refinery"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "fuel-refinery"
+    },
+    {
+        type = "item",
+        name = "crystallizer",
+        icons = du.alias("crystallizer"),
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
@@ -5974,5 +6581,13 @@ data:extend({
     {
         type = "recipe-category",
         name = "water-treatment"
+    },
+    {
+        type = "recipe-category",
+        name = "flaring"
+    },
+    {
+        type = "recipe-category",
+        name = "crystallizing"
     },
 })

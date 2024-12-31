@@ -147,6 +147,37 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "optimization-science",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/automation-science-pack.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"computation"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="optimization-science-pack",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "advanced-material-processing",
         icons = {
             {
@@ -537,7 +568,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"uranium-processing"},
+        prerequisites = {"lubricant", "uranium-processing"},
         unit =
         {
             count = 10,
@@ -572,7 +603,7 @@ data:extend({
         name = "silicon-2",
         icons = {
             {
-                icon = "__GuG2__/graphics/technology/pm/silicon-processing.png",
+                icon = "__GuG2__/graphics/technology/advanced-electronics.png",
                 icon_size = 256,
             }
         },
@@ -1257,7 +1288,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"oil-refining"},
+        prerequisites = {"oil-refining", "optimization-science"},
         unit =
         {
             count = 10,
@@ -1266,6 +1297,7 @@ data:extend({
                 {"environmental-science-pack", 1},
                 {"mechanical-science-pack", 1},
                 {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
             },
             time = 10
         },
@@ -1367,7 +1399,15 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="advanced-circuit-1",
+                recipe="advanced-circuit",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="selector-combinator",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="power-switch",
             },
         },
     },
@@ -1421,7 +1461,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"electromagnetism-2", "molybdenum-1"},
+        prerequisites = {"optimization-science", "electromagnetism-2", "molybdenum-1"},
         unit =
         {
             count = 10,
@@ -1430,6 +1470,7 @@ data:extend({
                 {"environmental-science-pack", 1},
                 {"mechanical-science-pack", 1},
                 {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
             },
             time = 10
         },
@@ -1452,11 +1493,295 @@ data:extend({
         name = "automation-science",
         icons = {
             {
-                icon = "__base__/graphics/technology/automation-science-pack.png",
+                icon = "__base__/graphics/technology/space-science-pack.png",
                 icon_size = 256,
             }
         },
-        prerequisites = {"electromagnetism-3", "advanced-electronics"},
+        prerequisites = {"electromagnetism-3", "advanced-electronics", "optimization-science"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="computed-automation-science-pack-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="automation-science-pack",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "fluid-handling-3",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/better-pipes.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"optimization-science", "phenolics"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="pipe-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pipe-to-ground-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fluid-tank-1x1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fluid-tank-1x1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fluid-tank-2x2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fluid-tank-3x4",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "logistics-2",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/logistics-2.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"electromagnetism-3", "optimization-science"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="fast-transport-belt",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fast-underground-belt",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="fast-splitter",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "modules",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/module.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"optimization-science"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "speed-module",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/speed-module-1.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"modules"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe = "speed-module"
+            }
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "speed-module-2",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/speed-module-2.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"lubricant-2", "electronic-components-1", "speed-module"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe = "speed-module-2"
+            }
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "efficiency-module",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/efficiency-module-1.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"modules"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe = "efficiency-module"
+            }
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "efficiency-module-2",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/efficiency-module-2.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"uranium-processing", "efficiency-module"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe = "efficiency-module-2"
+            }
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "industrial-combustion",
+        icons = {
+            {
+                icon = "__Krastorio2Assets__/technologies/gas-power-station.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"oil-refining"},
         unit =
         {
             count = 10,
@@ -1472,12 +1797,8 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="computed-automation-science-pack-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="automation-science-pack",
-            },
+                recipe = "combustion-generator"
+            }
         },
     },
 })
