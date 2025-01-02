@@ -402,6 +402,27 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
+        name = "car",
+        icons = du.icons{mod="base", name="car"},
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="cargo-wagon", amount=1},
+            {type="item", name="engine-unit", amount=4},
+            {type="item", name="plastic-bar", amount=5},
+            {type="item", name="electronic-circuit", amount=5},
+            {type="item", name="treated-wood", amount=20},
+        },
+        results = {
+            {type="item", name="car", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
         name = "locomotive",
         icons = du.icons{mod="base", name="locomotive"},
         energy_required = 2,

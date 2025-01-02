@@ -753,11 +753,115 @@ data:extend({
     },
     {
         type = "fluid",
+        name = "refrigerant",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("se/refrigerant"),
+        order = "a[refrigerant]-a[normal]-a[normal]"
+    },
+    {
+        type = "fluid",
+        name = "cold-refrigerant",
+        default_temperature = -70,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("se/cold-refrigerant"),
+        order = "a[refrigerant]-a[normal]-c[cold]"
+    },
+    {
+        type = "fluid",
+        name = "hot-refrigerant",
+        default_temperature = 90,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("se/hot-refrigerant"),
+        order = "a[refrigerant]-a[normal]-b[hot]"
+    },
+    {
+        type = "fluid",
+        name = "low-temperature-refrigerant",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("se/low-temperature-refrigerant"),
+        order = "a[refrigerant]-b[low-temp]-a[normal]"
+    },
+    {
+        type = "fluid",
+        name = "cold-low-temperature-refrigerant",
+        default_temperature = -180,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("se/cold-low-temperature-refrigerant"),
+        order = "a[refrigerant]-b[low-temp]-c[cold]"
+    },
+    {
+        type = "fluid",
+        name = "hot-low-temperature-refrigerant",
+        default_temperature = 100,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("se/hot-low-temperature-refrigerant"),
+        order = "a[refrigerant]-b[low-temp]-b[hot]"
+    },
+    {
+        type = "fluid",
+        name = "waste-heat",
+        default_temperature = 0,
+        max_temperature = 150,
+        heat_capacity = "1kJ",
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("waste-heat"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "trace-gases",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("trace-gases"),
+        order = "a[fluid]-j[sludge]",
+        formula = "Ar + Co2 + Ne^t + He^t",
+    },
+    {
+        type = "fluid",
+        name = "liquid-oxygen",
+        default_temperature = -183,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("liquid-oxygen"),
+        order = "a[fluid]-j[sludge]",
+        formula = "O2 (l)",
+    },
+    {
+        type = "fluid",
+        name = "liquid-nitrogen",
+        default_temperature = -196,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("liquid-nitrogen"),
+        order = "a[fluid]-j[sludge]",
+        formula = "N2 (l)",
+    },
+    {
+        type = "fluid",
         name = "carbolic-acid",
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         icons = du.icons("carbolic-acid"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
+        name = "argon",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("argon"),
         order = "a[fluid]-j[sludge]"
     },
     {

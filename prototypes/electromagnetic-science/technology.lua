@@ -1234,6 +1234,50 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "polymers-4",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/plastics.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"optimization-science", "acids-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="ethylene-glycol-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pet-solution-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="plastic-pet",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="rubylith",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "cracking-1",
         icons = {
             {
@@ -1422,7 +1466,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"polymers-3", "electronic-components-1", "silicon-2", "lubricant-2"},
+        prerequisites = {"polymers-3", "electronic-components-1", "silicon-2", "lubricant-2", "synthetic-fibers-1"},
         unit =
         {
             count = 10,

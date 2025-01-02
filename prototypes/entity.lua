@@ -24,19 +24,33 @@ local function make_composite(entity)
 end
 
 local distillation_rig = table.deepcopy(data.raw["assembling-machine"]["oil-refinery"])
-table.insert(distillation_rig.crafting_categories, "distillation")
-distillation_rig.fluid_boxes = {
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={ 0, 2}, direction=defines.direction.south, flow_direction="input"}}, production_type="input"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={ 0,-2}, direction=defines.direction.north, flow_direction="input"}}, production_type="input"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={-2, 2}, direction=defines.direction.west, flow_direction="output"}}, production_type="output"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={-2, 0}, direction=defines.direction.west, flow_direction="output"}}, production_type="output"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={-2,-2}, direction=defines.direction.west, flow_direction="output"}}, production_type="output"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={ 2, 2}, direction=defines.direction.east, flow_direction="output"}}, production_type="output"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={ 2, 0}, direction=defines.direction.east, flow_direction="output"}}, production_type="output"},
-    {pipe_covers = pipecoverspictures(), pipe_picture = assembler2pipepictures(), volume=100, pipe_connections={{position={ 2,-2}, direction=defines.direction.east, flow_direction="output"}}, production_type="output"},
-}
+distillation_rig.crafting_categories = {"distillation"}
 distillation_rig.name = "distillation-rig"
+distillation_rig.minable.result = "distillation-rig"
+distillation_rig.icons = du.icons("base.oil-refinery")
+table.insert(distillation_rig.fluid_boxes, 
+{
+    production_type = "output",
+    pipe_covers = pipecoverspictures(),
+    volume = 100,
+    pipe_connections = {
+        { flow_direction="input-output", direction = defines.direction.east, position = {2, 0} },
+        { flow_direction="input-output", direction = defines.direction.west, position = {-2, 0} },
+    },
+})
 data:extend({distillation_rig})
+
+local chiller = table.deepcopy(distillation_rig)
+chiller.name = "chiller"
+chiller.icons = du.icons("chiller")
+chiller.minable.result = "chiller"
+chiller.crafting_categories = {"chilling"}
+chiller.graphics_set.animation.north.layers[1].tint = {255, 128, 255}
+chiller.graphics_set.animation.east.layers[1].tint = {255, 128, 255}
+chiller.graphics_set.animation.south.layers[1].tint = {255, 128, 255}
+chiller.graphics_set.animation.west.layers[1].tint = {255, 128, 255}
+chiller.energy_usage = "2MW"
+data:extend({chiller})
 
 local nodule_harvester = table.deepcopy(data.raw["mining-drill"]["pumpjack"])
 nodule_harvester.icons = du.icons("nodule-harvester")
@@ -1257,6 +1271,19 @@ data:extend({
         }
     },
 })
+
+local crusher = table.deepcopy(data.raw["assembling-machine"]["steam-crusher"])
+crusher.energy_source =
+{
+    type = "electric",
+    usage_priority = "secondary-input",
+    drain = "20kW"
+}
+crusher.energy_usage = "300kW"
+crusher.name = "crusher"
+crusher.minable.result = "crusher"
+crusher.graphics_set.animation.layers[1].tint = {r=255, g=128, b=255}
+data:extend({crusher})
 
 local function cleanroom_wall_cross()
     return {
@@ -3239,7 +3266,7 @@ data:extend({
             specific_heat = "0.5MJ",
             max_transfer = "1GW",
             default_temperature=15,
-            min_working_temperature=165,
+            min_working_temperature=100,
             connections={
                 {
                     position={-1,1},
@@ -3712,48 +3739,65 @@ chemical_plant.fluid_boxes = {
     },
 }
 
-local stone_furnace = data.raw.furnace["stone-furnace"]
-data.raw.furnace["stone-furnace"] = nil
-stone_furnace.next_upgrade = nil
-stone_furnace.type = "assembling-machine"
-stone_furnace.crafting_categories = {"smelting"}
-stone_furnace.collision_box = {{-1.3, -1.3}, {1.3, 1.3}}
-stone_furnace.selection_box = {{-1.3, -1.5}, {1.3, 1.5}}
-stone_furnace.energy_usage = "400kW"
-stone_furnace.module_slots = 2
-stone_furnace.allowed_effects = {"consumption", "pollution"}
-for _, layer in pairs(stone_furnace.graphics_set.animation.layers) do
-    layer.scale = (layer.scale or 1) * 1.5
-end
-for _, visual in pairs(stone_furnace.graphics_set.working_visualisations) do
-    if visual.animation.layers then
-        for _, layer in pairs(visual.animation.layers) do
-            layer.scale = (layer.scale or 1) * 1.5
+local function fix_furnace(stone_furnace)
+    data.raw.furnace[stone_furnace.name] = nil
+    stone_furnace.next_upgrade = nil
+    stone_furnace.type = "assembling-machine"
+    stone_furnace.crafting_categories = {"smelting"}
+    stone_furnace.collision_box = {{-1.3, -1.3}, {1.3, 1.3}}
+    stone_furnace.selection_box = {{-1.3, -1.5}, {1.3, 1.5}}
+    stone_furnace.energy_usage = "400kW"
+    stone_furnace.module_slots = 2
+    stone_furnace.allowed_effects = {"consumption", "pollution"}
+    for _, layer in pairs(stone_furnace.graphics_set.animation.layers) do
+        layer.scale = (layer.scale or 1) * 1.5
+        if layer.shift then
+            local x = (layer.shift.x or layer.shift[1]) * layer.scale
+            local y = (layer.shift.y or layer.shift[2]) * layer.scale
+            layer.shift = {x,y}
         end
-    else
-        visual.animation.scale = (visual.animation.scale or 1) * 1.5
     end
+    for _, visual in pairs(stone_furnace.graphics_set.working_visualisations) do
+        if visual.animation.layers then
+            for _, layer in pairs(visual.animation.layers) do
+                layer.scale = (layer.scale or 1) * 1.5
+                if layer.shift then
+                    local x = (layer.shift.x or layer.shift[1]) * layer.scale
+                    local y = (layer.shift.y or layer.shift[2]) * layer.scale
+                    layer.shift = {x,y}
+                end
+            end
+        else
+            visual.animation.scale = (visual.animation.scale or 1) * 1.5
+            if visual.animation.shift then
+                local x = (visual.animation.shift.x or visual.animation.shift[1]) * visual.animation.scale
+                local y = (visual.animation.shift.y or visual.animation.shift[2]) * visual.animation.scale
+                visual.animation.shift = {x,y}
+            end
+        end
+    end
+    stone_furnace.fluid_boxes =
+    {
+        {
+            production_type="input",
+            pipe_covers = pipecoverspictures(),
+            pipe_picture = assembler2pipepictures(),
+            volume=100,
+            pipe_connections={{position={0, 1}, direction=defines.direction.south, flow_direction="input"}},
+        },
+        {
+            production_type="output",
+            pipe_covers = pipecoverspictures(),
+            pipe_picture = assembler2pipepictures(),
+            volume=100,
+            pipe_connections={{position={0,-1}, direction=defines.direction.north, flow_direction="output"}},
+        },
+    }
+    stone_furnace.fluid_boxes_off_when_no_fluid_recipe = true
+    data:extend({stone_furnace})
 end
-stone_furnace.fluid_boxes =
-{
-    {
-        production_type="input",
-        pipe_covers = pipecoverspictures(),
-        pipe_picture = assembler2pipepictures(),
-        volume=100,
-        pipe_connections={{position={0, 1}, direction=defines.direction.south, flow_direction="input"}},
-    },
-    {
-        production_type="output",
-        pipe_covers = pipecoverspictures(),
-        pipe_picture = assembler2pipepictures(),
-        volume=100,
-        pipe_connections={{position={0,-1}, direction=defines.direction.north, flow_direction="output"}},
-    },
-}
-stone_furnace.fluid_boxes_off_when_no_fluid_recipe = true
-data:extend({stone_furnace})
-
+fix_furnace(data.raw.furnace["stone-furnace"])
+fix_furnace(data.raw.furnace["steel-furnace"])
 data:extend({
     {
         type = "assembling-machine",
@@ -5984,6 +6028,96 @@ lamp.energy_usage = "100kW"
 data:extend({lamp})
 data.raw.boiler.boiler.energy_usage = "3.6MW"
 
+data:extend({
+    {
+        type = "reactor",
+        name = "heat-break",
+        icons = du.icons("heat-break"),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "heat-break"},
+        max_health = 400,
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                    volume = 0.45
+                }
+            },
+            audible_distance_modifier = 0.5,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
+        selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        fast_replaceable_group = "heat-pipe",
+        picture = {
+            layers = {
+                {
+                    filename = "__GuG2__/graphics/entity/heat-break/heat-break.png",
+                    priority = "high",
+                    width = 64,
+                    height = 73,
+                    frame_count = 1,
+                    line_length = 1,
+                    scale = 0.5,
+                    shift = util.by_pixel(0, -4),
+                },
+            }
+        },
+        energy_source =
+        {
+            type = "fluid",
+            scale_fluid_usage = true,
+            fluid_box = {
+                filter = "waste-heat",
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = -1,
+                pipe_connections = {
+                    { flow_direction="input", position = {0,0}, direction=defines.direction.north },
+                    { flow_direction="input", position = {0,0}, direction=defines.direction.east },
+                    { flow_direction="input", position = {0,0}, direction=defines.direction.south },
+                    { flow_direction="input", position = {0,0}, direction=defines.direction.west },
+                },
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        consumption = "4MW",
+        scale_energy_usage = true,
+        heat_buffer = {
+            max_temperature = 165,
+            specific_heat = "1MJ",
+            max_transfer = "1GW",
+            default_temperature = 15,
+            connections = {
+                {
+                    position={0,0},
+                    direction=defines.direction.north
+                },
+                {
+                    position={0,0},
+                    direction=defines.direction.east
+                },
+                {
+                    position={0,0},
+                    direction=defines.direction.south
+                },
+                {
+                    position={0,0},
+                    direction=defines.direction.west
+                },
+            }
+        }
+    }
+})
+
 -- TODO: new buildings
 -- chemical blender 1 in 1 out
 -- flotation cell
@@ -6000,6 +6134,24 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 200,
         place_result = "radiator"
+    },
+    {
+        type = "item",
+        name = "chiller",
+        icons = du.icons("chiller"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+        place_result = "chiller"
+    },
+    {
+        type = "item",
+        name = "heat-break",
+        icons = du.icons("heat-break"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+        place_result = "heat-break"
     },
     {
         type = "item",
@@ -6081,6 +6233,15 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         place_result = "steam-crusher",
+    },
+    {
+        type = "item",
+        name = "crusher",
+        icons = du.icons("steam-crusher"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "crusher",
     },
     {
         type = "item",
@@ -6416,6 +6577,15 @@ data:extend({
     },
     {
         type = "item",
+        name = "distillation-rig",
+        icons = du.icons("base.oil-refinery"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+        place_result = "distillation-rig"
+    },
+    {
+        type = "item",
         name = "simple-algae-plant",
         icons = du.icons("simple-algae-plant"),
         subgroup = "smelting-machine",
@@ -6484,7 +6654,11 @@ data:extend({
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
-        place_result = "fuel-refinery"
+        place_result = "crystallizer"
+    },
+    {
+        type = "recipe-category",
+        name = "chilling"
     },
     {
         type = "recipe-category",

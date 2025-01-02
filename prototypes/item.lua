@@ -90,7 +90,7 @@ data:extend({
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50,
-    formula = "U^(235)(238)2",
+    formula = "U^(235)(238)O2",
   },
   {
     type = "item",
@@ -824,6 +824,35 @@ data:extend({
   },
   {
     type = "item",
+    name = "sodium",
+    icons = du.icons("sodium"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "insulation",
+    icons = du.icons("insulation"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "automotive-fuel",
+    icons = du.icons("automotive-fuel"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200,
+    fuel_category = "chemical",
+    fuel_value = "10MJ",
+    fuel_top_speed_multiplier = 1.5,
+    fuel_acceleration_multiplier = 1.2,
+    burnt_result = "empty-canister",
+  },
+  {
+    type = "item",
     name = "empty-canister",
     icons = du.icons("empty-canister"),
     subgroup = "smelting-machine",
@@ -1062,6 +1091,38 @@ data:extend({
     type = "item",
     name = "salt",
     icons = du.icons("salt"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "crucible",
+    icons = du.icons("crucible"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "miniscule-silicon-boule",
+    icons = du.icons("pm/miniscule-silicon-boule"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "moderate-silicon-boule",
+    icons = du.icons("pm/moderate-silicon-boule"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "substantial-silicon-boule",
+    icons = du.icons("pm/substantial-silicon-boule"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50

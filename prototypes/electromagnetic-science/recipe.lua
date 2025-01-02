@@ -2071,6 +2071,27 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "blasting", ---@diagnostic disable-line
+        name = "ammonia-1",
+        icons = du.icons("ammonia"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="fluid", name="nitrogen", amount=10},
+            {type="fluid", name="methane", amount=10},
+        },
+        results = {
+            {type="fluid", name="ammonia", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "smelting", ---@diagnostic disable-line
         name = "silicon-1",
         icons = du.icons("silicon"),
@@ -3224,7 +3245,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 60,
+        energy_required = 19,
         ingredients = {
             {type="item", name="silica", amount=16},
             {type="item", name="graphite-electrode", amount=1},
@@ -3361,3 +3382,47 @@ data:extend({
         }
     }
 })
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "automotive-fuel-1",
+        icons = du.icons("automotive-fuel"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="empty-canister", amount=1},
+            {type="fluid", name="diesel", amount=6},
+            {type="fluid", name="kerosene", amount=1},
+        },
+        results = {
+            {type="item", name="automotive-fuel", amount=1},
+        }
+    }
+})--[[
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "fabricator-2",
+        icons = du.alias("fabricator-2"),
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="assembling-machine-2", amount=1},
+            {type="item", name="molybdenum-special-alloy", amount=12},
+            {type="item", name="gearbox", amount=4},
+            {type="item", name="fiberglass", amount=12},
+            {type="item", name="phenolic-resin", amount=8},
+            {type="item", name="advanced-circuit", amount=8},
+        },
+        results = {
+            {type="item", name="fabricator-1", amount=1},
+        }
+    }
+})]]

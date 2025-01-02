@@ -1781,6 +1781,40 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "automobilism",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/automobilism.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"engine", "canisters"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="cargo-wagon",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="car",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "electromagnetic-science",
         icons = {
             {
