@@ -480,7 +480,7 @@ data:extend({
         category = "crystallizing", ---@diagnostic disable-line
         name = "miniscule-silicon-boule",
         icons = du.icons("pm/miniscule-silicon-boule"),
-        energy_required = 0.5,
+        energy_required = 10,
         ingredients = {
             {type="fluid", name="nitrogen", amount=200},
             {type="fluid", name="silane", amount=50},
@@ -501,9 +501,9 @@ data:extend({
         name = "moderate-silicon-boule",
         main_product = "moderate-silicon-boule",
         icons = du.icons("pm/moderate-silicon-boule"),
-        energy_required = 0.5,
+        energy_required = 10,
         ingredients = {
-            {type="fluid", name="nitrogen", amount=200},
+            {type="fluid", name="argon", amount=10},
             {type="fluid", name="silane", amount=50},
             {type="item", name="miniscule-silicon-boule", amount=1},
         },
@@ -521,10 +521,10 @@ data:extend({
         category = "crystallizing", ---@diagnostic disable-line
         name = "substantial-silicon-boule",
         icons = du.icons("pm/substantial-silicon-boule"),
-        energy_required = 0.5,
+        energy_required = 10,
         main_product = "substantial-silicon-boule",
         ingredients = {
-            {type="fluid", name="nitrogen", amount=200},
+            {type="fluid", name="argon", amount=10},
             {type="fluid", name="silane", amount=50},
             {type="item", name="moderate-silicon-boule", amount=1},
         },
@@ -542,10 +542,10 @@ data:extend({
         category = "crystallizing", ---@diagnostic disable-line
         name = "silicon-boule",
         icons = du.icons("silicon-boule"),
-        energy_required = 0.5,
+        energy_required = 10,
         main_product = "silicon-boule",
         ingredients = {
-            {type="fluid", name="nitrogen", amount=200},
+            {type="fluid", name="argon", amount=10},
             {type="fluid", name="silane", amount=50},
             {type="item", name="substantial-silicon-boule", amount=1},
         },
@@ -574,4 +574,504 @@ data:extend({
             {type="item", name="silicon", amount=4},
         }
     }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "high-discharge-lamp",
+        energy_required = 2,
+        ingredients = {
+            -- metal halide UV light (tungsten comes later, cant use that, no mercury, no cobalt)
+            {type="item", name="small-lamp", amount=1},
+            {type="item", name="molybdenum-special-alloy", amount=1},
+            {type="item", name="lead-plate", amount=2},
+            {type="fluid", name="argon", amount=10},
+            {type="fluid", name="molten-glass", amount=20},
+        },
+        results = {
+            {type="item", name="high-discharge-lamp", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "sand-casting",
+        icons = du.icons("sand-casting"),
+        main_product = "sand-casting",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="sand", amount=5},
+            {type="fluid", name="creosote-oil", amount=2},
+        },
+        results = {
+            {type="item", name="sand-casting", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "alloying", ---@diagnostic disable-line
+        name = "molten-stainless-steel-1",
+        icons = du.icons("angels/molten-stainless-steel"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            -- 20 molten fluid per ingot
+            {type="fluid", name="molten-iron", amount=68},
+            {type="fluid", name="molten-nickel", amount=10},
+            {type="fluid", name="molten-chrome", amount=20},
+            {type="fluid", name="molten-manganese", amount=2},
+        },
+        results = {
+            {type="fluid", name="molten-stainless-steel", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "alloying", ---@diagnostic disable-line
+        name = "molten-glowing-mangaloy-1",
+        icons = du.icons("angels/molten-glowing-mangaloy"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            -- 20 molten fluid per ingot
+            {type="fluid", name="molten-antimony", amount=10},
+            {type="fluid", name="molten-lead", amount=20},
+            {type="fluid", name="molten-manganese", amount=30},
+            {type="fluid", name="molten-iron", amount=40},
+            {type="item", name="coke", amount=1},
+        },
+        results = {
+            {type="fluid", name="molten-glowing-mangaloy", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "alloying", ---@diagnostic disable-line
+        name = "molten-molybdenum-special-alloy-1",
+        icons = du.icons("angels/molten-molybdenum-special-alloy"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            -- 20 molten fluid per ingot
+            {type="fluid", name="molten-aluminum", amount=15},
+            {type="fluid", name="molten-molybdenum", amount=15},
+            {type="fluid", name="molten-nickel", amount=50},
+            {type="fluid", name="molten-iron", amount=15},
+            {type="item", name="coke", amount=1},
+            {type="item", name="white-phosphorous", amount=5},
+        },
+        results = {
+            {type="fluid", name="molten-molybdenum-special-alloy", amount=100},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "alloying", ---@diagnostic disable-line
+        name = "molten-solder-1",
+        icons = du.icons("angels/molten-solder"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            -- 20 molten fluid per ingot
+            {type="fluid", name="molten-lead", amount=10},
+            {type="fluid", name="molten-tin", amount=10},
+        },
+        results = {
+            {type="fluid", name="molten-solder", amount=20},
+        }
+    }
+})
+local function melt_and_cast_ingot(name)
+    data:extend({
+        {
+            type = "recipe", 
+            always_show_made_in = true,
+            enabled = false,
+            category = "induction", ---@diagnostic disable-line
+            name = "molten-"..name.."-1",
+            icons = du.icons("angels/molten-"..name),
+            subgroup = "raw-material",
+            order = "a[a]",
+            main_product = "",
+            energy_required = 1,
+            ingredients = {
+                -- 20 molten fluid per ingot
+                {type="item", name=name.."-ingot", amount=1},
+            },
+            results = {
+                {type="fluid", name="molten-"..name, amount=20},
+            }
+        }
+    })
+    data:extend({
+        {
+            type = "recipe", 
+            always_show_made_in = true,
+            enabled = false,
+            category = "casting", ---@diagnostic disable-line
+            name = name.."-ingot-casting",
+            icons = du.icons(name.."-ingot"),
+            subgroup = "raw-material",
+            order = "a[a]",
+            main_product = "",
+            energy_required = 1,
+            ingredients = {
+                -- 20 molten fluid per ingot
+                {type="fluid", name="molten-"..name, amount=20},
+            },
+            results = {
+                {type="item", name=name.."-ingot", amount=1},
+            }
+        }
+    })
+end
+melt_and_cast_ingot("iron")
+melt_and_cast_ingot("copper")
+melt_and_cast_ingot("lead")
+melt_and_cast_ingot("tin")
+melt_and_cast_ingot("bronze")
+melt_and_cast_ingot("silver")
+melt_and_cast_ingot("nickel")
+melt_and_cast_ingot("chrome")
+melt_and_cast_ingot("molybdenum")
+melt_and_cast_ingot("manganese")
+melt_and_cast_ingot("aluminum")
+melt_and_cast_ingot("stainless-steel")
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "iron-plate-casting",
+        icons = du.icons("base.iron-plate"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-iron", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="iron-plate", amount=10},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "iron-sheet-casting",
+        icons = du.icons("iron-sheet"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-iron", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="iron-sheet", amount=6},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "iron-rod-casting",
+        icons = du.icons("base.iron-stick"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-iron", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="iron-rod", amount=20},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "copper-plate-casting",
+        icons = du.icons("base.copper-plate"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-copper", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="copper-plate", amount=10},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "copper-cable-casting",
+        icons = du.icons("base.copper-cable"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-copper", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="copper-cable", amount=20},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "lead-plate-casting",
+        icons = du.icons("lead-plate"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-lead", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="lead-plate", amount=10},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "tin-plate-casting",
+        icons = du.icons("tin-plate"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-tin", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="tin-plate", amount=10},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "silver-plate-casting",
+        icons = du.icons("silver-plate"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-silver", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="silver-plate", amount=10},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "nickel-plate-casting",
+        icons = du.icons("nickel-plate"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-nickel", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="nickel-plate", amount=10},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "chrome-plate-casting",
+        icons = du.icons("chrome-plate"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-chrome", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="chrome-plate", amount=10},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "aluminum-plate-casting",
+        icons = du.icons("aluminum-plate"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-aluminum", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="aluminum-plate", amount=10},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "aluminum-cable-casting",
+        icons = du.icons("aluminum-cable"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-aluminum", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="aluminum-cable", amount=20},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "stainless-steel-plate-casting",
+        icons = du.icons("stainless-steel-plate"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-stainless-steel", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="stainless-steel-plate", amount=10},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "molybdenum-special-alloy-casting",
+        icons = du.icons("molybdenum-special-alloy"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-molybdenum-special-alloy", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="molybdenum-special-alloy", amount=5},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "glowing-mangaloy-ingot-casting",
+        icons = du.icons("glowing-mangaloy-ingot"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-glowing-mangaloy", amount=100},
+            {type="item", name="sand-casting", amount=1},
+        },
+        results = {
+            {type="item", name="glowing-mangaloy-ingot", amount=5},
+        }
+    },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "casting", ---@diagnostic disable-line
+        name = "steel-ingot-casting",
+        icons = du.icons("steel-ingot"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="molten-iron", amount=100},
+            {type="item", name="sand-casting", amount=1},
+            {type="item", name="coke", amount=5},
+        },
+        results = {
+            {type="item", name="steel-ingot", amount=5},
+        }
+    },
 })

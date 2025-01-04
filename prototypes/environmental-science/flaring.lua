@@ -12,7 +12,7 @@ local function flare(input, mult)
             hide_from_player_crafting = true,
             category = "flaring", ---@diagnostic disable-line
             name = input.."-flaring",
-            localised_name = {"label.flaring", input},
+            localised_name = {"label.flaring", {input_type.."-name."..input}},
             icons = du.get_icons(input_proto),
             subgroup = "raw-material",
             energy_required = 1,

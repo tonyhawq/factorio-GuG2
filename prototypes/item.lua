@@ -482,8 +482,24 @@ data:extend({
   },
   {
     type = "item",
-    name = "wrought-iron-sheet",
-    icons = du.icons("wrought-iron-sheet"),
+    name = "sand-casting",
+    icons = du.icons("sand-casting"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "chrome-plate",
+    icons = du.icons("chrome-plate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "iron-sheet",
+    icons = du.icons("iron-sheet"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50
@@ -491,16 +507,16 @@ data:extend({
   
   {
     type = "item",
-    name = "wrought-iron-plate",
-    icons = du.icons("wrought-iron-plate"),
+    name = "iron-plate",
+    icons = du.icons("base.iron-plate"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50
   },
   {
     type = "item",
-    name = "wrought-iron-rod",
-    icons = du.icons("wrought-iron-rod"),
+    name = "iron-rod",
+    icons = du.icons("base.iron-stick"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 200
@@ -518,6 +534,30 @@ data:extend({
     type = "item",
     name = "steel-ingot",
     icons = du.icons("steel-ingot"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "stainless-steel-ingot",
+    icons = du.icons("stainless-steel-ingot"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "chrome-ingot",
+    icons = du.icons("chrome-ingot"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "silver-ingot",
+    icons = du.icons("silver-ingot"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 200
@@ -1206,6 +1246,30 @@ data:extend({
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50
+  },
+  {
+    type = "item",
+    name = "crushed-iron-ore",
+    icons = du.icons("crushed-iron-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+  },
+  {
+    type = "item",
+    name = "crushed-copper-ore",
+    icons = du.icons("crushed-copper-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
+  },
+  {
+    type = "item",
+    name = "crushed-tin-ore",
+    icons = du.icons("crushed-tin-ore"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50,
   },
   {
     type = "item",

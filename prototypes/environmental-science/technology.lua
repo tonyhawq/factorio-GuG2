@@ -26,6 +26,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="mechanical-inserter",
             },
+            {
+                type = "unlock-recipe",
+                recipe="lab-1",
+            },
         },
     },
 })
@@ -167,7 +171,7 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
-                recipe="wrought-iron-gear",
+                recipe="iron-gear",
             },
             {
                 type = "unlock-recipe",
@@ -310,15 +314,15 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
-                recipe="wrought-iron-plate-1",
+                recipe="iron-plate-1",
             },
             {
                 type = "unlock-recipe",
-                recipe="wrought-iron-sheet-1",
+                recipe="iron-sheet-1",
             },
             {
                 type = "unlock-recipe",
-                recipe="wrought-iron-rod-1",
+                recipe="iron-rod-1",
             },
         },
     },
@@ -573,7 +577,7 @@ data:extend({
         prerequisites = {"mechanical-science", "masonry-1"},
         unit =
         {
-            count = 10,
+            count = 15,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -617,6 +621,142 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "iron-refining-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/automation-1.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"crushing"},
+        unit =
+        {
+            count = 15,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="crushed-iron-ore",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="iron-ingot-3",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "copper-refining-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/automation-1.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"crushing"},
+        unit =
+        {
+            count = 15,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="crushed-copper-ore",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="copper-ingot-2",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "tin-refining-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/automation-1.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"crushing"},
+        unit =
+        {
+            count = 15,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="crushed-tin-ore",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="tin-ingot-2",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "lead-refining-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/automation-1.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"crushing"},
+        unit =
+        {
+            count = 15,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="crushed-lead-ore",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="lead-ingot-2",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "syngas",
         icons = {
             {
@@ -627,7 +767,7 @@ data:extend({
         prerequisites = {"basic-chemistry"},
         unit =
         {
-            count = 10,
+            count = 50,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -668,7 +808,7 @@ data:extend({
         prerequisites = {"syngas", "wood-processing", "aluminum-processing-1"},
         unit =
         {
-            count = 10,
+            count = 30,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -810,10 +950,6 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="float-glass",
             },
-            {
-                type = "unlock-recipe",
-                recipe="lab-1",
-            },
         },
     },
 })
@@ -830,7 +966,7 @@ data:extend({
         prerequisites = {"mechanical-science"},
         unit =
         {
-            count = 10,
+            count = 15,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -888,7 +1024,7 @@ data:extend({
         prerequisites = {"zinc-processing", "coal-processing-3"},
         unit =
         {
-            count = 10,
+            count = 50,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -926,7 +1062,7 @@ data:extend({
         prerequisites = {"fluid-handling-2", "automation-2"},
         unit =
         {
-            count = 10,
+            count = 50,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1107,7 +1243,7 @@ data:extend({
         prerequisites = {"basic-chemistry", "crushing"},
         unit =
         {
-            count = 10,
+            count = 20,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1169,7 +1305,7 @@ data:extend({
         prerequisites = {"electromagnetism"},
         unit =
         {
-            count = 10,
+            count = 50,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1199,7 +1335,7 @@ data:extend({
         prerequisites = {"aluminum-processing-1"},
         unit =
         {
-            count = 10,
+            count = 30,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1273,7 +1409,7 @@ data:extend({
         prerequisites = {"electromagnetism"},
         unit =
         {
-            count = 10,
+            count = 50,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1319,7 +1455,7 @@ data:extend({
         prerequisites = {"aluminum-processing-1"},
         unit =
         {
-            count = 10,
+            count = 30,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1353,7 +1489,7 @@ data:extend({
         prerequisites = {"blasting-1"},
         unit =
         {
-            count = 10,
+            count = 30,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1403,7 +1539,7 @@ data:extend({
         prerequisites = {"blasting-1"},
         unit =
         {
-            count = 10,
+            count = 30,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1445,7 +1581,7 @@ data:extend({
         prerequisites = {"wood-processing"},
         unit =
         {
-            count = 10,
+            count = 20,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1479,7 +1615,7 @@ data:extend({
         prerequisites = {"urea-1"},
         unit =
         {
-            count = 10,
+            count = 20,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1517,7 +1653,7 @@ data:extend({
         prerequisites = {"polymers-1", "steel-processing", "zinc-processing"},
         unit =
         {
-            count = 10,
+            count = 50,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1595,7 +1731,7 @@ data:extend({
         prerequisites = {"electromagnetism"},
         unit =
         {
-            count = 10,
+            count = 75,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1661,7 +1797,7 @@ data:extend({
         prerequisites = {"heat-exchange", "fluid-handling-2"},
         unit =
         {
-            count = 10,
+            count = 50,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1711,7 +1847,7 @@ data:extend({
         prerequisites = {"coal-processing-3", "electronics", "automation-2"},
         unit =
         {
-            count = 10,
+            count = 50,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1745,7 +1881,7 @@ data:extend({
         prerequisites = {"engine", "canisters"},
         unit =
         {
-            count = 10,
+            count = 100,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1791,7 +1927,7 @@ data:extend({
         prerequisites = {"engine", "canisters"},
         unit =
         {
-            count = 10,
+            count = 50,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -1825,7 +1961,7 @@ data:extend({
         prerequisites = {"engine"},
         unit =
         {
-            count = 10,
+            count = 100,
             ingredients =
             {
                 {"environmental-science-pack", 1},

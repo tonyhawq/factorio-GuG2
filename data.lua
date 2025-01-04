@@ -54,6 +54,9 @@ for _, type in pairs(data.raw) do
     end
 end
 
+data.raw.locomotive.locomotive.energy_source.burnt_inventory_size = 3
+data.raw.car.car.energy_source.burnt_inventory_size = 1
+
 local order_by_tech = {
     ["environmental-science-pack"] = 1,
     ["mechanical-science-pack"] = 2,

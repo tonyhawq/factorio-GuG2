@@ -152,7 +152,7 @@ resource{
     control = 
     {
         type = "autoplace-control",
-        name = "lead-ore",
+        name = "aluminum-ore",
         localised_name = {"", "[entity=aluminum-ore] ", {"entity-name.aluminum-ore"}},
         richness = true,
         order = "b-a",
@@ -185,8 +185,30 @@ resource{
         category = "resource"
     },
 }
+resource{
+    name = "zinc-ore",
+    map_color = {r=100/255, g=237/255, b=255/255},
+    control = 
+    {
+        type = "autoplace-control",
+        name = "zinc-ore",
+        localised_name = {"", "[entity=zinc-ore] ", {"entity-name.zinc-ore"}},
+        richness = true,
+        order = "b-a",
+        category = "resource"
+    },
+}
 
 data.raw.resource.coal.minable.result = "raw-coal"
+data.raw.resource.coal.autoplace = resource_autoplace.resource_autoplace_settings{
+    name = "coal",
+    order = "b",
+    base_density = 40,
+    has_starting_area_placement = true,
+    regular_rq_factor_multiplier = 1,
+    starting_rq_factor_multiplier = 1.3,
+    candidate_spot_count = 22
+}
 
 add_resource_to_nauvis("evaporite")
 add_resource_to_nauvis("lead-ore")
@@ -367,6 +389,3 @@ data:extend({
         map_grid = false
     },
 })
-
-data.raw.tile.water.collision_mask.layers.resource = nil
-data.raw.tile.deepwater.collision_mask.layers.resource = nil

@@ -122,9 +122,30 @@ data:extend({
         order = "a[a]",
         main_product = "",
         enabled = true,
-        energy_required = 2,
+        energy_required = 4,
         ingredients = {
             {type="item", name="tin-ore", amount=4},
+            {type="item", name="limestone", amount=2},
+        },
+        results = {
+            {type="item", name="tin-ingot", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "smelting", ---@diagnostic disable-line
+        name = "tin-ingot-2",
+        icons = du.icons("tin-ingot"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        enabled = true,
+        energy_required = 3,
+        ingredients = {
+            {type="item", name="crushed-tin-ore", amount=6},
             {type="item", name="limestone", amount=2},
         },
         results = {
@@ -218,9 +239,29 @@ data:extend({
         order = "a[a]",
         main_product = "",
         enabled = true,
-        energy_required = 2,
+        energy_required = 4,
         ingredients = {
             {type="item", name="copper-ore", amount=4},
+        },
+        results = {
+            {type="item", name="copper-ingot", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "smelting", ---@diagnostic disable-line
+        name = "copper-ingot-2",
+        icons = du.icons("copper-ingot"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        enabled = true,
+        energy_required = 3,
+        ingredients = {
+            {type="item", name="crushed-copper-ore", amount=6},
         },
         results = {
             {type="item", name="copper-ingot", amount=1},
@@ -336,6 +377,26 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
+        name = "lead-ingot-2",
+        icons = du.icons("lead-ingot"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        enabled = true,
+        energy_required = 3,
+        ingredients = {
+            {type="item", name="crushed-lead-ore", amount=12},
+        },
+        results = {
+            {type="item", name="lead-ingot", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        category = "smelting", ---@diagnostic disable-line
         name = "lead-plate-1",
         icons = du.icons("lead-plate"),
         subgroup = "raw-material",
@@ -362,7 +423,7 @@ data:extend({
         enabled = true,
         energy_required = 0.5,
         ingredients = {
-            {type="item", name="wrought-iron-rod", amount=4},
+            {type="item", name="iron-rod", amount=4},
         },
         results = {
             {type="item", name="firearm-magazine", amount=1},

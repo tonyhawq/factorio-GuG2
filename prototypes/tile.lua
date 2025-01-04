@@ -12,8 +12,17 @@ data:extend({
     {
         type = "collision-layer",
         name = "vertically_integratable",
-    }
+    },
+    {
+        type = "collision-layer",
+        name = "resource_water_tile",
+    },
 })
+
+data.raw.tile.water.collision_mask.layers.resource = nil
+data.raw.tile.deepwater.collision_mask.layers.resource = nil
+data.raw.tile.water.collision_mask.layers.resource_water_tile = true
+data.raw.tile.deepwater.collision_mask.layers.resource_water_tile = true
 
 data:extend({
     {
@@ -114,7 +123,6 @@ forestry_soil.autoplace = {
     "water_base(2 - multioctave_noise{x = x, y = y, persistence = 0.75, seed0 = map_seed, seed1 = 0, octaves = 1} * moisture ^ 2 * 2 + moisture ^ 2 * 10, 50),"..
     "-inf), -inf)",
 }
-forestry_soil.autoplace.probability_expression = "10000000 * ("..forestry_soil.autoplace.probability_expression..")"
 data:extend({forestry_soil})
 data.raw.planet.nauvis.map_gen_settings.autoplace_settings.tile.settings["forestry-soil"] = {}
 

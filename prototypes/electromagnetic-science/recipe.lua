@@ -2112,30 +2112,6 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        enabled = false,
-        category = "fabricating", ---@diagnostic disable-line
-        name = "high-discharge-lamp",
-        energy_required = 2,
-        ingredients = {
-            -- metal halide UV light (tungsten comes later, cant use that, no mercury)
-            -- refrigerant comes later, so no xenon/argon/noble gases
-            {type="item", name="gaskets", amount=3},
-            {type="item", name="small-lamp", amount=1},
-            {type="item", name="cobalt-dust", amount=1},
-            {type="item", name="molybdenum-special-alloy", amount=1},
-            {type="item", name="lead-plate", amount=2},
-            -- {type="fluid", name="xenon", amount=10}, -- (perhaps)
-            {type="fluid", name="molten-glass", amount=20},
-        },
-        results = {
-            {type="item", name="high-discharge-lamp", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
         name = "gaskets-1",
         icons = du.icons("gaskets"),
         enabled = false,

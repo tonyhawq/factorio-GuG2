@@ -8,7 +8,7 @@ data:extend({
         icons = du.icons("trichlorosilane"),
         enabled = false,
         main_product = "",
-        category = "chemistry",
+        category = "distillation",
         subgroup = "raw-material",
         energy_required = 10,
         order = "a",
@@ -18,7 +18,7 @@ data:extend({
             {type="item", name="silicon", amount=10},
         },
         results ={
-            {type="fluid", name="trichlorosilane", amount=400},
+            {type="fluid", name="trichlorosilane", amount=400, fluidbox_index = 4},
         }
     }
 })
@@ -30,7 +30,7 @@ data:extend({
         icons = du.icons("trichlorosilane"):add_corner("chlorine"),
         enabled = false,
         main_product = "",
-        category = "chemistry",
+        category = "distillation",
         subgroup = "raw-material",
         energy_required = 20,
         order = "a",
@@ -39,7 +39,7 @@ data:extend({
             {type="item", name="silicon", amount=20},
         },
         results ={
-            {type="fluid", name="trichlorosilane", amount=100},
+            {type="fluid", name="trichlorosilane", amount=100, fluidbox_index = 4},
         }
     }
 })
@@ -51,7 +51,7 @@ data:extend({
         icons = du.icons("dichlorosilane"):add_corner("trichlorosilane"),
         enabled = false,
         main_product = "",
-        category = "chemistry",
+        category = "distillation",
         subgroup = "raw-material",
         energy_required = 10,
         order = "a",
@@ -59,8 +59,8 @@ data:extend({
             {type="fluid", name="trichlorosilane", amount=200},
         },
         results ={
-            {type="fluid", name="dichlorosilane", amount=100},
-            {type="fluid", name="silicon-tetrachloride", amount=100},
+            {type="fluid", name="dichlorosilane", amount=100, fluidbox_index = 2},
+            {type="fluid", name="silicon-tetrachloride", amount=100, fluidbox_index = 3},
         }
     }
 })
@@ -72,7 +72,7 @@ data:extend({
         icons = du.icons("dichlorosilane"),
         enabled = false,
         main_product = "",
-        category = "chemistry",
+        category = "distillation",
         subgroup = "raw-material",
         energy_required = 10,
         order = "a",
@@ -80,8 +80,8 @@ data:extend({
             {type="fluid", name="trichlorosilane", amount=200},
         },
         results ={
-            {type="fluid", name="dichlorosilane", amount=100},
-            {type="fluid", name="silicon-tetrachloride", amount=100},
+            {type="fluid", name="dichlorosilane", amount=100, fluidbox_index = 2},
+            {type="fluid", name="silicon-tetrachloride", amount=100, fluidbox_index = 3},
         }
     }
 })
@@ -93,7 +93,7 @@ data:extend({
         icons = du.icons("chlorosilane"):add_corner("dichlorosilane"),
         enabled = false,
         main_product = "",
-        category = "chemistry",
+        category = "distillation",
         subgroup = "raw-material",
         energy_required = 10,
         order = "a",
@@ -101,8 +101,8 @@ data:extend({
             {type="fluid", name="dichlorosilane", amount=200},
         },
         results ={
-            {type="fluid", name="trichlorosilane", amount=100},
-            {type="fluid", name="chlorosilane", amount=100},
+            {type="fluid", name="trichlorosilane", amount=100, fluidbox_index = 2},
+            {type="fluid", name="chlorosilane", amount=100, fluidbox_index = 4},
         }
     }
 })
@@ -114,7 +114,7 @@ data:extend({
         icons = du.icons("silane"),
         enabled = false,
         main_product = "",
-        category = "chemistry",
+        category = "distillation",
         subgroup = "raw-material",
         energy_required = 10,
         order = "a",
@@ -122,30 +122,8 @@ data:extend({
             {type="fluid", name="chlorosilane", amount=200},
         },
         results ={
-            {type="fluid", name="silane", amount=100},
-            {type="fluid", name="dichlorosilane", amount=100},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        name = "polysilicon-1",
-        icons = du.icons("polysilicon"),
-        enabled = false,
-        main_product = "",
-        category = "blasting",
-        subgroup = "raw-material",
-        energy_required = 100,
-        order = "a",
-        ingredients = {
-            {type="fluid", name="silane", amount=1000},
-            {type="item", name="zinc-plate", amount=50},
-        },
-        results ={
-            {type="item", name="polysilicon", amount=10},
-            {type="fluid", name="hydrogen", amount=2000},
+            {type="fluid", name="silane", amount=100, fluidbox_index = 4},
+            {type="fluid", name="dichlorosilane", amount=100, fluidbox_index = 2},
         }
     }
 })

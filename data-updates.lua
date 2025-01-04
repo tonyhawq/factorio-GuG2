@@ -143,7 +143,6 @@ for _, resource in pairs(data.raw["resource"]) do
         resource.collision_mask = {
             layers = {
                 resource = true,
-                water_tile = true,
             }
         }
     end

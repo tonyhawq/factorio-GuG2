@@ -177,6 +177,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe = "trichlorosilane-1"
+            },
+            {
+                type = "unlock-recipe",
                 recipe = "trichlorosilane-dichlorosilane-1"
             },
             {
@@ -185,7 +189,7 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
-                recipe = "trichlorosilane-1"
+                recipe = "dichlorosilane-chlorosilane-1"
             },
             {
                 type = "unlock-recipe",

@@ -24,7 +24,7 @@ local function make_composite(entity)
 end
 
 local distillation_rig = table.deepcopy(data.raw["assembling-machine"]["oil-refinery"])
-distillation_rig.crafting_categories = {"distillation"}
+distillation_rig.crafting_categories = {"distillation", "casting", "alloying", "induction"}
 distillation_rig.name = "distillation-rig"
 distillation_rig.minable.result = "distillation-rig"
 distillation_rig.icons = du.icons("base.oil-refinery")
@@ -3796,8 +3796,18 @@ local function fix_furnace(stone_furnace)
     stone_furnace.fluid_boxes_off_when_no_fluid_recipe = true
     data:extend({stone_furnace})
 end
-fix_furnace(data.raw.furnace["stone-furnace"])
+local stone_furnace = data.raw.furnace["stone-furnace"]
+fix_furnace(table.deepcopy(data.raw.furnace["stone-furnace"]))
+data.raw.furnace["dummy-stone-furnace"] = stone_furnace
+stone_furnace.name = "dummy-stone-furnace"
+stone_furnace.next_upgrade = nil
 fix_furnace(data.raw.furnace["steel-furnace"])
+data.raw["assembling-machine"]["steel-furnace"].energy_usage = "800kW"
+local electric_furnace = data.raw.furnace["electric-furnace"]
+data.raw.furnace["electric-furnace"] = nil
+electric_furnace.type = "assembling-machine"
+electric_furnace.energy_usage = "900kW"
+data:extend({electric_furnace})
 data:extend({
     {
         type = "assembling-machine",
@@ -6695,6 +6705,18 @@ data:extend({
     {
         type = "recipe-category",
         name = "radiating"
+    },
+    {
+        type = "recipe-category",
+        name = "induction"
+    },
+    {
+        type = "recipe-category",
+        name = "casting"
+    },
+    {
+        type = "recipe-category",
+        name = "alloying"
     },
     {
         type = "recipe-category",

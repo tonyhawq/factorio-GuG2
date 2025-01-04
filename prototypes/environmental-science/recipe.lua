@@ -4,6 +4,86 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        name = "crushed-iron-ore",
+        icons = du.icons("crushed-iron-ore"),
+        enabled = false,
+        category = "crushing",
+        energy_required = 2,
+        main_product = "crushed-iron-ore",
+        allow_decomposition = false,
+        ingredients = {
+            {type="item", name="iron-ore", amount=1},
+        },
+        results ={
+            {type="item", name="crushed-iron-ore", amount=2},
+            {type="item", name="gravel", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "crushed-copper-ore",
+        icons = du.icons("crushed-copper-ore"),
+        enabled = false,
+        category = "crushing",
+        energy_required = 2,
+        main_product = "crushed-copper-ore",
+        allow_decomposition = false,
+        ingredients = {
+            {type="item", name="copper-ore", amount=1},
+        },
+        results ={
+            {type="item", name="crushed-copper-ore", amount=2},
+            {type="item", name="gravel", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "crushed-tin-ore",
+        icons = du.icons("crushed-tin-ore"),
+        enabled = false,
+        category = "crushing",
+        energy_required = 2,
+        main_product = "crushed-tin-ore",
+        allow_decomposition = false,
+        ingredients = {
+            {type="item", name="tin-ore", amount=1},
+        },
+        results ={
+            {type="item", name="crushed-tin-ore", amount=2},
+            {type="item", name="gravel", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "crushed-lead-ore",
+        icons = du.icons("crushed-lead-ore"),
+        enabled = false,
+        category = "crushing",
+        energy_required = 2,
+        main_product = "crushed-lead-ore",
+        allow_decomposition = false,
+        ingredients = {
+            {type="item", name="lead-ore", amount=1},
+        },
+        results ={
+            {type="item", name="crushed-lead-ore", amount=2},
+            {type="item", name="gravel", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         enabled = true,
         category = "smelting", ---@diagnostic disable-line
         name = "bronze-ingot-1",
@@ -114,10 +194,10 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 4,
         allow_decomposition = false,
         ingredients = {
-            {type="item", name="iron-ore", amount=4},
+            {type="item", name="iron-ore", amount=8},
         },
         results = {
             {type="item", name="iron-ingot", amount=1},
@@ -152,9 +232,31 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "smelting", ---@diagnostic disable-line
+        name = "iron-ingot-3",
+        icons = du.icons("iron-ingot"):add_corner("iron-oxide"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 4,
+        allow_decomposition = false,
+        ingredients = {
+            {type="item", name="crushed-iron-ore", amount=12},
+            {type="item", name="coke", amount=1},
+        },
+        results = {
+            {type="item", name="iron-ingot", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "smithing", ---@diagnostic disable-line
-        name = "wrought-iron-plate-1",
-        icons = du.icons("wrought-iron-plate"),
+        name = "iron-plate-1",
+        icons = du.icons("base.iron-plate"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -163,7 +265,7 @@ data:extend({
             {type="item", name="iron-ingot", amount=1},
         },
         results = {
-            {type="item", name="wrought-iron-plate", amount=2},
+            {type="item", name="iron-plate", amount=2},
         }
     }
 })
@@ -178,7 +280,7 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="rivets", amount=6},
-            {type="item", name="wrought-iron-sheet", amount=3},
+            {type="item", name="iron-sheet", amount=3},
         },
         results = {
             {type="item", name="small-tank", amount=1},
@@ -272,7 +374,7 @@ data:extend({
         ingredients = {
             {type="item", name="small-tank", amount=3}, -- engine tanks
             {type="item", name="bronze-plate", amount=6}, -- bushings
-            {type="item", name="wrought-iron-rod", amount=6},
+            {type="item", name="iron-rod", amount=6},
             {type="item", name="rivets", amount=12},
         },
         results = {
@@ -506,7 +608,7 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="steam-engine", amount=1},
-            {type="item", name="wrought-iron-rod", amount=3},
+            {type="item", name="iron-rod", amount=3},
             {type="item", name="brick", amount=12},
             {type="item", name="rivets", amount=8},
         },
@@ -688,15 +790,15 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "advanced-crafting", ---@diagnostic disable-line
-        name = "wrought-iron-gear",
+        name = "iron-gear",
         icons = du.icons{mod="base", name="iron-gear-wheel"},
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="item", name="wrought-iron-plate", amount=1},
-            {type="item", name="wrought-iron-rod", amount=1},
+            {type="item", name="iron-plate", amount=1},
+            {type="item", name="iron-rod", amount=1},
             {type="item", name="bound-porcelain", amount=1},
         },
         results = {
@@ -760,7 +862,7 @@ data:extend({
         ingredients = {
             {type="item", name="steam-engine", amount=1},
             {type="item", name="iron-gear-wheel", amount=6},
-            {type="item", name="wrought-iron-sheet", amount=6},
+            {type="item", name="iron-sheet", amount=6},
             {type="item", name="lead-plate", amount=6},
         },
         results = {
@@ -1032,7 +1134,7 @@ data:extend({
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="item", name="wrought-iron-rod", amount=1},
+            {type="item", name="iron-rod", amount=1},
             {type="item", name="bound-porcelain", amount=1},
         },
         results = {
@@ -1332,7 +1434,7 @@ data:extend({
         ingredients = {
             {type="item", name="treated-wood", amount=20},
             {type="item", name="soil", amount=20},
-            {type="item", name="wrought-iron-sheet", amount=40},
+            {type="item", name="iron-sheet", amount=40},
             {type="item", name="steam-inserter", amount=20},
             {type="item", name="stone-brick", amount=50},
         },
@@ -1608,7 +1710,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 4,
+        energy_required = 1,
         ingredients = {
             {type="item", name="log", amount=1},
         },
@@ -1628,7 +1730,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 4,
+        energy_required = 1,
         ingredients = {
             {type="item", name="pine-log", amount=1},
         },
@@ -1805,7 +1907,7 @@ data:extend({
             {type="item", name="small-tank", amount=4},
             {type="item", name="treated-wood", amount=10},
             {type="item", name="analog-circuit", amount=3},
-            {type="item", name="wrought-iron-rod", amount=6},
+            {type="item", name="iron-rod", amount=6},
         },
         results = {
             {type="item", name="burner-chemical-plant", amount=1},
@@ -3084,8 +3186,8 @@ data:extend({
         },
         results ={
             {type="fluid", name="carbon-monoxide", amount=5},
-            {type="item", name="aluminum-ingot", amount=2},
-            {type="item", name="aluminum-carbide", amount=8},
+            {type="item", name="aluminum-ingot", amount=1},
+            {type="item", name="aluminum-carbide", amount=4},
         }
     }
 })
@@ -3103,7 +3205,7 @@ data:extend({
         main_product = "",
         allow_decomposition = false,
         ingredients = {
-            {type="item", name="alumina", amount=8},
+            {type="item", name="alumina", amount=12},
             {type="item", name="coke", amount=3},
             {type="item", name="silica", amount=3},
         },
@@ -3344,7 +3446,7 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="item", name="small-tank", amount=1},
-            {type="item", name="wrought-iron-sheet", amount=20},
+            {type="item", name="iron-sheet", amount=20},
             {type="item", name="screws", amount=12},
             {type="item", name="refractory-brick", amount=20},
             {type="item", name="stone-furnace", amount=1},
@@ -3790,17 +3892,17 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "smithing", ---@diagnostic disable-line
-        name = "wrought-iron-sheet-1",
-        icons = du.icons("wrought-iron-sheet"),
+        name = "iron-sheet-1",
+        icons = du.icons("iron-sheet"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="item", name="wrought-iron-plate", amount=4},
+            {type="item", name="iron-plate", amount=4},
         },
         results = {
-            {type="item", name="wrought-iron-sheet", amount=3},
+            {type="item", name="iron-sheet", amount=3},
         }
     }
 })
@@ -3811,8 +3913,8 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "smithing", ---@diagnostic disable-line
-        name = "wrought-iron-rod-1",
-        icons = du.icons("wrought-iron-rod"),
+        name = "iron-rod-1",
+        icons = du.icons("base.iron-stick"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -3821,7 +3923,7 @@ data:extend({
             {type="item", name="iron-ingot", amount=1},
         },
         results = {
-            {type="item", name="wrought-iron-rod", amount=3},
+            {type="item", name="iron-rod", amount=3},
         }
     }
 })
@@ -4382,7 +4484,7 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="aluminum-cable", amount=16},
-            {type="item", name="wrought-iron-sheet", amount=2},
+            {type="item", name="iron-sheet", amount=2},
             {type="item", name="glass", amount=2},
         },
         results = {
@@ -4455,7 +4557,7 @@ data:extend({
         enabled = true,
         energy_required = 0.5,
         ingredients = {
-            {type="item", name="wrought-iron-plate", amount=2},
+            {type="item", name="iron-plate", amount=2},
             {type="item", name="iron-gear-wheel", amount=1},
         },
         results = {
