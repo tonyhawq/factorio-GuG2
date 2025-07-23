@@ -33,7 +33,7 @@ data:extend({
         ingredients = {
             {type="item", name="copper-plate", amount=12},
             {type="item", name="aluminum-plate", amount=10},
-            {type="item", name="glowing-mangaloy-ingot", amount=4},
+            {type="item", name="glowing-mangaloy-plate", amount=4},
             {type="fluid", name="water", amount=30},
         },
         results = {
@@ -53,7 +53,7 @@ data:extend({
         ingredients = {
             {type="item", name="counterflow-heat-exchanger", amount=1},
             {type="item", name="concrete", amount=30},
-            {type="item", name="glowing-mangaloy-ingot", amount=4},
+            {type="item", name="glowing-mangaloy-plate", amount=4},
             {type="item", name="plastic-bar", amount=40},
             {type="item", name="heat-pipe", amount=6},
         },

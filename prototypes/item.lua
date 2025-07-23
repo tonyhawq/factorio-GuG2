@@ -442,6 +442,14 @@ data:extend({
   },
   {
     type = "item",
+    name = "glowing-mangaloy-plate",
+    icons = du.icons("glowing-mangaloy-plate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
     name = "antimony-oxide",
     icons = du.icons("antimony-oxide"),
     subgroup = "smelting-machine",
@@ -912,6 +920,14 @@ data:extend({
     type = "item",
     name = "stainless-steel-plate",
     icons = du.icons("stainless-steel-plate"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "transformer",
+    icons = du.icons("transformer"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 200

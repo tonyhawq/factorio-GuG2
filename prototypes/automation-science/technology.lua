@@ -1,6 +1,186 @@
 data:extend({
     {
         type = "technology",
+        name = "casting-1",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/solar-energy.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"automation-science"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+                {"automation-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe = "induction-melter"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "alloy-furnace"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "sand-casting"
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "advanced-iron-smelting-3",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/solar-energy.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"casting-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+                {"automation-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe = "molten-iron-1"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "iron-ingot-casting"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "iron-plate-casting"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "iron-rod-casting"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "iron-sheet-casting"
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "advanced-copper-smelting-3",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/solar-energy.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"casting-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+                {"automation-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe = "molten-copper-1"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "copper-ingot-casting"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "copper-plate-casting"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "copper-cable-casting"
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "advanced-aluminum-smelting-3",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/solar-energy.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"casting-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+                {"optimization-science-pack", 1},
+                {"automation-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe = "molten-aluminum-1"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "aluminum-ingot-casting"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "aluminum-plate-casting"
+            },
+            {
+                type = "unlock-recipe",
+                recipe = "aluminum-cable-casting"
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "solar-energy",
         icons = {
             {

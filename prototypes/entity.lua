@@ -144,127 +144,6 @@ data:extend(
         },
     },
 })
-data:extend({
-    {
-        g2_clean = true, ---@diagnostic disable-line
-        type = "storage-tank",
-        name = "one-way-valve",
-        icon = "__GuG2__/graphics/icons/one-way-valve.png",
-        icon_size = 64,
-        flags = {"placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "one-way-valve"},
-        max_health = 500,
-        corpse = "storage-tank-remnants",
-        dying_explosion = "storage-tank-explosion",
-        collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
-        selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
-        fluid_box =
-        {
-            volume=100,
-            pipe_covers = pipecoverspictures(),
-            pipe_connections =
-            {
-                { position = {0, 0}, --[[flow_direction = "input",]] direction=defines.direction.north},
-                { position = {0, 0}, --[[flow_direction = "output",]] direction=defines.direction.south}
-            }
-        },
-        window_bounding_box = {{-0.125, 0.6875}, {0.1875, 1.1875}},
-        pictures =
-        {
-            picture =
-            {
-                sheets =
-                {
-                    {
-                        filename = "__GuG2__/graphics/entity/valves/valve-generic.png",
-                        priority = "extra-high",
-                        frames = 1,
-                        scale = 0.4,
-                        width = 128,
-                        height = 128,
-                        shift = util.by_pixel(0, -10),
-                        -- hr_version =
-                        -- {
-                        --   filename = "__base__/graphics/entity/storage-tank/hr-storage-tank.png",
-                        --   priority = "extra-high",
-                        --   frames = 2,
-                        --   width = 219,
-                        --   height = 215,
-                        --   shift = util.by_pixel(-0.25, 3.75),
-                        --   scale = 0.5
-                        -- }
-                    },
-                    --   {
-                    --     filename = "__base__/graphics/entity/storage-tank/storage-tank-shadow.png",
-                    --     priority = "extra-high",
-                    --     frames = 2,
-                    --     width = 146,
-                    --     height = 77,
-                    --     shift = util.by_pixel(30, 22.5),
-                    --     draw_as_shadow = true,
-                    --     hr_version =
-                    --     {
-                    --       filename = "__base__/graphics/entity/storage-tank/hr-storage-tank-shadow.png",
-                    --       priority = "extra-high",
-                    --       frames = 2,
-                    --       width = 291,
-                    --       height = 153,
-                    --       shift = util.by_pixel(29.75, 22.25),
-                    --       scale = 0.5,
-                    --       draw_as_shadow = true
-                    --     }
-                    --   }
-                },
-            },
-            fluid_background = util.empty_sprite(),
-            window_background = util.empty_sprite(),
-            flow_sprite = util.empty_sprite(),
-            gas_flow = util.empty_sprite(),
-        },
-        flow_length_in_ticks = 360,
-        vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
-        working_sound =
-        {
-            sound =
-            {
-                filename = "__base__/sound/storage-tank.ogg",
-                volume = 0.6
-            },
-            match_volume_to_activity = true,
-            audible_distance_modifier = 0.5,
-            max_sounds_per_type = 3
-        },
-        water_reflection =
-        {
-            pictures =
-            {
-                filename = "__base__/graphics/entity/storage-tank/storage-tank-reflection.png",
-                priority = "extra-high",
-                width = 24,
-                height = 24,
-                shift = util.by_pixel(5, 35),
-                variation_count = 1,
-                scale = 5
-            },
-            rotate = false,
-            orientation_to_variation = false
-        }
-    },
-})
-local overflow_valve = table.deepcopy(data.raw["storage-tank"]["one-way-valve"])
-overflow_valve.name = "overflow-valve"
-overflow_valve.icon = "__GuG2__/graphics/icons/overflow-valve.png"
-overflow_valve.minable.result = "overflow-valve"
-overflow_valve.fluid_box.base_level = 0.8
-
-data:extend({overflow_valve})
-local underflow_valve = util.table.deepcopy(data.raw["storage-tank"]["overflow-valve"])
-underflow_valve.name = "top-up-valve"
-underflow_valve.icon = "__GuG2__/graphics/icons/top-up-valve.png"
-underflow_valve.minable.result = "top-up-valve"
-underflow_valve.fluid_box.base_level = -0.2
-
-data:extend({underflow_valve})
 
 data:extend({
     {
@@ -4527,6 +4406,12 @@ data.raw.lab.lab.inputs = {
     "electromagnetic-science-pack",
     "optimization-science-pack",
     "automation-science-pack",
+    "logistic-science-pack",
+    "military-science-pack",
+    "chemical-science-pack",
+    "utility-science-pack",
+    "production-science-pack",
+    "space-science-pack",
 }
 
 data:extend({
@@ -5681,6 +5566,241 @@ data:extend({
         energy_usage = "300kW",
     }
 })
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "induction-melter",
+        icons = du.icons("induction-melter"),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "induction-melter"},
+        max_health = 400,
+        corpse = "assembling-machine-3-remnants",
+        dying_explosion = "assembling-machine-3-explosion",
+        alert_icon_shift = util.by_pixel(-3, -12),
+        resistances =
+        {
+            {
+                type = "acid",
+                percent = 95
+            }
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {1, 2}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {2, 0}, direction=defines.direction.east }},
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                    volume = 0.45
+                }
+            },
+            audible_distance_modifier = 0.5,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
+        fast_replaceable_group = "electrolyzer",
+        graphics_set = {
+            animation =
+            {
+                layers =
+                {
+                    {
+                        filename = "__GuG2__/graphics/entity/induction-melter.png",
+                        priority = "high",
+                        width = 320,
+                        height = 320,
+                        frame_count = 1,
+                        line_length = 1,
+                        scale = 0.5,
+                    },
+                }
+            },
+        },
+        crafting_categories = {"induction"},
+        crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source =
+        {
+            type = "electric",
+            usage_priority = "secondary-input",
+            emissions_per_minute = {pollution=0}
+        },
+        energy_usage = "2MW",
+    }
+})
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "alloy-furnace",
+        icons = du.icons("alloy-furnace"),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "alloy-furnace"},
+        max_health = 400,
+        corpse = "assembling-machine-3-remnants",
+        dying_explosion = "assembling-machine-3-explosion",
+        alert_icon_shift = util.by_pixel(-3, -12),
+        resistances =
+        {
+            {
+                type = "acid",
+                percent = 95
+            }
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="input", position = {-2, -2}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="input", position = {-1, -2}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="input", position = {0, -2}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="input", position = {1, -2}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "input",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="input", position = {2, -2}, direction=defines.direction.north }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {-1, 2}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+            {
+                production_type = "output",
+                pipe_picture = assembler3pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                base_level = 1,
+                pipe_connections = {{ flow_direction="output", position = {1, 2}, direction=defines.direction.south }},
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound =
+        {
+            sound =
+            {
+                {
+                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                    volume = 0.45
+                }
+            },
+            audible_distance_modifier = 0.5,
+            fade_in_ticks = 4,
+            fade_out_ticks = 20
+        },
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+        damaged_trigger_effect = hit_effects.entity(),
+        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
+        fast_replaceable_group = "electrolyzer",
+        graphics_set = {
+            animation =
+            {
+                layers =
+                {
+                    {
+                        filename = "__GuG2__/graphics/entity/alloy-furnace.png",
+                        priority = "high",
+                        width = 320,
+                        height = 320,
+                        frame_count = 1,
+                        line_length = 1,
+                        scale = 0.5,
+                    },
+                }
+            },
+        },
+        crafting_categories = {"alloying"},
+        crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source =
+        {
+            type = "fluid",
+            effectivity = 0.5,
+            emissions_per_minute = {pollution=8},
+            scale_fluid_usage = true,
+            burns_fluid = true,
+            fluid_box = {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 200,
+                base_level = -1,
+                pipe_connections = {{ flow_direction="input", position = {2, 0}, direction=defines.direction.east }},
+                secondary_draw_orders = { north = -1 }
+            },
+        },
+        energy_usage = "2MW",
+    }
+})
 -- oil refinery
 data:extend({
     {
@@ -6665,6 +6785,24 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         place_result = "crystallizer"
+    },
+    {
+      type = "item",
+      name = "alloy-furnace",
+      place_result = "alloy-furnace",
+      icons = du.icons("alloy-furnace"),
+      subgroup = "smelting-machine",
+      order = "a[stone-furnace]",
+      stack_size = 50
+    },
+    {
+      type = "item",
+      name = "induction-melter",
+      place_result = "induction-melter",
+      icons = du.icons("induction-melter"),
+      subgroup = "smelting-machine",
+      order = "a[stone-furnace]",
+      stack_size = 50
     },
     {
         type = "recipe-category",

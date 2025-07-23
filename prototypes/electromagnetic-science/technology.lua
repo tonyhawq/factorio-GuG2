@@ -836,6 +836,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="glowing-mangaloy-ingot-1",
             },
+            {
+                type = "unlock-recipe",
+                recipe="glowing-mangaloy-plate-1",
+            },
         },
     },
 })

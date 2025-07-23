@@ -76,6 +76,7 @@ data:extend({
         main_product = "",
         ingredients = {
             {type="item", name="battery-alloy-plate", amount=3},
+            {type="item", name="plastic-bar", amount=3},
             {type="fluid", name="sulfuric-acid", amount=20},
             {type="fluid", name="water", amount=20},
         },
@@ -181,6 +182,26 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        name = "glowing-mangaloy-plate-1",
+        icons = du.icons("glowing-mangaloy-plate"),
+        enabled = false,
+        category = "smithing",
+        subgroup = "raw-material",
+        energy_required = 8,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="glowing-mangaloy-ingot", amount=1},
+        },
+        results = {
+            {type="item", name="glowing-mangaloy-plate", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         enabled = false,
         category = "chemistry", ---@diagnostic disable-line
         name = "grease-1",
@@ -228,7 +249,7 @@ data:extend({
         ingredients = {
             {type="item", name="nickel-plate", amount=6},
             {type="item", name="iron-gear-wheel", amount=12},
-            {type="item", name="glowing-mangaloy-ingot", amount=2},
+            {type="item", name="glowing-mangaloy-plate", amount=2},
             {type="item", name="fiberglass", amount=4},
             {type="fluid", name="grease", amount=6},
         },
@@ -358,8 +379,8 @@ data:extend({
         energy_required = 1,
         ingredients = {
             {type="item", name="plastic-bar", amount=4},
-            {type="item", name="glowing-mangaloy-ingot", amount=1},
-            {type="item", name="steel-plate", amount=1},
+            {type="item", name="glowing-mangaloy-plate", amount=1},
+            {type="item", name="steel-beam", amount=1},
             {type="item", name="aluminum-cable", amount=6},
         },
         results = {
@@ -1300,7 +1321,7 @@ data:extend({
         ingredients = {
             {type="item", name="filter", amount=3},
             {type="item", name="small-parts", amount=3},
-            {type="item", name="glowing-mangaloy-ingot", amount=1},
+            {type="item", name="glowing-mangaloy-plate", amount=1},
             {type="item", name="glass", amount=6},
             {type="item", name="rubylith", amount=12},
         },
@@ -1466,7 +1487,7 @@ data:extend({
         icons = du.icons("clean-long-handed-inserter"),
         energy_required = 4,
         ingredients = {
-            {type="item", name="glowing-mangaloy-ingot", amount=1},
+            {type="item", name="glowing-mangaloy-plate", amount=1},
             {type="item", name="molybdenum-special-alloy", amount=1},
             {type="item", name="clean-inserter", amount=1},
         },
@@ -1523,6 +1544,7 @@ data:extend({
         ingredients = {
             {type="item", name="stone-brick", amount=5},
             {type="item", name="battery", amount=4},
+            {type="item", name="plastic-bar", amount=20},
             {type="item", name="aluminum-cable", amount=24},
             {type="fluid", name="lubricant", amount=6},
         },
@@ -1566,6 +1588,7 @@ data:extend({
             {type="item", name="transport-belt", amount=1},
             {type="item", name="fiberglass", amount=1},
             {type="item", name="small-parts", amount=6},
+            {type="item", name="plastic-bar", amount=6},
         },
         results = {
             {type="item", name="fast-transport-belt", amount=1},
@@ -1622,7 +1645,7 @@ data:extend({
         ingredients = {
             {type="item", name="concrete", amount=20},
             {type="item", name="steel-beam", amount=10},
-            {type="item", name="glowing-mangaloy-ingot", amount=5},
+            {type="item", name="glowing-mangaloy-plate", amount=5},
             {type="item", name="aluminum-cable", amount=5},
             {type="item", name="electronic-circuit", amount=5},
             {type="item", name="pipe", amount=10},
@@ -1668,6 +1691,7 @@ data:extend({
             {type="item", name="solder", amount=10},
             {type="item", name="aluminum-plate", amount=20},
             {type="item", name="copper-cable", amount=40},
+            {type="item", name="plastic-bar", amount=20},
         },
         results = {
             {type="item", name="computer-1", amount=1},
@@ -1688,6 +1712,7 @@ data:extend({
             {type="item", name="arithmetic-combinator", amount=12},
             {type="item", name="accumulator", amount=4},
             {type="item", name="small-parts", amount=20},
+            {type="item", name="plastic-bar", amount=20},
         },
         results = {
             {type="item", name="processor-1", amount=1},
@@ -1704,7 +1729,7 @@ data:extend({
         icons = du.icons{mod="base",name="storage-tank"},
         energy_required = 0.5,
         ingredients = {
-            {type="item", name="glowing-mangaloy-ingot", amount=2},
+            {type="item", name="glowing-mangaloy-plate", amount=2},
             {type="item", name="plastic-bar", amount=8},
             {type="item", name="glass", amount=6},
             {type="item", name="steel-beam", amount=6},
@@ -1727,7 +1752,7 @@ data:extend({
             {type="item", name="inserter", amount=1},
             {type="item", name="small-electric-motor", amount=2},
             {type="item", name="battery", amount=1},
-            {type="item", name="glowing-mangaloy-ingot", amount=1},
+            {type="item", name="glowing-mangaloy-plate", amount=1},
         },
         results = {
             {type="item", name="fast-inserter", amount=1},
@@ -2762,6 +2787,7 @@ data:extend({
             {type="item", name="graphite-dust", amount=12},
             {type="item", name="battery-alloy-plate", amount=3},
             {type="item", name="manganese-dioxide", amount=3},
+            {type="item", name="plastic-bar", amount=6},
             {type="fluid", name="ammonia", amount=10},
         },
         results ={
@@ -2864,7 +2890,7 @@ data:extend({
         ingredients = {
             {type="item", name="phenolic-resin", amount=1},
             {type="item", name="steel-beam", amount=1},
-            {type="item", name="glowing-mangaloy-ingot", amount=1},
+            {type="item", name="glowing-mangaloy-plate", amount=1},
             {type="item", name="nickel-plate", amount=6},
         },
         results = {
@@ -3045,6 +3071,29 @@ data:extend({
         },
         results = {
             {type="item", name="power-switch", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "transformer-1",
+        icons = du.icons("transformer"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 6,
+        ingredients = {
+            {type="fluid", name="grease", amount=10},
+            {type="item", name="power-switch", amount=1},
+            {type="item", name="advanced-circuit", amount=2},
+            {type="item", name="plastic-bar", amount=6},
+        },
+        results = {
+            {type="item", name="transformer", amount=2},
         }
     }
 })

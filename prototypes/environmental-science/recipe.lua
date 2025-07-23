@@ -3723,7 +3723,8 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="item", name="analog-circuit", amount=2},
-            {type="item", name="bronze-plate", amount=10},
+            {type="item", name="bronze-plate", amount=5},
+            {type="item", name="iron-gear-wheel", amount=5},
             {type="item", name="underground-belt", amount=2},
         },
         results = {
@@ -3748,6 +3749,7 @@ data:extend({
             {type="item", name="magnet-wire", amount=6},
             {type="item", name="ferrite", amount=1},
             {type="item", name="screws", amount=3},
+            {type="item", name="aluminum-plate", amount=3},
         },
         results ={
             {type="item", name="small-electric-motor", amount=2},
