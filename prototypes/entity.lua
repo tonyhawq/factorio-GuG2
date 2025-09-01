@@ -6601,6 +6601,113 @@ make_farm({
     tint = {1.0, 1.0, 0.0},
 })
 
+data:extend({
+        {
+            type = "assembling-machine",
+            name = "steam-cracker",
+            icon = "__GuG2__/graphics/icons/steam-cracker.png",
+            icon_size = 64,
+            flags = {"placeable-neutral", "player-creation"},
+            minable = {mining_time = 1, result = "steam-cracker"},
+            fast_replaceable_group = "farm",
+            max_health = 400,
+            corpse = "big-remnants",
+            dying_explosion = "medium-explosion",
+            collision_box = {{-2.45, -2.45}, {2.45, 2.45}},
+            selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+            crafting_categories = {"cracking"},
+            crafting_speed = 1,
+            module_slots = 2,
+            allowed_effects = {"consumption", "pollution", "speed"},
+            energy_source = {
+                type = "electric",
+                usage_priority = "second",
+            },
+            energy_usage = "150kW",
+            fluid_boxes = {
+                {
+                    production_type = "input",
+                    pipe_covers = pipecoverspictures(),
+                    volume = 100,
+                    base_level = -1,
+                    pipe_connections = {{flow_direction = "input", position = {0, 2.0}, direction=defines.direction.south}}
+                },
+                {
+                    production_type = "output",
+                    pipe_covers = pipecoverspictures(),
+                    volume = 100,
+                    base_level = 1,
+                    pipe_connections = {{flow_direction = "output", position = {0.0, -2.0}, direction=defines.direction.north}}
+                },
+                {
+                    production_type = "input",
+                    pipe_covers = pipecoverspictures(),
+                    volume = 100,
+                    base_level = -1,
+                    pipe_connections = {{flow_direction = "input", position = {-2.0, 0}, direction=defines.direction.west}}
+                },
+                {
+                    production_type = "output",
+                    pipe_covers = pipecoverspictures(),
+                    volume = 100,
+                    base_level = 1,
+                    pipe_connections = {{flow_direction = "output", position = {2.0, 0.0}, direction=defines.direction.east}}
+                },
+            },
+            graphics_set = {
+                animation = {
+                    layers = {
+                        {
+                            filename = "__GuG2__/graphics/entity/farm/farm-base.png",
+                            width = 224,
+                            height = 224,
+                            frame_count = 1,
+                            line_length = 1,
+                            repeat_count = 36
+                        },
+                        {
+                            filename = "__GuG2__/graphics/entity/farm/tint.png",
+                            width = 224,
+                            height = 224,
+                            tint = cfg.tint,
+                            frame_count = 1,
+                            line_length = 1,
+                            repeat_count = 36
+                        },
+                        {
+                            filename = "__GuG2__/graphics/entity/farm/field-"..(cfg.field or "basic")..".png",
+                            width = 224,
+                            height = 224,
+                            tint = cfg.tint,
+                            frame_count = 1,
+                            line_length = 1,
+                            repeat_count = 36
+                        },
+                    },
+                },
+                working_visualisations = {
+                    {
+                        apply_recipe_tint = "primary",
+                        animation = 
+                        {
+                            filename = "__GuG2__/graphics/entity/farm/field-animation-"..(cfg.animation)..".png",
+                            width = 224,
+                            height = 224,
+                            frame_count = 36,
+                            line_length = 6,
+                            animation_speed = 0.1,
+                        },
+                    }
+                }
+            },
+            vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.55},
+            working_sound = {
+                sound = {filename = "__pycoalprocessinggraphics__/sounds/classifier.ogg"},
+                apparent_volume = 2.5
+            },
+        }
+    })
+
 -- TODO: new buildings
 -- chemical blender 1 in 1 out
 -- flotation cell

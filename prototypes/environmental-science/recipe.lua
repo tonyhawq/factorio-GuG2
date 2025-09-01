@@ -1278,7 +1278,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "chemistry", ---@diagnostic disable-line
+        category = "blending", ---@diagnostic disable-line
         name = "urea-ureic-feces",
         icons = du.icons("urea"):add_corner("ureic-feces"),
         subgroup = "raw-material",
@@ -1301,7 +1301,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "chemistry", ---@diagnostic disable-line
+        category = "blending", ---@diagnostic disable-line
         name = "urea-organic-wastewater",
         icons = du.icons("urea"):add_corner("organic-wastewater"),
         subgroup = "raw-material",
