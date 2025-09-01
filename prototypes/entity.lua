@@ -2722,9 +2722,13 @@ data:extend({
     }
 })
 
+local function wattstring_to_rotational_speed_per_second(wstring, temperature, eff)
+    return (du.J(wstring) * (eff or 1) * 60) / (du.J(du.fluid("rotational-force").heat_capacity) * temperature)
+end
+
 local gfg = data.raw["assembling-machine"]["combustion-generator"]
 gfg.produces_temperature = 1200
-gfg.produces_amount = (du.J(gfg.energy_usage) * 60) / (du.J(du.fluid("rotational-force").heat_capacity) * gfg.produces_temperature)
+gfg.produces_amount = wattstring_to_rotational_speed_per_second(gfg.energy_usage, gfg.produces_temperature)
 
 local steam_engine = data.raw.generator["steam-engine"]
 data.raw.generator["steam-engine"] = nil
@@ -2789,7 +2793,7 @@ steam_engine.energy_source = {
     }
 }
 steam_engine.produces_temperature = 1200
-steam_engine.produces_amount = (du.J(steam_engine.energy_usage) * 60) / (du.J(du.fluid("rotational-force").heat_capacity) * steam_engine.produces_temperature)
+steam_engine.produces_amount = wattstring_to_rotational_speed_per_second(steam_engine.energy_usage, steam_engine.produces_temperature)
 data:extend({steam_engine})
 
 local steam_turbine = table.deepcopy(data.raw.generator["steam-turbine"]) --[[@as data.AssemblingMachinePrototype]]
@@ -2855,8 +2859,102 @@ steam_turbine.energy_source = {
     }
 }
 steam_turbine.produces_temperature = 2500
-steam_turbine.produces_amount = (du.J(steam_turbine.energy_usage) * 60) / (du.J(du.fluid("rotational-force").heat_capacity) * steam_turbine.produces_temperature)
+steam_turbine.produces_amount = wattstring_to_rotational_speed_per_second(steam_turbine.energy_usage, steam_turbine.produces_temperature)
 data:extend({steam_turbine})
+local stationary_motor_1 = {
+    type = "assembling-machine",
+    name = "stationary-motor-1",
+    icons = du.icons("stationary-motor"),
+    flags = {"placeable-neutral","placeable-player", "player-creation"},
+    minable = {mining_time = 0.2, result = "stationary-motor-1"},
+    max_health = 400,
+    corpse = "assembling-machine-3-remnants",
+    dying_explosion = "assembling-machine-3-explosion",
+    fixed_recipe = "stationary-motor-1-rotation-generation",
+    fluid_boxes =
+    {
+        {
+            volume = 200,
+            pipe_covers = pipecoverspictures(),
+            pipe_connections =
+            {
+                { flow_direction = "output", direction = defines.direction.south, position = {0, 0.5} },
+            },
+            production_type = "output",
+            filter = "rotational-force"
+        },
+    },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    vehicle_impact_sound = sounds.generic_impact,
+    working_sound =
+    {
+        sound =
+        {
+            filename = "__base__/sound/steam-turbine.ogg",
+            volume = 0.55,
+            speed_smoothing_window_size = 60,
+            modifiers = volume_multiplier("tips-and-tricks", 1.1)
+        },
+        match_speed_to_activity = true,
+        audible_distance_modifier = 0.8,
+        max_sounds_per_type = 3,
+        fade_in_ticks = 4,
+        fade_out_ticks = 20
+    },
+    collision_box = {{-1.25, -0.75}, {1.25, 0.75}},
+    selection_box = {{-1.5, -1}, {1.5, 1}},
+    graphics_set = {
+        animation =
+        {
+            north = {
+                filename = "__GuG2__/graphics/entity/lv-generator/lv-generator-vertical.png",
+                width = 192,
+                height = 128,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5
+            },
+            south = {
+                filename = "__GuG2__/graphics/entity/lv-generator/lv-generator-vertical.png",
+                width = 192,
+                height = 128,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5
+            },
+            east = {
+                filename = "__GuG2__/graphics/entity/lv-generator/lv-generator-horizontal.png",
+                width = 128,
+                height = 192,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5
+            },
+            west = {
+                filename = "__GuG2__/graphics/entity/lv-generator/lv-generator-horizontal.png",
+                width = 128,
+                height = 192,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5
+            },
+        },
+    },
+    crafting_categories = {"generating"},
+    crafting_speed = 1,
+    allowed_effects = {},
+    energy_source =
+    {
+        type = "electric",
+        usage_priority = "secondary-input",
+        emissions_per_minute = {pollution=0}
+    },
+    energy_usage = "1800kW",
+}
+stationary_motor_1.produces_temperature = 1200
+stationary_motor_1.produces_amount = wattstring_to_rotational_speed_per_second(stationary_motor_1.energy_usage, stationary_motor_1.produces_temperature, 0.8)
+data:extend({stationary_motor_1})
 
 data:extend({
     {
@@ -2908,8 +3006,22 @@ data:extend({
             {type="fluid", name="rotational-force", amount= gfg.produces_amount * 0.1, temperature=gfg.produces_temperature},
         }
     },
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "generating", ---@diagnostic disable-line
+        name = "stationary-motor-1-rotation-generation",
+        icons = du.icons("rotational-force"),
+        hidden = true,
+        energy_required = 0.1,
+        ingredients = {
+        },
+        results = {
+            {type="fluid", name="rotational-force", amount=stationary_motor_1.produces_amount * 0.1, temperature=stationary_motor_1.produces_temperature},
+        }
+    }
 })
-
 data:extend({
     {
         type = "generator",
@@ -3022,6 +3134,18 @@ end
 local function kW_from_rotational_force(per_second, temperature)
     return watts_from_rotational_force(per_second, temperature) / 1000
 end
+
+stationary_motor_1.localised_description = {"",
+{"entity-description.stationary-motor-1"},
+"\n",
+{
+    "label.produces-rotational-force-amount",
+    tostring(stationary_motor_1.produces_temperature),
+    tostring(kW_from_rotational_force(stationary_motor_1.produces_amount, stationary_motor_1.produces_temperature)),
+    "kW"
+},
+"\n",
+{"label.no-cleanroom"}}
 
 local lv_generator = data.raw.generator["lv-generator"]
 lv_generator.localised_description = {"",
@@ -3464,6 +3588,7 @@ data.raw.inserter["burner-inserter"].allow_burner_leech = true
 
 local burner_chem = table.deepcopy(data.raw["assembling-machine"]["chemical-plant"])
 burner_chem.name = "burner-chemical-plant"
+burner_chem.crafting_categories = {"chemistry", "blending"}
 burner_chem.minable.result = "burner-chemical-plant"
 burner_chem.icons = du.icons("burner-chemical-plant")
 burner_chem.energy_source = {
@@ -3626,7 +3751,7 @@ local function fix_furnace(stone_furnace)
     data.raw.furnace[stone_furnace.name] = nil
     stone_furnace.next_upgrade = nil
     stone_furnace.type = "assembling-machine"
-    stone_furnace.crafting_categories = {"smelting"}
+    stone_furnace.crafting_categories = {"smelting", "incubating"}
     stone_furnace.collision_box = {{-1.3, -1.3}, {1.3, 1.3}}
     stone_furnace.selection_box = {{-1.3, -1.5}, {1.3, 1.5}}
     stone_furnace.energy_usage = "400kW"
@@ -6164,6 +6289,116 @@ data.raw.boiler.boiler.energy_usage = "3.6MW"
 
 data:extend({
     {
+        type = "assembling-machine",
+        name = "blender",
+        icons = du.icons("blender"),
+        flags = {"placeable-neutral","placeable-player", "player-creation"},
+        minable = {mining_time = 0.2, result = "blender"},
+        localised_description = {"",
+        {"entity-description.blender"},
+        "\n",
+        {
+            "label.consumes-rotational-force-amount",
+            tostring(3000),
+            tostring(150),
+            "kW"
+        },
+        "\n",
+        {"label.no-cleanroom"}
+    },
+    max_health = 400,
+    corpse = "assembling-machine-3-remnants",
+    dying_explosion = "assembling-machine-3-explosion",
+    alert_icon_shift = util.by_pixel(-3, -12),
+    fluid_boxes =
+    {
+        {
+            pipe_covers = pipecoverspictures(),
+            volume=100,
+            pipe_connections={
+                {
+                    position={0, 1},
+                    direction=defines.direction.south,
+                    flow_direction="input"
+                },
+            },
+            production_type="input"
+        },
+        {
+            pipe_covers = pipecoverspictures(),
+            volume=100,
+            pipe_connections={
+                {
+                    position={0, -1},
+                    direction=defines.direction.north,
+                    flow_direction="output"
+                }
+            },
+            production_type="output"
+        },
+    },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    vehicle_impact_sound = sounds.generic_impact,
+    working_sound =
+    {
+        sound =
+        {
+            {
+                filename = "__base__/sound/assembling-machine-t3-1.ogg",
+                volume = 0.45
+            }
+        },
+        audible_distance_modifier = 0.5,
+        fade_in_ticks = 4,
+        fade_out_ticks = 20
+    },
+    collision_box = {{-1.3, -1.3}, {1.3, 1.3}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = hit_effects.entity(),
+    fast_replaceable_group = "blender",
+    graphics_set = {
+        animation =
+        {
+            layers =
+            {
+                {
+                    filename = "__GuG2__/graphics/entity/blender/liquifier.png",
+                    priority = "high",
+                    width = 160,
+                    height = 160,
+                    frame_count = 30,
+                    line_length = 10,
+                },
+            }
+        },
+    },
+    crafting_categories = {"blending"},
+    crafting_speed = 1,
+    allowed_effects = {"consumption", "pollution", "speed"},
+    energy_source =
+    {
+        type = "fluid",
+        scale_fluid_usage = true,
+        maximum_temperature = 3000,
+        fluid_box = {
+            filter = "rotational-force",
+            production_type = "input",
+            pipe_covers = pipecoverspictures(),
+            volume = 100,
+            pipe_connections = {
+                { flow_direction="input-output", position = {1,0}, direction=defines.direction.east },
+                { flow_direction="input-output", position = {-1,0}, direction=defines.direction.west },
+            },
+            secondary_draw_orders = { north = -1 }
+        },
+    },
+    energy_usage = "150kW",
+}
+})
+
+data:extend({
+    {
         type = "reactor",
         name = "heat-break",
         icons = du.icons("heat-break"),
@@ -6789,6 +7024,24 @@ data:extend({
     },
     {
         type = "item",
+        name = "stationary-motor-1",
+        icons = du.icons("stationary-motor"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "stationary-motor-1"
+    },
+    {
+        type = "item",
+        name = "blender",
+        icons = du.icons("blender"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "blender"
+    },
+    {
+        type = "item",
         name = "pine-sapling",
         icons = du.icons("pine-sapling"),
         subgroup = "smelting-machine",
@@ -6939,6 +7192,14 @@ data:extend({
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50
+    },
+    {
+        type = "recipe-category",
+        name = "blending"
+    },
+    {
+        type = "recipe-category",
+        name = "incubating"
     },
     {
         type = "recipe-category",

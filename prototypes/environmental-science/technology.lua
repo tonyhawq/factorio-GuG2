@@ -540,14 +540,6 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
-                recipe="sludge-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="sludge-2",
-            },
-            {
-                type = "unlock-recipe",
                 recipe="sludge-void-1",
             },
             {
@@ -557,26 +549,6 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="brine-salt-separation-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="brine-salt-void-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="brine-salt-void-2",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="mineralized-water-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="mineralized-water-2",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="sand-void",
             },
             {
                 type = "unlock-recipe",
@@ -797,7 +769,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"basic-chemistry"},
+        prerequisites = {"chemistry-2"},
         unit =
         {
             count = 50,
@@ -989,14 +961,14 @@ data:extend({
 data:extend({
     {
         type = "technology",
-        name = "basic-chemistry",
+        name = "chemistry-2",
         icons = {
             {
                 icon = "__GuG2__/graphics/technology/chemistry.png",
                 icon_size = 256,
             }
         },
-        prerequisites = {"mechanical-science"},
+        prerequisites = {"mechanical-science", "chemistry-1"},
         unit =
         {
             count = 15,
@@ -1159,7 +1131,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"farming-1"},
+        prerequisites = {"farming-1", "chemistry-1"},
         unit =
         {
             count = 10,
@@ -1203,6 +1175,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="pale-gull-releasing",
             },
+            {
+                type = "unlock-recipe",
+                recipe="ureic-feces-void",
+            },
         },
     },
 })
@@ -1216,7 +1192,7 @@ data:extend({
                 icon_size = 128,
             }
         },
-        prerequisites = {"basic-chemistry", "mechanics-2", "farming-1"},
+        prerequisites = {"chemistry-2", "mechanics-2", "farming-1"},
         unit =
         {
             count = 10,
@@ -1367,7 +1343,7 @@ data:extend({
                 icon_size = 128,
             }
         },
-        prerequisites = {"basic-chemistry", "crushing"},
+        prerequisites = {"chemistry-2", "crushing"},
         unit =
         {
             count = 20,
@@ -1705,7 +1681,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"wood-processing"},
+        prerequisites = {"wood-processing", "pale-gull-breeding"},
         unit =
         {
             count = 20,
@@ -1833,6 +1809,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="lv-generator",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="stationary-motor-1",
             },
         },
     },
@@ -2134,6 +2114,64 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="transport-belt-2",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "chemistry-1",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/chemistry.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"mechanics-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="blender",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="mineralized-water-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="mineralized-water-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="sand-void",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="brine-salt-void-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="brine-salt-void-2",
+            },
+            
+            {
+                type = "unlock-recipe",
+                recipe="sludge-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="sludge-2",
             },
         },
     },

@@ -1102,7 +1102,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "boiling", ---@diagnostic disable-line
+        category = "blending", ---@diagnostic disable-line
         name = "sand-void",
         icons = du.icons("sand"):add_corner("base.fluid/water"),
         subgroup = "raw-material",
@@ -1336,7 +1336,7 @@ data:extend({
             {type="item", name="urea", amount=1},
         },
         results = {
-            {type="item", name="synthetic-resin", amount=2},
+            {type="item", name="synthetic-resin", amount=3},
         }
     }
 })
@@ -1918,15 +1918,34 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
+        name = "blender",
+        icons = du.icons("blender"),
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="small-tank", amount=1},
+            {type="item", name="iron-gear-wheel", amount=10},
+            {type="item", name="iron-sheet", amount=6},
+            {type="item", name="bronze-plate", amount=6},
+        },
+        results = {
+            {type="item", name="blender", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
         name = "burner-chemical-plant",
         icons = du.icons("burner-chemical-plant"),
         energy_required = 4,
         ingredients = {
             {type="item", name="glass", amount=16},
-            {type="item", name="small-tank", amount=4},
-            {type="item", name="treated-wood", amount=10},
+            {type="item", name="blender", amount=4},
+            {type="item", name="machine-chassis", amount=1},
             {type="item", name="analog-circuit", amount=3},
-            {type="item", name="iron-rod", amount=6},
         },
         results = {
             {type="item", name="burner-chemical-plant", amount=1},
@@ -2174,7 +2193,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "chemistry", ---@diagnostic disable-line
+        category = "blending", ---@diagnostic disable-line
         name = "sludge-1",
         icons = du.icons("sludge"):add_corner{mod="base",name="stone"},
         subgroup = "raw-material",
@@ -2195,7 +2214,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "chemistry", ---@diagnostic disable-line
+        category = "blending", ---@diagnostic disable-line
         name = "sludge-2",
         icons = du.icons("sludge"):add_corner("sand"),
         subgroup = "raw-material",
@@ -2787,7 +2806,28 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "chemistry", ---@diagnostic disable-line
+        category = "blending", ---@diagnostic disable-line
+        name = "ureic-feces-void",
+        icons = du.icons("organic-wastewater"):add_corner("ureic-feces"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="fluid", name="water", amount=4},
+            {type="item", name="ureic-feces", amount=1},
+        },
+        results = {
+            {type="fluid", name="organic-wastewater", amount=4},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
         name = "mineralized-water-1",
         icons = du.icons("mineralized-water"):add_corner("iron-oxide"),
         subgroup = "raw-material",
@@ -2808,7 +2848,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "chemistry", ---@diagnostic disable-line
+        category = "blending", ---@diagnostic disable-line
         name = "mineralized-water-2",
         icons = du.icons("mineralized-water"):add_corner{mod="base",name="stone"},
         subgroup = "raw-material",
@@ -2998,7 +3038,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "boiling", ---@diagnostic disable-line
+        category = "blending", ---@diagnostic disable-line
         name = "brine-salt-void-1",
         icons = du.icons("brine"):add_corner("brine-salt"),
         subgroup = "raw-material",
@@ -3020,7 +3060,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "boiling", ---@diagnostic disable-line
+        category = "blending", ---@diagnostic disable-line
         name = "brine-salt-void-2",
         icons = du.icons("brine"):add_corner("brine-salt"),
         subgroup = "raw-material",
@@ -3872,6 +3912,23 @@ data:extend({
         },
         results ={
             {type="item", name="lv-generator", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "stationary-motor-1",
+        icons = du.icons("stationary-motor"),
+        enabled = false,
+        category = "crafting",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="lv-generator", amount=1},
+        },
+        results ={
+            {type="item", name="stationary-motor-1", amount=1},
         }
     }
 })

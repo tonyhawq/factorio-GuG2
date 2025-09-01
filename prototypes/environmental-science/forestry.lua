@@ -471,7 +471,7 @@ data:extend({
             {type="item", name="treated-wood", amount=10},
             {type="item", name="stone-brick", amount=10},
             {type="item", name="bronze-plate", amount=10},
-            {type="item", name="mud", amount=10},
+            {type="item", name="soil", amount=10},
             {type="item", name="small-tank", amount=1},
         },
         results = {
