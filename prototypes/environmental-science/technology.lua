@@ -228,6 +228,10 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
+                recipe="machine-chassis",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="mechanical-science-pack-1",
             },
         },
@@ -427,6 +431,35 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="evaporator",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "optics-2",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/lamp.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"electromagnetism"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="small-lamp",
             },
         },
     },
@@ -1082,6 +1115,100 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "farming-1",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/flare-stack.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"tar-processing", "masonry-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="farm-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="saltberries-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="saltberry-seeds-mulching",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "pale-gull-breeding",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/flare-stack.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"farming-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="small-cage-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="artificial-nest-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pale-gull-nest-crushing",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pale-gull-hatching-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pale-gull-growing-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pale-gull-feeding-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pale-gull-breeding-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pale-gull-releasing",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "wood-processing",
         icons = {
             {
@@ -1089,7 +1216,7 @@ data:extend({
                 icon_size = 128,
             }
         },
-        prerequisites = {"basic-chemistry", "mechanics-2"},
+        prerequisites = {"basic-chemistry", "mechanics-2", "farming-1"},
         unit =
         {
             count = 10,
@@ -1104,7 +1231,7 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="forestry-soil-1",
+                recipe="agricultural-soil-1",
             },
             {
                 type = "unlock-recipe",
@@ -1302,7 +1429,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"electromagnetism"},
+        prerequisites = {"electromagnetism", "steel-processing"},
         unit =
         {
             count = 50,
@@ -1486,7 +1613,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"blasting-1"},
+        prerequisites = {"fluid-handling-2"},
         unit =
         {
             count = 30,
@@ -1650,7 +1777,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"polymers-1", "steel-processing", "zinc-processing"},
+        prerequisites = {"polymers-1", "zinc-processing"},
         unit =
         {
             count = 50,
@@ -1706,10 +1833,6 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="lv-generator",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="small-lamp",
             },
         },
     },
@@ -2011,10 +2134,6 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="transport-belt-2",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="splitter",
             },
         },
     },

@@ -2622,6 +2622,10 @@ data:extend({
         circuit_wire_max_distance = default_circuit_wire_max_distance
     },
 })
+local hardened_chassis = table.deepcopy(data.raw.container["machine-chassis"])
+hardened_chassis.name = "hardened-machine-chassis"
+hardened_chassis.minable.result = "hardened-machine-chassis"
+data:extend({hardened_chassis})
 data:extend({
     {
         type = "assembling-machine",
@@ -2750,7 +2754,7 @@ steam_engine.graphics_set = {
     }
 }
 steam_engine.energy_source = {
-    type = "fluid",
+    type = "fluid", ---@diagnostic disable-line
     maximum_temperature=165,
     effectivity = 0.5,
     fluid_box = {
@@ -6248,6 +6252,120 @@ data:extend({
     }
 })
 
+local function make_farm(cfg)
+    data:extend({
+        {
+            type = "assembling-machine",
+            name = "farm-"..cfg.tier,
+            icon = "__GuG2__/graphics/icons/farm.png",
+            icon_size = 64,
+            flags = {"placeable-neutral", "player-creation"},
+            minable = {mining_time = 1, result = "farm-"..cfg.tier},
+            fast_replaceable_group = "farm",
+            max_health = 400,
+            corpse = "big-remnants",
+            dying_explosion = "medium-explosion",
+            collision_box = {{-2.45, -2.45}, {2.45, 2.45}},
+            selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+            crafting_categories = cfg.categories or {"farming"},
+            crafting_speed = cfg.crafting_speed or cfg.tier,
+            module_slots = cfg.module_slots or 0,
+            allowed_effects = {"consumption", "pollution"},
+            energy_source = {
+                type = "void",
+            },
+            energy_usage = "50kW",
+            fluid_boxes = {
+                {
+                    production_type = "input",
+                    pipe_covers = pipecoverspictures(),
+                    volume = 100,
+                    base_level = -1,
+                    pipe_connections = {{flow_direction = "input", position = {0, 2.0}, direction=defines.direction.south}}
+                },
+                {
+                    production_type = "output",
+                    pipe_covers = pipecoverspictures(),
+                    volume = 100,
+                    base_level = 1,
+                    pipe_connections = {{flow_direction = "output", position = {0.0, -2.0}, direction=defines.direction.north}}
+                },
+                {
+                    production_type = "input",
+                    pipe_covers = pipecoverspictures(),
+                    volume = 100,
+                    base_level = -1,
+                    pipe_connections = {{flow_direction = "input", position = {-2.0, 0}, direction=defines.direction.west}}
+                },
+                {
+                    production_type = "output",
+                    pipe_covers = pipecoverspictures(),
+                    volume = 100,
+                    base_level = 1,
+                    pipe_connections = {{flow_direction = "output", position = {2.0, 0.0}, direction=defines.direction.east}}
+                },
+            },
+            graphics_set = {
+                animation = {
+                    layers = {
+                        {
+                            filename = "__GuG2__/graphics/entity/farm/farm-base.png",
+                            width = 224,
+                            height = 224,
+                            frame_count = 1,
+                            line_length = 1,
+                            repeat_count = 36
+                        },
+                        {
+                            filename = "__GuG2__/graphics/entity/farm/tint.png",
+                            width = 224,
+                            height = 224,
+                            tint = cfg.tint,
+                            frame_count = 1,
+                            line_length = 1,
+                            repeat_count = 36
+                        },
+                        {
+                            filename = "__GuG2__/graphics/entity/farm/field-"..(cfg.field or "basic")..".png",
+                            width = 224,
+                            height = 224,
+                            tint = cfg.tint,
+                            frame_count = 1,
+                            line_length = 1,
+                            repeat_count = 36
+                        },
+                    },
+                },
+                working_visualisations = {
+                    {
+                        apply_recipe_tint = "primary",
+                        animation = 
+                        {
+                            filename = "__GuG2__/graphics/entity/farm/field-animation-"..(cfg.animation)..".png",
+                            width = 224,
+                            height = 224,
+                            frame_count = 36,
+                            line_length = 6,
+                            animation_speed = 0.1,
+                        },
+                    }
+                }
+            },
+            vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.55},
+            working_sound = {
+                sound = {filename = "__pycoalprocessinggraphics__/sounds/classifier.ogg"},
+                apparent_volume = 2.5
+            },
+        }
+    })
+end
+
+make_farm({
+    tier = 1,
+    animation = 1,
+    tint = {1.0, 1.0, 0.0},
+})
+
 -- TODO: new buildings
 -- chemical blender 1 in 1 out
 -- flotation cell
@@ -6256,6 +6374,15 @@ data:extend({
 -- foundries / casting machines / etc
 
 data:extend({
+    {
+        type = "item",
+        name = "farm-1",
+        icons = du.icons("farm"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+        place_result = "farm-1"
+    },
     {
         type = "item",
         name = "radiator",
@@ -6291,6 +6418,15 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 200,
         place_result = "machine-chassis"
+    },
+    {
+        type = "item",
+        name = "hardened-machine-chassis",
+        icons = du.icons("machine-chassis"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+        place_result = "hardened-machine-chassis"
     },
     {
         type = "item",
@@ -6787,22 +6923,22 @@ data:extend({
         place_result = "crystallizer"
     },
     {
-      type = "item",
-      name = "alloy-furnace",
-      place_result = "alloy-furnace",
-      icons = du.icons("alloy-furnace"),
-      subgroup = "smelting-machine",
-      order = "a[stone-furnace]",
-      stack_size = 50
+        type = "item",
+        name = "alloy-furnace",
+        place_result = "alloy-furnace",
+        icons = du.icons("alloy-furnace"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50
     },
     {
-      type = "item",
-      name = "induction-melter",
-      place_result = "induction-melter",
-      icons = du.icons("induction-melter"),
-      subgroup = "smelting-machine",
-      order = "a[stone-furnace]",
-      stack_size = 50
+        type = "item",
+        name = "induction-melter",
+        place_result = "induction-melter",
+        icons = du.icons("induction-melter"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50
     },
     {
         type = "recipe-category",

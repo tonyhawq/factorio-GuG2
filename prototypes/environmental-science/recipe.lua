@@ -275,6 +275,27 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
+        name = "machine-chassis",
+        icons = du.icons("machine-chassis"),
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="rivets", amount=12},
+            {type="item", name="iron-sheet", amount=4},
+            {type="item", name="screws", amount=6},
+            {type="item", name="treated-wood", amount=2},
+            {type="item", name="stone-brick", amount=2},
+        },
+        results = {
+            {type="item", name="machine-chassis", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
         name = "small-tank",
         icons = du.icons("small-tank"),
         energy_required = 0.5,
@@ -628,10 +649,8 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="assembling-machine-1", amount=1},
-            {type="item", name="aluminum-plate", amount=12},
-            {type="item", name="inserter", amount=4},
-            {type="item", name="steel-beam", amount=12},
-            {type="item", name="screws", amount=8},
+            {type="item", name="long-handed-inserter", amount=3},
+            {type="item", name="machine-chassis", amount=2},
         },
         results = {
             {type="item", name="fabricator-1", amount=1},
@@ -862,7 +881,7 @@ data:extend({
         ingredients = {
             {type="item", name="steam-engine", amount=1},
             {type="item", name="iron-gear-wheel", amount=6},
-            {type="item", name="iron-sheet", amount=6},
+            {type="item", name="machine-chassis", amount=6},
             {type="item", name="lead-plate", amount=6},
         },
         results = {
@@ -1176,10 +1195,10 @@ data:extend({
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="item", name="glass", amount=2},
-            {type="item", name="splitter", amount=1},
-            {type="item", name="steam-inserter", amount=1},
-            {type="item", name="stone-brick", amount=3},
+            {type="item", name="glass", amount=1},
+            {type="item", name="splitter", amount=2},
+            {type="item", name="steam-inserter", amount=2},
+            {type="item", name="stone-brick", amount=1},
         },
         results = {
             {type="item", name="mechanical-science-pack", amount=2},
@@ -1389,8 +1408,8 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting-with-fluid", ---@diagnostic disable-line
-        name = "forestry-soil-1",
-        icons = du.icons("forestry-soil"),
+        name = "agricultural-soil-1",
+        icons = du.icons("agricultural-soil"),
         energy_required = 2,
         ingredients = {
             {type="item", name="seaweed", amount=2},
@@ -1398,7 +1417,7 @@ data:extend({
             {type="item", name="soil", amount=6},
         },
         results = {
-            {type="item", name="forestry-soil", amount=6},
+            {type="item", name="agricultural-soil", amount=6},
         }
     }
 })
@@ -2727,6 +2746,27 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "brine-from-evaporate",
+        icons = du.icons("brine"):add_corner("evaporate"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="fluid", name="water", amount=30},
+            {type="item", name="evaporite", amount=2},
+        },
+        results = {
+            {type="fluid", name="brine", amount=30},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "evaporating", ---@diagnostic disable-line
         name = "brine-void",
         icons = du.icons("evaporate"):add_corner("brine"),
@@ -3277,6 +3317,7 @@ data:extend({
             {type="item", name="iron-ingot", amount=3},
             {type="item", name="coke", amount=1},
             {type="item", name="lime", amount=3},
+            {type="fluid", name="oxygen", amount=40},
         },
         results ={
             {type="item", name="steel-ingot", amount=1},
@@ -3446,8 +3487,7 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="item", name="small-tank", amount=1},
-            {type="item", name="iron-sheet", amount=20},
-            {type="item", name="screws", amount=12},
+            {type="item", name="machine-chassis", amount=1},
             {type="item", name="refractory-brick", amount=20},
             {type="item", name="stone-furnace", amount=1},
         },
@@ -3474,6 +3514,29 @@ data:extend({
             {type="item", name="cellulose", amount=3},
             {type="item", name="coal-dust", amount=3},
             {type="fluid", name="coal-gas", amount=20},
+        },
+        results ={
+            {type="item", name="battery", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "battery-2",
+        icons = du.icons{mod="base", name="battery"},
+        enabled = false,
+        category = "crafting-with-fluid",
+        subgroup = "raw-material",
+        energy_required = 4,
+        order = "a",
+        main_product = "",
+        ingredients = {
+            {type="item", name="zinc-plate", amount=3},
+            {type="item", name="lead-plate", amount=3},
+            {type="item", name="synthetic-resin", amount=3},
+            {type="fluid", name="sulfuric-acid", amount=20},
         },
         results ={
             {type="item", name="battery", amount=1},
@@ -3822,7 +3885,7 @@ data:extend({
         category = "crafting",
         energy_required = 0.5,
         ingredients = {
-            {type="item", name="steel-beam", amount=2},
+            {type="item", name="bronze-plate", amount=2},
             {type="item", name="small-electric-motor", amount=1},
         },
         results ={

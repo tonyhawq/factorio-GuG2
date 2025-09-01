@@ -885,7 +885,7 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
-                recipe="battery-3",
+                recipe="battery-4",
             },
         },
     },
@@ -1015,7 +1015,7 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
-                recipe="machine-chassis",
+                recipe="hardened-machine-chassis",
             },
             {
                 type = "unlock-recipe",
@@ -1136,7 +1136,7 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="battery-2",
+                recipe="battery-3",
             },
             {
                 type = "unlock-recipe",

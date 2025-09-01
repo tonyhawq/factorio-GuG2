@@ -117,21 +117,6 @@ du.recipe"oak-sapling-1":add_ingredient{type="item", name="acorn", amount=2}
 du.recipe"pine-sapling-1":add_ingredient{type="item", name="pinecone", amount=1}
 du.recipe"oak-tree-growing-1".energy_required = du.recipe"oak-tree-growing-1".energy_required * 2
 
--- create ureic feces
-for _, recipe in pairs(created_recipes.growing) do
-    local ureic = table.deepcopy(recipe)
-    ureic.type = "recipe"
-    ureic.name = ureic.name.."-ureic-1"
-    data:extend{ureic}
-    local log_amount = recipe:get_ingredient(ureic.sapling).amount or 1
-    ureic:adjust_ingredient_amount(1/2)
-    ureic:adjust_ingredient_amount("water", 1/2)
-    ureic:add_result{type="item", name=recipe.growing_log_type, amount=log_amount}
-    ureic:adjust_product_amount(1/2)
-    ureic:add_result{type="item", name="ureic-feces", amount=2}
-    ureic:add_unlock("urea-1")
-end
-
 local trees = {
     "tree-03", "tree-04", "tree-05", "tree-06", "tree-06-brown", "tree-07", "tree-08", "tree-08-brown", "tree-08-red"
 }
@@ -151,9 +136,13 @@ end
 set_tree_name(pine_trees, "pine")
 set_tree_name(oak_trees, "oak")
 
-set_tree_drops{trees=trees, drops={{name="log", amount=2}, {name="sap", amount=1, probability=0.25}}}
-set_tree_drops{trees=pine_trees, drops={{name="pine-log", amount=2}, {name="pinecone", amount=1, probability=0.5}}}
-set_tree_drops{trees=oak_trees, drops={{name="oak-log", amount=2}, {name="acorn", amount=1, probability=0.5}}}
+set_tree_drops{trees=trees, drops={{name="log", amount=2}, {name="sap", amount=1, probability=0.25}, {name="pale-gull-nest", amount=1, probability=0.25}}}
+set_tree_drops{trees=pine_trees, drops={{name="pine-log", amount=2}, {name="pinecone", amount=1, probability=0.5}, {name="sap", amount=1, probability=0.25}}}
+set_tree_drops{trees=oak_trees, drops={{name="oak-log", amount=2}, {name="acorn", amount=1, probability=0.5}, {name="sap", amount=1, probability=0.25}}}
+
+-- pale gulls nest in trees
+-- eat saltberries
+-- poop ureic feces
 
 data:extend({
     {
@@ -176,4 +165,317 @@ data:extend({
         fuel_value = "250kJ",
         fuel_category = "chemical",
     },
+    {
+        type = "item",
+        name = "saltberries",
+        icons = du.icons("saltberries"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+    },
+    {
+        type = "item",
+        name = "saltberry-seeds",
+        icons = du.icons("saltberry-seeds"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+    },
+    {
+        type = "item",
+        name = "pale-gull-nest",
+        icons = du.icons("pale-gull-nest"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 10,
+    },
+    {
+        type = "item",
+        name = "pale-gull-egg",
+        icons = du.icons("pale-gull-egg"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 10,
+    },
+    {
+        type = "item",
+        name = "pale-gull-hatchling",
+        icons = du.icons("pale-gull-hatchling"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 10,
+    },
+    {
+        type = "item",
+        name = "pale-gull",
+        icons = du.icons("pale-gull"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 10,
+    },
+    {
+        type = "item",
+        name = "small-cage",
+        icons = du.icons("small-cage"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 10,
+    },
+    {
+        type = "item",
+        name = "artificial-nest",
+        icons = du.icons("artificial-nest"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 10,
+    },
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crushing", ---@diagnostic disable-line
+        name = "pale-gull-nest-crushing",
+        icons = du.icons("pale-gull-nest"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="pale-gull-nest", amount=1},
+        },
+        results = {
+            {type="item", name="wood", amount=2},
+            {type="item", name="pale-gull-egg", amount_min=2, amount_max=4, probability=0.5},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smelting", ---@diagnostic disable-line
+        name = "pale-gull-hatching-1",
+        icons = du.icons("pale-gull-egg"):add_corner("pale-gull-hatchling"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 120,
+        ingredients = {
+            {type="item", name="pale-gull-egg", amount=1},
+            {type="item", name="small-cage", amount=1},
+        },
+        results = {
+            {type="item", name="pale-gull-hatchling", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "pale-gull-growing-1",
+        icons = du.icons("pale-gull"):add_corner("pale-gull-hatchling"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 120,
+        ingredients = {
+            {type="item", name="pale-gull-hatchling", amount=1},
+            {type="item", name="artificial-nest", amount=1},
+            {type="item", name="saltberries", amount=20},
+            {type="fluid", name="water", amount=60},
+        },
+        results = {
+            {type="item", name="saltberry-seeds", amount=12},
+            {type="item", name="pale-gull", amount=1},
+            {type="item", name="ureic-feces", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "pale-gull-feeding-1",
+        icons = du.icons("pale-gull"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 240,
+        ingredients = {
+            {type="item", name="pale-gull", amount=1},
+            {type="item", name="saltberries", amount=20},
+            {type="fluid", name="water", amount=60},
+        },
+        results = {
+            {type="item", name="saltberry-seeds", amount=12},
+            {type="item", name="pale-gull", amount=1, probability=0.5},
+            {type="item", name="small-cage", amount=1, probability=0.25},
+            {type="item", name="ureic-feces", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "pale-gull-releasing",
+        icons = du.icons("pale-gull"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="pale-gull", amount=1},
+        },
+        results = {
+            {type="item", name="small-cage", amount=1, probability=0.75},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "pale-gull-breeding-1",
+        icons = du.icons("artificial-nest"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 120,
+        ingredients = {
+            {type="item", name="pale-gull", amount=2},
+            {type="item", name="artificial-nest", amount=1},
+            {type="item", name="saltberries", amount=12},
+        },
+        results = {
+            {type="item", name="saltberry-seeds", amount=6},
+            {type="item", name="ureic-feces", amount=10},
+            {type="item", name="pale-gull", amount=2, probability=0.75},
+            {type="item", name="pale-gull-nest", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "small-cage-1",
+        icons = du.icons("small-cage"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="bronze-plate", amount=6},
+            {type="item", name="iron-rod", amount=12},
+            {type="item", name="treated-wood", amount=4},
+        },
+        results = {
+            {type="item", name="small-cage", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "artificial-nest-1",
+        icons = du.icons("artificial-nest"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="treated-wood", amount=3},
+            {type="item", name="bound-porcelain", amount=3},
+        },
+        results = {
+            {type="item", name="artificial-nest", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "farming", ---@diagnostic disable-line
+        name = "saltberries-1",
+        icons = du.icons("saltberries"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        crafting_machine_tint = {
+            primary = {1.0, 0.5, 0.5}
+        },
+        main_product = "",
+        energy_required = 60,
+        ingredients = {
+            {type="item", name="saltberry-seeds", amount=3},
+            {type="fluid", name="brine", amount=12},
+        },
+        results = {
+            {type="item", name="saltberries", amount=12},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crushing", ---@diagnostic disable-line
+        name = "saltberry-seeds-mulching",
+        icons = du.icons("saltberry-seeds"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="saltberry-seeds", amount=3},
+        },
+        results = {
+            {type="item", name="manganese-oxides", amount=1},
+            {type="item", name="salt", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "farm-1",
+        icons = du.icons("farm"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="treated-wood", amount=10},
+            {type="item", name="stone-brick", amount=10},
+            {type="item", name="bronze-plate", amount=10},
+            {type="item", name="mud", amount=10},
+            {type="item", name="small-tank", amount=1},
+        },
+        results = {
+            {type="item", name="farm-1", amount=1},
+        }
+    }
 })

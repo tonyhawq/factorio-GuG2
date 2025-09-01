@@ -14,7 +14,7 @@ data:extend({
             {type="item", name="crucible", amount=10},
             {type="item", name="advanced-circuit", amount=20},
             {type="item", name="transformer", amount=12},
-            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="hardened-machine-chassis", amount=1},
         },
         results ={
             {type="item", name="induction-melter", amount=1},
@@ -32,7 +32,7 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="item", name="steel-furnace", amount=1},
-            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="hardened-machine-chassis", amount=1},
             {type="item", name="advanced-circuit", amount=20},
             {type="item", name="transformer", amount=12},
         },
@@ -465,7 +465,7 @@ data:extend({
             {type="item", name="insulation", amount=10},
             {type="item", name="steel-beam", amount=30},
             {type="item", name="advanced-circuit", amount=5},
-            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="hardened-machine-chassis", amount=1},
         },
         results = {
             {type="item", name="radiator", amount=1},
@@ -487,7 +487,7 @@ data:extend({
             {type="item", name="phenolic-resin", amount=1},
             {type="item", name="glass", amount=20},
             {type="item", name="fiberglass", amount=10},
-            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="hardened-machine-chassis", amount=1},
             {type="fluid", name="argon", amount=10},
         },
         results = {

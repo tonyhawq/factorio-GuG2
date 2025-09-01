@@ -66,7 +66,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        name = "battery-2",
+        name = "battery-3",
         icons = du.icons{mod="base", name="battery"},
         enabled = false,
         category = "crafting-with-fluid",
@@ -440,7 +440,7 @@ data:extend({
         energy_required = 1,
         ingredients = {
             {type="item", name="assembling-machine-1", amount=1},
-            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="hardened-machine-chassis", amount=1},
             {type="item", name="steam-engine", amount=1},
         },
         results = {
@@ -460,7 +460,7 @@ data:extend({
         ingredients = {
             {type="item", name="water-treatment-plant", amount=2},
             {type="item", name="destructive-distillation-tower", amount=2},
-            {type="item", name="machine-chassis", amount=3},
+            {type="item", name="hardened-machine-chassis", amount=3},
         },
         results = {
             {type="item", name="oil-refinery", amount=1},
@@ -479,7 +479,7 @@ data:extend({
         ingredients = {
             {type="item", name="oil-refinery", amount=1},
             {type="item", name="chemical-plant", amount=1},
-            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="hardened-machine-chassis", amount=1},
         },
         results = {
             {type="item", name="fuel-refinery", amount=2},
@@ -1639,7 +1639,7 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
-        name = "machine-chassis",
+        name = "hardened-machine-chassis",
         icons = du.icons("machine-chassis"),
         energy_required = 0.5,
         ingredients = {
@@ -1651,7 +1651,7 @@ data:extend({
             {type="item", name="pipe", amount=10},
         },
         results = {
-            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="hardened-machine-chassis", amount=1},
         }
     }
 })
@@ -1669,7 +1669,7 @@ data:extend({
             {type="item", name="chemical-plant", amount=1},
             {type="item", name="small-electric-motor", amount=10},
             {type="item", name="small-parts", amount=20},
-            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="hardened-machine-chassis", amount=1},
         },
         results = {
             {type="item", name="water-treatment-plant", amount=1},
@@ -1686,7 +1686,7 @@ data:extend({
         icons = du.alias("computer-1"),
         energy_required = 0.5,
         ingredients = {
-            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="hardened-machine-chassis", amount=1},
             {type="item", name="electronic-circuit", amount=20},
             {type="item", name="solder", amount=10},
             {type="item", name="aluminum-plate", amount=20},
@@ -2774,7 +2774,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        name = "battery-3",
+        name = "battery-4",
         icons = du.icons("base.battery"),
         enabled = false,
         category = "crafting-with-fluid",
@@ -3397,7 +3397,7 @@ data:extend({
         icons = du.alias("combustion-generator"),
         energy_required = 1,
         ingredients = {
-            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="hardened-machine-chassis", amount=1},
             {type="item", name="engine-unit", amount=24},
             {type="item", name="pump", amount=2},
             {type="item", name="flare-stack", amount=1},

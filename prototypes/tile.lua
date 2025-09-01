@@ -105,9 +105,9 @@ data:extend({
     },
 })
 local forestry_soil = table.deepcopy(data.raw.tile.landfill)
-forestry_soil.name = "forestry-soil"
+forestry_soil.name = "agricultural-soil"
 forestry_soil.check_collision_with_entities = true
-forestry_soil.minable = {mining_time = 0.1, result = "forestry-soil"}
+forestry_soil.minable = {mining_time = 0.1, result = "agricultural-soil"}
 forestry_soil.collision_mask = {
     layers = {
         ground_tile = true,
@@ -124,7 +124,7 @@ forestry_soil.autoplace = {
     "-inf), -inf)",
 }
 data:extend({forestry_soil})
-data.raw.planet.nauvis.map_gen_settings.autoplace_settings.tile.settings["forestry-soil"] = {}
+data.raw.planet.nauvis.map_gen_settings.autoplace_settings.tile.settings["agricultural-soil"] = {}
 
 local harvesting_platform = table.deepcopy(data.raw.tile["tutorial-grid"])
 harvesting_platform.name = "harvesting-platform"
@@ -172,14 +172,14 @@ data.raw.planet.nauvis.map_gen_settings.autoplace_settings.tile.settings["marine
 data:extend({
     {
         type = "item",
-        name = "forestry-soil",
-        icons = du.icons("forestry-soil"),
+        name = "agricultural-soil",
+        icons = du.icons("agricultural-soil"),
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
         place_as_tile =
         {
-            result = "forestry-soil",
+            result = "agricultural-soil",
             condition_size = 1,
             condition = {
                 layers = {water_tile = true, cleanroom_tile = true},
