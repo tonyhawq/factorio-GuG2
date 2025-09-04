@@ -1897,7 +1897,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"heat-exchange", "fluid-handling-2"},
+        prerequisites = {"heat-exchange", "coal-processing-2", "fluid-handling-2"},
         unit =
         {
             count = 50,
@@ -1933,6 +1933,14 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="plastic-pvc-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="plastic-resin-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="hvgo-cracking-2",
             },
         },
     },
@@ -2076,7 +2084,7 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="small-parts-1",
+                recipe="hardened-machine-chassis",
             },
             {
                 type = "unlock-recipe",

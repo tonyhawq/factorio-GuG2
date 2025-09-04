@@ -420,12 +420,32 @@ data:extend({
         ingredients = {
             {type="item", name="burner-chemical-plant", amount=1},
             {type="item", name="small-electric-motor", amount=3},
-            {type="item", name="aluminum-plate", amount=3},
-            {type="item", name="steel-beam", amount=4},
-            {type="item", name="small-parts", amount=12},
+            {type="item", name="steel-plate", amount=10},
+            {type="item", name="hardened-machine-chassis", amount=1},
         },
         results = {
             {type="item", name="chemical-plant", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "steam-cracker",
+        icons = du.icons("steam-cracker"),
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="blender", amount=3},
+            {type="item", name="electronic-circuit", amount=3},
+            {type="item", name="engine-unit", amount=3},
+            {type="item", name="steel-plate", amount=10},
+            {type="item", name="hardened-machine-chassis", amount=1},
+        },
+        results = {
+            {type="item", name="steam-cracker", amount=1},
         }
     }
 })
@@ -458,9 +478,11 @@ data:extend({
         icons = du.alias("oil-refinery"),
         energy_required = 1,
         ingredients = {
-            {type="item", name="water-treatment-plant", amount=2},
-            {type="item", name="destructive-distillation-tower", amount=2},
-            {type="item", name="hardened-machine-chassis", amount=3},
+            {type="item", name="electronic-circuit", amount=10},
+            {type="item", name="pump", amount=3},
+            {type="item", name="destructive-distillation-tower", amount=1},
+            {type="item", name="steel-plate", amount=10},
+            {type="item", name="hardened-machine-chassis", amount=1},
         },
         results = {
             {type="item", name="oil-refinery", amount=1},
@@ -504,7 +526,7 @@ data:extend({
         },
         results = {
             {type="fluid", name="geothermal-water", amount=100, fluidbox_index = 2},
-            {type="fluid", name="steam", temperature=165, amount=1000, fluidbox_index = 1},
+            {type="fluid", name="steam", temperature=300, amount=1000, fluidbox_index = 1},
         }
     }
 })
@@ -513,13 +535,13 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "chemistry", ---@diagnostic disable-line
+        category = "water-treatment", ---@diagnostic disable-line
         name = "geothermal-water-treatment",
         icons = du.icons("geothermal-water"),
         main_product = "",
         subgroup = "raw-material",
         order = "a[a]",
-        energy_required = 4,
+        energy_required = 0.5,
         ingredients = {
             {type="fluid", name="geothermal-water", amount=100},
         },
@@ -555,13 +577,13 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "chemistry", ---@diagnostic disable-line
+        category = "water-treatment", ---@diagnostic disable-line
         name = "mineralized-water-treatment",
         icons = du.icons("mineralized-water"):add_corner("manganese-oxides"),
         main_product = "",
         subgroup = "raw-material",
         order = "a[a]",
-        energy_required = 4,
+        energy_required = 0.5,
         ingredients = {
             {type="fluid", name="mineralized-water", amount=100},
             {type="item", name="coal-dust", amount=5},
@@ -1542,9 +1564,9 @@ data:extend({
         icons = du.icons{mod="base", name="accumulator"},
         energy_required = 0.5,
         ingredients = {
-            {type="item", name="stone-brick", amount=5},
-            {type="item", name="battery", amount=4},
-            {type="item", name="plastic-bar", amount=20},
+            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="battery", amount=8},
+            {type="item", name="plastic-bar", amount=10},
             {type="item", name="aluminum-cable", amount=24},
             {type="fluid", name="lubricant", amount=6},
         },
@@ -1639,40 +1661,18 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
-        name = "hardened-machine-chassis",
-        icons = du.icons("machine-chassis"),
+        name = "hydro-plant-1",
+        icons = du.icons("hydro-plant-1"),
         energy_required = 0.5,
         ingredients = {
-            {type="item", name="concrete", amount=20},
-            {type="item", name="steel-beam", amount=10},
-            {type="item", name="glowing-mangaloy-plate", amount=5},
-            {type="item", name="aluminum-cable", amount=5},
-            {type="item", name="electronic-circuit", amount=5},
-            {type="item", name="pipe", amount=10},
-        },
-        results = {
-            {type="item", name="hardened-machine-chassis", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "crafting", ---@diagnostic disable-line
-        name = "water-treatment-plant",
-        icons = du.icons("water-treatment-plant"),
-        energy_required = 0.5,
-        ingredients = {
-            {type="item", name="small-tank", amount=4},
-            {type="item", name="chemical-plant", amount=1},
             {type="item", name="small-electric-motor", amount=10},
-            {type="item", name="small-parts", amount=20},
+            {type="item", name="steel-plate", amount=10},
+            {type="item", name="electronic-circuit", amount=10},
+            {type="item", name="blender", amount=3},
             {type="item", name="hardened-machine-chassis", amount=1},
         },
         results = {
-            {type="item", name="water-treatment-plant", amount=1},
+            {type="item", name="hydro-plant-1", amount=1},
         }
     }
 })

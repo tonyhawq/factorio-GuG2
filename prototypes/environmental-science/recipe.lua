@@ -296,6 +296,27 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
+        name = "hardened-machine-chassis",
+        icons = du.icons("hardened-machine-chassis"),
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="aluminum-plate", amount=10},
+            {type="item", name="plastic-bar", amount=6},
+            {type="item", name="steel-beam", amount=6},
+            {type="item", name="concrete", amount=5},
+        },
+        results = {
+            {type="item", name="hardened-machine-chassis", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
         name = "small-tank",
         icons = du.icons("small-tank"),
         energy_required = 0.5,
@@ -861,7 +882,7 @@ data:extend({
         ingredients = {
             {type="item", name="iron-gear-wheel", amount=6},
             {type="item", name="screws", amount=12},
-            {type="item", name="treated-wood", amount=2},
+            {type="item", name="treated-wood", amount=8},
             {type="item", name="bronze-plate", amount=2},
         },
         results = {
@@ -881,8 +902,8 @@ data:extend({
         ingredients = {
             {type="item", name="steam-engine", amount=1},
             {type="item", name="iron-gear-wheel", amount=6},
-            {type="item", name="machine-chassis", amount=6},
-            {type="item", name="lead-plate", amount=6},
+            {type="item", name="machine-chassis", amount=1},
+            {type="item", name="analog-circuit", amount=6},
         },
         results = {
             {type="item", name="steam-crusher", amount=1},
@@ -1111,7 +1132,7 @@ data:extend({
         energy_required = 0.1,
         ingredients = {
             {type="item", name="sand", amount=1},
-            {type="fluid", name="water", amount=6},
+            {type="fluid", name="water", amount=6, fluidbox_index=1},
         },
         results = {
             {type="fluid", name="seawater", amount=7},
@@ -1243,7 +1264,7 @@ data:extend({
         energy_required = 2,
         ingredients = {
             {type="item", name="glass", amount=16},
-            {type="item", name="small-parts", amount=10},
+            {type="item", name="hardened-machine-chassis", amount=10},
             {type="item", name="electronic-circuit", amount=6},
             {type="item", name="stone-brick", amount=15},
         },
@@ -1270,6 +1291,28 @@ data:extend({
         },
         results = {
             {type="fluid", name="formaldehyde", amount=6},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "urea-ammonia",
+        icons = du.icons("urea"):add_corner("ammonia"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 8,
+        ingredients = {
+            {type="item", name="urea", amount=1},
+            {type="fluid", name="ammonia", amount=8},
+            {type="fluid", name="500c", amount=8},
+        },
+        results = {
+            {type="item", name="urea", amount=2},
         }
     }
 })
@@ -1309,7 +1352,7 @@ data:extend({
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="fluid", name="organic-wastewater", amount=12},
+            {type="fluid", name="organic-wastewater", amount=12, fluidbox_index=1},
             {type="item", name="glass", amount=1},
             {type="item", name="coal", amount=1},
         },
@@ -1765,7 +1808,7 @@ data:extend({
         name = "mortar-1",
         icons = du.icons("mortar"),
         enabled = false,
-        category = "crafting-with-fluid",
+        category = "blending",
         subgroup = "raw-material",
         energy_required = 4,
         order = "a",
@@ -1774,7 +1817,7 @@ data:extend({
             {type="item", name="gravel", amount=6},
             {type="item", name="sand", amount=12},
             {type="item", name="cement", amount=6},
-            {type="fluid", name="water", amount=12},
+            {type="fluid", name="water", amount=12, fluidbox_index=1},
         },
         results ={
             {type="item", name="mortar", amount=24},
@@ -1797,10 +1840,9 @@ data:extend({
             {type="item", name="silica", amount=10},
             {type="item", name="limestone", amount=24},
             {type="item", name="clay", amount=10},
-            {type="item", name="evaporite", amount=2},
         },
         results ={
-            {type="item", name="cement", amount=1},
+            {type="item", name="cement", amount=10},
         }
     }
 })
@@ -1823,7 +1865,7 @@ data:extend({
             {type="item", name="sulfur", amount=2},
         },
         results ={
-            {type="item", name="cement", amount=1},
+            {type="item", name="cement", amount=10},
         }
     }
 })
@@ -1841,10 +1883,9 @@ data:extend({
         main_product = "",
         ingredients = {
             {type="item", name="refractory-brick", amount=2},
-            {type="item", name="cement", amount=2},
-            {type="item", name="lime", amount=5},
+            {type="item", name="cement", amount=8},
+            {type="item", name="sand", amount=24},
             {type="item", name="steel-beam", amount=4},
-            {type="item", name="mortar", amount=8},
             {type="fluid", name="water", amount=32},
         },
         results ={
@@ -1943,7 +1984,7 @@ data:extend({
         energy_required = 4,
         ingredients = {
             {type="item", name="glass", amount=16},
-            {type="item", name="blender", amount=4},
+            {type="item", name="blender", amount=1},
             {type="item", name="machine-chassis", amount=1},
             {type="item", name="analog-circuit", amount=3},
         },
@@ -1964,6 +2005,7 @@ data:extend({
         ingredients = {
             {type="item", name="glass", amount=16},
             {type="item", name="screws", amount=5},
+            {type="item", name="analog-circuit", amount=3},
             {type="item", name="small-tank", amount=4},
             {type="item", name="stone-brick", amount=10},
         },
@@ -2202,7 +2244,7 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="stone", amount=1},
-            {type="fluid", name="sulfuric-acid", amount=3},
+            {type="fluid", name="sulfuric-acid", amount=3, fluidbox_index=1},
         },
         results = {
             {type="fluid", name="sludge", amount=3},
@@ -2223,7 +2265,7 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="sand", amount=1},
-            {type="fluid", name="sulfuric-acid", amount=3},
+            {type="fluid", name="sulfuric-acid", amount=3, fluidbox_index=1},
         },
         results = {
             {type="fluid", name="sludge", amount=3},
@@ -2814,7 +2856,7 @@ data:extend({
         main_product = "",
         energy_required = 0.5,
         ingredients = {
-            {type="fluid", name="water", amount=4},
+            {type="fluid", name="water", amount=4, fluidbox_index=1},
             {type="item", name="ureic-feces", amount=1},
         },
         results = {
@@ -2835,7 +2877,7 @@ data:extend({
         main_product = "",
         energy_required = 10,
         ingredients = {
-            {type="fluid", name="water", amount=100},
+            {type="fluid", name="water", amount=100, fluidbox_index=1},
             {type="item", name="iron-oxide", amount=10},
         },
         results = {
@@ -2856,7 +2898,7 @@ data:extend({
         main_product = "",
         energy_required = 1,
         ingredients = {
-            {type="fluid", name="water", amount=10},
+            {type="fluid", name="water", amount=10, fluidbox_index=1},
             {type="item", name="stone", amount=4},
         },
         results = {
@@ -3046,7 +3088,7 @@ data:extend({
         main_product = "",
         energy_required = 0.25,
         ingredients = {
-            {type="fluid", name="saline-water", amount=10},
+            {type="fluid", name="saline-water", amount=10, fluidbox_index=1},
             {type="item", name="sodium-sulfate", amount=3},
             {type="item", name="salt", amount=4},
         },
@@ -3068,7 +3110,7 @@ data:extend({
         main_product = "",
         energy_required = 0.25,
         ingredients = {
-            {type="fluid", name="saline-water", amount=10},
+            {type="fluid", name="saline-water", amount=10, fluidbox_index=1},
             {type="item", name="manganese-oxides", amount=3},
             {type="item", name="salt", amount=4},
         },
@@ -3357,7 +3399,33 @@ data:extend({
             {type="item", name="iron-ingot", amount=3},
             {type="item", name="coke", amount=1},
             {type="item", name="lime", amount=3},
+            {type="fluid", name="oxygen", amount=80},
+        },
+        results ={
+            {type="item", name="steel-ingot", amount=1},
+            {type="fluid", name="flue-gas", amount=40, temperature=300},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "steel-ingot-1-hot",
+        icons = du.icons("steel-ingot"):add_corner("300c"),
+        enabled = false,
+        category = "blasting",
+        subgroup = "raw-material",
+        energy_required = 6,
+        order = "a",
+        main_product = "",
+        allow_decomposition = false,
+        ingredients = {
+            {type="item", name="iron-ingot", amount=3},
+            {type="item", name="coke", amount=1},
+            {type="item", name="lime", amount=3},
             {type="fluid", name="oxygen", amount=40},
+            {type="fluid", name="300c", amount=40},
         },
         results ={
             {type="item", name="steel-ingot", amount=1},
@@ -3383,6 +3451,34 @@ data:extend({
             {type="item", name="manganese-ingot", amount=1},
             {type="item", name="coke", amount=3},
             {type="item", name="lime", amount=6},
+            {type="fluid", name="oxygen", amount=80},
+        },
+        results ={
+            {type="item", name="steel-ingot", amount=6},
+            {type="fluid", name="flue-gas", amount=40, temperature=300},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        name = "steel-ingot-2-hot",
+        icons = du.icons("steel-ingot"):add_corner("manganese-oxides"),
+        enabled = false,
+        category = "blasting",
+        subgroup = "raw-material",
+        energy_required = 8,
+        order = "a",
+        main_product = "",
+        allow_decomposition = false,
+        ingredients = {
+            {type="item", name="iron-ingot", amount=12},
+            {type="item", name="manganese-ingot", amount=1},
+            {type="item", name="coke", amount=3},
+            {type="item", name="lime", amount=6},
+            {type="fluid", name="oxygen", amount=40},
+            {type="fluid", name="300c", amount=40},
         },
         results ={
             {type="item", name="steel-ingot", amount=6},
@@ -3528,6 +3624,7 @@ data:extend({
         ingredients = {
             {type="item", name="small-tank", amount=1},
             {type="item", name="machine-chassis", amount=1},
+            {type="item", name="analog-circuit", amount=6},
             {type="item", name="refractory-brick", amount=20},
             {type="item", name="stone-furnace", amount=1},
         },
@@ -3851,7 +3948,7 @@ data:extend({
             {type="item", name="lv-capacitor", amount=2},
             {type="item", name="magnet-wire", amount=6},
             {type="item", name="ferrite", amount=1},
-            {type="item", name="screws", amount=3},
+            {type="item", name="analog-circuit", amount=1},
             {type="item", name="aluminum-plate", amount=3},
         },
         results ={
@@ -4333,8 +4430,9 @@ data:extend({
         main_product = "",
         energy_required = 5,
         ingredients = {
+            -- also a void for sodium hydroxide, as sodium hydroxide is produced in a 1 - 40 ratio with chlorine
             {type="fluid", name="creosote-oil", amount=10, fluidbox_index = 1},
-            {type="fluid", name="chlorine", amount=30, fluidbox_index = 2},
+            {type="fluid", name="chlorine", amount=20, fluidbox_index = 2},
             {type="item", name="sodium-hydroxide", amount=1},
         },
         results = {
@@ -4570,6 +4668,27 @@ data:extend({
             {type="item", name="oak-log", amount=1, probability=0.75, percent_spoiled=0},
         }
     },
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "plastic-resin-1",
+        icons = du.icons{name="plastic-bar", mod="base"}:add_corner("synthetic-resin"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="synthetic-resin", amount=1},
+            {type="item", name="bound-porcelain", amount=1},
+        },
+        results = {
+            {type="item", name="plastic-bar", amount=3},
+        }
+    }
 })
 data:extend({
     {

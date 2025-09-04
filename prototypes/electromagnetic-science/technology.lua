@@ -60,7 +60,54 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="tar-raw-lubricating-oil",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="propylene-void",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "water-treatment",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/oil-processing.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"electromagnetic-science"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="hydro-plant-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="seawater-treatment",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="saline-water-treatment",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="brine-treatment",
             },
         },
     },
@@ -177,7 +224,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"electromagnetic-science"},
+        prerequisites = {"water-treatment"},
         unit =
         {
             count = 10,
@@ -234,6 +281,37 @@ data:extend({
                 type = "unlock-recipe",
                 recipe = "combustion-generator"
             }
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "chemistry-3",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/chemistry.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"electromagnetic-science"},
+        unit =
+        {
+            count = 15,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="chemical-plant",
+            },
         },
     },
 })

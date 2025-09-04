@@ -2759,7 +2759,7 @@ steam_engine.graphics_set = {
 }
 steam_engine.energy_source = {
     type = "fluid", ---@diagnostic disable-line
-    maximum_temperature=165,
+    maximum_temperature=300,
     effectivity = 0.5,
     fluid_box = {
         volume=100,
@@ -6111,10 +6111,10 @@ data:extend({
 data:extend({
     {
         type = "assembling-machine",
-        name = "water-treatment-plant",
-        icons = du.icons("water-treatment-plant"),
+        name = "hydro-plant-1",
+        icons = du.icons("hydro-plant-1"),
         flags = {"placeable-neutral","placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "water-treatment-plant"},
+        minable = {mining_time = 0.2, result = "hydro-plant-1"},
         max_health = 400,
         corpse = "assembling-machine-3-remnants",
         dying_explosion = "assembling-machine-3-explosion",
@@ -6123,89 +6123,88 @@ data:extend({
         {
             {
                 pipe_covers = pipecoverspictures(),
-                pipe_picture = assembler2pipepictures(),
                 volume=100,
                 pipe_connections={
                     {
-                        position={-2, 2},
+                        position={-3, 2},
                         direction=defines.direction.west,
                         flow_direction="input-output"
                     },
                     {
-                        position={2, 2},
+                        position={3, 2},
                         direction=defines.direction.east,
                         flow_direction="input-output"
-                    }
+                    },
                 },
                 production_type="input"
             },
             {
                 pipe_covers = pipecoverspictures(),
-                pipe_picture = assembler2pipepictures(),
                 volume=100,
                 pipe_connections={
                     {
-                        position={1, 2},
-                        direction=defines.direction.south,
-                        flow_direction="input"
-                    }
-                },
-                production_type="input"
-            },
-            {
-                pipe_covers = pipecoverspictures(),
-                pipe_picture = assembler2pipepictures(),
-                volume=100,
-                pipe_connections={
-                    {
-                        position={-1, 2},
-                        direction=defines.direction.south,
-                        flow_direction="input"
-                    }
-                },
-                production_type="input"
-            },
-            {
-                pipe_covers = pipecoverspictures(),
-                pipe_picture = assembler2pipepictures(),
-                volume=100,
-                pipe_connections={
-                    {
-                        position={-2, -2},
+                        position={-3, 0},
                         direction=defines.direction.west,
                         flow_direction="input-output"
                     },
                     {
-                        position={2, -2},
+                        position={3, 0},
                         direction=defines.direction.east,
                         flow_direction="input-output"
-                    }
+                    },
+                },
+                production_type="input"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={-3, -2},
+                        direction=defines.direction.west,
+                        flow_direction="input-output"
+                    },
+                    {
+                        position={3, -2},
+                        direction=defines.direction.east,
+                        flow_direction="input-output"
+                    },
+                },
+                production_type="input"
+            },
+            {
+                pipe_covers = pipecoverspictures(),
+                volume=100,
+                pipe_connections={
+                    {
+                        position={-2, -3},
+                        direction=defines.direction.north,
+                        flow_direction="output"
+                    },
                 },
                 production_type="output"
             },
             {
                 pipe_covers = pipecoverspictures(),
-                pipe_picture = assembler2pipepictures(),
                 volume=100,
                 pipe_connections={
                     {
-                        position={1, -2},
+                        position={0, -3},
                         direction=defines.direction.north,
                         flow_direction="output"
-                    }
+                    },
                 },
                 production_type="output"
             },
             {
                 pipe_covers = pipecoverspictures(),
-                pipe_picture = assembler2pipepictures(),
                 volume=100,
                 pipe_connections={
                     {
-                        position={-1, -2},
+                        position={2, -3},
                         direction=defines.direction.north,
                         flow_direction="output"
-                    }
+                    },
                 },
                 production_type="output"
             },
@@ -6226,10 +6225,8 @@ data:extend({
             fade_in_ticks = 4,
             fade_out_ticks = 20
         },
-        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
-        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
-        damaged_trigger_effect = hit_effects.entity(),
-        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
+        collision_box = {{-3.3, -3.3}, {3.3, 3.3}},
+        selection_box = {{-3.5, -3.5}, {3.5, 3.5}},
         fast_replaceable_group = "water-treatment",
         graphics_set = {
             animation =
@@ -6237,29 +6234,236 @@ data:extend({
                 layers =
                 {
                     {
-                        filename = "__GuG2__/graphics/entity/water-treatment-plant/thermal-plant-hr-animation-1.png",
-                        priority = "high",
-                        width = 410,
-                        height = 410,
-                        frame_count = 64,
-                        line_length = 8,
-                        scale = 0.5,
-                        shift = util.by_pixel(0, -32),
-                    },
-                    {
-                        filename = "__GuG2__/graphics/entity/water-treatment-plant/thermal-plant-hr-shadow.png",
-                        priority = "high",
-                        width = 900,
-                        height = 500,
-                        frame_count = 1,
-                        line_length = 1,
-                        repeat_count = 64,
-                        scale = 0.5,
+                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-base.png",
+                        priority = "extra-high",
+                        width = 459,
+                        height = 491,
                         shift = util.by_pixel(0, 0),
-                        draw_as_shadow = true,
-                    },
+                        scale = 0.5,
+                    }
                 }
             },
+            working_visualizations = {
+                {
+                    always_draw = true,
+                    north_position = util.by_pixel(-52.5, -43),
+                    east_position = util.by_pixel(-52.5, -43),
+                    south_position = util.by_pixel(-52.5, -43),
+                    west_position = util.by_pixel(-52.5, -43),
+                    animation = {
+                        layers = {
+                            {
+                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-fan.png",
+                                priority = "extra-high",
+                                width = 107,
+                                height = 77,
+                                frame_count = 24,
+                                line_length = 6,
+                                animation_speed = 0.5,
+                                shift = util.by_pixel(0, -47.75),
+                                scale = 0.5,
+                            },
+                            {
+                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-fan.png",
+                                priority = "extra-high",
+                                width = 107,
+                                height = 77,
+                                frame_count = 24,
+                                line_length = 6,
+                                animation_speed = 0.5,
+                                shift = util.by_pixel(0, 0.125),
+                                scale = 0.5,
+                            },
+                            {
+                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-fan.png",
+                                priority = "extra-high",
+                                width = 107,
+                                height = 77,
+                                frame_count = 24,
+                                line_length = 6,
+                                animation_speed = 0.5,
+                                shift = util.by_pixel(0, 48),
+                                scale = 0.5,
+                            },
+                        },
+                    },
+                },
+                {
+                    always_draw = true,
+                    north_position = util.by_pixel(14.5, -21.5),
+                    east_position = util.by_pixel(14.5, -21.5),
+                    south_position = util.by_pixel(14.5, -21.5),
+                    west_position = util.by_pixel(14.5, -21.5),
+                    animation = {
+                        layers = {
+                            {
+                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-dynamo.png",
+                                priority = "extra-high",
+                                width = 40,
+                                height = 36,
+                                frame_count = 24,
+                                line_length = 6,
+                                animation_speed = 0.5,
+                                shift = util.by_pixel(0, -47.75),
+                                scale = 0.5,
+                            },
+                            {
+                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-dynamo.png",
+                                priority = "extra-high",
+                                width = 40,
+                                height = 36,
+                                frame_count = 24,
+                                line_length = 6,
+                                animation_speed = 0.5,
+                                shift = util.by_pixel(0, 0.125),
+                                scale = 0.5,
+                            },
+                            {
+                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-dynamo.png",
+                                priority = "extra-high",
+                                width = 40,
+                                height = 36,
+                                frame_count = 24,
+                                line_length = 6,
+                                animation_speed = 0.5,
+                                shift = util.by_pixel(0, 48),
+                                scale = 0.5,
+                            },
+                        },
+                    },
+                },
+                {
+                    always_draw = true,
+                    north_animation = {
+                        draw_as_shadow = true,
+                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-shadow.png",
+                        priority = "extra-high",
+                        width = 538,
+                        height = 454,
+                        shift = util.by_pixel(20, 10.5),
+                        x = 0,
+                        y = 0,
+                        frame_count = 1,
+                        scale = 0.5,
+                    },
+                    east_animation = {
+                        draw_as_shadow = true,
+                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-shadow.png",
+                        priority = "extra-high",
+                        width = 538,
+                        height = 454,
+                        x = 538,
+                        y = 0,
+                        frame_count = 1,
+                        shift = util.by_pixel(20, 10.5),
+                        scale = 0.5,
+                    },
+                    south_animation = {
+                        draw_as_shadow = true,
+                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-shadow.png",
+                        priority = "extra-high",
+                        width = 538,
+                        x = 1076,
+                        y = 0,
+                        height = 454,
+                        frame_count = 1,
+                        shift = util.by_pixel(20, 10.5),
+                        scale = 0.5,
+                    },
+                    west_animation = {
+                        draw_as_shadow = true,
+                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-shadow.png",
+                        priority = "extra-high",
+                        width = 538,
+                        height = 454,
+                        x = 1614,
+                        y = 0,
+                        frame_count = 1,
+                        shift = util.by_pixel(20, 10.5),
+                        scale = 0.5,
+                    },
+                },
+                {
+                    always_draw = true,
+                    north_animation = {
+                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-pipe-connections.png",
+                        priority = "extra-high",
+                        width = 459,
+                        height = 491,
+                        x = 0,
+                        y = 0,
+                        frame_count = 1,
+                        scale = 0.5,
+                    },
+                    east_animation = {
+                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-pipe-connections.png",
+                        priority = "extra-high",
+                        frame_count = 1,
+                        width = 459,
+                        height = 491,
+                        x = 459,
+                        y = 0,
+                        scale = 0.5,
+                    },
+                    south_animation = {
+                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-pipe-connections.png",
+                        priority = "extra-high",
+                        width = 459,
+                        height = 491,
+                        x = 918,
+                        y = 0,
+                        frame_count = 1,
+                        scale = 0.5,
+                    },
+                    west_animation = {
+                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-pipe-connections.png",
+                        priority = "extra-high",
+                        width = 459,
+                        height = 491,
+                        x = 1377,
+                        y = 0,
+                        frame_count = 1,
+                        scale = 0.5,
+                    },
+                },
+                {
+                    always_draw = true,
+                    north_animation = {
+                        draw_as_shadow = true,
+                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-vertical-pipe-shadow-patch.png",
+                        priority = "high",
+                        width = 128,
+                        height = 128,
+                        repeat_count = 36,
+                        scale = 0.5,
+                        shift = { -2, -3 },
+                    },
+                    south_animation = {
+                        layers = {
+                            {
+                                draw_as_shadow = true,
+                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-vertical-pipe-shadow-patch.png",
+                                priority = "high",
+                                width = 128,
+                                height = 128,
+                                repeat_count = 36,
+                                scale = 0.5,
+                                shift = { -2, -3 },
+                            },
+                            {
+                                draw_as_shadow = true,
+                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-vertical-pipe-shadow-patch.png",
+                                priority = "high",
+                                width = 128,
+                                height = 128,
+                                repeat_count = 36,
+                                scale = 0.5,
+                                shift = { 2, -3 },
+                            },
+                        },
+                    },
+                },
+            }
         },
         crafting_categories = {"water-treatment"},
         crafting_speed = 1,
@@ -6272,7 +6476,7 @@ data:extend({
             emissions_per_minute = {pollution=0},
             drain = "50kW",
         },
-        energy_usage = "1MW",
+        energy_usage = "12MW",
     }
 })
 
@@ -6319,6 +6523,18 @@ data:extend({
                 {
                     position={0, 1},
                     direction=defines.direction.south,
+                    flow_direction="input"
+                },
+            },
+            production_type="input"
+        },
+        {
+            pipe_covers = pipecoverspictures(),
+            volume=100,
+            pipe_connections={
+                {
+                    position={1, 1},
+                    direction=defines.direction.east,
                     flow_direction="input"
                 },
             },
@@ -6387,8 +6603,8 @@ data:extend({
             pipe_covers = pipecoverspictures(),
             volume = 100,
             pipe_connections = {
-                { flow_direction="input-output", position = {1,0}, direction=defines.direction.east },
-                { flow_direction="input-output", position = {-1,0}, direction=defines.direction.west },
+                { flow_direction="input-output", position = {1,-1}, direction=defines.direction.east },
+                { flow_direction="input-output", position = {-1,-1}, direction=defines.direction.west },
             },
             secondary_draw_orders = { north = -1 }
         },
@@ -6602,111 +6818,86 @@ make_farm({
 })
 
 data:extend({
-        {
-            type = "assembling-machine",
-            name = "steam-cracker",
-            icon = "__GuG2__/graphics/icons/steam-cracker.png",
-            icon_size = 64,
-            flags = {"placeable-neutral", "player-creation"},
-            minable = {mining_time = 1, result = "steam-cracker"},
-            fast_replaceable_group = "farm",
-            max_health = 400,
-            corpse = "big-remnants",
-            dying_explosion = "medium-explosion",
-            collision_box = {{-2.45, -2.45}, {2.45, 2.45}},
-            selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
-            crafting_categories = {"cracking"},
-            crafting_speed = 1,
-            module_slots = 2,
-            allowed_effects = {"consumption", "pollution", "speed"},
-            energy_source = {
-                type = "electric",
-                usage_priority = "second",
+    {
+        type = "assembling-machine",
+        name = "steam-cracker",
+        icon = "__GuG2__/graphics/icons/steam-cracker.png",
+        icon_size = 64,
+        flags = {"placeable-neutral", "player-creation"},
+        minable = {mining_time = 1, result = "steam-cracker"},
+        fast_replaceable_group = "cracker",
+        max_health = 400,
+        corpse = "big-remnants",
+        dying_explosion = "medium-explosion",
+        collision_box = {{-2.45, -2.45}, {2.45, 2.45}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+        crafting_categories = {"cracking"},
+        crafting_speed = 1,
+        module_slots = 2,
+        allowed_effects = {"consumption", "pollution", "speed"},
+        energy_source = {
+            type = "electric",
+            usage_priority = "secondary-input",
+        },
+        energy_usage = "250kW",
+        fluid_boxes = {
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "input", position = {2.0, 2.0}, direction=defines.direction.south}}
             },
-            energy_usage = "150kW",
-            fluid_boxes = {
-                {
-                    production_type = "input",
-                    pipe_covers = pipecoverspictures(),
-                    volume = 100,
-                    base_level = -1,
-                    pipe_connections = {{flow_direction = "input", position = {0, 2.0}, direction=defines.direction.south}}
-                },
-                {
-                    production_type = "output",
-                    pipe_covers = pipecoverspictures(),
-                    volume = 100,
-                    base_level = 1,
-                    pipe_connections = {{flow_direction = "output", position = {0.0, -2.0}, direction=defines.direction.north}}
-                },
-                {
-                    production_type = "input",
-                    pipe_covers = pipecoverspictures(),
-                    volume = 100,
-                    base_level = -1,
-                    pipe_connections = {{flow_direction = "input", position = {-2.0, 0}, direction=defines.direction.west}}
-                },
-                {
-                    production_type = "output",
-                    pipe_covers = pipecoverspictures(),
-                    volume = 100,
-                    base_level = 1,
-                    pipe_connections = {{flow_direction = "output", position = {2.0, 0.0}, direction=defines.direction.east}}
-                },
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "input", position = {0, 2.0}, direction=defines.direction.south}}
             },
-            graphics_set = {
-                animation = {
-                    layers = {
-                        {
-                            filename = "__GuG2__/graphics/entity/farm/farm-base.png",
-                            width = 224,
-                            height = 224,
-                            frame_count = 1,
-                            line_length = 1,
-                            repeat_count = 36
-                        },
-                        {
-                            filename = "__GuG2__/graphics/entity/farm/tint.png",
-                            width = 224,
-                            height = 224,
-                            tint = cfg.tint,
-                            frame_count = 1,
-                            line_length = 1,
-                            repeat_count = 36
-                        },
-                        {
-                            filename = "__GuG2__/graphics/entity/farm/field-"..(cfg.field or "basic")..".png",
-                            width = 224,
-                            height = 224,
-                            tint = cfg.tint,
-                            frame_count = 1,
-                            line_length = 1,
-                            repeat_count = 36
-                        },
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "input", position = {-2.0, 2.0}, direction=defines.direction.south}}
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "output", position = {2.0, -2.0}, direction=defines.direction.north}}
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "output", position = {0, -2.0}, direction=defines.direction.north}}
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "output", position = {-2.0, -2.0}, direction=defines.direction.north}}
+            },
+        },
+        graphics_set = {
+            animation = {
+                layers = {
+                    {
+                        filename = "__GuG2__/graphics/entity/steam-cracker/separator.png",
+                        width = 224,
+                        height = 224,
+                        frame_count = 1,
+                        line_length = 1
                     },
                 },
-                working_visualisations = {
-                    {
-                        apply_recipe_tint = "primary",
-                        animation = 
-                        {
-                            filename = "__GuG2__/graphics/entity/farm/field-animation-"..(cfg.animation)..".png",
-                            width = 224,
-                            height = 224,
-                            frame_count = 36,
-                            line_length = 6,
-                            animation_speed = 0.1,
-                        },
-                    }
-                }
             },
-            vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.55},
-            working_sound = {
-                sound = {filename = "__pycoalprocessinggraphics__/sounds/classifier.ogg"},
-                apparent_volume = 2.5
-            },
-        }
-    })
+        },
+        vehicle_impact_sound = {filename = "__base__/sound/car-metal-impact.ogg", volume = 0.55},
+        working_sound = {
+            sound = {filename = "__pycoalprocessinggraphics__/sounds/classifier.ogg"},
+            apparent_volume = 2.5
+        },
+    }
+})
 
 -- TODO: new buildings
 -- chemical blender 1 in 1 out
@@ -6724,6 +6915,15 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 200,
         place_result = "farm-1"
+    },
+    {
+        type = "item",
+        name = "steam-cracker",
+        icons = du.icons("steam-cracker"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+        place_result = "steam-cracker"
     },
     {
         type = "item",
@@ -6764,7 +6964,7 @@ data:extend({
     {
         type = "item",
         name = "hardened-machine-chassis",
-        icons = du.icons("machine-chassis"),
+        icons = du.icons("hardened-machine-chassis"),
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 200,
@@ -7239,12 +7439,12 @@ data:extend({
     },
     {
         type = "item",
-        name = "water-treatment-plant",
-        icons = du.icons("water-treatment-plant"),
+        name = "hydro-plant-1",
+        icons = du.icons("hydro-plant-1"),
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
-        place_result = "water-treatment-plant"
+        place_result = "hydro-plant-1"
     },
     {
         type = "item",
@@ -7303,6 +7503,10 @@ data:extend({
     {
         type = "recipe-category",
         name = "blending"
+    },
+    {
+        type = "recipe-category",
+        name = "cracking"
     },
     {
         type = "recipe-category",

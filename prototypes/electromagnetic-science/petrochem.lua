@@ -17,9 +17,9 @@ data:extend({
             {type="fluid", name="water", amount=200},
         },
         results = {
-            {type="fluid", name="medium-distillates", amount=45},
-            {type="fluid", name="light-distillates", amount=25},
-            {type="fluid", name="residuals", amount=30},
+            {type="fluid", name="medium-distillates", amount=45, fluidbox_index = 2},
+            {type="fluid", name="light-distillates", amount=25, fluidbox_index = 3},
+            {type="fluid", name="residuals", amount=30, fluidbox_index = 4},
             {type="item", name="bitumen", amount=1},
         }
     }
@@ -109,8 +109,8 @@ data:extend({
             {type="fluid", name="light-distillates", amount=100},
         },
         results = {
-            {type="fluid", name="petroleum-gas", amount=60},
-            {type="fluid", name="light-naphtha", amount=40},
+            {type="fluid", name="petroleum-gas", amount=60, fluidbox_index = 2},
+            {type="fluid", name="light-naphtha", amount=40, fluidbox_index = 3},
         }
     }
 })
@@ -130,9 +130,9 @@ data:extend({
             {type="fluid", name="medium-distillates", amount=100},
         },
         results = {
-            {type="fluid", name="heavy-naphtha", amount=50},
-            {type="fluid", name="fuel-oil", amount=30},
-            {type="fluid", name="gasoline", amount=20},
+            {type="fluid", name="heavy-naphtha", amount=50, fluidbox_index = 2},
+            {type="fluid", name="fuel-oil", amount=30, fluidbox_index = 3},
+            {type="fluid", name="gasoline", amount=20, fluidbox_index = 4},
         }
     }
 })
@@ -174,9 +174,31 @@ data:extend({
             {type="fluid", name="residuals", amount=100},
         },
         results = {
-            {type="fluid", name="raw-lubricating-oil", amount=20},
-            {type="fluid", name="petroleum-gas", amount=50},
-            {type="fluid", name="hvgo", amount=20},
+            {type="fluid", name="raw-lubricating-oil", amount=20, fluidbox_index = 2},
+            {type="fluid", name="petroleum-gas", amount=50, fluidbox_index = 3},
+            {type="fluid", name="hvgo", amount=20, fluidbox_index = 4},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "cracking", ---@diagnostic disable-line
+        name = "hvgo-cracking-1",
+        icons = du.icons("hvgo"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="hvgo", amount=100},
+            {type="fluid", name="hydrogen", amount=300},
+        },
+        results = {
+            {type="fluid", name="gasoline", amount=20},
+            {type="fluid", name="btx", amount=30},
         }
     }
 })
@@ -186,18 +208,19 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "chemistry", ---@diagnostic disable-line
-        name = "hvgo-cracking-1",
+        name = "light-naphtha-gasoline",
         icons = du.icons("hvgo"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 2,
+        energy_required = 1,
         ingredients = {
-            {type="fluid", name="hvgo", amount=100},
+            {type="fluid", name="light-naphtha", amount=30},
+            {type="fluid", name="petroleum-gas", amount=30},
+            {type="fluid", name="hydrogen", amount=300},
         },
         results = {
-            {type="fluid", name="gasoline", amount=20},
-            {type="fluid", name="benzene", amount=50},
+            {type="fluid", name="gasoline", amount=15},
         }
     }
 })
@@ -214,7 +237,27 @@ data:extend({
         main_product = "",
         energy_required = 1,
         ingredients = {
-            {type="fluid", name="hvgo", amount=30},
+            {type="fluid", name="hvgo", amount=30, fluidbox_index=1},
+        },
+        results = {
+            {type="fluid", name="hydrogen", amount=300},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "hvgo-cracking-2",
+        icons = du.icons("hvgo"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="fluid", name="hvgo", amount=30, fluidbox_index=1},
         },
         results = {
             {type="fluid", name="hydrogen", amount=300},
@@ -300,8 +343,8 @@ data:extend({
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="fluid", name="gasoline", amount=20},
-            {type="fluid", name="hydrogen", amount=100},
+            {type="fluid", name="gasoline", amount=20, fluidbox_index = 1},
+            {type="fluid", name="hydrogen", amount=100, fluidbox_index = 2},
             {type="item", name="aluminum-cable", amount=12},
         },
         results = {
@@ -331,6 +374,28 @@ data:extend({
         results = {
             {type="fluid", name="methane", amount=30},
             {type="fluid", name="carbon-dioxide", amount=30},
+        }
+    }
+})
+
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "chemistry", ---@diagnostic disable-line
+        name = "tar-raw-lubricating-oil",
+        icons = du.icons("tar"):add_corner("raw-lubricating-oil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="fluid", name="raw-lubricating-oil", amount=40},
+            {type="fluid", name="hydrogen", amount=100},
+        },
+        results = {
+            {type="fluid", name="tar", amount=40},
         }
     }
 })
