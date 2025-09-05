@@ -413,12 +413,140 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 1,
+        energy_required = 4,
         ingredients = {
             {type="item", name="dead-process", amount=1},
         },
         results = {
             {type="item", name="process", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "processing", ---@diagnostic disable-line
+        name = "revive-process-environmental-insight",
+        icons = du.alias("process"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 3,
+        ingredients = {
+            {type="item", name="dead-process", amount=1},
+            {type="item", name="environmental-insight", amount=24},
+        },
+        results = {
+            {type="item", name="process", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "processing", ---@diagnostic disable-line
+        name = "revive-process-mechanical-insight",
+        icons = du.alias("process"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="dead-process", amount=1},
+            {type="item", name="mechanical-insight", amount=12},
+        },
+        results = {
+            {type="item", name="process", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "processing", ---@diagnostic disable-line
+        name = "revive-process-electromagnetic-insight",
+        icons = du.alias("process"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="dead-process", amount=1},
+            {type="item", name="electromagnetic-insight", amount=6},
+        },
+        results = {
+            {type="item", name="process", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "computing", ---@diagnostic disable-line
+        name = "environmental-insight-1",
+        icons = du.alias("environmental-insight"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="program", amount=1},
+            {type="item", name="environmental-science-pack", amount=2},
+        },
+        results = {
+            {type="item", name="environmental-insight", amount=8},
+            {type="item", name="program-harness", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "computing", ---@diagnostic disable-line
+        name = "mechanical-insight-1",
+        icons = du.alias("mechanical-insight"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="program", amount=1},
+            {type="item", name="mechanical-science-pack", amount=2},
+        },
+        results = {
+            {type="item", name="mechanical-insight", amount=8},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "computing", ---@diagnostic disable-line
+        name = "electromagnetic-insight-1",
+        icons = du.alias("electromagnetic-insight"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="program", amount=1},
+            {type="item", name="electromagnetic-science-pack", amount=2},
+        },
+        results = {
+            {type="item", name="program-harness", amount=1},
+            {type="item", name="electromagnetic-insight", amount=8},
         }
     }
 })

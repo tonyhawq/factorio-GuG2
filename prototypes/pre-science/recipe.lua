@@ -333,19 +333,20 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         category = "crafting", ---@diagnostic disable-line
-        name = "environmental-science-pack",
+        name = "environmental-science-pack-1",
         icons = du.icons("environmental-science-pack"),
         subgroup = "science-pack",
         order = "1-1",
         main_product = "",
         enabled = true,
-        energy_required = 2,
+        energy_required = 24,
         ingredients = {
             {type="item", name="planter-box", amount=2},
             {type="item", name="bronze-plate", amount=2},
+            {type="item", name="clay", amount=2},
         },
         results = {
-            {type="item", name="environmental-science-pack", amount=2},
+            {type="item", name="environmental-science-pack", amount=1},
         }
     }
 })

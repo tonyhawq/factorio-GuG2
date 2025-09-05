@@ -378,8 +378,7 @@ data:extend({
         energy_required = 1,
         ingredients = {
             {type="item", name="plastic-bar", amount=4},
-            {type="item", name="glowing-mangaloy-plate", amount=1},
-            {type="item", name="steel-beam", amount=1},
+            {type="item", name="steel-beam", amount=2},
             {type="item", name="aluminum-cable", amount=6},
         },
         results = {
@@ -1705,7 +1704,7 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="hardened-machine-chassis", amount=1},
-            {type="item", name="electronic-circuit", amount=20},
+            {type="item", name="electronic-circuit", amount=40},
             {type="item", name="solder", amount=10},
             {type="item", name="aluminum-plate", amount=20},
             {type="item", name="copper-cable", amount=40},
@@ -2013,10 +2012,74 @@ data:extend({
             {type="item", name="small-lamp", amount=1},
             {type="item", name="constant-combinator", amount=1},
             {type="item", name="electronic-circuit", amount=1},
-            {type="item", name="electromagnetic-science-pack", amount=1},
+            {type="item", name="battery", amount=1},
         },
         results = {
             {type="item", name="program-harness", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "module-harness-1",
+        icons = du.icons("module-harness"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="program", amount=1},
+            {type="item", name="aluminum-cable", amount=4},
+        },
+        results = {
+            {type="item", name="module-harness", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "speed-module-1",
+        icons = du.icons("base.speed-module"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 24,
+        ingredients = {
+            {type="item", name="module-harness", amount=6},
+            {type="item", name="car", amount=1},
+        },
+        results = {
+            {type="item", name="speed-module", amount=6},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "fabricating", ---@diagnostic disable-line
+        name = "efficiency-module-1",
+        icons = du.icons("base.efficiency-module"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="module-harness", amount=1},
+            {type="item", name="synthetic-resin", amount=4},
+            {type="item", name="manganese-ingot", amount=1},
+        },
+        results = {
+            {type="item", name="efficiency-module", amount=1},
         }
     }
 })

@@ -2074,6 +2074,36 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "environmental-science",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/logistic-science-pack.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"sulfur-1"},
+        unit =
+        {
+            count = 50,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="environmental-science-pack-2",
+            }
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "electromagnetic-science",
         icons = {
             {

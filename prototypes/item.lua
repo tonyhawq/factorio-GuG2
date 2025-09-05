@@ -848,6 +848,14 @@ data:extend({
   },
   {
     type = "item",
+    name = "module-harness",
+    icons = du.icons("module-harness"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 200
+  },
+  {
+    type = "item",
     name = "high-purity-manganese-concentrate",
     icons = du.icons("high-purity-manganese-concentrate"),
     subgroup = "smelting-machine",
@@ -1139,6 +1147,30 @@ data:extend({
     type = "item",
     name = "glass",
     icons = du.icons("glass"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "environmental-insight",
+    icons = du.alias("environmental-insight"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "mechanical-insight",
+    icons = du.alias("mechanical-insight"),
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "electromagnetic-insight",
+    icons = du.alias("electromagnetic-insight"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50
@@ -1746,3 +1778,7 @@ data:extend({
     stack_size = 50,
   },
 })
+
+local speed_module = data.raw.module["speed-module"]
+local eff_module = data.raw.module["efficiency-module"]
+eff_module.effect.consumption = -0.15

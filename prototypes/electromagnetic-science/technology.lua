@@ -28,6 +28,10 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="steam-cracker",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="crude-oil-fractioning-1",
             },
             {
@@ -115,14 +119,49 @@ data:extend({
 data:extend({
     {
         type = "technology",
-        name = "computation",
+        name = "electric-energy-distribution-1",
         icons = {
             {
-                icon = "__base__/graphics/technology/oil-processing.png",
+                icon = "__base__/graphics/technology/electric-energy-distribution-1.png",
                 icon_size = 256,
             }
         },
-        prerequisites = {},
+        prerequisites = {"electromagnetic-science"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="medium-electric-pole",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="accumulator",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "computation",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/icons/se/technology/supercomputer-1.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"electromagnetic-science"},
         unit =
         {
             count = 10,
@@ -175,6 +214,150 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="program-2",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "modules",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/module.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"computation"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="module-harness-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "speed-module",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/speed-module-1.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"modules"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="speed-module-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "efficiency-module",
+        icons = {
+            {
+                icon = "__base__/graphics/technology/efficiency-module-1.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"modules"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="efficiency-module-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "computational-insights",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/icons/se/technology/catalogue/universal-catalogue.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"computation"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="revive-process-environmental-insight",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="revive-process-mechanical-insight",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="revive-process-electromagnetic-insight",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="environmental-insight-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="mechanical-insight-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="electromagnetic-insight-1",
             },
         },
     },

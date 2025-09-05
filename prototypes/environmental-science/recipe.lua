@@ -4671,6 +4671,29 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        category = "crafting-with-fluid", ---@diagnostic disable-line
+        name = "environmental-science-pack-2",
+        icons = du.icons("environmental-science-pack"),
+        subgroup = "science-pack",
+        order = "1-2",
+        main_product = "",
+        enabled = true,
+        energy_required = 12,
+        ingredients = {
+            {type="item", name="saltberries", amount=4},
+            {type="item", name="brine-salt", amount=1},
+            {type="item", name="soil", amount=4},
+            {type="fluid", name="acid-gas", amount=8},
+        },
+        results = {
+            {type="item", name="environmental-science-pack", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "small-lamp",
