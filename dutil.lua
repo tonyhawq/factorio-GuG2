@@ -30,6 +30,32 @@ function dutil.alias(name, as, make_copies)
     end
 end
 
+dutil.order = {}
+
+function dutil.order.todo()
+    return "z[todo]"
+end
+
+function dutil.order.ingot(name, tier)
+    local order_main = "z"
+    if name == "rod" then
+        order_main = "a"
+    elseif name == "plate" then
+        order_man = "b"
+    elseif name == "sheet" then
+        order_man = "c"
+    elseif name == "beam" then
+        order_man = "d"
+    elseif name == "cable" then
+        order_man = "e"
+    elseif name == "gear" then
+        order_man = "f"
+    else
+        error("No order for "..tostring(name))
+    end
+    return order_main.."["..name.."]".."-"..tier
+end
+
 dutil.default_copy = false
 dutil.show_on_modify = true
 dutil.mod = "GuG2"

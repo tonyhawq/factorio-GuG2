@@ -189,7 +189,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {},
+        prerequisites = {"electromagnetic-science"},
         unit =
         {
             count = 10,
@@ -203,6 +203,10 @@ data:extend({
         },
         effects =
         {
+            {
+                type = "unlock-recipe",
+                recipe="crucible",
+            },
             {
                 type = "unlock-recipe",
                 recipe="steel-furnace",

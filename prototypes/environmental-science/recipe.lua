@@ -88,8 +88,8 @@ data:extend({
         category = "smelting", ---@diagnostic disable-line
         name = "bronze-ingot-1",
         icons = du.icons("bronze-ingot"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "bronze-smelting",
+        order = "a",
         main_product = "",
         energy_required = 2,
         allow_decomposition = false,
@@ -110,8 +110,8 @@ data:extend({
         category = "smelting", ---@diagnostic disable-line
         name = "bronze-plate-1",
         icons = du.icons("bronze-plate"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "bronze-ingot-processing",
+        order = du.order.ingot("plate", 1),
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -150,8 +150,8 @@ data:extend({
         category = "smelting", ---@diagnostic disable-line
         name = "rivets-1",
         icons = du.icons("rivets"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "fasteners",
+        order = "a[rivets]-a",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -170,8 +170,8 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "rivets-2",
         icons = du.icons("rivets"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "fasteners",
+        order = "a[rivets]-b",
         main_product = "",
         energy_required = 0.5,
         ingredients = {
@@ -191,8 +191,8 @@ data:extend({
         category = "smelting", ---@diagnostic disable-line
         name = "iron-ingot-1",
         icons = du.icons("iron-ingot"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "iron-smelting",
+        order = "a",
         main_product = "",
         energy_required = 4,
         allow_decomposition = false,
@@ -213,8 +213,8 @@ data:extend({
         category = "smelting", ---@diagnostic disable-line
         name = "iron-ingot-2",
         icons = du.icons("iron-ingot"):add_corner("iron-oxide"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "iron-smelting",
+        order = "b",
         main_product = "",
         energy_required = 4,
         allow_decomposition = false,
@@ -235,8 +235,8 @@ data:extend({
         category = "smelting", ---@diagnostic disable-line
         name = "iron-ingot-3",
         icons = du.icons("iron-ingot"):add_corner("iron-oxide"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "iron-smelting",
+        order = "c",
         main_product = "",
         energy_required = 4,
         allow_decomposition = false,
@@ -257,8 +257,8 @@ data:extend({
         category = "smithing", ---@diagnostic disable-line
         name = "iron-plate-1",
         icons = du.icons("base.iron-plate"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "iron-ingot-processing",
+        order = "a[plate]-a",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -720,28 +720,7 @@ data:extend({
         }
     }
 })
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "smelting", ---@diagnostic disable-line
-        name = "steel-ingot-1",
-        icons = du.icons("steel-ingot"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 10,
-        allow_decomposition = false,
-        ingredients = {
-            {type="item", name="iron-ingot", amount=3},
-            {type="item", name="coke", amount=1},
-        },
-        results = {
-            {type="item", name="steel-ingot", amount=2},
-        }
-    }
-})
+-- rod, plate, sheet, beam, cable, gear
 data:extend({
     {
         type = "recipe", 
@@ -750,8 +729,8 @@ data:extend({
         category = "smithing", ---@diagnostic disable-line
         name = "steel-rod-1",
         icons = du.icons("steel-rod"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "steel-ingot-processing",
+        order = du.order.ingot("rod", 1),
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -770,8 +749,8 @@ data:extend({
         category = "smithing", ---@diagnostic disable-line
         name = "steel-plate-1",
         icons = du.icons("steel-plate"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "steel-ingot-processing",
+        order = du.order.ingot("plate", 1),
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -790,8 +769,8 @@ data:extend({
         category = "smithing", ---@diagnostic disable-line
         name = "steel-beam-1",
         icons = du.icons("steel-beam"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "steel-ingot-processing",
+        order = du.order.ingot("beam", 1),
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -812,8 +791,8 @@ data:extend({
         category = "smelting", ---@diagnostic disable-line
         name = "steel-cable-1",
         icons = du.icons("steel-cable"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "steel-ingot-processing",
+        order = du.order.ingot("cable", 1),
         main_product = "",
         energy_required = 12,
         ingredients = {
@@ -832,8 +811,8 @@ data:extend({
         category = "advanced-crafting", ---@diagnostic disable-line
         name = "iron-gear",
         icons = du.icons{mod="base", name="iron-gear-wheel"},
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "iron-ingot-processing",
+        order = du.order.ingot("gear", 1),
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -854,8 +833,8 @@ data:extend({
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "treated-wood",
         icons = du.icons("treated-wood"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "c[treated-wood]-1",
         main_product = "",
         energy_required = 6,
         ingredients = {
@@ -875,8 +854,8 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "analog-circuit-1",
         icons = du.icons("analog-circuit"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "circuits",
+        order = "a[analog]-1",
         main_product = "",
         energy_required = 20,
         ingredients = {
@@ -918,8 +897,8 @@ data:extend({
         category = "crushing", ---@diagnostic disable-line
         name = "sandstone-crushing",
         icons = du.icons("sandstone"):add_corner("crushing"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "crushing",
+        order = "a[stones]-a",
         main_product = "",
         energy_required = 0.5,
         ingredients = {
@@ -939,8 +918,8 @@ data:extend({
         category = "crushing", ---@diagnostic disable-line
         name = "limestone-crushing",
         icons = du.icons("limestone"):add_corner("crushing"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "crushing",
+        order = "a[stones]-b",
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -960,8 +939,8 @@ data:extend({
         category = "crushing", ---@diagnostic disable-line
         name = "gravel-crushing",
         icons = du.icons("gravel"):add_corner("crushing"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "crushing",
+        order = "a[stones]-d",
         main_product = "",
         energy_required = 0.5,
         ingredients = {
@@ -981,8 +960,8 @@ data:extend({
         category = "crushing", ---@diagnostic disable-line
         name = "stone-crushing",
         icons = du.icons{mod="base",name="stone"}:add_corner("crushing"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "crushing",
+        order = "a[stones]-c",
         main_product = "",
         energy_required = 0.5,
         ingredients = {
@@ -1001,8 +980,8 @@ data:extend({
         category = "glassworking", ---@diagnostic disable-line
         name = "raw-quartz-glass",
         icons = du.icons("glass"):add_corner("raw-quartz"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "glassworking",
+        order = "a[molten]-a",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1021,8 +1000,8 @@ data:extend({
         category = "glassworking", ---@diagnostic disable-line
         name = "crushed-quartz-glass",
         icons = du.icons("glass"):add_corner("crushed-quartz"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "glassworking",
+        order = "a[molten]-b",
         main_product = "",
         energy_required = 1.5,
         ingredients = {
@@ -1041,8 +1020,8 @@ data:extend({
         category = "crushing", ---@diagnostic disable-line
         name = "crushed-quartz-1",
         icons = du.icons("crushed-quartz"):add_corner("crushing"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "crushing",
+        order = "b[resources]-a[quartz]",
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -1082,8 +1061,8 @@ data:extend({
         category = "evaporating", ---@diagnostic disable-line
         name = "silica-sand-crushed-quartz",
         icons = du.icons("silica-sand"):add_corner("crushed-quartz"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "silicon-processing",
+        order = "a[silica-sand]-b",
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1104,8 +1083,8 @@ data:extend({
         category = "crushing", ---@diagnostic disable-line
         name = "sand-upgrading",
         icons = du.icons("silica-sand"):add_corner("sand"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "silicon-processing",
+        order = "a[silica-sand]-a",
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1126,8 +1105,8 @@ data:extend({
         category = "blending", ---@diagnostic disable-line
         name = "sand-void",
         icons = du.icons("sand"):add_corner("base.fluid/water"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "water-processing",
+        order = "a",
         main_product = "",
         energy_required = 0.1,
         ingredients = {
@@ -1147,8 +1126,8 @@ data:extend({
         category = "glassworking", ---@diagnostic disable-line
         name = "float-glass",
         icons = du.icons("glass"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "glassworking",
+        order = "z[products]-a-1",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1169,8 +1148,8 @@ data:extend({
         category = "machining", ---@diagnostic disable-line
         name = "screws",
         icons = du.icons("screws"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "fasteners",
+        order = "b[screws]-1",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1211,8 +1190,8 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "mechanical-science-pack-1",
         icons = du.icons("mechanical-science-pack"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "science-pack",
+        order = "2-1",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1235,7 +1214,7 @@ data:extend({
         name = "electromagnetic-science-pack-1",
         icons = du.icons("electromagnetic-science-pack"),
         subgroup = "raw-material",
-        order = "a[a]",
+        order = "3-1",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1258,9 +1237,7 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "lab-2",
         icons = du.icons{mod="base",name="lab"},
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
+        main_product = "lab",
         energy_required = 2,
         ingredients = {
             {type="item", name="glass", amount=16},
@@ -1281,8 +1258,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "formaldehyde-1",
         icons = du.icons("formaldehyde"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "basic-chemistry",
+        order = "",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1302,8 +1279,8 @@ data:extend({
         category = "blending", ---@diagnostic disable-line
         name = "urea-ammonia",
         icons = du.icons("urea"):add_corner("ammonia"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "nitrogen-chemistry",
+        order = "a[urea]-c",
         main_product = "",
         energy_required = 8,
         ingredients = {
@@ -1324,8 +1301,8 @@ data:extend({
         category = "blending", ---@diagnostic disable-line
         name = "urea-ureic-feces",
         icons = du.icons("urea"):add_corner("ureic-feces"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "nitrogen-chemistry",
+        order = "a[urea]-b",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1347,8 +1324,8 @@ data:extend({
         category = "blending", ---@diagnostic disable-line
         name = "urea-organic-wastewater",
         icons = du.icons("urea"):add_corner("organic-wastewater"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "nitrogen-chemistry",
+        order = "a[urea]-a",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1370,8 +1347,8 @@ data:extend({
         category = "chemistry", ---@diagnostic disable-line
         name = "synthetic-resin-1",
         icons = du.icons("synthetic-resin"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "polymers",
+        order = "a[resin]-1",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1391,8 +1368,8 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "fiberboard",
         icons = du.icons("fiberboard"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "d[fiberboard]-1",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1487,30 +1464,6 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "crafting", ---@diagnostic disable-line
-        name = "forestry",
-        icons = du.icons("forestry"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="treated-wood", amount=20},
-            {type="item", name="soil", amount=20},
-            {type="item", name="iron-sheet", amount=40},
-            {type="item", name="steam-inserter", amount=20},
-            {type="item", name="stone-brick", amount=50},
-        },
-        results = {
-            {type="item", name="forestry", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "crafting", ---@diagnostic disable-line
         name = "soil-extractor",
         icons = du.icons("soil-extractor"),
         energy_required = 2,
@@ -1573,8 +1526,8 @@ data:extend({
         category = "chemistry", ---@diagnostic disable-line
         name = "ammonia-from-gasoline",
         icons = du.icons("ammonia"):add_corner("gasoline"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = du.order.todo(),
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1595,8 +1548,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "gasoline-1",
         icons = du.icons("gasoline"):add_corner("tar"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = du.order.todo(),
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1618,8 +1571,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "gasoline-destructive-distillation",
         icons = du.icons{mod="base", name="fluid/heavy-oil"}:add_corner("gasoline"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = du.order.todo(),
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1662,8 +1615,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "gasoline-pyrolysis",
         icons = du.icons("gasoline-pyrolysis"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = du.order.todo(),
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1683,8 +1636,8 @@ data:extend({
         enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "lubricant-1",
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = du.order.todo(),
         main_product = "",
         icons = du.icons{mod="base", name="fluid/lubricant"},
         energy_required = 2,
@@ -1707,8 +1660,8 @@ data:extend({
         name = "engine-unit",
         icons = du.icons{mod="base", name="engine-unit"},
         energy_required = 2,
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "electronic-products",
+        order = "b[motor]-b[combustion]-1",
         main_product = "",
         ingredients = {
             {type="item", name="pipe", amount=1},
@@ -1730,8 +1683,8 @@ data:extend({
         category = "extracting", ---@diagnostic disable-line
         name = "soil-2",
         icons = du.icons("soil"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "extracting",
+        order = "a",
         main_product = "",
         energy_required = 0.25,
         ingredients = {
@@ -1750,8 +1703,8 @@ data:extend({
         category = "extracting", ---@diagnostic disable-line
         name = "clay-2",
         icons = du.icons("clay"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "extracting",
+        order = "a",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -1769,8 +1722,8 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "log-cutting",
         icons = du.icons{mod="base",name="wood"},
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "a[wood]-a[log]-1",
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1789,8 +1742,8 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "pine-log-cutting",
         icons = du.icons{mod="base",name="wood"},
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "a[wood]-b[log]-1",
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -1809,9 +1762,9 @@ data:extend({
         icons = du.icons("mortar"),
         enabled = false,
         category = "blending",
-        subgroup = "raw-material",
+        subgroup = "masonry",
+        order = "d[concrete]-b[mortar]-1",
         energy_required = 4,
-        order = "a",
         main_product = "",
         ingredients = {
             {type="item", name="gravel", amount=6},
@@ -1832,9 +1785,9 @@ data:extend({
         icons = du.icons("cement"),
         enabled = false,
         category = "smelting",
-        subgroup = "raw-material",
+        subgroup = "masonry",
+        order = "d[concrete]-a[cement]-1",
         energy_required = 4,
-        order = "a",
         main_product = "",
         ingredients = {
             {type="item", name="silica", amount=10},
@@ -1854,9 +1807,9 @@ data:extend({
         icons = du.icons("cement"):add_corner("base.sulfur"),
         enabled = false,
         category = "smelting",
-        subgroup = "raw-material",
+        subgroup = "masonry",
+        order = "d[concrete]-a[cement]-2",
         energy_required = 4,
-        order = "a",
         main_product = "",
         ingredients = {
             {type="item", name="silica", amount=10},
@@ -1877,9 +1830,9 @@ data:extend({
         icons = du.icons{mod="base",name="concrete"},
         enabled = false,
         category = "crushing",
-        subgroup = "raw-material",
+        subgroup = "masonry",
+        order = "d[concrete]-c[concrete]-1",
         energy_required = 8,
-        order = "a",
         main_product = "",
         ingredients = {
             {type="item", name="refractory-brick", amount=2},
@@ -1901,8 +1854,8 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "oak-log-cutting",
         icons = du.icons{mod="base",name="wood"},
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "a[wood]-c[log]-1",
         main_product = "",
         energy_required = 4,
         ingredients = {
@@ -1921,8 +1874,8 @@ data:extend({
         category = "crushing", ---@diagnostic disable-line
         name = "sap-extraction",
         icons = du.icons("sap"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "a[wood]-b[log]-z[sap]-1",
         main_product = "",
         energy_required = 4,
         ingredients = {
@@ -1941,8 +1894,8 @@ data:extend({
         category = "crushing", ---@diagnostic disable-line
         name = "sap-extraction-pine",
         icons = du.icons("sap"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "a[wood]-b[log]-z[sap]-2",
         main_product = "",
         energy_required = 4,
         ingredients = {
@@ -2022,8 +1975,8 @@ data:extend({
         category = "crushing", ---@diagnostic disable-line
         name = "kraft-process",
         icons = du.icons("cellulose"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "b[cellulose]-a[product]-1",
         main_product = "",
         energy_required = 4,
         ingredients = {
@@ -2045,8 +1998,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "black-liquor-regeneration",
         icons = du.icons("green-liquor"):add_corner("black-liquor"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "b[cellulose]-b[process]-2",
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -2068,8 +2021,8 @@ data:extend({
         category = "chemistry", ---@diagnostic disable-line
         name = "green-liquor",
         icons = du.icons("green-liquor"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "b[cellulose]-b[process]-1",
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -3390,9 +3343,9 @@ data:extend({
         icons = du.icons("steel-ingot"),
         enabled = false,
         category = "blasting",
-        subgroup = "raw-material",
+        subgroup = "steel-smelting",
         energy_required = 8,
-        order = "a",
+        order = "a-1",
         main_product = "",
         allow_decomposition = false,
         ingredients = {
@@ -3415,9 +3368,9 @@ data:extend({
         icons = du.icons("steel-ingot"):add_corner("300c"),
         enabled = false,
         category = "blasting",
-        subgroup = "raw-material",
+        subgroup = "steel-smelting",
         energy_required = 6,
-        order = "a",
+        order = "a-1-hot",
         main_product = "",
         allow_decomposition = false,
         ingredients = {
@@ -3441,9 +3394,9 @@ data:extend({
         icons = du.icons("steel-ingot"):add_corner("manganese-oxides"),
         enabled = false,
         category = "blasting",
-        subgroup = "raw-material",
+        subgroup = "steel-smelting",
         energy_required = 12,
-        order = "a",
+        order = "b-1",
         main_product = "",
         allow_decomposition = false,
         ingredients = {
@@ -3467,9 +3420,9 @@ data:extend({
         icons = du.icons("steel-ingot"):add_corner("manganese-oxides"),
         enabled = false,
         category = "blasting",
-        subgroup = "raw-material",
+        subgroup = "steel-smelting",
         energy_required = 8,
-        order = "a",
+        order = "b-1-hot",
         main_product = "",
         allow_decomposition = false,
         ingredients = {
@@ -3494,9 +3447,9 @@ data:extend({
         icons = du.icons("manganese-ingot"),
         enabled = false,
         category = "blasting",
-        subgroup = "raw-material",
+        subgroup = "manganese-smelting",
         energy_required = 12,
-        order = "a",
+        order = "a-1",
         main_product = "",
         allow_decomposition = false,
         ingredients = {
@@ -3516,9 +3469,9 @@ data:extend({
         icons = du.icons("zinc-oxide"),
         enabled = false,
         category = "blasting",
-        subgroup = "raw-material",
+        subgroup = "zinc-ore-processing",
         energy_required = 2,
-        order = "a",
+        order = "a[oxide]-1",
         main_product = "",
         ingredients = {
             {type="item", name="zinc-ore", amount=3},
@@ -3537,9 +3490,9 @@ data:extend({
         icons = du.icons("zinc-gas"),
         enabled = false,
         category = "blasting",
-        subgroup = "raw-material",
+        subgroup = "zinc-ore-processing",
         energy_required = 1,
-        order = "a",
+        order = "b[gas]-1",
         main_product = "",
         ingredients = {
             {type="item", name="zinc-oxide", amount=3},
@@ -3557,9 +3510,9 @@ data:extend({
         icons = du.icons("zinc-ingot"),
         enabled = false,
         category = "smelting",
-        subgroup = "raw-material",
+        subgroup = "zinc-smelting",
         energy_required = 0.5,
-        order = "a",
+        order = "a-1",
         main_product = "",
         allow_decomposition = false,
         ingredients = {
@@ -3578,9 +3531,9 @@ data:extend({
         icons = du.icons("zinc-plate"),
         enabled = false,
         category = "smelting",
-        subgroup = "raw-material",
+        subgroup = "zinc-ingot-processing",
         energy_required = 3,
-        order = "a",
+        order = du.order.ingot("plate", 1),
         main_product = "",
         ingredients = {
             {type="item", name="zinc-ingot", amount=1},
@@ -3598,9 +3551,9 @@ data:extend({
         icons = du.icons("refractory-brick"),
         enabled = false,
         category = "crafting",
-        subgroup = "raw-material",
+        subgroup = "masonry",
         energy_required = 2,
-        order = "a",
+        order = "c[refractory]-a[brick]-1",
         main_product = "",
         ingredients = {
             {type="item", name="alumina", amount=2},
@@ -3641,9 +3594,9 @@ data:extend({
         icons = du.icons{mod="base", name="battery"},
         enabled = false,
         category = "crafting-with-fluid",
-        subgroup = "raw-material",
+        subgroup = "electronic-products",
         energy_required = 4,
-        order = "a",
+        order = "c[battery]-1",
         main_product = "",
         ingredients = {
             {type="item", name="zinc-plate", amount=3},
@@ -3665,9 +3618,9 @@ data:extend({
         icons = du.icons{mod="base", name="battery"},
         enabled = false,
         category = "crafting-with-fluid",
-        subgroup = "raw-material",
+        subgroup = "electronic-products",
         energy_required = 4,
-        order = "a",
+        order = "c[battery]-2",
         main_product = "",
         ingredients = {
             {type="item", name="zinc-plate", amount=3},
@@ -3688,9 +3641,9 @@ data:extend({
         icons = du.icons("magnet-wire"),
         enabled = false,
         category = "smelting",
-        subgroup = "raw-material",
+        subgroup = "electronic-products",
         energy_required = 0.5,
-        order = "a",
+        order = "a-1",
         main_product = "",
         ingredients = {
             {type="item", name="copper-cable", amount=3},
@@ -3940,9 +3893,9 @@ data:extend({
         icons = du.icons("small-electric-motor"),
         enabled = false,
         category = "crafting",
-        subgroup = "raw-material",
+        subgroup = "electronic-products",
         energy_required = 0.5,
-        order = "a",
+        order = "b[motor]-a[electric]-1",
         main_product = "",
         ingredients = {
             {type="item", name="lv-capacitor", amount=2},
@@ -4073,8 +4026,8 @@ data:extend({
         category = "smithing", ---@diagnostic disable-line
         name = "copper-sheet-1",
         icons = du.icons("copper-sheet"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "copper-ingot-processing",
+        order =  du.order.ingot("sheet", 1),
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -4093,8 +4046,8 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "copper-cable-1",
         icons = du.icons{mod="base", name="copper-cable"},
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "copper-ingot-processing",
+        order =  du.order.ingot("cable", 1),
         main_product = "",
         energy_required = 1,
         ingredients = {
@@ -4113,8 +4066,8 @@ data:extend({
         category = "smithing", ---@diagnostic disable-line
         name = "iron-sheet-1",
         icons = du.icons("iron-sheet"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "iron-ingot-processing",
+        order =  du.order.ingot("sheet", 1),
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -4134,8 +4087,8 @@ data:extend({
         category = "smithing", ---@diagnostic disable-line
         name = "iron-rod-1",
         icons = du.icons("base.iron-stick"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "iron-ingot-processing",
+        order =  du.order.ingot("rod", 1),
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -4154,8 +4107,8 @@ data:extend({
         category = "smithing", ---@diagnostic disable-line
         name = "bound-porcelain",
         icons = du.icons("bound-porcelain"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "clay-products",
+        order = "b",
         main_product = "",
         energy_required = 2,
         allow_decomposition = false,
@@ -4176,8 +4129,8 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "stone-brick-1",
         icons = du.icons("__base__/graphics/icons/stone-brick.png", 64, true),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "masonry",
+        order = "b[stone]-1",
         main_product = "",
         energy_required = 2,
         allow_decomposition = false,
@@ -4199,8 +4152,8 @@ data:extend({
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "stone-brick-2",
         icons = du.icons("base.stone-brick"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "masonry",
+        order = "b[stone]-2",
         main_product = "",
         energy_required = 2,
         allow_decomposition = false,
@@ -4223,8 +4176,8 @@ data:extend({
         category = "crushing", ---@diagnostic disable-line
         name = "stone-brick-crushing",
         icons = du.icons("__base__/graphics/icons/stone-brick.png", 64, true),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "masonry",
+        order = "b[stone]-3",
         main_product = "",
         energy_required = 2,
         allow_decomposition = false,
@@ -4266,8 +4219,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "raw-coal-to-coal",
         icons = du.icons("coal"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "destructive-distillation",
+        order = "a[raw-coal]",
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -4288,8 +4241,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "coal-to-coke",
         icons = du.icons("coke"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "destructive-distillation",
+        order = "a[coal]",
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -4310,8 +4263,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "coke-gasification",
         icons = du.icons("coke"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "destructive-distillation",
+        order = "a[coke]",
         main_product = "",
         energy_required = 12,
         ingredients = {
@@ -4335,8 +4288,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "tar-processing",
         icons = du.icons("tar"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = "a[tar-processing]-1",
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -4359,8 +4312,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "pitch-processing",
         icons = du.icons("tar-pitch"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = "z[pitch-processing]-1",
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -4383,8 +4336,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "creosote-oil-from-green",
         icons = du.icons("creosote-oil"):add_corner("green-oil"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = "a[creosote]-green",
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -4405,8 +4358,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "creosote-oil-from-middle",
         icons = du.icons("creosote-oil"):add_corner("middle-oil"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = "a[creosote]-middle",
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -4425,8 +4378,8 @@ data:extend({
         category = "heat-exchanging", ---@diagnostic disable-line
         name = "creosote-oil-void",
         icons = du.icons("creosote-oil"):add_corner("chlorine"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = "a[creosote]-void",
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -4449,8 +4402,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "creosote-oil-from-blended",
         icons = du.icons("creosote-oil"):add_corner("creosote-oil"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = "a[creosote]-blended",
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -4470,8 +4423,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "anthracene-from-green",
         icons = du.icons("anthracene"):add_corner("green-oil"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = du.order.todo(),
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -4490,8 +4443,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "carbolic-acid-creosote",
         icons = du.icons("carbolic-acid"):add_corner("creosote-oil"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = du.order.todo(),
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -4510,8 +4463,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "carbolic-acid-middle",
         icons = du.icons("carbolic-acid"):add_corner("middle-oil"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "tar-processing",
+        order = du.order.todo(),
         main_product = "",
         energy_required = 5,
         ingredients = {
@@ -4530,8 +4483,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "full-tar-gasification",
         icons = du.icons("syngas"):add_corner("tar"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "destructive-distillation",
+        order = "c[tar-related]-a[tar-gasification]",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -4553,8 +4506,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "coal-gas-gasification",
         icons = du.icons("syngas"):add_corner("coal-gas"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "destructive-distillation",
+        order = "c[tar-related]-a[gas-gasification]",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -4575,8 +4528,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "wood-oil-separation",
         icons = du.icons("methanol"):add_corner("wood-oil"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "destructive-distillation",
+        order = "b[wood]-a",
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -4597,8 +4550,8 @@ data:extend({
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "wood-gasification",
         icons = du.icons{mod="base",name="wood"}:add_corner("coal-gas"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "destructive-distillation",
+        order = "b[wood]-b",
         main_product = "",
         energy_required = 3,
         ingredients = {
@@ -4618,8 +4571,8 @@ data:extend({
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "log-treatment",
         icons = du.icons("recycle"):scale(1.5):add("log"):scale(0.7),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "z[treatment]-a",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -4637,8 +4590,8 @@ data:extend({
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "pine-log-treatment",
         icons = du.icons("recycle"):scale(1.5):add("pine-log"):scale(0.7),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "z[treatment]-b",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -4656,8 +4609,8 @@ data:extend({
         category = "crafting-with-fluid", ---@diagnostic disable-line
         name = "oak-log-treatment",
         icons = du.icons("recycle"):scale(1.5):add("oak-log"):scale(0.7),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "wood-processing",
+        order = "z[treatment]-c",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -4677,8 +4630,8 @@ data:extend({
         category = "blending", ---@diagnostic disable-line
         name = "plastic-resin-1",
         icons = du.icons{name="plastic-bar", mod="base"}:add_corner("synthetic-resin"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "polymers",
+        order = "b[plastic]-a[resin]",
         main_product = "",
         energy_required = 2,
         ingredients = {
@@ -4698,8 +4651,8 @@ data:extend({
         category = "chemistry", ---@diagnostic disable-line
         name = "plastic-pvc-1",
         icons = du.icons{name="plastic-bar", mod="base"}:add_corner("acetylene"),
-        subgroup = "raw-material",
-        order = "a[a]",
+        subgroup = "polymers",
+        order = "b[plastic]-b[pvc]-1",
         main_product = "",
         energy_required = 2,
         ingredients = {

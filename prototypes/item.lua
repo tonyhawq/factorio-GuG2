@@ -1123,9 +1123,17 @@ data:extend({
     type = "item",
     name = "analog-circuit",
     icons = du.icons("analog-circuit"),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
-    stack_size = 50
+    subgroup = "circuits",
+    order = "a[analog]",
+    stack_size = 200
+  },
+  {
+    type = "item",
+    name = "electronic-circuit",
+    icons = du.icons("base.electronic-circuit"),
+    subgroup = "circuits",
+    order = "b[electronic]",
+    stack_size = 200
   },
   {
     type = "item",

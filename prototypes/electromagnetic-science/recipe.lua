@@ -12,9 +12,8 @@ data:extend({
         ingredients = {
             {type="item", name="blast-furnace", amount=1},
             {type="item", name="steel-beam", amount=20},
-            {type="item", name="concrete", amount=12},
-            {type="item", name="refractory-brick", amount=12},
-            {type="item", name="small-parts", amount=12},
+            {type="item", name="hardened-machine-chassis", amount=1},
+            {type="item", name="crucible", amount=3},
         },
         results ={
             {type="item", name="steel-furnace", amount=1},
@@ -486,6 +485,25 @@ data:extend({
         },
         results = {
             {type="item", name="oil-refinery", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        main_product = "crucible",
+        category = "blasting", ---@diagnostic disable-line
+        name = "crucible",
+        icons = du.icons("crucible"),
+        energy_required = 20,
+        ingredients = {
+            {type="item", name="silica", amount=20},
+            -- quartz
+        },
+        results = {
+            {type="item", name="crucible", amount=1},
         }
     }
 })

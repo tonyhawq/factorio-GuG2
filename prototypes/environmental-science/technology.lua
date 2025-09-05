@@ -1612,7 +1612,15 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="steel-ingot-1-hot",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="steel-ingot-2",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="steel-ingot-2-hot",
             },
             {
                 type = "unlock-recipe",
@@ -1913,6 +1921,10 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="ammonia-from-gasoline",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="urea-ammonia",
             },
             {
                 type = "unlock-recipe",

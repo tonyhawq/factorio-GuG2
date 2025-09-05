@@ -500,25 +500,6 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        main_product = "crucible",
-        category = "blasting", ---@diagnostic disable-line
-        name = "crucible",
-        icons = du.icons("crucible"),
-        energy_required = 20,
-        ingredients = {
-            {type="item", name="silica", amount=20},
-            -- quartz
-        },
-        results = {
-            {type="item", name="crucible", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
         main_product = "miniscule-silicon-boule",
         category = "crystallizing", ---@diagnostic disable-line
         name = "miniscule-silicon-boule",
