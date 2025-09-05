@@ -1526,6 +1526,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="200c-to-water",
             },
+            {
+                type = "unlock-recipe",
+                recipe="water-2",
+            },
         },
     },
 })

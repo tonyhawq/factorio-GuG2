@@ -2759,7 +2759,7 @@ steam_engine.graphics_set = {
 }
 steam_engine.energy_source = {
     type = "fluid", ---@diagnostic disable-line
-    maximum_temperature=300,
+    maximum_temperature=165,
     effectivity = 0.5,
     fluid_box = {
         volume=100,

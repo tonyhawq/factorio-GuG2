@@ -4418,6 +4418,26 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "heat-exchanging", ---@diagnostic disable-line
+        name = "water-2",
+        icons = du.icons("base.fluid/water"):add_corner("base.fluid/steam"),
+        subgroup = "raw-material",
+        order = "a[creosote]-void",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="fluid", name="steam", amount=500, fluidbox_index = 1},
+        },
+        results = {
+            {type="fluid", name="water", amount=50, fluidbox_index = 2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
         name = "creosote-oil-from-blended",
         icons = du.icons("creosote-oil"):add_corner("creosote-oil"),
