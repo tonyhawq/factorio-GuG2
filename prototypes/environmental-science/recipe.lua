@@ -4570,7 +4570,7 @@ data:extend({
         subgroup = "destructive-distillation",
         order = "b[wood]-a",
         main_product = "",
-        energy_required = 3,
+        energy_required = 0.5,
         ingredients = {
             {type="fluid", name="wood-oil", amount=10},
         },

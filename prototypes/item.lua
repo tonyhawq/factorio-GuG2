@@ -920,8 +920,8 @@ data:extend({
     name = "oxygen-canister",
     localised_name = {"label.filled-canister", {"fluid-name.oxygen"}},
     icons = du.icons("empty-canister"):add_icons({{icon="__GuG2__/graphics/icons/oxygen.png"}}),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
+    subgroup = "canister",
+    order = "a",
     stack_size = 200
   },
   {
@@ -1154,7 +1154,7 @@ data:extend({
   {
     type = "item",
     name = "environmental-insight",
-    icons = du.alias("environmental-insight"),
+    icons = du.icons("environmental-insight"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50
@@ -1162,7 +1162,7 @@ data:extend({
   {
     type = "item",
     name = "mechanical-insight",
-    icons = du.alias("mechanical-insight"),
+    icons = du.icons("mechanical-insight"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50
@@ -1170,7 +1170,7 @@ data:extend({
   {
     type = "item",
     name = "electromagnetic-insight",
-    icons = du.alias("electromagnetic-insight"),
+    icons = du.icons("electromagnetic-insight"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 50

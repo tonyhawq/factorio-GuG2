@@ -102,7 +102,7 @@ for _, fluid in pairs(data.raw.fluid) do
         fuel_value = (du.MJ(fluid.fuel_value) * 8).."MJ",
         localised_name = {"label.filled-canister", {"fluid-name."..fluid.name}},
         fuel_category = "chemical",
-        subgroup = "smelting-machine",
+        subgroup = "canister",
         order = "a",
         stack_size = 20,
         burnt_result = "empty-canister",

@@ -1,8 +1,12 @@
 require("util")
 
-GuG2 = GuG2 or {aliases={}}
+GuG2 = GuG2 or {aliases={}, renamed_paths = {}}
 
 local dutil = {}
+
+function dutil.rename(name, to)
+    GuG2.renamed_paths[name] = to
+end
 
 function dutil.alias(name, as, make_copies)
     if type(make_copies) == "nil" then
@@ -133,8 +137,18 @@ function dutil.get_desc_from_item(item)
 end
 
 local function get_icon_path_from_config(config)
+    local first_char = config.name:sub(1, 1)
+    if first_char == "%" then
+        config = table.deepcopy(config)
+        config.name = config.name:sub(2, config.name:len())
+    end
     local name = config.name
     local override_mod, remove = get_mod_from_namestring(config.name)
+    if first_char ~= "%" and not override_mod and not config.mod and not config.discard and GuG2.renamed_paths[config.name] then
+        local new_config = table.deepcopy(config)
+        new_config.name = GuG2.renamed_paths[config.name]
+        return get_icon_path_from_config(new_config)
+    end
     if override_mod and (not config.mod) then
         log("now removing")
         name = config.name:sub(remove + 1, config.name:len())

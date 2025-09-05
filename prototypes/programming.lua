@@ -429,7 +429,7 @@ data:extend({
         enabled = false,
         category = "processing", ---@diagnostic disable-line
         name = "revive-process-environmental-insight",
-        icons = du.alias("process"),
+        icons = du.alias("process"):add_corner("environmental-insight"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -450,7 +450,7 @@ data:extend({
         enabled = false,
         category = "processing", ---@diagnostic disable-line
         name = "revive-process-mechanical-insight",
-        icons = du.alias("process"),
+        icons = du.alias("process"):add_corner("mechanical-insight"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -471,7 +471,7 @@ data:extend({
         enabled = false,
         category = "processing", ---@diagnostic disable-line
         name = "revive-process-electromagnetic-insight",
-        icons = du.alias("process"),
+        icons = du.alias("process"):add_corner("electromagnetic-insight"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -492,7 +492,7 @@ data:extend({
         enabled = false,
         category = "computing", ---@diagnostic disable-line
         name = "environmental-insight-1",
-        icons = du.alias("environmental-insight"),
+        icons = du.icons("environmental-insight"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -514,7 +514,7 @@ data:extend({
         enabled = false,
         category = "computing", ---@diagnostic disable-line
         name = "mechanical-insight-1",
-        icons = du.alias("mechanical-insight"),
+        icons = du.icons("mechanical-insight"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -535,7 +535,7 @@ data:extend({
         enabled = false,
         category = "computing", ---@diagnostic disable-line
         name = "electromagnetic-insight-1",
-        icons = du.alias("electromagnetic-insight"),
+        icons = du.icons("electromagnetic-insight"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",

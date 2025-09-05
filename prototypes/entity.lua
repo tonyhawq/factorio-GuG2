@@ -3808,6 +3808,7 @@ local stone_furnace = data.raw.furnace["stone-furnace"]
 fix_furnace(table.deepcopy(data.raw.furnace["stone-furnace"]))
 data.raw.furnace["dummy-stone-furnace"] = stone_furnace
 stone_furnace.name = "dummy-stone-furnace"
+stone_furnace.hidden = true
 stone_furnace.next_upgrade = nil
 fix_furnace(data.raw.furnace["steel-furnace"])
 data.raw["assembling-machine"]["steel-furnace"].energy_usage = "800kW"
@@ -7197,8 +7198,8 @@ data:extend({
         type = "item",
         name = "steam-cracker",
         icons = du.icons("steam-cracker"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "oil-refining",
+        order = "a[oil-refining]-b[cracking]-a[steam-cracker]-1",
         stack_size = 200,
         place_result = "steam-cracker"
     },
@@ -7251,8 +7252,8 @@ data:extend({
         type = "item",
         name = "fabricator-1",
         icons = du.alias("fabricator-1"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "production-machine",
+        order = "a[crafting]-b[fabricating]-1",
         stack_size = 50,
         place_result = "fabricator-1"
     },
@@ -7260,8 +7261,8 @@ data:extend({
         type = "item",
         name = "electrolyzer",
         icons = du.icons("__Krastorio2Assets__/icons/entities/electrolysis-plant.png", true),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "water-machine",
+        order = "a[electrolyzer]-1",
         stack_size = 50,
         place_result = "electrolyzer"
     },
@@ -7294,10 +7295,19 @@ data:extend({
     },]]
     {
         type = "item",
+        name = "stationary-motor-1",
+        icons = du.icons("stationary-motor"),
+        subgroup = "rotation-conversion",
+        order = "a[lv]-b[motor]",
+        stack_size = 50,
+        place_result = "stationary-motor-1"
+    },
+    {
+        type = "item",
         name = "lv-generator",
         icons = du.icons("lv-generator"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "rotation-conversion",
+        order = "a[lv]-a[generator]",
         stack_size = 50,
         place_result = "lv-generator"
     },
@@ -7305,8 +7315,8 @@ data:extend({
         type = "item",
         name = "mv-generator",
         icons = du.icons("mv-generator"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "rotation-conversion",
+        order = "b[mv]-a[generator]",
         stack_size = 50,
         place_result = "mv-generator"
     },
@@ -7330,12 +7340,57 @@ data:extend({
     },
     {
         type = "item",
+        name = "blender",
+        icons = du.icons("blender"),
+        subgroup = "chemical-machines",
+        order = "a[blender]-1",
+        stack_size = 50,
+        place_result = "blender"
+    },
+    {
+        type = "item",
         name = "burner-chemical-plant",
         icons = du.icons("burner-chemical-plant"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "chemical-machines",
+        order = "b[chemical-plant]-a[burner]",
         stack_size = 50,
         place_result = "burner-chemical-plant",
+    },
+    {
+        type = "item",
+        name = "chemical-plant",
+        icons = du.icons("base.chemical-plant"),
+        subgroup = "chemical-machines",
+        order = "b[chemical-plant]-b[normal]",
+        stack_size = 50,
+        place_result = "chemical-plant",
+    },
+    {
+        type = "item",
+        name = "assembling-machine-1",
+        icons = du.icons("base.assembling-machine-1"),
+        subgroup = "production-machine",
+        order = "a[crafter]-a[assembling]-1",
+        stack_size = 50,
+        place_result = "assembling-machine-1",
+    },
+    {
+        type = "item",
+        name = "assembling-machine-2",
+        icons = du.icons("base.assembling-machine-2"),
+        subgroup = "production-machine",
+        order = "a[crafter]-a[assembling]-2",
+        stack_size = 50,
+        place_result = "assembling-machine-2",
+    },
+    {
+        type = "item",
+        name = "assembling-machine-3",
+        icons = du.icons("base.assembling-machine-3"),
+        subgroup = "production-machine",
+        order = "a[crafter]-a[assembling]-3",
+        stack_size = 50,
+        place_result = "assembling-machine-3",
     },
     {
         type = "item",
@@ -7350,8 +7405,8 @@ data:extend({
         type = "item",
         name = "tube-boiler",
         icons = du.icons("tube-boiler"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "energy",
+        order = "b[steam-power]-a[boiler]-a[tube]-1",
         stack_size = 50,
         place_result = "tube-boiler",
     },
@@ -7359,8 +7414,8 @@ data:extend({
         type = "item",
         name = "industrial-tube-boiler",
         icons = du.icons("industrial-tube-boiler"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "energy",
+        order = "b[steam-power]-a[boiler]-a[tube]-2",
         stack_size = 50,
         place_result = "industrial-tube-boiler",
     },
@@ -7494,8 +7549,8 @@ data:extend({
         type = "item",
         name = "smithy",
         icons = du.icons{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/advanced-foundry-mk01.png"},
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "gaseous-machines",
+        order = "a[smithy]",
         stack_size = 50,
         place_result = "smithy"
     },
@@ -7503,8 +7558,8 @@ data:extend({
         type = "item",
         name = "glassworks",
         icons = du.icons{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/glassworks-mk01.png"},
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "gaseous-machines",
+        order = "c[glassworks]-1",
         stack_size = 50,
         place_result = "glassworks"
     },
@@ -7512,8 +7567,8 @@ data:extend({
         type = "item",
         name = "destructive-distillation-tower",
         icons = du.icons{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/distilator.png"},
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "gaseous-machines",
+        order = "b[destructive-distillation]-1",
         stack_size = 50,
         place_result = "destructive-distillation-tower"
     },
@@ -7608,24 +7663,6 @@ data:extend({
     },
     {
         type = "item",
-        name = "stationary-motor-1",
-        icons = du.icons("stationary-motor"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
-        stack_size = 50,
-        place_result = "stationary-motor-1"
-    },
-    {
-        type = "item",
-        name = "blender",
-        icons = du.icons("blender"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
-        stack_size = 50,
-        place_result = "blender"
-    },
-    {
-        type = "item",
         name = "pine-sapling",
         icons = du.icons("pine-sapling"),
         subgroup = "smelting-machine",
@@ -7709,8 +7746,8 @@ data:extend({
         type = "item",
         name = "oil-refinery",
         icons = du.alias("oil-refinery"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "oil-refining",
+        order = "a[oil-refining]-a[refinery]-1",
         stack_size = 50,
         place_result = "oil-refinery"
     },
@@ -7718,17 +7755,35 @@ data:extend({
         type = "item",
         name = "hydro-plant-1",
         icons = du.icons("hydro-plant-1"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "water-machine",
+        order = "b[hydro-plant]-1",
         stack_size = 50,
         place_result = "hydro-plant-1"
     },
     {
         type = "item",
+        name = "steam-engine",
+        icons = du.icons("base.steam-engine"),
+        subgroup = "rotation-generator",
+        order = "a[steam-power]-a[steam-engine]-1",
+        stack_size = 50,
+        place_result = "steam-engine"
+    },
+    {
+        type = "item",
+        name = "steam-turbine",
+        icons = du.icons("base.steam-turbine"),
+        subgroup = "rotation-generator",
+        order = "a[steam-power]-b[steam-turbine]-1",
+        stack_size = 50,
+        place_result = "steam-turbine"
+    },
+    {
+        type = "item",
         name = "combustion-generator",
         icons = du.alias("combustion-generator"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
+        subgroup = "rotation-generator",
+        order = "b[combustion]-b[combustion-generator]-1",
         stack_size = 50,
         place_result = "combustion-generator"
     },

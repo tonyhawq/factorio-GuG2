@@ -388,7 +388,7 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="crucible",
+                recipe="crucible-1",
             },
             {
                 type = "unlock-recipe",

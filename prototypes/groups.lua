@@ -164,6 +164,48 @@ data:extend({
         name = "extracting",
         order = "a[first]-a[extracting]",
     },
+    {
+        type = "item-subgroup",
+        group = "intermediate-products",
+        name = "canister",
+        order = "z",
+    },
+    {
+        type = "item-subgroup",
+        group = "production",
+        name = "gaseous-machines",
+        order = "e-a[chemical]",
+    },
+    {
+        type = "item-subgroup",
+        group = "production",
+        name = "rotation-generator",
+        order = "b-a",
+    },
+    {
+        type = "item-subgroup",
+        group = "production",
+        name = "rotation-conversion",
+        order = "b-b",
+    },
+    {
+        type = "item-subgroup",
+        group = "production",
+        name = "water-machine",
+        order = "e-b[water]",
+    },
+    {
+        type = "item-subgroup",
+        group = "production",
+        name = "chemical-machines",
+        order = "e-c[chemical]",
+    },
+    {
+        type = "item-subgroup",
+        group = "production",
+        name = "oil-refining",
+        order = "e-c[oil]",
+    },
 })
 
 metals("tin")

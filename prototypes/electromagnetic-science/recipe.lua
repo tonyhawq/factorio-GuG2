@@ -489,12 +489,12 @@ data:extend({
 })
 data:extend({
     {
-        type = "recipe", 
+        type = "recipe",
         always_show_made_in = true,
         enabled = false,
-        main_product = "crucible",
+        main_product = "",
         category = "blasting", ---@diagnostic disable-line
-        name = "crucible",
+        name = "crucible-1",
         icons = du.icons("crucible"),
         energy_required = 20,
         ingredients = {
