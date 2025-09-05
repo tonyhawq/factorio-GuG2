@@ -20,6 +20,10 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
+                recipe="environmental-science-pack-1",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="bronze-plate-1",
             },
             {

@@ -818,6 +818,7 @@ data:extend({
         localised_name = {"label.canister-filling", {"fluid-name.oxygen"}},
         category = "crafting-with-fluid",
         energy_required = 1,
+        enabled = false,
         ingredients = {
             {type="item", name="empty-canister", amount=1},
             {type="fluid", name="oxygen", amount=10},
@@ -2814,7 +2815,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        enabled = true,
+        enabled = false,
         category = "radiating", ---@diagnostic disable-line
         name = "water-radiating",
         icons = du.icons("steam"):add_corner("base.fluid/water"),

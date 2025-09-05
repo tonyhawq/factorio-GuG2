@@ -4716,7 +4716,7 @@ data:extend({
         subgroup = "science-pack",
         order = "1-2",
         main_product = "",
-        enabled = true,
+        enabled = false,
         energy_required = 12,
         ingredients = {
             {type="item", name="saltberries", amount=4},
@@ -4810,7 +4810,7 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "transport-belt-2",
         icons = du.icons{mod = "base", name = "transport-belt"},
-        enabled = true,
+        enabled = false,
         energy_required = 0.5,
         ingredients = {
             {type="item", name="iron-plate", amount=2},

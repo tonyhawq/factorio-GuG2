@@ -114,6 +114,7 @@ for _, fluid in pairs(data.raw.fluid) do
         localised_name = {"label.canister-filling", {"fluid-name."..fluid.name}},
         category = "crafting-with-fluid",
         energy_required = 1,
+        enabled = false,
         ingredients = {
             {type="item", name="empty-canister", amount=1},
             {type="fluid", name=fluid.name, amount=10},

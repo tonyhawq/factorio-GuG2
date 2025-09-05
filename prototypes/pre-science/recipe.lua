@@ -60,7 +60,7 @@ data:extend({
         category = "crafting", ---@diagnostic disable-line
         name = "barrel",
         icons = du.icons("base.fluid/barreling/empty-barrel"),
-        enabled = true,
+        enabled = false,
         energy_required = 0.5,
         ingredients = {
             {type="item", name="small-tank", amount=1},
@@ -142,7 +142,7 @@ data:extend({
         subgroup = "tin-smelting",
         order = "a-2",
         main_product = "",
-        enabled = true,
+        enabled = false,
         energy_required = 3,
         ingredients = {
             {type="item", name="crushed-tin-ore", amount=6},
@@ -258,7 +258,7 @@ data:extend({
         subgroup = "copper-smelting",
         order = "a-2",
         main_product = "",
-        enabled = true,
+        enabled = false,
         energy_required = 3,
         ingredients = {
             {type="item", name="crushed-copper-ore", amount=6},
@@ -312,7 +312,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        enabled = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
         name = "lab-1",
         icons = du.icons("burner-lab"),
@@ -338,7 +338,7 @@ data:extend({
         subgroup = "science-pack",
         order = "1-1",
         main_product = "",
-        enabled = true,
+        enabled = false,
         energy_required = 24,
         ingredients = {
             {type="item", name="planter-box", amount=2},
@@ -381,7 +381,7 @@ data:extend({
         subgroup = "lead-smelting",
         order = "a-2",
         main_product = "",
-        enabled = true,
+        enabled = false,
         energy_required = 3,
         ingredients = {
             {type="item", name="crushed-lead-ore", amount=12},
