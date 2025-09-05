@@ -2708,8 +2708,8 @@ data:extend({
                 pipe_covers = pipecoverspictures(),
                 volume = 100,
                 pipe_connections = {
-                    {flow_direction = "input-output", position = {-2, 1}, direction = defines.direction.west},
-                    {flow_direction = "input-output", position = {2, -1}, direction = defines.direction.east},
+                    {flow_direction = "input-output", position = {-2, 1}, direction = defines.direction.west, connection_category = "g2shaft"},
+                    {flow_direction = "input-output", position = {2, -1}, direction = defines.direction.east, connection_category = "g2shaft"},
                 }
             },
         },
@@ -2743,7 +2743,7 @@ steam_engine.fluid_boxes = {
         pipe_covers = pipecoverspictures(),
         pipe_connections =
         {
-            { flow_direction = "output", direction = defines.direction.north, position = {0, -2} }
+            { flow_direction = "output", direction = defines.direction.north, position = {0, -2}, connection_category = "g2shaft" }
         },
         production_type = "output",
         filter = "rotational-force",
@@ -2809,7 +2809,7 @@ steam_turbine.fluid_boxes = {
         pipe_covers = pipecoverspictures(),
         pipe_connections =
         {
-            { flow_direction = "output", direction = defines.direction.north, position = {0, -2} }
+            { flow_direction = "output", direction = defines.direction.north, position = {0, -2}, connection_category = "g2shaft" }
         },
         production_type = "output",
         filter = "rotational-force",
@@ -2878,7 +2878,7 @@ local stationary_motor_1 = {
             pipe_covers = pipecoverspictures(),
             pipe_connections =
             {
-                { flow_direction = "output", direction = defines.direction.south, position = {0, 0.5} },
+                { flow_direction = "output", direction = defines.direction.south, position = {0, 0.5}, connection_category = "g2shaft" },
             },
             production_type = "output",
             filter = "rotational-force"
@@ -3057,8 +3057,8 @@ data:extend({
             pipe_covers = pipecoverspictures(),
             pipe_connections =
             {
-                { flow_direction = "input-output", direction = defines.direction.south, position = {0, 0.5} },
-                { flow_direction = "input-output", direction = defines.direction.north, position = {0, -0.5} }
+                { flow_direction = "input-output", direction = defines.direction.south, position = {0, 0.5}, connection_category = "g2shaft" },
+                { flow_direction = "input-output", direction = defines.direction.north, position = {0, -0.5}, connection_category = "g2shaft" }
             },
             production_type = "input",
             filter = "rotational-force",
@@ -6603,8 +6603,8 @@ data:extend({
             pipe_covers = pipecoverspictures(),
             volume = 100,
             pipe_connections = {
-                { flow_direction="input-output", position = {1,-1}, direction=defines.direction.east },
-                { flow_direction="input-output", position = {-1,-1}, direction=defines.direction.west },
+                { flow_direction="input-output", position = {1,-1}, direction=defines.direction.east, connection_category = "g2shaft" },
+                { flow_direction="input-output", position = {-1,-1}, direction=defines.direction.west, connection_category = "g2shaft" },
             },
             secondary_draw_orders = { north = -1 }
         },
@@ -6899,6 +6899,274 @@ data:extend({
     }
 })
 
+local function make_shadow(image)
+    local shift = image.shift or {0, 0}
+    local x, y = image[0] or image.x, image[1] or image.y
+    
+    local shadow = table.deepcopy(image)
+    shadow.shift = {shift[1] + 0.2, shift[2] + 0.2}
+    shadow.draw_as_shadow = true
+    
+    return {
+        layers = {
+            shadow,
+            image
+        }
+    }
+end
+
+--- @param i integer
+local function make_visualization(i)
+    return
+    {
+        filename = "__base__/graphics/entity/pipe/visualization.png",
+        priority = "extra-high",
+        x = i * 64,
+        size = 64,
+        scale = 0.5,
+        flags = {"icon"},
+    }
+end
+
+local function py_pipepictures()
+    return {
+        straight_vertical_single = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-straight-vertical-single.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        straight_vertical = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-straight-vertical.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        straight_vertical_window = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-straight-vertical-window.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        straight_horizontal_window = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-straight-horizontal-window.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        straight_horizontal = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-straight-horizontal.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        corner_up_right = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-corner-up-right.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        corner_up_left = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-corner-up-left.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        corner_down_right = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-corner-down-right.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        corner_down_left = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-corner-down-left.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        t_up = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-t-up.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        t_down = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-t-down.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        t_right = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-t-right.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        t_left = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-t-left.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        cross = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-cross.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        ending_up = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-ending-up.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        ending_down = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-ending-down.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        ending_right = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-ending-right.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        ending_left = make_shadow {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-ending-left.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        horizontal_window_background = {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-horizontal-window-background.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        vertical_window_background = {
+            filename = "__GuG2__/graphics/entity/shaft/pipe-vertical-window-background.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5
+        },
+        fluid_background = {
+            filename = "__GuG2__/graphics/entity/shaft/fluid-background.png",
+            priority = "extra-high",
+            width = 64,
+            height = 40,
+            scale = 0.5
+        },
+        low_temperature_flow = {
+            filename = "__GuG2__/graphics/entity/shaft/steam.png",
+            priority = "extra-high",
+            line_length = 10,
+            width = 48,
+            height = 30,
+            frame_count = 60,
+            axially_symmetrical = false,
+            direction_count = 1
+        },
+        straight_vertical_single_visualization = make_visualization(0),
+        straight_vertical_visualization = make_visualization(5),
+        straight_vertical_window_visualization = make_visualization(5),
+        straight_horizontal_window_visualization = make_visualization(10),
+        straight_horizontal_visualization = make_visualization(10),
+        corner_up_right_visualization = make_visualization(3),
+        corner_up_left_visualization = make_visualization(9),
+        corner_down_right_visualization = make_visualization(6),
+        corner_down_left_visualization = make_visualization(12),
+        t_up_visualization = make_visualization(11),
+        t_down_visualization = make_visualization(14),
+        t_right_visualization = make_visualization(7),
+        t_left_visualization = make_visualization(13),
+        cross_visualization = make_visualization(15),
+        ending_up_visualization = make_visualization(1),
+        ending_down_visualization = make_visualization(4),
+        ending_right_visualization = make_visualization(2),
+        ending_left_visualization = make_visualization(8),
+    }
+end
+
+data:extend({
+    {
+        type = "pipe",
+        name = "shaft",
+        icon = "__GuG2__/graphics/icons/shaft.png",
+        icon_size = 32,
+        flags = {"placeable-neutral", "player-creation"},
+        minable = {
+            mining_time = 0.1,
+            result = "shaft"
+        },
+        max_health = 100,
+        corpse = "small-remnants",
+        fast_replaceable_group = "pipe",
+        collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
+        selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+        fluid_box = {
+            volume = 10,
+            pipe_connections = {
+                {
+                    position = {0, -0},
+                    direction = defines.direction.north,
+                    connection_category = "g2shaft"
+                },
+                {
+                    position = {0, 0},
+                    direction = defines.direction.east,
+                    connection_category = "g2shaft"
+                },
+                {
+                    position = {0, 0},
+                    direction = defines.direction.south,
+                    connection_category = "g2shaft"
+                },
+                {
+                    position = {-0, 0},
+                    direction = defines.direction.west,
+                    connection_category = "g2shaft"
+                }
+            },
+            hide_connection_info = true,
+            max_pipeline_extent = 64
+        },
+        pictures = py_pipepictures(),
+        working_sound = {
+            sound = {
+                {
+                    filename = "__base__/sound/pipe.ogg",
+                    volume = 0.65
+                }
+            },
+            match_volume_to_activity = true,
+            max_sounds_per_prototype = 3
+        },
+        horizontal_window_bounding_box = {{-0.3125, -0.25}, {0.3125, 0.25}},
+        vertical_window_bounding_box = {{-0.28125, -0.46875}, {0.03125, 0.125}}
+    }
+})
+
 -- TODO: new buildings
 -- chemical blender 1 in 1 out
 -- flotation cell
@@ -6907,6 +7175,15 @@ data:extend({
 -- foundries / casting machines / etc
 
 data:extend({
+    {
+        type = "item",
+        name = "shaft",
+        icons = du.icons("shaft"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+        place_result = "shaft"
+    },
     {
         type = "item",
         name = "farm-1",

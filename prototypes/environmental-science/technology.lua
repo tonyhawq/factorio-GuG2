@@ -77,6 +77,36 @@ data:extend({
 data:extend({
     {
         type = "technology",
+        name = "mechanics-3",
+        icons = {
+            {
+                icon = "__GuG2__/graphics/technology/mechanics.png",
+                icon_size = 256,
+            }
+        },
+        prerequisites = {"steel-processing"},
+        unit =
+        {
+            count = 3,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="shaft",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
         name = "tar-processing",
         icons = {
             {

@@ -1066,6 +1066,7 @@ data:extend({
         type = "fluid",
         name = "rotational-force",
         default_temperature = 0,
+        gas_temperature = 0,
         max_temperature = 5000,
         heat_capacity = "10J",
         base_color = {r=1, g=0.9, b=0.5},

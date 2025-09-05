@@ -3931,6 +3931,25 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        name = "shaft",
+        icons = du.icons("shaft"),
+        enabled = false,
+        category = "crafting",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="steel-beam", amount=2},
+            {type="item", name="iron-gear-wheel", amount=3},
+            {type="item", name="bronze-plate", amount=1},
+        },
+        results ={
+            {type="item", name="shaft", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         name = "small-electric-pole-2",
         icons = du.icons{mod="base",name="small-electric-pole"}:add_corner("aluminum-ingot"),
         enabled = false,
