@@ -3613,7 +3613,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "chemistry", ---@diagnostic disable-line
+        category = "blending", ---@diagnostic disable-line
         name = "aluminum-hydroxide-1",
         icons = du.icons("alumina"),
         subgroup = "aluminum-ore-processing",
@@ -3622,7 +3622,7 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="crushed-aluminum-ore", amount=1},
-            {type="fluid", name="caustic-solution", amount=1},
+            {type="fluid", name="caustic-solution", amount=1, fluidbox_index=1},
         },
         results = {
             {type="item", name="aluminum-hydroxide", amount=1},
@@ -3732,7 +3732,6 @@ data:extend({
             {type="fluid", name="syngas", amount=10},
         },
         results ={
-            {type="fluid", name="carbon-monoxide", amount=5},
             {type="item", name="aluminum-ingot", amount=1},
             {type="item", name="aluminum-carbide", amount=4},
         }
@@ -3757,7 +3756,6 @@ data:extend({
             {type="item", name="silica", amount=3},
         },
         results ={
-            {type="fluid", name="carbon-monoxide", amount=5},
             {type="item", name="aluminum-ingot", amount=1},
             {type="item", name="aluminum-carbide", amount=18},
         }

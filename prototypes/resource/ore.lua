@@ -224,6 +224,8 @@ data.raw.resource.coal.autoplace = resource_autoplace.resource_autoplace_setting
 }
 
 add_resource_to_nauvis("evaporite")
+add_resource_to_nauvis("aluminum-ore")
+add_resource_to_nauvis("raw-quartz")
 add_resource_to_nauvis("lead-ore")
 add_resource_to_nauvis("tin-ore")
 add_resource_to_nauvis("sandstone")
