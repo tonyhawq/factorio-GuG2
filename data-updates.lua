@@ -1,5 +1,7 @@
 local du = require("dutil")
 
+require("prototypes.fixes")
+
 local collision_mask_util = require("__core__.lualib.collision-mask-util")
 
 ---@param prototype_name string
@@ -49,6 +51,36 @@ local function update_mask(prototype_name, prototype_type)
         end
     end
     ::continue::
+end
+
+local modulable_types = {
+    "lab",
+    "mining-drill",
+    "furnace",
+    "assembling-machine",
+    "beacon",
+    "rocket-silo",
+}
+table.insert(data.raw.character.character.crafting_categories, "basic-crafting")
+data.raw["simple-entity"]["big-sand-rock"].minable.results = {
+    {type = "item", name = "sandstone", amount_min = 19, amount_max = 25},
+    {type = "item", name = "rich-soil", amount_min = 3, amount_max = 5},
+}
+data.raw["simple-entity"]["huge-rock"].minable.results = {
+    {type = "item", name = "stone", amount_min = 24, amount_max = 50},
+    {type = "item", name = "rich-soil", amount_min = 6, amount_max = 12},
+}
+data.raw["simple-entity"]["big-rock"].minable.results = {
+    {type = "item", name = "stone", amount=20},
+    {type = "item", name = "rich-soil", amount_min = 2, amount_max = 4},
+}
+
+for _, type in pairs(modulable_types) do
+    for _, prototype in pairs(data.raw[type]) do
+        if not prototype.allowed_module_categories then
+            prototype.allowed_module_categories = {"speed", "efficiency", "productivity"}
+        end
+    end
 end
 
 local unclean_types = {

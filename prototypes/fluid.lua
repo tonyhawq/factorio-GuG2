@@ -125,7 +125,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        fuel_value = "0.35MJ",
+        fuel_value = "0.8MJ",
         icons = du.icons("syngas"),
         order = "a[fluid]-j[sludge]"
     },
@@ -475,6 +475,7 @@ data:extend({
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
         icons = du.icons("ethanol"),
+        fuel_value = "2MJ",
         order = "a[fluid]-j[sludge]"
     },
     {

@@ -234,7 +234,7 @@ data:extend({
         enabled = false,
         category = "smelting", ---@diagnostic disable-line
         name = "iron-ingot-3",
-        icons = du.icons("iron-ingot"):add_corner("iron-oxide"),
+        icons = du.icons("iron-ingot"):add_corner("crushed-iron-ore"),
         subgroup = "iron-smelting",
         order = "c",
         main_product = "",
@@ -345,6 +345,23 @@ data:extend({
         },
         results = {
             {type="item", name="offshore-pump", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "outfall",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="offshore-pump", amount=1},
+            {type="item", name="pipe-to-ground", amount=2},
+        },
+        results = {
+            {type="item", name="outfall", amount=1},
         }
     }
 })
@@ -985,7 +1002,7 @@ data:extend({
         main_product = "",
         energy_required = 2,
         ingredients = {
-            {type="item", name="raw-quartz", amount=3},
+            {type="item", name="raw-quartz", amount=8},
         },
         results = {
             {type="fluid", name="molten-glass", amount=1},
@@ -1005,7 +1022,7 @@ data:extend({
         main_product = "",
         energy_required = 1.5,
         ingredients = {
-            {type="item", name="crushed-quartz", amount=3},
+            {type="item", name="crushed-quartz", amount=8},
         },
         results = {
             {type="fluid", name="molten-glass", amount=1},
@@ -1388,17 +1405,17 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "algae-growing", ---@diagnostic disable-line
-        name = "seaweed-1",
-        icons = du.icons("seaweed"),
+        name = "green-algae-1",
+        icons = du.icons("green-algae"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
         energy_required = 20,
         ingredients = {
-            {type="fluid", name="seawater", amount=200},
+            {type="fluid", name="mineralized-water", amount=20},
         },
         results = {
-            {type="item", name="seaweed", amount=10},
+            {type="item", name="green-algae", amount=10},
         }
     }
 })
@@ -1408,17 +1425,19 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "algae-growing", ---@diagnostic disable-line
-        name = "seaweed-2",
-        icons = du.icons("seaweed"),
+        name = "green-algae-2",
+        icons = du.icons("green-algae"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 10,
+        energy_required = 20,
         ingredients = {
-            {type="fluid", name="mineralized-water", amount=50},
+            {type="fluid", name="mineralized-water", amount=20},
+            {type="fluid", name="carbon-dioxide", amount=60},
         },
         results = {
-            {type="item", name="seaweed", amount=10},
+            {type="item", name="green-algae", amount=10},
+            {type="fluid", name="oxygen", amount=20},
         }
     }
 })
@@ -1432,12 +1451,12 @@ data:extend({
         icons = du.icons("agricultural-soil"),
         energy_required = 2,
         ingredients = {
-            {type="item", name="seaweed", amount=2},
+            {type="item", name="rich-soil", amount=2},
             {type="item", name="stone", amount=1},
             {type="item", name="soil", amount=6},
         },
         results = {
-            {type="item", name="agricultural-soil", amount=6},
+            {type="item", name="agricultural-soil", amount=3},
         }
     }
 })
@@ -1720,17 +1739,17 @@ data:extend({
         always_show_made_in = true,
         enabled = true,
         category = "crafting", ---@diagnostic disable-line
-        name = "log-cutting",
+        name = "log-cutting-1",
         icons = du.icons{mod="base",name="wood"},
         subgroup = "wood-processing",
         order = "a[wood]-a[log]-1",
         main_product = "",
-        energy_required = 1,
+        energy_required = 0.5,
         ingredients = {
             {type="item", name="log", amount=1},
         },
         results = {
-            {type="item", name="wood", amount=2},
+            {type="item", name="wood", amount=1},
         }
     }
 })
@@ -1738,19 +1757,21 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        enabled = true,
-        category = "crafting", ---@diagnostic disable-line
-        name = "pine-log-cutting",
-        icons = du.icons{mod="base",name="wood"},
+        enabled = false,
+        category = "advanced-crafting", ---@diagnostic disable-line
+        name = "log-cutting-2",
+        icons = du.icons{mod="base",name="wood"}:add_corner("saw"),
         subgroup = "wood-processing",
-        order = "a[wood]-b[log]-1",
+        order = "a[wood]-a[log]-1",
         main_product = "",
-        energy_required = 1,
+        energy_required = 0.5,
         ingredients = {
-            {type="item", name="pine-log", amount=1},
+            {type="item", name="log", amount=1},
+            {type="item", name="saw", amount=1},
         },
         results = {
             {type="item", name="wood", amount=2},
+            {type="item", name="saw", amount=1, probability=0.9},
         }
     }
 })
@@ -1850,59 +1871,18 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        enabled = true,
+        enabled = false,
         category = "crafting", ---@diagnostic disable-line
-        name = "oak-log-cutting",
-        icons = du.icons{mod="base",name="wood"},
-        subgroup = "wood-processing",
-        order = "a[wood]-c[log]-1",
-        main_product = "",
+        name = "composter",
+        icons = du.icons("composter"),
         energy_required = 4,
         ingredients = {
-            {type="item", name="oak-log", amount=2},
+            {type="item", name="blender", amount=1},
+            {type="item", name="small-electric-motor", amount=2},
+            {type="item", name="aluminum-plate", amount=12},
         },
         results = {
-            {type="item", name="wood", amount=5},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "crushing", ---@diagnostic disable-line
-        name = "sap-extraction",
-        icons = du.icons("sap"),
-        subgroup = "wood-processing",
-        order = "a[wood]-b[log]-z[sap]-1",
-        main_product = "",
-        energy_required = 4,
-        ingredients = {
-            {type="item", name="log", amount=2},
-        },
-        results = {
-            {type="item", name="sap", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "crushing", ---@diagnostic disable-line
-        name = "sap-extraction-pine",
-        icons = du.icons("sap"),
-        subgroup = "wood-processing",
-        order = "a[wood]-b[log]-z[sap]-2",
-        main_product = "",
-        energy_required = 4,
-        ingredients = {
-            {type="item", name="pine-log", amount=2},
-        },
-        results = {
-            {type="item", name="sap", amount=1},
+            {type="item", name="composter", amount=1},
         }
     }
 })
@@ -2055,27 +2035,6 @@ data:extend({
         results = {
             {type="item", name="sodium-carbonate", amount=3},
             {type="item", name="calcium-chloride", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "chemistry", ---@diagnostic disable-line
-        name = "dried-seaweed",
-        icons = du.icons("seaweed"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 6,
-        ingredients = {
-            {type="item", name="seaweed", amount=3},
-            {type="item", name="calcium-chloride", amount=1},
-        },
-        results = {
-            {type="item", name="dried-seaweed", amount=3},
         }
     }
 })
@@ -2304,7 +2263,8 @@ data:extend({
         energy_required = 8,
         ingredients = {
             {type="fluid", name="steam", amount=120},
-            {type="item", name="seaweed", amount=2},
+            {type="item", name="green-algae", amount=2},
+            {type="item", name="calcium-chloride", amount=1},
         },
         results = {
             {type="fluid", name="brine", amount=12},
@@ -2330,7 +2290,7 @@ data:extend({
         },
         results = {
             {type="fluid", name="carbon-dioxide", amount=30},
-            {type="fluid", name="hydrogen", amount=30},
+            {type="fluid", name="hydrogen", amount=120},
         }
     }
 })
@@ -2427,6 +2387,458 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "native-biofilm-1",
+        icons = du.icons("native-biofilm"):add_corner("dna"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 10,
+        ingredients = {
+            {type="fluid", name="seawater", amount=20},
+            {type="item", name="agar-dish", amount=1},
+            {type="item", name="soil", amount=10},
+            {type="item", name="log", amount=5},
+        },
+        results = {
+            {type="item", name="native-biofilm", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "native-biofilm-2",
+        icons = du.icons("native-biofilm"):add_corner("dna"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 30,
+        ingredients = {
+            {type="fluid", name="organic-wastewater", amount=20},
+            {type="fluid", name="water", amount=60},
+            {type="item", name="agar-dish", amount=30},
+            {type="item", name="green-algae", amount=4},
+        },
+        results = {
+            {type="fluid", name="wastewater", amount=80},
+            {type="item", name="native-biofilm", amount=30},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "composting", ---@diagnostic disable-line
+        name = "compost-saltberries",
+        icons = du.icons("compost"):add_corner("saltberries"),
+        main_product = "compost",
+        energy_required = 30,
+        ingredients = {
+            {type="item", name="saltberries", amount=90},
+        },
+        results = {
+            {type="item", name="compost", amount=15},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "composting", ---@diagnostic disable-line
+        name = "compost-thalorain",
+        icons = du.icons("compost"):add_corner("thalorain-grain"),
+        main_product = "compost",
+        energy_required = 30,
+        ingredients = {
+            {type="item", name="thalorain-grain", amount=180},
+        },
+        results = {
+            {type="item", name="compost", amount=15},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "composting", ---@diagnostic disable-line
+        name = "compost-pale-gull-egg",
+        icons = du.icons("compost"):add_corner("pale-gull-egg"),
+        main_product = "compost",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="compost", amount=2},
+            {type="item", name="pale-gull-egg", amount=1},
+        },
+        results = {
+            {type="item", name="compost", amount=32},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "composting", ---@diagnostic disable-line
+        name = "compost-rich-soil",
+        icons = du.icons("compost"):add_corner("rich-soil"),
+        main_product = "compost",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="compost", amount=16},
+            {type="item", name="rich-soil", amount=1},
+        },
+        results = {
+            {type="item", name="compost", amount=24},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "composting", ---@diagnostic disable-line
+        name = "compost-meat",
+        icons = du.icons("compost"):add_corner("meat"),
+        main_product = "compost",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="compost", amount=2},
+            {type="item", name="meat", amount=1},
+        },
+        results = {
+            {type="item", name="compost", amount=16},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "composting", ---@diagnostic disable-line
+        name = "nauvisworm-hatching-1",
+        icons = du.icons("nauvisworm"):add_corner("nauvisworm-egg-sack"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 240,
+        ingredients = {
+            {type="item", name="nauvisworm-egg-sack", amount=5},
+        },
+        results = {
+            {type="item", name="nauvisworm", amount=20},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "composting", ---@diagnostic disable-line
+        name = "nauvisworm-reproduction-1",
+        icons = du.icons("nauvisworm"):add_corner("nauvisworm-egg-sack"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 120,
+        ingredients = {
+            {type="item", name="nauvisworm", amount=20},
+            {type="item", name="sweet-thalorain-grain", amount=12},
+            {type="item", name="fiberboard", amount=2},
+        },
+        results = {
+            {type="item", name="nauvisworm-egg-sack", amount=3},
+            {type="item", name="nauvisworm", amount=10},
+            {type="item", name="compost", amount=8},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "composting", ---@diagnostic disable-line
+        name = "nauvisworm-reproduction-2",
+        icons = du.icons("nauvisworm"):add_corner("nauvisworm-egg-sack"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 60,
+        ingredients = {
+            {type="item", name="nauvisworm", amount=20},
+            {type="item", name="worm-meal", amount=3},
+            {type="item", name="fiberboard", amount=1},
+        },
+        results = {
+            {type="item", name="nauvisworm-egg-sack", amount=5},
+            {type="item", name="nauvisworm", amount=10},
+            {type="item", name="rich-soil", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "worm-meal-thalorain",
+        icons = du.icons("worm-meal"):add_corner("sweet-thalorain-grain"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="sweet-thalorain-grain", amount=8},
+            {type="item", name="cellulose", amount=2},
+            {type="item", name="compost", amount=2},
+        },
+        results = {
+            {type="item", name="worm-meal", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "worm-meal-saltberries",
+        icons = du.icons("worm-meal"):add_corner("saltberries"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="fluid", name="water", amount=20, fluidbox_index=1},
+            {type="item", name="saltberries", amount=4},
+            {type="item", name="cellulose", amount=2},
+            {type="item", name="compost", amount=2},
+        },
+        results = {
+            {type="fluid", name="saline-water", amount=20},
+            {type="item", name="worm-meal", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "nauvisworm-rendering-1",
+        icons = du.icons("nauvisworm"):add_corner("meat"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="nauvisworm", amount=30},
+            {type="item", name="saw", amount=1},
+        },
+        results = {
+            {type="item", name="meat", amount=1},
+            {type="item", name="saw", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "soil-from-rich-soil",
+        icons = du.icons("soil"):add_corner("rich-soil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="sand", amount=2},
+            {type="item", name="rich-soil", amount=1},
+        },
+        results = {
+            {type="item", name="soil", amount=3},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "nitrogenous-fertilizer-feathers",
+        icons = du.icons("nitrogenous-fertilizer"):add_corner("feathers"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="compost", amount=4},
+            {type="item", name="feathers", amount=16},
+            {type="fluid", name="steam", amount=120},
+        },
+        results = {
+            {type="item", name="nitrogenous-fertilizer", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crushing", ---@diagnostic disable-line
+        name = "bone-meal",
+        icons = du.icons("bone-meal"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="bones", amount=1},
+        },
+        results = {
+            {type="item", name="bone-meal", amount=1},
+            -- should return fat?
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smithing", ---@diagnostic disable-line
+        name = "saw-1",
+        icons = du.icons("saw"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 3,
+        ingredients = {
+            {type="item", name="steel-plate", amount=3},
+            {type="item", name="bronze-plate", amount=3},
+        },
+        results = {
+            {type="item", name="saw", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "phosphoric-fertilizer-bones",
+        icons = du.icons("phosphoric-fertilizer"):add_corner("bones"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 4,
+        ingredients = {
+            {type="item", name="compost", amount=4},
+            {type="item", name="bone-meal", amount=4},
+            {type="fluid", name="steam", amount=120},
+        },
+        results = {
+            {type="item", name="phosphoric-fertilizer", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "rich-soil-compost",
+        icons = du.icons("rich-soil"):add_corner("compost"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="soil", amount=8},
+            {type="item", name="urea", amount=1},
+            {type="item", name="compost", amount=4},
+            {type="fluid", name="water", amount=16, fluidbox_index = 1},
+        },
+        results = {
+            {type="item", name="rich-soil", amount=8},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "rich-soil-organic-wastewater",
+        icons = du.icons("rich-soil"):add_corner("organic-wastewater"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="soil", amount=8},
+            {type="item", name="compost", amount=4},
+            {type="fluid", name="organic-wastewater", amount=4},
+            {type="fluid", name="water", amount=8},
+        },
+        results = {
+            {type="item", name="rich-soil", amount=8},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "pale-gull-rendering-1",
+        icons = du.icons("meat"):add_corner("pale-gull"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="item", name="pale-gull", amount=1},
+            {type="item", name="saw", amount=1},
+        },
+        results = {
+            {type="item", name="meat", amount=1},
+            {type="item", name="feathers", amount=6},
+            {type="item", name="saw", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "chemistry", ---@diagnostic disable-line
         name = "synthesis-methanobacteria",
         icons = du.icons("cultivated-methanobacteria"):add_corner("dna"),
@@ -2437,9 +2849,8 @@ data:extend({
         ingredients = {
             {type="fluid", name="methane", amount=20},
             {type="fluid", name="hydrogen", amount=12},
-            {type="item", name="agar-dish", amount=1},
+            {type="item", name="native-biofilm", amount=1},
             {type="item", name="soil", amount=10},
-            {type="item", name="rotten-log", amount=5},
         },
         results = {
             {type="item", name="cultivated-methanobacteria", amount=1, probability=0.1},
@@ -2538,7 +2949,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "evaporating", ---@diagnostic disable-line
+        category = "outfalling", ---@diagnostic disable-line
         name = "organic-wastewater-void",
         icons = du.icons("evaporate"):add_corner("organic-wastewater"),
         subgroup = "raw-material",
@@ -2556,7 +2967,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "evaporating", ---@diagnostic disable-line
+        category = "outfalling", ---@diagnostic disable-line
         name = "water-void",
         icons = du.icons("evaporate"):add_corner{mod="base",name="fluid/water"},
         subgroup = "raw-material",
@@ -2724,7 +3135,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "evaporating", ---@diagnostic disable-line
+        category = "outfalling", ---@diagnostic disable-line
         name = "seawater-void",
         icons = du.icons("evaporate"):add_corner("seawater"),
         subgroup = "raw-material",
@@ -2742,7 +3153,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "evaporating", ---@diagnostic disable-line
+        category = "outfalling", ---@diagnostic disable-line
         name = "saline-water-void",
         icons = du.icons("evaporate"):add_corner("saline-water"),
         subgroup = "raw-material",
@@ -2753,6 +3164,27 @@ data:extend({
             {type="fluid", name="saline-water", amount=100},
         },
         results = {}
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "saline-water-from-calcium-chloride",
+        icons = du.icons("saline-water"):add_corner("calcium-chloride"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.5,
+        ingredients = {
+            {type="fluid", name="water", amount=10},
+            {type="item", name="calcium-chloride", amount=1},
+        },
+        results = {
+            {type="fluid", name="saline-water", amount=10},
+        }
     }
 })
 data:extend({
@@ -2781,8 +3213,27 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "evaporating", ---@diagnostic disable-line
+        category = "outfalling", ---@diagnostic disable-line
         name = "brine-void",
+        icons = du.icons("evaporate"):add_corner("brine"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 10,
+        ingredients = {
+            {type="fluid", name="brine", amount=100},
+        },
+        results = {
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "evaporating", ---@diagnostic disable-line
+        name = "brine-evaporating",
         icons = du.icons("evaporate"):add_corner("brine"),
         subgroup = "raw-material",
         order = "a[a]",
@@ -2864,6 +3315,27 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "flue-gas-void-1",
+        icons = du.icons("flue-gas"):add_corner("base.fluid/water"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 5,
+        ingredients = {
+            {type="fluid", name="flue-gas", amount=300},
+            {type="fluid", name="water", amount=50},
+        },
+        results = {
+            {type="fluid", name="wastewater", amount=50},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
         category = "chemistry", ---@diagnostic disable-line
         name = "sulfuric-acid-flue-gas",
         icons = du.icons("sulfuric-acid"):add_corner("flue-gas"),
@@ -2887,7 +3359,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "evaporating", ---@diagnostic disable-line
+        category = "outfalling", ---@diagnostic disable-line
         name = "mineralized-water-void",
         icons = du.icons("evaporate"):add_corner("mineralized-water"),
         subgroup = "raw-material",
@@ -4316,10 +4788,10 @@ data:extend({
             {type="fluid", name="tar", amount=100},
         },
         results = {
-            {type="fluid", name="green-oil", amount=25},
-            {type="fluid", name="light-oil", amount=5},
-            {type="fluid", name="middle-oil", amount=20},
-            {type="fluid", name="tar-pitch", amount=40},
+            {type="fluid", name="green-oil", amount=40},
+            {type="fluid", name="light-oil", amount=25},
+            {type="fluid", name="middle-oil", amount=30},
+            {type="fluid", name="tar-pitch", amount=20},
         }
     }
 })
@@ -4336,14 +4808,12 @@ data:extend({
         main_product = "",
         energy_required = 5,
         ingredients = {
-            -- getting into some coal products, are we?
             {type="fluid", name="tar-pitch", amount=100},
         },
         results = {
             {type="fluid", name="hydrogen", amount=25},
             {type="fluid", name="light-oil", amount=10},
             {type="item", name="coke", amount=25},
-            {type="item", name="asphalt", amount=4},
         }
     }
 })
@@ -4543,6 +5013,28 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "destructive-distillation", ---@diagnostic disable-line
+        name = "wood-oil-gasification",
+        icons = du.icons("syngas"):add_corner("wood-oil"),
+        subgroup = "destructive-distillation",
+        order = "c[tar-related]-a[tar-gasification]",
+        main_product = "",
+        energy_required = 2,
+        ingredients = {
+            {type="fluid", name="wood-oil", amount=100},
+            {type="fluid", name="water", amount=65},
+        },
+        results = {
+            {type="fluid", name="syngas", amount=120},
+            {type="fluid", name="flue-gas", amount=80, temperature=300},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
         name = "coal-gas-gasification",
         icons = du.icons("syngas"):add_corner("coal-gas"),
         subgroup = "destructive-distillation",
@@ -4601,65 +5093,6 @@ data:extend({
             {type="fluid", name="coal-gas", amount=20},
         }
     }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "crafting-with-fluid", ---@diagnostic disable-line
-        name = "log-treatment",
-        icons = du.icons("recycle"):scale(1.5):add("log"):scale(0.7),
-        subgroup = "wood-processing",
-        order = "z[treatment]-a",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="log", amount=1},
-            {type="fluid", name="green-oil", amount=4},
-        },
-        results = {
-            {type="item", name="log", amount=1, probability=0.75, percent_spoiled=0},
-        }
-    },
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "crafting-with-fluid", ---@diagnostic disable-line
-        name = "pine-log-treatment",
-        icons = du.icons("recycle"):scale(1.5):add("pine-log"):scale(0.7),
-        subgroup = "wood-processing",
-        order = "z[treatment]-b",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="pine-log", amount=1},
-            {type="fluid", name="green-oil", amount=4},
-        },
-        results = {
-            {type="item", name="pine-log", amount=1, probability=0.75, percent_spoiled=0},
-        }
-    },
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "crafting-with-fluid", ---@diagnostic disable-line
-        name = "oak-log-treatment",
-        icons = du.icons("recycle"):scale(1.5):add("oak-log"):scale(0.7),
-        subgroup = "wood-processing",
-        order = "z[treatment]-c",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="oak-log", amount=1},
-            {type="fluid", name="green-oil", amount=4},
-        },
-        results = {
-            {type="item", name="oak-log", amount=1, probability=0.75, percent_spoiled=0},
-        }
-    },
 })
 data:extend({
     {
@@ -4818,6 +5251,26 @@ data:extend({
         },
         results = {
             {type="item", name="transport-belt", amount=5},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "farm-1",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="treated-wood", amount=10},
+            {type="item", name="stone-brick", amount=10},
+            {type="item", name="bronze-plate", amount=10},
+            {type="item", name="agricultural-soil", amount=9},
+            {type="item", name="small-tank", amount=1},
+        },
+        results = {
+            {type="item", name="farm-1", amount=1},
         }
     }
 })

@@ -136,19 +136,55 @@ function dutil.get_desc_from_item(item)
     return {"?", {"entity-description."..item.place_result}}
 end
 
+---@class IconPathParams
+---@field size number?
+---@field tint table?
+
+local function extract_size_from_path(name)
+    local size_spec_start, size_spec_end, size_spec = name:find("&x(%d+)")
+    if size_spec_start and size_spec_end and size_spec then
+        name = name:sub(1, size_spec_start - 1)
+        return name, tonumber(size_spec)
+    end
+    return name
+end
+
+local function extract_tint_from_path(name)
+    local tint_spec_start, tint_spec_end, hex = name:find("&#(%x%x%x%x%x%x)")
+    if tint_spec_start and tint_spec_end and hex then
+        local r = tonumber(hex:sub(1,2), 16)
+        local g = tonumber(hex:sub(3,4), 16)
+        local b = tonumber(hex:sub(5,6), 16)
+        name = name:sub(1, tint_spec_start - 1)
+        return name, {r, g, b}
+    end
+    return name
+end
+
+---@return string, IconPathParams
 local function get_icon_path_from_config(config)
     local first_char = config.name:sub(1, 1)
     if first_char == "%" then
         config = table.deepcopy(config)
         config.name = config.name:sub(2, config.name:len())
+        config.discard = true
+    end
+    local second_char = config.name:sub(1, 1)
+    if first_char..second_char == "!$" then
+        config = table.deepcopy(config)
+        config.name = config.name:sub(2, config.name:len())    
     end
     local name = config.name
     local override_mod, remove = get_mod_from_namestring(config.name)
-    if first_char ~= "%" and not override_mod and not config.mod and not config.discard and GuG2.renamed_paths[config.name] then
+    if first_char ~= "!$" and not override_mod and not config.mod and not config.discard and GuG2.renamed_paths[config.name] then
         local new_config = table.deepcopy(config)
         new_config.name = GuG2.renamed_paths[config.name]
         return get_icon_path_from_config(new_config)
     end
+    local icon_path_params = {}
+    name, icon_path_params.size = extract_size_from_path(name)
+    name, icon_path_params.tint = extract_tint_from_path(name)
+
     if override_mod and (not config.mod) then
         log("now removing")
         name = config.name:sub(remove + 1, config.name:len())
@@ -159,7 +195,7 @@ local function get_icon_path_from_config(config)
         local ext = config.ext or dutil.ext
         name = "__"..mod.."__"..path..name..ext
     end
-    return name
+    return name, icon_path_params
 end
 
 local function get_icon_path(name, discard)
@@ -231,6 +267,17 @@ dutil.base_mt =
         tabl[k] = v
         return tabl
     end,
+    extend = function (tabl)
+        data:extend({tabl})
+        return tabl
+    end,
+    copy = function (tabl, changes)
+        local copied = table.deepcopy(tabl)
+        for k, v in pairs(changes) do
+            copied[k] = v
+        end
+        return copied
+    end,
 }
 dutil.base_mt.__index = function(_, key)
     return dutil.base_mt[key]
@@ -258,19 +305,21 @@ dutil.metatable_indicies =
             ensure_colon_syntax(icons)
             if type(name) == "table" then
                 local config = name
-                return (icons:add(get_icon_path_from_config(config), config.size, true))
+                local path, options = get_icon_path_from_config(config)
+                table.insert(icons, {
+                    icon = path,
+                    icon_size = config.size or options.size or dutil.size,
+                    tint = config.tint or options.tint
+                })
+                return (icons)
             end
             local specced_size = size
             local specced_discard = discard
             if type(specced_size) == "boolean" then
                 specced_discard = specced_size
-                specced_size = dutil.size
+                specced_size = nil
             end
-            specced_size = specced_size or dutil.size
-            table.insert(icons, {
-                icon = get_icon_path(name, specced_discard),
-                icon_size = specced_size
-            })
+            icons:add({name=name, size=specced_size, discard=specced_discard})
             return (icons)
         end,
         add_corner = function(icons, name, size, discard)

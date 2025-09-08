@@ -44,6 +44,27 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
+        name = "distillation-tower",
+        icons = du.icons("distillation-tower"),
+        enabled = false,
+        category = "crafting",
+        energy_required = 2,
+        ingredients = {
+            {type="item", name="small-tank", amount=8},
+            {type="item", name="copper-plate", amount=48},
+            {type="item", name="electronic-circuit", amount=10},
+            {type="item", name="pump", amount=1},
+            {type="item", name="hardened-machine-chassis", amount=1},
+        },
+        results ={
+            {type="item", name="distillation-tower", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
         name = "radar",
         icons = du.icons("base.radar"),
         enabled = false,
@@ -484,6 +505,120 @@ data:extend({
         },
         results = {
             {type="item", name="oil-refinery", amount=1},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "farming", ---@diagnostic disable-line
+        name = "thalorain-1",
+        icons = du.icons("thalorain"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        crafting_machine_tint = {
+            primary = {0.5, 0.5, 0.0}
+        },
+        main_product = "",
+        energy_required = 60,
+        ingredients = {
+            {type="item", name="thalorain-grain", amount=20},
+            {type="fluid", name="water", amount=300},
+        },
+        results = {
+            {type="item", name="thalorain", amount=20},
+            {type="fluid", name="water", amount=200},
+            {type="fluid", name="organic-wastewater", amount=10},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "smelting", ---@diagnostic disable-line
+        name = "thalorain-grain-1",
+        icons = du.icons("thalorain-grain"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 6,
+        ingredients = {
+            {type="item", name="thalorain", amount=3},
+        },
+        results = {
+            {type="item", name="thalorain-grain", amount=12},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "blending", ---@diagnostic disable-line
+        name = "sweet-thalorain-grain-1",
+        icons = du.icons("sweet-thalorain-grain"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 120,
+        ingredients = {
+            {type="item", name="thalorain-grain", amount=180},
+            {type="item", name="native-biofilm", amount=12},
+        },
+        results = {
+            {type="item", name="sweet-thalorain-grain", amount=100},
+            {type="item", name="native-biofilm", amount=16},
+            -- no petri dishes returned
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "tower-distillation", ---@diagnostic disable-line
+        name = "thalorain-ferment-1",
+        icons = du.icons("thalorain-ferment"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 6,
+        ingredients = {
+            {type="fluid", name="water", amount=80},
+            {type="item", name="sweet-thalorain-grain", amount=10},
+            {type="item", name="native-biofilm", amount=4},
+        },
+        results = {
+            {type="item", name="thalorain-ferment", amount=2},
+            {type="item", name="native-biofilm", amount=2},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "destructive-distillation", ---@diagnostic disable-line
+        name = "thalorain-juicing-1",
+        icons = du.icons("ethanol"):add_corner("thalorain-ferment"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 10,
+        ingredients = {
+            {type="item", name="thalorain-ferment", amount=4},
+            {type="fluid", name="200c", amount=40},
+        },
+        results = {
+            {type="fluid", name="ethanol", amount=8},
+            {type="fluid", name="steam", temperature=80, amount=40},
         }
     }
 })

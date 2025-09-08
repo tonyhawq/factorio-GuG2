@@ -673,7 +673,7 @@ local function forestry_tree(def)
             no_fix = true,
             type = "assembling-machine",
             name = def.name,
-            icons = du.icons(def.name),
+            icons = def.icons,
             flags = {"placeable-neutral", "player-creation"},
             minable = {mining_time = 1, result = def.result},
             placeable_by = {item=def.result, count=1},
@@ -761,6 +761,7 @@ data:extend({
 
 forestry_tree{
     name = "forestry-pine",
+    icons = du.icons("pine-tree-growing"),
     result = "pine-sapling",
     categories = {"forestry-generic-growing", "forestry-pine-growing"},
     side_length = 9,
@@ -775,6 +776,48 @@ forestry_tree{
                 line_length = 1,
                 scale = 0.5,
                 shift = util.by_pixel(0, -40)
+            },
+        }
+    }
+}
+forestry_tree{
+    name = "forestry-oak",
+    icons = du.icons("oak-tree-growing"),
+    result = "oak-sapling",
+    categories = {"forestry-generic-growing", "forestry-oak-growing"},
+    side_length = 9,
+    animation = {
+        layers = {
+            forestry_tree_base(),
+            {
+                filename = "__GuG2__/graphics/entity/forestry/oak/tree.png",
+                width = 380,
+                height = 416,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5,
+                shift = util.by_pixel(0, -56)
+            },
+        }
+    }
+}
+forestry_tree{
+    name = "forestry-tree",
+    icons = du.icons("tree-growing"),
+    result = "sapling",
+    categories = {"forestry-generic-growing"},
+    side_length = 9,
+    animation = {
+        layers = {
+            forestry_tree_base(),
+            {
+                filename = "__GuG2__/graphics/entity/forestry/generic/tree.png",
+                width = 302,
+                height = 356,
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5,
+                shift = util.by_pixel(0, -56)
             },
         }
     }
@@ -3581,7 +3624,7 @@ steam_inserter.energy_source =
         secondary_draw_orders = { north = -1 }
     },
 }
-steam_inserter.rotation_speed = data.raw.inserter["inserter"].rotation_speed
+steam_inserter.rotation_speed = 0.01761589403 -- 360 degrees
 data:extend({steam_inserter})
 data.raw.inserter["burner-inserter"].rotation_speed = data.raw.inserter["fast-inserter"].rotation_speed
 data.raw.inserter["burner-inserter"].allow_burner_leech = true
@@ -3821,8 +3864,7 @@ data:extend({
     {
         type = "assembling-machine",
         name = "soil-extractor",
-        icon = "__pycoalprocessinggraphics__/graphics/icons/soil-extractor-mk01.png",
-        icon_size = 64,
+        icons = du.icons("soil-extractor"),
         flags = {"placeable-neutral", "player-creation"},
         minable = {mining_time = 1, result = "soil-extractor"},
         fast_replaceable_group = "extractor",
@@ -3891,6 +3933,91 @@ data:extend({
 local function forward_then_backward()
     return "forward-th".."en-backward"
 end
+data:extend({
+    {
+        type = "furnace",
+        name = "outfall",
+        icons = du.icons("outfall"),
+        collision_mask = {layers = {object = true, ground_tile = true}},
+        flags = {"placeable-neutral", "placeable-player", "player-creation"},
+        minable = {mining_time = 0.5, result = "outfall"},
+        max_health = 200,
+        fast_replaceable_group = "outfall",
+        next_upgrade = "outfall",
+        corpse = "small-remnants",
+        collision_box = {{-1.4, -2.45}, {1.4, 0.3}},
+        selection_box = {{-1.6, -2.49}, {1.6, 0.49}},
+        crafting_categories = {"outfalling"},
+        result_inventory_size = 1,
+        crafting_speed = 3,
+        source_inventory_size = 0,
+        fluid_boxes = {
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{ flow_direction="input-output", position = {0, 0}, direction = defines.direction.south }}
+            },
+        },
+        energy_source = {type = "void"},
+        energy_usage = "1kW",
+        graphics_set = {
+            animation = {
+                north = {
+                    filename = "__GuG2__/graphics/entity/outfall/seafloor-pump.png",
+                    priority = "high",
+                    shift = {-0.02, -0.8},
+                    width = 160,
+                    height = 160,
+                    frame_count = 1,
+                    scale = 0.85
+                },
+                east = {
+                    filename = "__GuG2__/graphics/entity/outfall/seafloor-pump.png",
+                    priority = "high",
+                    shift = {0.8, -0.05},
+                    x = 160,
+                    width = 160,
+                    height = 160,
+                    frame_count = 1,
+                    scale = 0.85
+                },
+                south = {
+                    filename = "__GuG2__/graphics/entity/outfall/seafloor-pump.png",
+                    priority = "high",
+                    shift = {0, 0.85},
+                    x = 320,
+                    width = 160,
+                    height = 160,
+                    frame_count = 1,
+                    scale = 0.85
+                },
+                west = {
+                    filename = "__GuG2__/graphics/entity/outfall/seafloor-pump.png",
+                    priority = "high",
+                    shift = {-0.75, 0},
+                    x = 480,
+                    width = 160,
+                    height = 160,
+                    frame_count = 1,
+                    scale = 0.85
+                }
+            },
+        },
+        placeable_position_visualization = {
+            filename = "__core__/graphics/cursor-boxes-32x32.png",
+            priority = "extra-high-no-scale",
+            width = 64,
+            height = 64,
+            scale = 0.5,
+            x = 3 * 64,
+        },
+        vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+        repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
+        open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+        close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    },
+})
 data.raw["mining-drill"]["burner-mining-drill"].energy_source.effectivity = 0.5
 data:extend({
     {
@@ -4105,7 +4232,7 @@ data:extend({
         collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
         selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         match_animation_speed_to_activity = false,
-        crafting_categories = {"evaporating"},
+        crafting_categories = {"evaporating", "outfalling"},
         crafting_speed = 1,
         energy_source = {type = "void"},
         energy_usage = "1W",
@@ -6821,6 +6948,324 @@ make_farm({
 data:extend({
     {
         type = "assembling-machine",
+        name = "distillation-tower",
+        icons = du.icons("distillation-tower"),
+        flags = { "placeable-neutral", "placeable-player", "player-creation" },
+        minable = { mining_time = 1, result = "distillation-tower" },
+        max_health = 100,
+        fast_replaceable_group = "distillation-tower",
+        corpse = "small-remnants",
+        collision_box = { { -2.4, -2.4 }, { 2.4, 2.4 } },
+        selection_box = { { -2.5, -2.5 }, { 2.5, 2.5 } },
+        crafting_categories = { "tower-distillation" },
+        allowed_effects = { "consumption", "speed", "pollution", "productivity" },
+        crafting_speed = 1,
+        energy_source = {
+            type = "electric",
+            usage_priority = "secondary-input",
+        },
+        fluid_boxes = {
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "input", position = {2.0, 2.0}, direction=defines.direction.south}}
+            },
+            {
+                production_type = "input",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "input", position = {-2.0, 2.0}, direction=defines.direction.south}}
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "output", position = {-2.0, -2.0}, direction=defines.direction.north}}
+            },
+            {
+                production_type = "output",
+                pipe_covers = pipecoverspictures(),
+                volume = 100,
+                pipe_connections = {{flow_direction = "output", position = {2.0, -2.0}, direction=defines.direction.north}}
+            },
+        },
+        energy_usage = "300kW",
+        graphics_set = {
+            animation = {
+                filename = "__GuG2__/graphics/entity/distillation-tower/destill-tower.png",
+                width = 1024,
+                height = 1024,
+                frame_count = 1,
+                line_length = 1,
+                shift = util.by_pixel(0, -8),
+                scale = 0.5,    
+            },
+        },
+        vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+        repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
+        open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+        close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    }
+})
+local crash_site_assembler_results = {
+    { type = "item", name = "steel-plate", amount_min = 5, amount_max = 13, probability = 1 },
+    { type = "item", name = "aluminum-cable", amount_min = 4, amount_max = 8, probability = 1 },
+    { type = "item", name = "machine-chassis", amount=1, probability = 0.75 },
+    { type = "item", name = "electronic-circuit", amount_min = 2, amount_max = 3, probability = 0.75 }
+}
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "crash-site-assembling-machine",
+        icon = "__Krastorio2Assets__/icons/entities/spaceship-material-fabricator-1.png",
+        flags = { "placeable-player", "player-creation", "not-rotatable" },
+        hidden = true,
+        map_color = { r = 0, g = 0.365, b = 0.58, a = 1 },
+        max_health = 300,
+        corpse = "big-remnants",
+        minable = {
+            mining_time = 4,
+            results = crash_site_assembler_results,
+            mining_particle = "shell-particle",
+            transfer_entity_health_to_products = false,
+        },
+        dying_explosion = "medium-explosion",
+        damaged_trigger_effect = hit_effects.entity(),
+        resistances = {
+            { type = "fire", percent = 100 },
+            { type = "impact", percent = 60 },
+            { type = "physical", percent = 50 },
+        },
+        collision_box = { { -1.2, -0.7 }, { 1.2, 0.7 } },
+        selection_box = { { -1.5, -1 }, { 1.5, 1 } },
+        crafting_categories = { "crafting", "basic-crafting" },
+        crafting_speed = 0.5,
+        energy_source = {
+            type = "void",
+        },
+        energy_usage = "90kW",
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound = {
+            sound = {
+                {
+                    filename = "__base__/sound/assembling-machine-repaired-1.ogg",
+                    volume = 0.8,
+                },
+            },
+        },
+        alert_icon_shift = util.by_pixel(-3, -12),
+        graphics_set = {
+            animation = {
+                layers = {
+                    {
+                        filename = "__Krastorio2Assets__/buildings/spaceship-material-fabricator-1/spaceship-material-fabricator-1.png",
+                        width = 282,
+                        height = 182,
+                        frame_count = 20,
+                        line_length = 5,
+                        shift = util.by_pixel(-12, 3),
+                        animation_speed = animation_speed,
+                        scale = 0.5,
+                    },
+                    {
+                        filename = "__Krastorio2Assets__/buildings/spaceship-material-fabricator-1/spaceship-material-fabricator-1-shadow.png",
+                        width = 278,
+                        height = 168,
+                        frame_count = 20,
+                        line_length = 5,
+                        draw_as_shadow = true,
+                        shift = util.by_pixel(4, 6),
+                        animation_speed = animation_speed,
+                        scale = 0.5,
+                    },
+                },
+            },
+            working_visualisations = {
+                {
+                    animation = {
+                        filename = "__Krastorio2Assets__/buildings/spaceship-material-fabricator-1/spaceship-material-fabricator-1-light.png",
+                        width = 162,
+                        height = 120,
+                        frame_count = 20,
+                        line_length = 5,
+                        shift = util.by_pixel(12, -8),
+                        draw_as_glow = true,
+                        blend_mode = "additive",
+                        animation_speed = animation_speed,
+                        scale = 0.5,
+                    },
+                },
+            },
+        },
+        integration_patch_render_layer = "decals",
+        integration_patch = {
+            filename = "__Krastorio2Assets__/buildings/spaceship-material-fabricator-1/spaceship-material-fabricator-1-ground.png",
+            width = 446,
+            height = 234,
+            shift = util.by_pixel(-31, 12),
+            frame_count = 1,
+            line_length = 1,
+            scale = 0.5,
+        },
+    },
+})
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "crash-site-assembling-machine-flipped",
+        icon = "__Krastorio2Assets__/icons/entities/spaceship-material-fabricator-2.png",
+        flags = { "placeable-player", "player-creation", "not-rotatable" },
+        hidden = true,
+        map_color = { r = 0, g = 0.365, b = 0.58, a = 1 },
+        max_health = 300,
+        corpse = "big-remnants",
+        minable = {
+            mining_time = 4,
+            results = crash_site_assembler_results,
+            mining_particle = "shell-particle",
+            transfer_entity_health_to_products = false,
+        },
+        dying_explosion = "medium-explosion",
+        damaged_trigger_effect = hit_effects.entity(),
+        resistances = {
+            { type = "fire", percent = 100 },
+            { type = "impact", percent = 60 },
+            { type = "physical", percent = 50 },
+        },
+        collision_box = { { -0.7, -1.2 }, { 0.7, 1.2 } },
+        selection_box = { { -1, -1.5 }, { 1, 1.5 } },
+        crafting_categories = { "crafting", "basic-crafting" },
+        crafting_speed = 0.5,
+        energy_source = {
+            type = "void",
+        },
+        energy_usage = "90kW",
+        open_sound = sounds.machine_open,
+        close_sound = sounds.machine_close,
+        vehicle_impact_sound = sounds.generic_impact,
+        working_sound = {
+            sound = {
+                {
+                    filename = "__base__/sound/assembling-machine-repaired-1.ogg",
+                    volume = 0.8,
+                },
+            },
+            fade_in_ticks = 4,
+            fade_out_ticks = 20,
+        },
+        graphics_set = {
+            animation = {
+                layers = {
+                    {
+                        filename = "__Krastorio2Assets__/buildings/spaceship-material-fabricator-2/spaceship-material-fabricator-2.png",
+                        width = 198,
+                        height = 200,
+                        frame_count = 20,
+                        line_length = 5,
+                        shift = util.by_pixel(-4, -11),
+                        animation_speed = 2,
+                        scale = 0.5,
+                    },
+                    {
+                        filename = "__Krastorio2Assets__/buildings/spaceship-material-fabricator-2/spaceship-material-fabricator-2-shadow.png",
+                        width = 208,
+                        height = 174,
+                        frame_count = 20,
+                        line_length = 5,
+                        draw_as_shadow = true,
+                        shift = util.by_pixel(3, -9),
+                        animation_speed = 2,
+                        scale = 0.5,
+                    },
+                },
+            },
+            working_visualisations = {
+                {
+                    animation = {
+                        filename = "__Krastorio2Assets__/buildings/spaceship-material-fabricator-2/spaceship-material-fabricator-2-light.png",
+                        width = 174,
+                        height = 124,
+                        frame_count = 20,
+                        line_length = 5,
+                        shift = util.by_pixel(-7, -4),
+                        draw_as_glow = true,
+                        blend_mode = "additive",
+                        animation_speed = 2,
+                        scale = 0.5,
+                    },
+                },
+            },
+            alert_icon_shift = util.by_pixel(-3, -12),
+            integration_patch_render_layer = "decals",
+            integration_patch = {
+                filename = "__Krastorio2Assets__/buildings/spaceship-material-fabricator-2/spaceship-material-fabricator-2-ground.png",
+                width = 290,
+                height = 238,
+                shift = util.by_pixel(-8, -10),
+                frame_count = 1,
+                line_length = 1,
+                scale = 0.5,
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "assembling-machine",
+        name = "composter",
+        icons = du.icons("composter"),
+        flags = { "placeable-neutral", "placeable-player", "player-creation" },
+        minable = { mining_time = 1, result = "composter" },
+        max_health = 100,
+        fast_replaceable_group = "composter",
+        corpse = "small-remnants",
+        collision_box = { { -1.4, -1.4 }, { 1.4, 1.4 } },
+        selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } },
+        crafting_categories = { "composting" },
+        allowed_module_categories = {"composting"},
+        module_slots = 5,
+        allowed_effects = { "consumption", "speed", "pollution", "productivity" },
+        crafting_speed = 0.01,
+        energy_source = {
+            type = "electric",
+            usage_priority = "secondary-input",
+        },
+        energy_usage = "30kW",
+        graphics_set = {
+            animation = {
+                filename = "__GuG2__/graphics/entity/composter/composter.png",
+                width = 160,
+                height = 160,
+                frame_count = 1,
+                line_length = 1,
+                repeat_count = 25,
+                shift = { 0, 0 },
+            },
+            working_visualisations =
+            {
+                {
+                    filename = "__GuG2__/graphics/entity/composter/composter-animation.png",
+                    width = 128,
+                    height = 32,
+                    frame_count = 25,
+                    line_length = 5,
+                    shift = {0, 1}
+                }
+            },
+        },
+        vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+        repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
+        open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+        close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    },
+})
+
+data:extend({
+    {
+        type = "assembling-machine",
         name = "steam-cracker",
         icon = "__GuG2__/graphics/icons/steam-cracker.png",
         icon_size = 64,
@@ -7177,6 +7622,13 @@ data:extend({
 
 data:extend({
     {
+        type = "module-category",
+        name = "composting",
+    }
+})
+
+data:extend({
+    {
         type = "item",
         name = "shaft",
         icons = du.icons("shaft"),
@@ -7211,6 +7663,15 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 200,
         place_result = "radiator"
+    },
+    {
+        type = "item",
+        name = "outfall",
+        icons = du.icons("outfall"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 200,
+        place_result = "outfall"
     },
     {
         type = "item",
@@ -7274,6 +7735,24 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         place_result = "burner-lab"
+    },
+    {
+        type = "item",
+        name = "distillation-tower",
+        icons = du.icons("distillation-tower"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "distillation-tower"
+    },
+    {
+        type = "item",
+        name = "composter",
+        icons = du.icons("composter"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "composter"
     },
     {
         type = "item",
@@ -7663,24 +8142,6 @@ data:extend({
     },
     {
         type = "item",
-        name = "pine-sapling",
-        icons = du.icons("pine-sapling"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
-        stack_size = 50,
-        place_result = "forestry-pine"
-    },
-    {
-        type = "item",
-        name = "oak-sapling",
-        icons = du.icons("oak-sapling"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
-        stack_size = 50,
-        --place_result = "forestry-pine"
-    },
-    {
-        type = "item",
         name = "high-discharge-lamp",
         icons = du.icons("high-discharge-lamp"),
         subgroup = "smelting-machine",
@@ -7831,6 +8292,18 @@ data:extend({
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50
+    },
+    {
+        type = "recipe-category",
+        name = "outfalling"
+    },
+    {
+        type = "recipe-category",
+        name = "tower-distillation"
+    },
+    {
+        type = "recipe-category",
+        name = "composting"
     },
     {
         type = "recipe-category",

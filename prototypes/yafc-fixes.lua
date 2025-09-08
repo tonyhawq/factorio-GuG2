@@ -55,7 +55,6 @@ data:extend({
     creative_recipe("nickel-ore"),
     creative_recipe("aluminum-ore"),
     creative_recipe("zinc-ore"),
-    creative_recipe("seaweed"),
     creative_recipe("phosphate-rock"),
     creative_recipe("antimony-ore"),
     creative_recipe("molybdenum-ore"),

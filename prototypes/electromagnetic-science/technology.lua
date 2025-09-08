@@ -497,7 +497,80 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
+                recipe="distillation-tower",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="chemical-plant",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "thalorain-2",
+        icons = {
+            {
+                icon = "__core__/graphics/icons/force/neutral-force-icon.png",
+                icon_size = 128,
+            }
+        },
+        prerequisites = {"chemistry-3"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="thalorain-ferment-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="thalorain-juicing-1",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "butchering-1",
+        icons = {
+            {
+                icon = "__core__/graphics/icons/force/neutral-force-icon.png",
+                icon_size = 128,
+            }
+        },
+        prerequisites = {"electromagnetic-science", "mechanics-3"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+                {"electromagnetic-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="nauvisworm-rendering-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pale-gull-rendering-1",
             },
         },
     },

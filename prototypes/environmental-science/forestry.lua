@@ -1,94 +1,204 @@
 local du = require("dutil")
 
-local function make_logs(names)
-    local created = {growing={}, sapling={}}
-    for _, log in pairs(names) do
-        local category = "forestry-"..log.name.."-growing"
-        local dash = "-"
-        if log.name == "" then
-            dash = ""
-            category = "forestry-generic-growing"
-        end
-        local sapling_item_name = log.name..dash.."sapling"
-        data:extend({
-            {
-                type = "recipe", 
-                always_show_made_in = true,
-                enabled = false,
-                category = "crafting", ---@diagnostic disable-line
-                name = sapling_item_name.."-1",
-                icons = du.icons(sapling_item_name),
-                subgroup = "raw-material",
-                order = "a[a]",
-                main_product = "",
-                energy_required = 1,
-                ingredients = {
-                    {type="item", name="planter-box", amount=1},
-                    {type="item", name="soil", amount=3},
-                },
-                results = {
-                    {type="item", name=sapling_item_name, amount=1},
-                }
-            },
-        })
-        local sapling_recp = du.recipe(sapling_item_name.."-1")
-        created.sapling[sapling_item_name.."-1"] = sapling_recp
-        for _, additional in pairs(log.sapling_ingredients or {}) do
-            sapling_recp:add_ingredient{type=data.raw.fluid[additional[1]] and "fluid" or "item", name=additional[1], amount=additional[2]}
-        end
-        local tree_item_name = log.name..dash.."tree-growing"
-        local sapling_amount = 20
-        local logs_per_sapling = 4
-        local water_per_log = 6
-        data:extend({
-            {
-                type = "recipe", 
-                always_show_made_in = true,
-                enabled = false,
-                category = category, ---@diagnostic disable-line
-                name = tree_item_name.."-1",
-                icons = du.icons(tree_item_name),
-                subgroup = "raw-material",
-                order = "a[a]",
-                main_product = "",
-                energy_required = sapling_amount * logs_per_sapling * 2,
-                ingredients = {
-                    {type="item", name=log.name..dash.."sapling", amount=sapling_amount},
-                    {type="fluid", name="water", amount=sapling_amount * logs_per_sapling * water_per_log},
-                },
-                results = {
-                    {type="item", name=log.name..dash.."log", amount=sapling_amount * logs_per_sapling},
-                }
-            }
-        })
-        local tree_recp = du.recipe(tree_item_name.."-1")
-        tree_recp.growing_log_type = log.name..dash.."log"
-        tree_recp.sapling = sapling_item_name
-        created.growing[tree_item_name.."-1"] = tree_recp
-        for _, additional in pairs(log.drops or {}) do
-            tree_recp:add_result{type=data.raw.fluid[additional[1]] and "fluid" or "item", name=additional[1], amount=additional[2] * sapling_amount}
-        end
-        data:extend({
-            {
-                type = "item",
-                name = log.name..dash.."log",
-                icons = du.icons(log.name..dash.."log"),
-                subgroup = "smelting-machine",
-                order = "a[stone-furnace]",
-                stack_size = 50,
-                fuel_value = "3MJ",
-                fuel_category = "chemical",
-                spoil_result = "rotten-log",
-                spoil_ticks = 30 * 60 * 60,
-            },
-        })
-        if log.technology then
-            sapling_recp:add_unlock(log.technology)
-            tree_recp:add_unlock(log.technology)    
-        end
-    end
-    return created
-end
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crushing", ---@diagnostic disable-line
+        name = "tree-seeds-1",
+        icons = du.icons("tree-seeds"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="log", amount=1},
+        },
+        results = {
+            {type="item", name="tree-seeds", amount=3},
+        }
+    },
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "sapling-1",
+        icons = du.icons("sapling"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="planter-box", amount=1},
+            {type="item", name="soil", amount=3},
+            {type="item", name="tree-seeds", amount=3},
+        },
+        results = {
+            {type="item", name="sapling", amount=1},
+        }
+    },
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "forestry-generic-growing", ---@diagnostic disable-line
+        name = "tree-growing-1",
+        icons = du.icons("tree-growing"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 160,
+        ingredients = {
+            {type="item", name="sapling", amount=16},
+            {type="fluid", name="water", amount=480},
+        },
+        results = {
+            {type="item", name="log", amount=80},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "forestry-generic-growing", ---@diagnostic disable-line
+        name = "tree-tapping-1",
+        icons = du.icons("tree-growing"):add_corner("sap"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 160,
+        ingredients = {
+            {type="item", name="sapling", amount=16},
+            {type="item", name="screws", amount=24},
+            {type="item", name="pipe", amount=4},
+            {type="fluid", name="water", amount=480},
+        },
+        results = {
+            {type="item", name="sap", amount=40},
+        }
+    }
+})
+
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "pine-sapling-1",
+        icons = du.icons("pine-sapling"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="planter-box", amount=1},
+            {type="item", name="soil", amount=3},
+            {type="item", name="pinecone", amount=1},
+        },
+        results = {
+            {type="item", name="pine-sapling", amount=1},
+        }
+    },
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "forestry-pine-growing", ---@diagnostic disable-line
+        name = "pine-tree-growing-1",
+        icons = du.icons("pine-tree-growing"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 160,
+        ingredients = {
+            {type="item", name="pine-sapling", amount=16},
+            {type="fluid", name="water", amount=480},
+        },
+        results = {
+            {type="item", name="log", amount=80},
+            {type="item", name="pinecone", amount=24},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "forestry-pine-growing", ---@diagnostic disable-line
+        name = "pine-tree-tapping-1",
+        icons = du.icons("pine-tree-growing"):add_corner("sap"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 160,
+        ingredients = {
+            {type="item", name="pine-sapling", amount=16},
+            {type="item", name="screws", amount=24},
+            {type="item", name="pipe", amount=4},
+            {type="fluid", name="water", amount=480},
+        },
+        results = {
+            {type="item", name="sap", amount=160},
+        }
+    }
+})
+
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "crafting", ---@diagnostic disable-line
+        name = "oak-sapling-1",
+        icons = du.icons("oak-sapling"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 1,
+        ingredients = {
+            {type="item", name="planter-box", amount=1},
+            {type="item", name="soil", amount=3},
+            {type="item", name="acorn", amount=1},
+        },
+        results = {
+            {type="item", name="oak-sapling", amount=1},
+        }
+    },
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "forestry-oak-growing", ---@diagnostic disable-line
+        name = "oak-tree-growing-1",
+        icons = du.icons("oak-tree-growing"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 320,
+        ingredients = {
+            {type="item", name="oak-sapling", amount=16},
+            {type="fluid", name="water", amount=480},
+        },
+        results = {
+            {type="item", name="log", amount=240},
+            {type="item", name="acorn", amount=24},
+        }
+    }
+})
 
 local function set_tree_drops(cfg)
     for _, tree_name in pairs(cfg.trees) do
@@ -107,15 +217,6 @@ local function set_tree_drops(cfg)
         tree.g2_set_drops = true ---@diagnostic disable-line
     end
 end
-
-local created_recipes = make_logs{
-    {name="", sapling_ingredients={{"sap", 2}}, technology="wood-processing"},
-    {name="pine", sapling_ingredients={{"pinecone", 1}}, drops={{"pinecone", 3/2}}, technology="wood-processing"},
-    {name="oak", sapling_ingredients={{"acorn", 2}}, drops={{"acorn", 3}}, technology="wood-processing"},
-}
-du.recipe"oak-sapling-1":add_ingredient{type="item", name="acorn", amount=2}
-du.recipe"pine-sapling-1":add_ingredient{type="item", name="pinecone", amount=1}
-du.recipe"oak-tree-growing-1".energy_required = du.recipe"oak-tree-growing-1".energy_required * 2
 
 local trees = {
     "tree-03", "tree-04", "tree-05", "tree-06", "tree-06-brown", "tree-07", "tree-08", "tree-08-brown", "tree-08-red"
@@ -136,15 +237,63 @@ end
 set_tree_name(pine_trees, "pine")
 set_tree_name(oak_trees, "oak")
 
-set_tree_drops{trees=trees, drops={{name="log", amount=2}, {name="sap", amount=1, probability=0.25}, {name="pale-gull-nest", amount=1, probability=0.25}}}
-set_tree_drops{trees=pine_trees, drops={{name="pine-log", amount=2}, {name="pinecone", amount=1, probability=0.5}, {name="sap", amount=1, probability=0.25}}}
-set_tree_drops{trees=oak_trees, drops={{name="oak-log", amount=2}, {name="acorn", amount=1, probability=0.5}, {name="sap", amount=1, probability=0.25}}}
+set_tree_drops{trees=trees, drops={{name="log", amount=2}, {name="sap", amount=1, probability=0.25}, {name="pale-gull-nest", amount=1, probability=0.15}}}
+set_tree_drops{trees=pine_trees, drops={{name="log", amount=2}, {name="pinecone", amount=1, probability=0.5}, {name="sap", amount=1, probability=0.25}}}
+set_tree_drops{trees=oak_trees, drops={{name="log", amount=2}, {name="acorn", amount=1, probability=0.5}}}
 
 -- pale gulls nest in trees
 -- eat saltberries
 -- poop ureic feces
 
 data:extend({
+    {
+        type = "item",
+        name = "sapling",
+        icons = du.icons("sapling"),
+        localised_name = {"item-name.sapling"},
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "forestry-tree"
+    },
+    {
+        type = "item",
+        name = "log",
+        icons = du.icons("log"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        fuel_value = "3MJ",
+        fuel_category = "chemical",
+        stack_size = 200,
+    },
+    {
+        type = "item",
+        name = "pine-sapling",
+        localised_name = {"item-name.pine-sapling"},
+        icons = du.icons("pine-sapling"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "forestry-pine"
+    },
+    {
+        type = "item",
+        name = "oak-sapling",
+        localised_name = {"item-name.oak-sapling"},
+        icons = du.icons("oak-sapling"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+        place_result = "forestry-oak"
+    },
+    {
+        type = "item",
+        name = "tree-seeds",
+        icons = du.icons("tree-seeds"),
+        subgroup = "smelting-machine",
+        order = "a[stone-furnace]",
+        stack_size = 50,
+    },
     {
         type = "item",
         name = "pinecone",
@@ -187,6 +336,8 @@ data:extend({
         icons = du.icons("pale-gull-nest"),
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
+        fuel_value = "3MJ",
+        fuel_category = "chemical",
         stack_size = 10,
     },
     {
@@ -229,6 +380,26 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 10,
     },
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = true,
+        category = "basic-crafting", ---@diagnostic disable-line
+        name = "pale-gull-nest-void-1",
+        icons = du.icons("pale-gull-nest"):add_corner("crushing"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 0.25,
+        ingredients = {
+            {type="item", name="pale-gull-nest", amount=1},
+        },
+        results = {
+            {type="item", name="wood", amount=2},
+        }
+    }
 })
 data:extend({
     {
@@ -452,30 +623,6 @@ data:extend({
         results = {
             {type="item", name="manganese-oxides", amount=1},
             {type="item", name="salt", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "crafting", ---@diagnostic disable-line
-        name = "farm-1",
-        icons = du.icons("farm"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="item", name="treated-wood", amount=10},
-            {type="item", name="stone-brick", amount=10},
-            {type="item", name="bronze-plate", amount=10},
-            {type="item", name="soil", amount=10},
-            {type="item", name="small-tank", amount=1},
-        },
-        results = {
-            {type="item", name="farm-1", amount=1},
         }
     }
 })

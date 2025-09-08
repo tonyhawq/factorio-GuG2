@@ -9,7 +9,9 @@ forestry.decoratives = {
 }
 
 forestry.boxes_by_tree = {
-    ["forestry-pine"] = {name="g2-tree-9x9", area=81, side_length=9, decoratives=forestry.decoratives.nauvis}
+    ["forestry-pine"] = {name="g2-tree-9x9", area=81, side_length=9, decoratives=forestry.decoratives.nauvis},
+    ["forestry-oak"] = {name="g2-tree-9x9", area=81, side_length=9, decoratives=forestry.decoratives.nauvis},
+    ["forestry-tree"] = {name="g2-tree-9x9", area=81, side_length=9, decoratives=forestry.decoratives.nauvis},
 }
 
 function forestry.setup()

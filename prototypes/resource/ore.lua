@@ -198,7 +198,20 @@ resource{
         category = "resource"
     },
 }
-
+resource{
+    name = "raw-quartz",
+    map_color = {r=255/255, g=255/255, b=255/255},
+    control = 
+    {
+        type = "autoplace-control",
+        name = "raw-quartz",
+        localised_name = {"", "[entity=raw-quartz] ", {"entity-name.raw-quartz"}},
+        richness = true,
+        order = "b-a",
+        category = "resource"
+    },
+}
+data.raw.resource.coal.minable.mining_time = 0.5
 data.raw.resource.coal.minable.result = "raw-coal"
 data.raw.resource.coal.autoplace = resource_autoplace.resource_autoplace_settings{
     name = "coal",

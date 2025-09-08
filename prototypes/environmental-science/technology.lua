@@ -105,6 +105,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="shaft",
             },
+            {
+                type = "unlock-recipe",
+                recipe="saw-1",
+            },
         },
     },
 })
@@ -187,7 +191,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"tar-processing", "glassworking-1"},
+        prerequisites = {"tar-processing"},
         unit =
         {
             count = 20,
@@ -248,7 +252,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"logistics"},
+        prerequisites = {"mechanics-2", "glassworking-1"},
         unit =
         {
             count = 30,
@@ -322,7 +326,7 @@ data:extend({
         name = "smelting-1",
         icons = {
             {
-                icon = "__GuG2__/graphics/technology/smelting.png",
+                icon = "__GuG2__/graphics/technology/angels/technology/casting-gunmetal-tech.png",
                 icon_size = 256,
             }
         },
@@ -399,6 +403,34 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="offshore-pump",
             },
+            {
+                type = "unlock-recipe",
+                recipe="outfall",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="seawater-void",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="water-void",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="saline-water-void",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="brine-void",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="mineralized-water-void",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="organic-wastewater-void",
+            },
         },
     },
 })
@@ -466,6 +498,10 @@ data:extend({
                 type = "unlock-recipe",
                 recipe="evaporator",
             },
+            {
+                type = "unlock-recipe",
+                recipe="brine-evaporating",
+            },
         },
     },
 })
@@ -508,7 +544,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"optics", "coal-processing-1"},
+        prerequisites = {"fluid-handling", "coal-processing-1"},
         unit =
         {
             count = 20,
@@ -554,31 +590,7 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
-                recipe="water-void",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="seawater-void",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="saline-water-void",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="brine-void",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="mineralized-water-void",
-            },
-            {
-                type = "unlock-recipe",
                 recipe="sludge-void-1",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="organic-wastewater-void",
             },
             {
                 type = "unlock-recipe",
@@ -663,7 +675,7 @@ data:extend({
         name = "iron-refining-1",
         icons = {
             {
-                icon = "__base__/graphics/technology/automation-1.png",
+                icon = "__GuG2__/graphics/technology/angels/technology/casting-iron-tech.png",
                 icon_size = 256,
             }
         },
@@ -697,7 +709,7 @@ data:extend({
         name = "copper-refining-1",
         icons = {
             {
-                icon = "__base__/graphics/technology/automation-1.png",
+                icon = "__GuG2__/graphics/technology/angels/technology/casting-copper-tech.png",
                 icon_size = 256,
             }
         },
@@ -731,7 +743,7 @@ data:extend({
         name = "tin-refining-1",
         icons = {
             {
-                icon = "__base__/graphics/technology/automation-1.png",
+                icon = "__GuG2__/graphics/technology/angels/technology/casting-tin-tech.png",
                 icon_size = 256,
             }
         },
@@ -765,7 +777,7 @@ data:extend({
         name = "lead-refining-1",
         icons = {
             {
-                icon = "__base__/graphics/technology/automation-1.png",
+                icon = "__GuG2__/graphics/technology/angels/technology/casting-lead-tech.png",
                 icon_size = 256,
             }
         },
@@ -803,18 +815,27 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"chemistry-2"},
+        prerequisites = {"mechanical-science"},
         unit =
         {
             count = 50,
             ingredients =
             {
                 {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
             },
             time = 10
         },
         effects =
         {
+            {
+                type = "unlock-recipe",
+                recipe="flue-gas-void-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="wood-oil-gasification",
+            },
             {
                 type = "unlock-recipe",
                 recipe="full-tar-gasification",
@@ -844,7 +865,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"syngas", "wood-processing", "aluminum-processing-1"},
+        prerequisites = {"wood-processing-1", "aluminum-processing-1"},
         unit =
         {
             count = 30,
@@ -1142,6 +1163,10 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
+                recipe="agricultural-soil-1",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="farm-1",
             },
             {
@@ -1219,14 +1244,14 @@ data:extend({
 data:extend({
     {
         type = "technology",
-        name = "wood-processing",
+        name = "forestation-1",
         icons = {
             {
                 icon = "__core__/graphics/icons/force/neutral-force-icon.png",
                 icon_size = 128,
             }
         },
-        prerequisites = {"chemistry-2", "mechanics-2", "farming-1"},
+        prerequisites = {"mechanical-science", "farming-1"},
         unit =
         {
             count = 10,
@@ -1241,15 +1266,70 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="agricultural-soil-1",
+                recipe="tree-seeds-1",
             },
             {
                 type = "unlock-recipe",
-                recipe="sap-extraction",
+                recipe="sapling-1",
             },
             {
                 type = "unlock-recipe",
-                recipe="sap-extraction-pine",
+                recipe="pine-sapling-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="oak-sapling-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="tree-growing-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pine-tree-growing-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="oak-tree-growing-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="tree-tapping-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="pine-tree-tapping-1",
+            },
+        },
+    },
+})
+            
+data:extend({
+    {
+        type = "technology",
+        name = "wood-processing-1",
+        icons = {
+            {
+                icon = "__core__/graphics/icons/force/neutral-force-icon.png",
+                icon_size = 128,
+            }
+        },
+        prerequisites = {"forestation-1", "syngas", "chemistry-2"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="wood-oil-gasification",
             },
             {
                 type = "unlock-recipe",
@@ -1262,18 +1342,6 @@ data:extend({
             {
                 type = "unlock-recipe",
                 recipe="black-liquor-regeneration",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="log-treatment",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="pine-log-treatment",
-            },
-            {
-                type = "unlock-recipe",
-                recipe="oak-log-treatment",
             },
         },
     },
@@ -1307,11 +1375,11 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
-                recipe="seaweed-1",
+                recipe="green-algae-1",
             },
             {
                 type = "unlock-recipe",
-                recipe="seaweed-2",
+                recipe="green-algae-2",
             },
             {
                 type = "unlock-recipe",
@@ -1353,6 +1421,14 @@ data:extend({
             },
             {
                 type = "unlock-recipe",
+                recipe="native-biofilm-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="native-biofilm-2",
+            },
+            {
+                type = "unlock-recipe",
                 recipe="synthesis-methanogenesis",
             },
             {
@@ -1364,6 +1440,136 @@ data:extend({
                 recipe="methanobacteria-1",
             },
             
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "wood-processing-2",
+        icons = {
+            {
+                icon = "__core__/graphics/icons/force/neutral-force-icon.png",
+                icon_size = 128,
+            }
+        },
+        prerequisites = {"mechanics-3"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="log-cutting-2",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "composting",
+        icons = {
+            {
+                icon = "__core__/graphics/icons/force/neutral-force-icon.png",
+                icon_size = 128,
+            }
+        },
+        prerequisites = {"electromagnetism", "thalorain-1"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="nauvisworm-hatching-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="nauvisworm-reproduction-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="composter",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="compost-pale-gull-egg",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="compost-saltberries",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="compost-thalorain",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="compost-rich-soil",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="rich-soil-compost",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="rich-soil-organic-wastewater",
+            },
+        },
+    },
+})
+data:extend({
+    {
+        type = "technology",
+        name = "thalorain-1",
+        icons = {
+            {
+                icon = "__core__/graphics/icons/force/neutral-force-icon.png",
+                icon_size = 128,
+            }
+        },
+        prerequisites = {"microbiology"},
+        unit =
+        {
+            count = 10,
+            ingredients =
+            {
+                {"environmental-science-pack", 1},
+                {"mechanical-science-pack", 1},
+            },
+            time = 10
+        },
+        effects =
+        {
+            {
+                type = "unlock-recipe",
+                recipe="thalorain-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="thalorain-grain-1",
+            },
+            {
+                type = "unlock-recipe",
+                recipe="sweet-thalorain-grain-1",
+            },
         },
     },
 })
@@ -1727,7 +1933,7 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"wood-processing", "pale-gull-breeding"},
+        prerequisites = {"chemistry-2", "pale-gull-breeding"},
         unit =
         {
             count = 20,
@@ -2187,10 +2393,10 @@ data:extend({
                 icon_size = 256,
             }
         },
-        prerequisites = {"mechanics-2"},
+        prerequisites = {"fluid-handling"},
         unit =
         {
-            count = 10,
+            count = 2,
             ingredients =
             {
                 {"environmental-science-pack", 1},
@@ -2201,7 +2407,7 @@ data:extend({
         {
             {
                 type = "unlock-recipe",
-                recipe="transport-belt-2",
+                recipe="underground-belt",
             },
         },
     },

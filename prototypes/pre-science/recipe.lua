@@ -10,7 +10,7 @@ data:extend({
         enabled = true,
         energy_required = 0.5,
         ingredients = {
-            {type="item", name="sandstone", amount=6},
+            {type="item", name="limestone", amount=6},
             {type="item", name="clay", amount=3},
         },
         results = {
@@ -75,7 +75,7 @@ data:extend({
     {
         type = "recipe", 
         always_show_made_in = true,
-        category = "crafting", ---@diagnostic disable-line
+        category = "basic-crafting", ---@diagnostic disable-line
         name = "clay-collecting",
         icons = du.icons("clay"),
         subgroup = "extracting",
@@ -138,7 +138,7 @@ data:extend({
         always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
         name = "tin-ingot-2",
-        icons = du.icons("tin-ingot"),
+        icons = du.icons("tin-ingot"):add_corner("crushed-tin-ore"),
         subgroup = "tin-smelting",
         order = "a-2",
         main_product = "",
@@ -254,7 +254,7 @@ data:extend({
         always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
         name = "copper-ingot-2",
-        icons = du.icons("copper-ingot"),
+        icons = du.icons("copper-ingot"):add_corner("crushed-copper-ore"),
         subgroup = "copper-smelting",
         order = "a-2",
         main_product = "",
@@ -367,7 +367,6 @@ data:extend({
         },
         results = {
             {type="item", name="lead-ingot", amount=1},
-            {type="item", name="raw-silver-dust", amount=1, probability=0.125},
         }
     }
 })
@@ -377,7 +376,7 @@ data:extend({
         always_show_made_in = true,
         category = "smelting", ---@diagnostic disable-line
         name = "lead-ingot-2",
-        icons = du.icons("lead-ingot"),
+        icons = du.icons("lead-ingot"):add_corner("crushed-lead-ore"),
         subgroup = "lead-smelting",
         order = "a-2",
         main_product = "",
@@ -388,6 +387,7 @@ data:extend({
         },
         results = {
             {type="item", name="lead-ingot", amount=1},
+            {type="item", name="raw-silver-dust", amount=1, probability=0.125},
         }
     }
 })

@@ -41,7 +41,6 @@ require("prototypes.automation-science.technology")
 
 require("prototypes.environmental-science.flaring")
 
-require("prototypes.fixes")
 require("prototypes.yafc-fixes")
 
 for _, type in pairs(data.raw) do
