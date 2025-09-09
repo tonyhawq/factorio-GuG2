@@ -823,163 +823,6 @@ forestry_tree{
     }
 }
 
-local gf_boiler_entity = util.table.deepcopy(data.raw.boiler.boiler)
-gf_boiler_entity.name = "scale-boiler"
-gf_boiler_entity.icon = "__GuG2__/graphics/icons/scale-boiler.png"
-gf_boiler_entity.icon_size = 32
-gf_boiler_entity.minable.result = "scale-boiler"
-gf_boiler_entity.fast_replaceable_group = "boiler"
-gf_boiler_entity.fluid_box.filter = "seawater"
-gf_boiler_entity.energy_source = {
-    type = "fluid",
-    fluid_box = {
-        volume=100,
-        height = 1,
-        base_level = -1,
-        pipe_covers = pipecoverspictures(),
-        pipe_picture = {
-            north = {
-                filename = "__GuG2__/graphics/entity/scale-boiler/"
-                .."assembling-machine-1-pipe-N.png",
-                priority = "extra-high",
-                width = 35,
-                height = 18,
-                shift = util.by_pixel(2.5, 14),
-                hr_version = {
-                    filename = "__GuG2__/graphics/entity/scale-boiler/"
-                    .."hr-assembling-machine-1-pipe-N.png",
-                    priority = "extra-high",
-                    width = 71,
-                    height = 38,
-                    shift = util.by_pixel(2.25, 13.5),
-                    scale = 0.5
-                }
-            },
-            east = {
-                filename = "__GuG2__/graphics/entity/scale-boiler/"
-                .."assembling-machine-1-pipe-E.png",
-                priority = "extra-high",
-                width = 20,
-                height = 38,
-                shift = util.by_pixel(-25, 1),
-                hr_version = {
-                    filename = "__GuG2__/graphics/entity/scale-boiler/"
-                    .."hr-assembling-machine-1-pipe-E.png",
-                    priority = "extra-high",
-                    width = 42,
-                    height = 76,
-                    shift = util.by_pixel(-24.5, 1),
-                    scale = 0.5
-                }
-            },
-            south = {
-                filename = "__GuG2__/graphics/entity/scale-boiler/"
-                .."assembling-machine-1-pipe-S.png",
-                priority = "extra-high",
-                width = 44,
-                height = 31,
-                shift = util.by_pixel(0, -31.5),
-                hr_version = {
-                    filename = "__GuG2__/graphics/entity/scale-boiler/"
-                    .."hr-assembling-machine-1-pipe-S.png",
-                    priority = "extra-high",
-                    width = 88,
-                    height = 61,
-                    shift = util.by_pixel(0, -31.25),
-                    scale = 0.5
-                }
-            },
-            west = {
-                filename = "__GuG2__/graphics/entity/scale-boiler/"
-                .."assembling-machine-1-pipe-W.png",
-                priority = "extra-high",
-                width = 19,
-                height = 37,
-                shift = util.by_pixel(25.5, 1.5),
-                hr_version = {
-                    filename = "__GuG2__/graphics/entity/scale-boiler/"
-                    .."hr-assembling-machine-1-pipe-W.png",
-                    priority = "extra-high",
-                    width = 39,
-                    height = 73,
-                    shift = util.by_pixel(25.75, 1.25),
-                    scale = 0.5
-                }
-            }
-        },
-        pipe_connections = {
-            {flow_direction = "input", position = {0, 0.5}, direction=defines.direction.north},
-        },
-        secondary_draw_orders = {
-            south = 32,
-            north = -1,
-            east = -1,
-            west = -1,
-        }
-    },
-    burns_fluid = true,
-    scale_fluid_usage = true,
-    emissions_per_minute = {pollution=30},
-    effectivity = 0.5,
-    smoke = {{
-        name = "smoke",
-        north_position = util.by_pixel(-38, -47.5),
-        south_position = util.by_pixel(38.5, -32),
-        east_position = util.by_pixel(20, -70),
-        west_position = util.by_pixel(-19, -8.5),
-        frequency = 15,
-        starting_vertical_speed = 0.3,
-        starting_frame_deviation = 0
-    }},
-    light_flicker = {
-        color = {0.8,0.6,0.4},
-        minimum_light_size = 0.1,
-        light_intensity_to_size_coefficient = 1
-    }
-}
-gf_boiler_entity.fire_flicker_enabled = false
-gf_boiler_entity.fire_glow_flicker_enabled = false
-gf_boiler_entity.fire = {}
---[[
-gf_boiler_entity.fire_glow.north.filename = 
-"__GuG2__/graphics/entity/scale-boiler/"..
-"gas-boiler-N-light.png"
-gf_boiler_entity.fire_glow.south.filename = 
-"__GuG2__/graphics/entity/scale-boiler/"..
-"gas-boiler-S-light.png"
-gf_boiler_entity.fire_glow.east.filename = 
-"__GuG2__/graphics/entity/scale-boiler/"..
-"gas-boiler-E-light.png"
-gf_boiler_entity.fire_glow.west.filename = 
-"__GuG2__/graphics/entity/scale-boiler/"..
-"gas-boiler-W-light.png"
-gf_boiler_entity.fire_glow.north.hr_version.filename = 
-"__GuG2__/graphics/entity/scale-boiler/"..
-"hr-gas-boiler-N-light.png"
-gf_boiler_entity.fire_glow.south.hr_version.filename = 
-"__GuG2__/graphics/entity/scale-boiler/"..
-"hr-gas-boiler-S-light.png"
-gf_boiler_entity.fire_glow.east.hr_version.filename = 
-"__GuG2__/graphics/entity/scale-boiler/"..
-"hr-gas-boiler-E-light.png"
-gf_boiler_entity.fire_glow.west.hr_version.filename = 
-"__GuG2__/graphics/entity/scale-boiler/"..
-"hr-gas-boiler-W-light.png"
-gf_boiler_entity.fire_glow.north.apply_runtime_tint = true
-gf_boiler_entity.fire_glow.south.apply_runtime_tint = true
-gf_boiler_entity.fire_glow.east.apply_runtime_tint = true
-gf_boiler_entity.fire_glow.west.apply_runtime_tint = true
-gf_boiler_entity.fire_glow.north.tint={r=1,g=0.6,b=0.6,a=0.4}
-gf_boiler_entity.fire_glow.south.tint={r=1,g=0.6,b=0.6,a=0.4}
-gf_boiler_entity.fire_glow.east.tint={r=1,g=0.6,b=0.6,a=0.4}
-gf_boiler_entity.fire_glow.west.tint={r=1,g=0.6,b=0.6,a=0.4}
-gf_boiler_entity.fire_glow.north.blend_mode = "additive-soft"
-gf_boiler_entity.fire_glow.south.blend_mode = "additive-soft"
-gf_boiler_entity.fire_glow.east.blend_mode = "additive-soft"
-gf_boiler_entity.fire_glow.west.blend_mode = "additive-soft"]]
-
-data:extend({gf_boiler_entity})
-
 local function scale_layer(layer, scale)
     layer.scale = (layer.scale or 1) * scale
     --[[if layer.shift then
@@ -1052,10 +895,10 @@ data:extend({fuel_refinery})
 data:extend({
     {
         type = "assembling-machine",
-        name = "steam-crusher",
-        icons = du.icons("steam-crusher"),
+        name = "crusher-1",
+        icons = du.icons("crusher-1"),
         flags = {"placeable-neutral","player-creation"},
-        minable = {mining_time = 0.2, result = "steam-crusher"},
+        minable = {mining_time = 0.2, result = "crusher-1"},
         max_health = 350,
         corpse = "oil-refinery-remnants",
         dying_explosion = "oil-refinery-explosion",
@@ -1095,15 +938,27 @@ data:extend({
                 layers =
                 {
                     {
-                        filename = "__GuG2__/graphics/entity/crusher/crusher-base.png",
+                        filename = "__angelsrefininggraphics__/graphics/entity/ore-crusher/ore-crusher-base.png",
                         priority="high",
-                        width = 160,
-                        height = 160,
-                        frame_count = 5,
-                        line_length = 5,
-                        scale = 1,
+                        width = 189,
+                        height = 214,
+                        frame_count = 16,
+                        line_length = 4,
+                        scale = 0.6,
+                        shift = util.by_pixel(0, -3),
                         animation_speed = 0.5,
-                        shift = util.by_pixel(0, 2),
+                    },
+                    {
+                        filename = "__angelsrefininggraphics__/graphics/entity/ore-crusher/ore-crusher-shadow.png",
+                        draw_as_shadow = true,
+                        priority="high",
+                        width = 282,
+                        height = 140,
+                        frame_count = 1,
+                        line_length = 1,
+                        repeat_count = 16,
+                        scale = 0.6,
+                        shift = util.by_pixel(32 * 2.5, 16),
                     },
                 }
             },
@@ -1115,9 +970,8 @@ data:extend({
         {
             sound =
             {
-                filename = "__base__/sound/oil-refinery.ogg"
+                filename = "__angelsrefininggraphics__/sound/ore-crusher.ogg"
             },
-            --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
             fade_in_ticks = 4,
             fade_out_ticks = 20
         },
@@ -1126,6 +980,7 @@ data:extend({
             {
                 production_type = "input",
                 pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
                 volume = 100,
                 pipe_connections =
                 {
@@ -1139,6 +994,7 @@ data:extend({
             {
                 production_type = "input",
                 pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
                 volume = 100,
                 pipe_connections =
                 {
@@ -1152,6 +1008,7 @@ data:extend({
             {
                 production_type = "output",
                 pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
                 volume = 100,
                 pipe_connections =
                 {
@@ -1165,6 +1022,7 @@ data:extend({
             {
                 production_type = "output",
                 pipe_covers = pipecoverspictures(),
+                pipe_picture = assembler2pipepictures(),
                 volume = 100,
                 pipe_connections =
                 {
@@ -1193,19 +1051,6 @@ data:extend({
         }
     },
 })
-
-local crusher = table.deepcopy(data.raw["assembling-machine"]["steam-crusher"])
-crusher.energy_source =
-{
-    type = "electric",
-    usage_priority = "secondary-input",
-    drain = "20kW"
-}
-crusher.energy_usage = "300kW"
-crusher.name = "crusher"
-crusher.minable.result = "crusher"
-crusher.graphics_set.animation.layers[1].tint = {r=255, g=128, b=255}
-data:extend({crusher})
 
 local function cleanroom_wall_cross()
     return {
@@ -3947,7 +3792,7 @@ data:extend({
         corpse = "small-remnants",
         collision_box = {{-1.4, -2.45}, {1.4, 0.3}},
         selection_box = {{-1.6, -2.49}, {1.6, 0.49}},
-        crafting_categories = {"outfalling"},
+        crafting_categories = {"outfalling", "generic-water-void"},
         result_inventory_size = 1,
         crafting_speed = 3,
         source_inventory_size = 0,
@@ -3964,7 +3809,7 @@ data:extend({
         graphics_set = {
             animation = {
                 north = {
-                    filename = "__GuG2__/graphics/entity/outfall/seafloor-pump.png",
+                    filename = "__angelsrefininggraphics__/graphics/entity/seafloor-pump/seafloor-pump.png",
                     priority = "high",
                     shift = {-0.02, -0.8},
                     width = 160,
@@ -3973,7 +3818,7 @@ data:extend({
                     scale = 0.85
                 },
                 east = {
-                    filename = "__GuG2__/graphics/entity/outfall/seafloor-pump.png",
+                    filename = "__angelsrefininggraphics__/graphics/entity/seafloor-pump/seafloor-pump.png",
                     priority = "high",
                     shift = {0.8, -0.05},
                     x = 160,
@@ -3983,7 +3828,7 @@ data:extend({
                     scale = 0.85
                 },
                 south = {
-                    filename = "__GuG2__/graphics/entity/outfall/seafloor-pump.png",
+                    filename = "__angelsrefininggraphics__/graphics/entity/seafloor-pump/seafloor-pump.png",
                     priority = "high",
                     shift = {0, 0.85},
                     x = 320,
@@ -3993,7 +3838,7 @@ data:extend({
                     scale = 0.85
                 },
                 west = {
-                    filename = "__GuG2__/graphics/entity/outfall/seafloor-pump.png",
+                    filename = "__angelsrefininggraphics__/graphics/entity/seafloor-pump/seafloor-pump.png",
                     priority = "high",
                     shift = {-0.75, 0},
                     x = 480,
@@ -4232,7 +4077,7 @@ data:extend({
         collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
         selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         match_animation_speed_to_activity = false,
-        crafting_categories = {"evaporating", "outfalling"},
+        crafting_categories = {"evaporating", "generic-water-void"},
         crafting_speed = 1,
         energy_source = {type = "void"},
         energy_usage = "1W",
@@ -5551,281 +5396,6 @@ data:extend({
 data:extend({
     {
         type = "assembling-machine",
-        name = "smart-farm",
-        icons = du.icons("smart-farm"),
-        flags = {"placeable-neutral","placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "smart-farm"},
-        max_health = 400,
-        corpse = "assembling-machine-3-remnants",
-        dying_explosion = "assembling-machine-3-explosion",
-        alert_icon_shift = util.by_pixel(-3, -12),
-        resistances =
-        {
-            {
-                type = "acid",
-                percent = 95
-            }
-        },
-        fluid_boxes =
-        {
-            {
-                production_type = "input",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
-                volume = 100,
-                base_level = -1,
-                pipe_connections = {{ flow_direction="input", position = {-1, -2}, direction=defines.direction.north }},
-                secondary_draw_orders = { north = -1 }
-            },
-            {
-                production_type = "input",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
-                volume = 100,
-                base_level = -1,
-                pipe_connections = {{ flow_direction="input", position = {1, -2}, direction=defines.direction.north }},
-                secondary_draw_orders = { north = -1 }
-            },
-            {
-                production_type = "output",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
-                volume = 100,
-                base_level = 1,
-                pipe_connections = {{ flow_direction="output", position = {-2, 0}, direction=defines.direction.west }},
-                secondary_draw_orders = { north = -1 }
-            },
-            {
-                production_type = "output",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
-                volume = 100,
-                base_level = 1,
-                pipe_connections = {{ flow_direction="output", position = {-1, 2}, direction=defines.direction.south }},
-                secondary_draw_orders = { north = -1 }
-            },
-            {
-                production_type = "output",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
-                volume = 100,
-                base_level = 1,
-                pipe_connections = {{ flow_direction="output", position = {1, 2}, direction=defines.direction.south }},
-                secondary_draw_orders = { north = -1 }
-            },
-            {
-                production_type = "output",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
-                volume = 100,
-                base_level = 1,
-                pipe_connections = {{ flow_direction="output", position = {2, 0}, direction=defines.direction.east }},
-                secondary_draw_orders = { north = -1 }
-            },
-        },
-        open_sound = sounds.machine_open,
-        close_sound = sounds.machine_close,
-        vehicle_impact_sound = sounds.generic_impact,
-        working_sound =
-        {
-            sound =
-            {
-                {
-                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
-                    volume = 0.45
-                }
-            },
-            audible_distance_modifier = 0.5,
-            fade_in_ticks = 4,
-            fade_out_ticks = 20
-        },
-        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
-        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
-        damaged_trigger_effect = hit_effects.entity(),
-        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
-        fast_replaceable_group = "electrolyzer",
-        graphics_set = {
-            animation =
-            {
-                layers =
-                {
-                    {
-                        filename = "__GuG2__/graphics/entity/smart-farm/chemical-stager-hr.png",
-                        priority = "high",
-                        width = 320,
-                        height = 320,
-                        frame_count = 1,
-                        line_length = 1,
-                        scale = 0.5,
-                    },
-                    {
-                        filename = "__GuG2__/graphics/entity/smart-farm/chemical-stager-hr-shadow.png",
-                        priority = "high",
-                        width = 460,
-                        height = 340,
-                        frame_count = 1,
-                        line_length = 1,
-                        scale = 0.5,
-                        shift = util.by_pixel(32, 0),
-                        draw_as_shadow = true,
-                    },
-                }
-            },
-        },
-        crafting_categories = {"farming"},
-        crafting_speed = 1,
-        module_slots = 2,
-        allowed_effects = {"consumption", "pollution", "speed"},
-        energy_source =
-        {
-            type = "electric",
-            usage_priority = "secondary-input",
-            emissions_per_minute = {pollution=0}
-        },
-        energy_usage = "120kW",
-    }
-})
-data:extend({
-    {
-        type = "assembling-machine",
-        name = "solid-separator",
-        icons = du.icons("solid-separator"),
-        flags = {"placeable-neutral","placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "solid-separator"},
-        max_health = 400,
-        corpse = "assembling-machine-3-remnants",
-        dying_explosion = "assembling-machine-3-explosion",
-        alert_icon_shift = util.by_pixel(-3, -12),
-        resistances =
-        {
-            {
-                type = "acid",
-                percent = 95
-            }
-        },
-        fluid_boxes =
-        {
-            {
-                production_type = "input",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
-                volume = 100,
-                base_level = -1,
-                pipe_connections = {{ flow_direction="input", position = {-1, -2}, direction=defines.direction.north }},
-                secondary_draw_orders = { north = -1 }
-            },
-            {
-                production_type = "input",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
-                volume = 100,
-                base_level = -1,
-                pipe_connections = {{ flow_direction="input", position = {1, -2}, direction=defines.direction.north }},
-                secondary_draw_orders = { north = -1 }
-            },
-            {
-                production_type = "output",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
-                volume = 100,
-                base_level = 1,
-                pipe_connections = {{ flow_direction="output", position = {-2, 0}, direction=defines.direction.west }},
-                secondary_draw_orders = { north = -1 }
-            },
-            {
-                production_type = "output",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
-                volume = 100,
-                base_level = 1,
-                pipe_connections = {{ flow_direction="output", position = {-1, 2}, direction=defines.direction.south }},
-                secondary_draw_orders = { north = -1 }
-            },
-            {
-                production_type = "output",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
-                volume = 100,
-                base_level = 1,
-                pipe_connections = {{ flow_direction="output", position = {1, 2}, direction=defines.direction.south }},
-                secondary_draw_orders = { north = -1 }
-            },
-            {
-                production_type = "output",
-                pipe_picture = assembler3pipepictures(),
-                pipe_covers = pipecoverspictures(),
-                volume = 100,
-                base_level = 1,
-                pipe_connections = {{ flow_direction="output", position = {2, 0}, direction=defines.direction.east }},
-                secondary_draw_orders = { north = -1 }
-            },
-        },
-        open_sound = sounds.machine_open,
-        close_sound = sounds.machine_close,
-        vehicle_impact_sound = sounds.generic_impact,
-        working_sound =
-        {
-            sound =
-            {
-                {
-                    filename = "__base__/sound/assembling-machine-t3-1.ogg",
-                    volume = 0.45
-                }
-            },
-            audible_distance_modifier = 0.5,
-            fade_in_ticks = 4,
-            fade_out_ticks = 20
-        },
-        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
-        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
-        damaged_trigger_effect = hit_effects.entity(),
-        drawing_box = {{-1.9, -1.9}, {1.9, 1.9}},
-        fast_replaceable_group = "electrolyzer",
-        graphics_set = {
-            animation =
-            {
-                layers =
-                {
-                    {
-                        filename = "__GuG2__/graphics/entity/solid-separator/convector-hr-animation-1.png",
-                        priority = "high",
-                        width = 360,
-                        height = 350,
-                        frame_count = 64,
-                        line_length = 8,
-                        scale = 0.5,
-                        run_mode = "forward-th".."en-backward",
-                    },
-                    {
-                        filename = "__GuG2__/graphics/entity/solid-separator/convector-hr-shadow.png",
-                        priority = "high",
-                        width = 360,
-                        height = 350,
-                        frame_count = 1,
-                        line_length = 1,
-                        scale = 0.5,
-                        draw_as_shadow = true,
-                        repeat_count = 126,
-                    },
-                }
-            },
-        },
-        crafting_categories = {"solid-separation"},
-        crafting_speed = 1,
-        module_slots = 2,
-        allowed_effects = {"consumption", "pollution", "speed"},
-        energy_source =
-        {
-            type = "electric",
-            usage_priority = "secondary-input",
-            emissions_per_minute = {pollution=0}
-        },
-        energy_usage = "300kW",
-    }
-})
-data:extend({
-    {
-        type = "assembling-machine",
         name = "induction-melter",
         icons = du.icons("induction-melter"),
         flags = {"placeable-neutral","placeable-player", "player-creation"},
@@ -6362,7 +5932,7 @@ data:extend({
                 layers =
                 {
                     {
-                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-base.png",
+                        filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-base.png",
                         priority = "extra-high",
                         width = 459,
                         height = 491,
@@ -6381,7 +5951,7 @@ data:extend({
                     animation = {
                         layers = {
                             {
-                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-fan.png",
+                                filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-fan.png",
                                 priority = "extra-high",
                                 width = 107,
                                 height = 77,
@@ -6392,7 +5962,7 @@ data:extend({
                                 scale = 0.5,
                             },
                             {
-                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-fan.png",
+                                filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-fan.png",
                                 priority = "extra-high",
                                 width = 107,
                                 height = 77,
@@ -6403,7 +5973,7 @@ data:extend({
                                 scale = 0.5,
                             },
                             {
-                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-fan.png",
+                                filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-fan.png",
                                 priority = "extra-high",
                                 width = 107,
                                 height = 77,
@@ -6425,7 +5995,7 @@ data:extend({
                     animation = {
                         layers = {
                             {
-                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-dynamo.png",
+                                filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-dynamo.png",
                                 priority = "extra-high",
                                 width = 40,
                                 height = 36,
@@ -6436,7 +6006,7 @@ data:extend({
                                 scale = 0.5,
                             },
                             {
-                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-dynamo.png",
+                                filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-dynamo.png",
                                 priority = "extra-high",
                                 width = 40,
                                 height = 36,
@@ -6447,7 +6017,7 @@ data:extend({
                                 scale = 0.5,
                             },
                             {
-                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-dynamo.png",
+                                filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-dynamo.png",
                                 priority = "extra-high",
                                 width = 40,
                                 height = 36,
@@ -6464,7 +6034,7 @@ data:extend({
                     always_draw = true,
                     north_animation = {
                         draw_as_shadow = true,
-                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-shadow.png",
+                        filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-shadow.png",
                         priority = "extra-high",
                         width = 538,
                         height = 454,
@@ -6476,7 +6046,7 @@ data:extend({
                     },
                     east_animation = {
                         draw_as_shadow = true,
-                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-shadow.png",
+                        filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-shadow.png",
                         priority = "extra-high",
                         width = 538,
                         height = 454,
@@ -6488,7 +6058,7 @@ data:extend({
                     },
                     south_animation = {
                         draw_as_shadow = true,
-                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-shadow.png",
+                        filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-shadow.png",
                         priority = "extra-high",
                         width = 538,
                         x = 1076,
@@ -6500,7 +6070,7 @@ data:extend({
                     },
                     west_animation = {
                         draw_as_shadow = true,
-                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-shadow.png",
+                        filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-shadow.png",
                         priority = "extra-high",
                         width = 538,
                         height = 454,
@@ -6514,7 +6084,7 @@ data:extend({
                 {
                     always_draw = true,
                     north_animation = {
-                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-pipe-connections.png",
+                        filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-pipe-connections.png",
                         priority = "extra-high",
                         width = 459,
                         height = 491,
@@ -6524,7 +6094,7 @@ data:extend({
                         scale = 0.5,
                     },
                     east_animation = {
-                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-pipe-connections.png",
+                        filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-pipe-connections.png",
                         priority = "extra-high",
                         frame_count = 1,
                         width = 459,
@@ -6534,7 +6104,7 @@ data:extend({
                         scale = 0.5,
                     },
                     south_animation = {
-                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-pipe-connections.png",
+                        filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-pipe-connections.png",
                         priority = "extra-high",
                         width = 459,
                         height = 491,
@@ -6544,7 +6114,7 @@ data:extend({
                         scale = 0.5,
                     },
                     west_animation = {
-                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-hydro-plant-pipe-connections.png",
+                        filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hydro-plant-pipe-connections.png",
                         priority = "extra-high",
                         width = 459,
                         height = 491,
@@ -6558,7 +6128,7 @@ data:extend({
                     always_draw = true,
                     north_animation = {
                         draw_as_shadow = true,
-                        filename = "__GuG2__/graphics/entity/hydro-plant/hr-vertical-pipe-shadow-patch.png",
+                        filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hr-vertical-pipe-shadow-patch.png",
                         priority = "high",
                         width = 128,
                         height = 128,
@@ -6570,7 +6140,7 @@ data:extend({
                         layers = {
                             {
                                 draw_as_shadow = true,
-                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-vertical-pipe-shadow-patch.png",
+                                filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hr-vertical-pipe-shadow-patch.png",
                                 priority = "high",
                                 width = 128,
                                 height = 128,
@@ -6580,7 +6150,7 @@ data:extend({
                             },
                             {
                                 draw_as_shadow = true,
-                                filename = "__GuG2__/graphics/entity/hydro-plant/hr-vertical-pipe-shadow-patch.png",
+                                filename = "__angelsrefininggraphics__/graphics/entity/hydro-plant/hr-vertical-pipe-shadow-patch.png",
                                 priority = "high",
                                 width = 128,
                                 height = 128,
@@ -6707,7 +6277,7 @@ data:extend({
             layers =
             {
                 {
-                    filename = "__GuG2__/graphics/entity/blender/liquifier.png",
+                    filename = "__angelsrefininggraphics__/graphics/entity/liquifier/liquifier.png",
                     priority = "high",
                     width = 160,
                     height = 160,
@@ -6888,7 +6458,7 @@ local function make_farm(cfg)
                 animation = {
                     layers = {
                         {
-                            filename = "__GuG2__/graphics/entity/farm/farm-base.png",
+                            filename = "__angelsbioprocessinggraphics__/graphics/entity/crop-farm/farm-base.png",
                             width = 224,
                             height = 224,
                             frame_count = 1,
@@ -6905,7 +6475,7 @@ local function make_farm(cfg)
                             repeat_count = 36
                         },
                         {
-                            filename = "__GuG2__/graphics/entity/farm/field-"..(cfg.field or "basic")..".png",
+                            filename = "__angelsbioprocessinggraphics__/graphics/entity/crop-farm/field-"..(cfg.field or "basic")..".png",
                             width = 224,
                             height = 224,
                             tint = cfg.tint,
@@ -6920,7 +6490,7 @@ local function make_farm(cfg)
                         apply_recipe_tint = "primary",
                         animation = 
                         {
-                            filename = "__GuG2__/graphics/entity/farm/field-animation-"..(cfg.animation)..".png",
+                            filename = "__angelsbioprocessinggraphics__/graphics/entity/crop-farm/field-animation-"..(cfg.animation)..".png",
                             width = 224,
                             height = 224,
                             frame_count = 36,
@@ -6993,7 +6563,7 @@ data:extend({
         energy_usage = "300kW",
         graphics_set = {
             animation = {
-                filename = "__GuG2__/graphics/entity/distillation-tower/destill-tower.png",
+                filename = "__exotic-space-industries-graphics-1__/graphics/entities/destill-tower.png",
                 width = 1024,
                 height = 1024,
                 frame_count = 1,
@@ -7236,7 +6806,7 @@ data:extend({
         energy_usage = "30kW",
         graphics_set = {
             animation = {
-                filename = "__GuG2__/graphics/entity/composter/composter.png",
+                filename = "__angelsbioprocessinggraphics__/graphics/entity/composter/composter.png",
                 width = 160,
                 height = 160,
                 frame_count = 1,
@@ -7247,7 +6817,7 @@ data:extend({
             working_visualisations =
             {
                 {
-                    filename = "__GuG2__/graphics/entity/composter/composter-animation.png",
+                    filename = "__angelsbioprocessinggraphics__/graphics/entity/composter/composter-animation.png",
                     width = 128,
                     height = 32,
                     frame_count = 25,
@@ -7267,8 +6837,7 @@ data:extend({
     {
         type = "assembling-machine",
         name = "steam-cracker",
-        icon = "__GuG2__/graphics/icons/steam-cracker.png",
-        icon_size = 64,
+        icons = du.icons("steam-cracker"),
         flags = {"placeable-neutral", "player-creation"},
         minable = {mining_time = 1, result = "steam-cracker"},
         fast_replaceable_group = "cracker",
@@ -7328,7 +6897,7 @@ data:extend({
             animation = {
                 layers = {
                     {
-                        filename = "__GuG2__/graphics/entity/steam-cracker/separator.png",
+                        filename = "__angelspetrochemgraphics__/graphics/entity/separator/separator.png",
                         width = 224,
                         height = 224,
                         frame_count = 1,
@@ -7377,154 +6946,154 @@ end
 local function py_pipepictures()
     return {
         straight_vertical_single = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-straight-vertical-single.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-straight-vertical-single.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         straight_vertical = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-straight-vertical.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-straight-vertical.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         straight_vertical_window = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-straight-vertical-window.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-straight-vertical-window.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         straight_horizontal_window = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-straight-horizontal-window.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-straight-horizontal-window.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         straight_horizontal = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-straight-horizontal.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-straight-horizontal.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         corner_up_right = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-corner-up-right.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-corner-up-right.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         corner_up_left = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-corner-up-left.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-corner-up-left.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         corner_down_right = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-corner-down-right.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-corner-down-right.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         corner_down_left = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-corner-down-left.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-corner-down-left.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         t_up = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-t-up.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-t-up.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         t_down = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-t-down.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-t-down.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         t_right = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-t-right.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-t-right.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         t_left = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-t-left.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-t-left.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         cross = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-cross.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-cross.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         ending_up = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-ending-up.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-ending-up.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         ending_down = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-ending-down.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-ending-down.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         ending_right = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-ending-right.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-ending-right.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         ending_left = make_shadow {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-ending-left.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-ending-left.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         horizontal_window_background = {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-horizontal-window-background.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-horizontal-window-background.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         vertical_window_background = {
-            filename = "__GuG2__/graphics/entity/shaft/pipe-vertical-window-background.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/pipe-vertical-window-background.png",
             priority = "extra-high",
             width = 128,
             height = 128,
             scale = 0.5
         },
         fluid_background = {
-            filename = "__GuG2__/graphics/entity/shaft/fluid-background.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/fluid-background.png",
             priority = "extra-high",
             width = 64,
             height = 40,
             scale = 0.5
         },
         low_temperature_flow = {
-            filename = "__GuG2__/graphics/entity/shaft/steam.png",
+            filename = "__pyindustrygraphics__/graphics/entity/niobium-pipe/steam.png",
             priority = "extra-high",
             line_length = 10,
             width = 48,
@@ -7558,8 +7127,7 @@ data:extend({
     {
         type = "pipe",
         name = "shaft",
-        icon = "__GuG2__/graphics/icons/shaft.png",
-        icon_size = 32,
+        icons = du.icons("shaft"),
         flags = {"placeable-neutral", "player-creation"},
         minable = {
             mining_time = 0.1,
@@ -7801,21 +7369,12 @@ data:extend({
     },
     {
         type = "item",
-        name = "steam-crusher",
-        icons = du.icons("steam-crusher"),
+        name = "crusher-1",
+        icons = du.icons("crusher-1"),
         subgroup = "smelting-machine",
         order = "a[stone-furnace]",
         stack_size = 50,
-        place_result = "steam-crusher",
-    },
-    {
-        type = "item",
-        name = "crusher",
-        icons = du.icons("steam-crusher"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
-        stack_size = 50,
-        place_result = "crusher",
+        place_result = "crusher-1",
     },
     {
         type = "item",
@@ -8017,15 +7576,6 @@ data:extend({
     },
     {
         type = "item",
-        name = "scale-boiler",
-        icons = du.icons{mod="base", name="boiler"},
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
-        stack_size = 50,
-        place_result = "scale-boiler"
-    },
-    {
-        type = "item",
         name = "smithy",
         icons = du.icons{discard=true, name="__pycoalprocessinggraphics__/graphics/icons/advanced-foundry-mk01.png"},
         subgroup = "gaseous-machines",
@@ -8089,14 +7639,6 @@ data:extend({
     },
     {
         type = "item",
-        name = "forestry",
-        icons = du.icons("forestry"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
-        stack_size = 50,
-    },
-    {
-        type = "item",
         name = "soil-extractor",
         icons = du.icons("soil-extractor"),
         subgroup = "smelting-machine",
@@ -8151,15 +7693,6 @@ data:extend({
     },
     {
         type = "item",
-        name = "smart-farm",
-        icons = du.icons("smart-farm"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
-        stack_size = 50,
-        place_result = "smart-farm"
-    },
-    {
-        type = "item",
         name = "pipe-2",
         icons = du.icons("pipe-2"),
         subgroup = "smelting-machine",
@@ -8193,15 +7726,6 @@ data:extend({
         order = "a[stone-furnace]",
         stack_size = 50,
         place_result = "simple-algae-plant"
-    },
-    {
-        type = "item",
-        name = "solid-separator",
-        icons = du.icons("solid-separator"),
-        subgroup = "smelting-machine",
-        order = "a[stone-furnace]",
-        stack_size = 50,
-        place_result = "solid-separator"
     },
     {
         type = "item",
@@ -8299,6 +7823,10 @@ data:extend({
     },
     {
         type = "recipe-category",
+        name = "generic-water-void"
+    },
+    {
+        type = "recipe-category",
         name = "tower-distillation"
     },
     {
@@ -8328,10 +7856,6 @@ data:extend({
     {
         type = "recipe-category",
         name = "water-treatment"
-    },
-    {
-        type = "recipe-category",
-        name = "solid-separation"
     },
     {
         type = "recipe-category",

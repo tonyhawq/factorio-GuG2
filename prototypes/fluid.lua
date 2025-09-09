@@ -930,6 +930,15 @@ data:extend({
     },
     {
         type = "fluid",
+        name = "blue-liquor",
+        default_temperature = 15,
+        base_color = {r=1, g=0.9, b=0.5},
+        flow_color = {r=0.6, g=0.4, b=0.2},
+        icons = du.icons("blue-liquor"),
+        order = "a[fluid]-j[sludge]"
+    },
+    {
+        type = "fluid",
         name = "tall-oil",
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
@@ -1287,14 +1296,13 @@ data:extend({
         icons = du.icons("grease"),
         order = "a[fluid]-j[sludge]"
     },
-    
     {
         type = "fluid",
         name = "molten-iron",
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-iron"),
+        icons = du.icons("molten-iron"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1303,7 +1311,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-copper"),
+        icons = du.icons("molten-copper"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1312,7 +1320,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-lead"),
+        icons = du.icons("molten-lead"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1321,7 +1329,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-tin"),
+        icons = du.icons("molten-tin"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1330,7 +1338,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-solder"),
+        icons = du.icons("molten-solder"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1339,16 +1347,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-aluminum"),
-        order = "a[fluid]-j[sludge]"
-    },
-    {
-        type = "fluid",
-        name = "molten-molybdenum-special-alloy",
-        default_temperature = 15,
-        base_color = {r=1, g=0.9, b=0.5},
-        flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-molybdenum-special-alloy"),
+        icons = du.icons("molten-aluminum"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1357,7 +1356,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-bronze"),
+        icons = du.icons("molten-bronze"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1366,7 +1365,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-stainless-steel"),
+        icons = du.icons("molten-stainless-steel"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1375,7 +1374,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-glowing-mangaloy"),
+        icons = du.icons("molten-glowing-mangaloy"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1384,7 +1383,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-nickel"),
+        icons = du.icons("molten-nickel"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1393,7 +1392,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-chrome"),
+        icons = du.icons("molten-chrome"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1402,7 +1401,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-silver"),
+        icons = du.icons("molten-silver"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1411,7 +1410,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-molybdenum"),
+        icons = du.icons("molten-molybdenum"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1420,7 +1419,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-manganese"),
+        icons = du.icons("molten-manganese"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1429,7 +1428,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-stainless-steel"),
+        icons = du.icons("molten-stainless-steel"),
         order = "a[fluid]-j[sludge]"
     },
     {
@@ -1438,7 +1437,7 @@ data:extend({
         default_temperature = 15,
         base_color = {r=1, g=0.9, b=0.5},
         flow_color = {r=0.6, g=0.4, b=0.2},
-        icons = du.icons("angels/molten-antimony"),
+        icons = du.icons("molten-antimony"),
         order = "a[fluid]-j[sludge]"
     },
 })

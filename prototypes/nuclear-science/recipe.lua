@@ -73,7 +73,6 @@ data:extend({
         energy_required = 1,
         ingredients = {
             {type="item", name="heat-pipe", amount=40},
-            {type="item", name="molybdenum-special-alloy", amount=20},
             {type="item", name="nickel-plate", amount=80},
             {type="item", name="plastic-bar", amount=20},
             {type="item", name="concrete", amount=100},
@@ -126,7 +125,6 @@ data:extend({
         ingredients = {
             {type="item", name="urania-235", amount=1},
             {type="item", name="urania-238", amount=4},
-            {type="item", name="molybdenum-special-alloy", amount=2},
             {type="item", name="nickel-plate", amount=3},
         },
         results = {

@@ -199,6 +199,142 @@ data:extend({
         }
     }
 })
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "forestry-generic-growing", ---@diagnostic disable-line
+        name = "tree-growing-2",
+        icons = du.icons("tree-growing"):add_corner("compost"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 100,
+        ingredients = {
+            {type="item", name="sapling", amount=16},
+            {type="item", name="compost", amount=16},
+            {type="fluid", name="water", amount=480},
+        },
+        results = {
+            {type="item", name="log", amount=80},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "forestry-pine-growing", ---@diagnostic disable-line
+        name = "pine-tree-growing-2",
+        icons = du.icons("pine-tree-growing"):add_corner("compost"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 100,
+        ingredients = {
+            {type="item", name="pine-sapling", amount=16},
+            {type="item", name="compost", amount=16},
+            {type="fluid", name="water", amount=480},
+        },
+        results = {
+            {type="item", name="log", amount=80},
+            {type="item", name="pinecone", amount=24},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "forestry-oak-growing", ---@diagnostic disable-line
+        name = "oak-tree-growing-2",
+        icons = du.icons("oak-tree-growing"):add_corner("compost"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 180,
+        ingredients = {
+            {type="item", name="oak-sapling", amount=16},
+            {type="item", name="compost", amount=16},
+            {type="fluid", name="water", amount=480},
+        },
+        results = {
+            {type="item", name="log", amount=240},
+            {type="item", name="acorn", amount=24},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "forestry-generic-growing", ---@diagnostic disable-line
+        name = "tree-growing-3",
+        icons = du.icons("tree-growing"):add_corner("rich-soil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 80,
+        ingredients = {
+            {type="item", name="sapling", amount=16},
+            {type="item", name="rich-soil", amount=16},
+            {type="fluid", name="water", amount=480},
+        },
+        results = {
+            {type="item", name="log", amount=80},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "forestry-pine-growing", ---@diagnostic disable-line
+        name = "pine-tree-growing-3",
+        icons = du.icons("pine-tree-growing"):add_corner("rich-soil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 80,
+        ingredients = {
+            {type="item", name="pine-sapling", amount=16},
+            {type="item", name="rich-soil", amount=16},
+            {type="fluid", name="water", amount=480},
+        },
+        results = {
+            {type="item", name="log", amount=80},
+            {type="item", name="pinecone", amount=24},
+        }
+    }
+})
+data:extend({
+    {
+        type = "recipe", 
+        always_show_made_in = true,
+        enabled = false,
+        category = "forestry-oak-growing", ---@diagnostic disable-line
+        name = "oak-tree-growing-3",
+        icons = du.icons("oak-tree-growing"):add_corner("rich-soil"),
+        subgroup = "raw-material",
+        order = "a[a]",
+        main_product = "",
+        energy_required = 160,
+        ingredients = {
+            {type="item", name="oak-sapling", amount=16},
+            {type="item", name="rich-soil", amount=16},
+            {type="fluid", name="water", amount=480},
+        },
+        results = {
+            {type="item", name="log", amount=240},
+            {type="item", name="acorn", amount=24},
+        }
+    }
+})
 
 local function set_tree_drops(cfg)
     for _, tree_name in pairs(cfg.trees) do
@@ -433,7 +569,7 @@ data:extend({
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 120,
+        energy_required = 30,
         ingredients = {
             {type="item", name="pale-gull-egg", amount=1},
             {type="item", name="small-cage", amount=1},
@@ -448,13 +584,13 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "crafting-with-fluid", ---@diagnostic disable-line
+        category = "forestry-generic-growing", ---@diagnostic disable-line
         name = "pale-gull-growing-1",
         icons = du.icons("pale-gull"):add_corner("pale-gull-hatchling"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 120,
+        energy_required = 30,
         ingredients = {
             {type="item", name="pale-gull-hatchling", amount=1},
             {type="item", name="artificial-nest", amount=1},
@@ -473,13 +609,13 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "crafting-with-fluid", ---@diagnostic disable-line
+        category = "forestry-generic-growing", ---@diagnostic disable-line
         name = "pale-gull-feeding-1",
         icons = du.icons("pale-gull"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 240,
+        energy_required = 60,
         ingredients = {
             {type="item", name="pale-gull", amount=1},
             {type="item", name="saltberries", amount=20},
@@ -498,7 +634,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "crafting", ---@diagnostic disable-line
+        category = "forestry-generic-growing", ---@diagnostic disable-line
         name = "pale-gull-releasing",
         icons = du.icons("pale-gull"),
         subgroup = "raw-material",
@@ -518,13 +654,13 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "crafting", ---@diagnostic disable-line
+        category = "forestry-generic-growing", ---@diagnostic disable-line
         name = "pale-gull-breeding-1",
         icons = du.icons("artificial-nest"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
-        energy_required = 120,
+        energy_required = 30,
         ingredients = {
             {type="item", name="pale-gull", amount=2},
             {type="item", name="artificial-nest", amount=1},

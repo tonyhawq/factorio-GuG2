@@ -610,7 +610,6 @@ data:extend({
         ingredients = {
             -- metal halide UV light (tungsten comes later, cant use that, no mercury, no cobalt)
             {type="item", name="small-lamp", amount=1},
-            {type="item", name="molybdenum-special-alloy", amount=1},
             {type="item", name="lead-plate", amount=2},
             {type="fluid", name="argon", amount=10},
             {type="fluid", name="molten-glass", amount=20},
@@ -646,7 +645,7 @@ data:extend({
         enabled = false,
         category = "alloying", ---@diagnostic disable-line
         name = "molten-stainless-steel-1",
-        icons = du.icons("angels/molten-stainless-steel"),
+        icons = du.icons("molten-stainless-steel"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -670,7 +669,7 @@ data:extend({
         enabled = false,
         category = "alloying", ---@diagnostic disable-line
         name = "molten-glowing-mangaloy-1",
-        icons = du.icons("angels/molten-glowing-mangaloy"),
+        icons = du.icons("molten-glowing-mangaloy"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -694,34 +693,8 @@ data:extend({
         always_show_made_in = true,
         enabled = false,
         category = "alloying", ---@diagnostic disable-line
-        name = "molten-molybdenum-special-alloy-1",
-        icons = du.icons("angels/molten-molybdenum-special-alloy"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 1,
-        ingredients = {
-            -- 20 molten fluid per ingot
-            {type="fluid", name="molten-aluminum", amount=15},
-            {type="fluid", name="molten-molybdenum", amount=15},
-            {type="fluid", name="molten-nickel", amount=50},
-            {type="fluid", name="molten-iron", amount=15},
-            {type="item", name="coke", amount=1},
-            {type="item", name="white-phosphorous", amount=5},
-        },
-        results = {
-            {type="fluid", name="molten-molybdenum-special-alloy", amount=100},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "alloying", ---@diagnostic disable-line
         name = "molten-solder-1",
-        icons = du.icons("angels/molten-solder"),
+        icons = du.icons("molten-solder"),
         subgroup = "raw-material",
         order = "a[a]",
         main_product = "",
@@ -744,7 +717,7 @@ local function melt_and_cast_ingot(name)
             enabled = false,
             category = "induction", ---@diagnostic disable-line
             name = "molten-"..name.."-1",
-            icons = du.icons("angels/molten-"..name),
+            icons = du.icons("molten-"..name),
             subgroup = "raw-material",
             order = "a[a]",
             main_product = "",
@@ -1038,25 +1011,6 @@ data:extend({
         },
         results = {
             {type="item", name="stainless-steel-plate", amount=10},
-        }
-    },
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "casting", ---@diagnostic disable-line
-        name = "molybdenum-special-alloy-casting",
-        icons = du.icons("molybdenum-special-alloy"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 2,
-        ingredients = {
-            {type="fluid", name="molten-molybdenum-special-alloy", amount=100},
-            {type="item", name="sand-casting", amount=1},
-        },
-        results = {
-            {type="item", name="molybdenum-special-alloy", amount=5},
         }
     },
     {

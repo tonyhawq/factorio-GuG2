@@ -187,7 +187,7 @@ local function get_icon_path_from_config(config)
 
     if override_mod and (not config.mod) then
         log("now removing")
-        name = config.name:sub(remove + 1, config.name:len())
+        name = name:sub(remove + 1, name:len())
     end
     if not config.discard then
         local mod = config.mod or override_mod or dutil.mod

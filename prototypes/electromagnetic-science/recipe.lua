@@ -285,7 +285,7 @@ data:extend({
         name = "evaporite-separation-1",
         icons = du.icons("evaporite"),
         enabled = false,
-        category = "solid-separation",
+        category = "crafting-with-fluid",
         subgroup = "raw-material",
         energy_required = 4,
         order = "a",
@@ -310,7 +310,7 @@ data:extend({
         name = "impure-nickel-concentrate-1",
         icons = du.icons("impure-nickel-concentrate"),
         enabled = false,
-        category = "solid-separation",
+        category = "crafting",
         subgroup = "raw-material",
         energy_required = 4,
         order = "a",
@@ -418,7 +418,6 @@ data:extend({
         energy_required = 1,
         ingredients = {
             {type="item", name="concrete", amount=1},
-            {type="item", name="molybdenum-special-alloy", amount=1},
             {type="item", name="small-parts", amount=12},
             {type="item", name="aluminum-cable", amount=40},
         },
@@ -708,27 +707,6 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "solid-separation", ---@diagnostic disable-line
-        name = "geothermal-water-treatment-2",
-        icons = du.icons("geothermal-water"),
-        main_product = "",
-        subgroup = "raw-material",
-        order = "a[a]",
-        energy_required = 4,
-        ingredients = {
-            {type="fluid", name="geothermal-water", amount=100},
-        },
-        results = {
-            {type="item", name="iron-oxide", amount=6},
-            {type="fluid", name="water", amount=40},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
         category = "water-treatment", ---@diagnostic disable-line
         name = "mineralized-water-treatment",
         icons = du.icons("mineralized-water"):add_corner("manganese-oxides"),
@@ -768,73 +746,6 @@ data:extend({
         results = {
             {type="fluid", name="mineralized-water", amount=80},
             {type="fluid", name="oxidised-sludge", amount=20},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "solid-separation", ---@diagnostic disable-line
-        name = "iron-oxidised-sludge-1",
-        icons = du.icons("oxidised-sludge"):add_corner("base.iron-ore"),
-        main_product = "",
-        subgroup = "raw-material",
-        order = "a[a]",
-        energy_required = 4,
-        ingredients = {
-            {type="fluid", name="oxidised-sludge", amount=40},
-        },
-        results = {
-            {type="fluid", name="mineralized-water", amount=20},
-            {type="item", name="iron-oxide", amount=4},
-            {type="item", name="stone", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "solid-separation", ---@diagnostic disable-line
-        name = "manganese-oxidised-sludge-1",
-        icons = du.icons("oxidised-sludge"):add_corner("manganese-oxides"),
-        main_product = "",
-        subgroup = "raw-material",
-        order = "a[a]",
-        energy_required = 4,
-        ingredients = {
-            {type="fluid", name="oxidised-sludge", amount=40},
-        },
-        results = {
-            {type="item", name="manganese-oxides", amount=2},
-            {type="item", name="iron-oxide", amount=1},
-            {type="item", name="stone", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "solid-separation", ---@diagnostic disable-line
-        name = "oxidised-sludge-separation-1",
-        icons = du.icons("oxidised-sludge"):add_corner("zinc-ore"),
-        main_product = "",
-        subgroup = "raw-material",
-        order = "a[a]",
-        energy_required = 4,
-        ingredients = {
-            {type="fluid", name="oxidised-sludge", amount=40},
-        },
-        results = {
-            {type="item", name="manganese-oxides", amount=2},
-            {type="item", name="iron-oxide", amount=2},
-            {type="item", name="zinc-ore", amount=2},
-            {type="item", name="manganese-ore", amount=1},
         }
     }
 })
@@ -1344,7 +1255,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "solid-separation", ---@diagnostic disable-line
+        category = "chemistry", ---@diagnostic disable-line
         name = "copper-sulfate",
         icons = du.icons("copper-sulfate"),
         subgroup = "raw-material",
@@ -1663,7 +1574,6 @@ data:extend({
         energy_required = 4,
         ingredients = {
             {type="item", name="glowing-mangaloy-plate", amount=1},
-            {type="item", name="molybdenum-special-alloy", amount=1},
             {type="item", name="clean-inserter", amount=1},
         },
         results = {
@@ -1725,28 +1635,6 @@ data:extend({
         },
         results = {
             {type="item", name="accumulator", amount=1},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "crafting", ---@diagnostic disable-line
-        name = "solid-separator",
-        icons = du.icons("solid-separator"),
-        energy_required = 0.5,
-        ingredients = {
-            {type="item", name="steam-crusher", amount=1},
-            {type="item", name="magnet-wire", amount=60},
-            {type="item", name="ferrite", amount=12},
-            {type="item", name="splitter", amount=4},
-            {type="item", name="small-parts", amount=10},
-            {type="item", name="steel-beam", amount=25},
-        },
-        results = {
-            {type="item", name="solid-separator", amount=1},
         }
     }
 })
@@ -1928,7 +1816,6 @@ data:extend({
             {type="item", name="process", amount=1},
             {type="item", name="optimization-science-pack", amount=1},
             {type="item", name="wave-gap-simulation", amount=1},
-            {type="item", name="molybdenum-special-alloy", amount=2},
             {type="item", name="battery-alloy-plate", amount=2},
             {type="fluid", name="cpu-time", amount=2000},
         },
@@ -2066,7 +1953,7 @@ data:extend({
         type = "recipe", 
         always_show_made_in = true,
         enabled = false,
-        category = "solid-separation", ---@diagnostic disable-line
+        category = "chemistry", ---@diagnostic disable-line
         name = "impure-molybdenum-concentrate",
         icons = du.icons("impure-molybdenum-concentrate"),
         subgroup = "raw-material",
@@ -2103,32 +1990,6 @@ data:extend({
         results = {
             {type="item", name="molybdenum-ingot", amount=1},
             {type="fluid", name="steam", amount=100, temperature=500},
-        }
-    }
-})
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "blasting", ---@diagnostic disable-line
-        name = "molybdenum-special-alloy",
-        icons = du.icons("molybdenum-special-alloy"),
-        subgroup = "raw-material",
-        order = "a[a]",
-        main_product = "",
-        energy_required = 24,
-        ingredients = {
-            {type="item", name="molybdenum-ingot", amount=1},
-            {type="item", name="aluminum-ingot", amount=1},
-            {type="item", name="steel-ingot", amount=1},
-            {type="item", name="programatical-metalloid-analysis", amount=1},
-            {type="item", name="nickel-ingot", amount=4},
-            {type="item", name="white-phosphorous", amount=4},
-        },
-        results = {
-            {type="item", name="molybdenum-special-alloy", amount=1},
-            {type="item", name="program-harness", amount=1},
         }
     }
 })
@@ -2389,7 +2250,6 @@ data:extend({
             {type="item", name="wind-turbine-1", amount=1},
             {type="item", name="small-electric-motor", amount=6},
             {type="item", name="accumulator", amount=2},
-            {type="item", name="molybdenum-special-alloy", amount=2},
             {type="item", name="radar", amount=1},
             {type="fluid", name="lubricant", amount=12},
         },
@@ -3280,7 +3140,6 @@ data:extend({
         energy_required = 0.5,
         ingredients = {
             {type="item", name="concrete", amount=2},
-            {type="item", name="molybdenum-special-alloy", amount=6},
             {type="item", name="transistor", amount=6},
             {type="item", name="rayon", amount=12},
             {type="item", name="ferrite", amount=2},
@@ -3645,26 +3504,4 @@ data:extend({
             {type="item", name="automotive-fuel", amount=1},
         }
     }
-})--[[
-data:extend({
-    {
-        type = "recipe", 
-        always_show_made_in = true,
-        enabled = false,
-        category = "crafting", ---@diagnostic disable-line
-        name = "fabricator-2",
-        icons = du.alias("fabricator-2"),
-        energy_required = 0.5,
-        ingredients = {
-            {type="item", name="assembling-machine-2", amount=1},
-            {type="item", name="molybdenum-special-alloy", amount=12},
-            {type="item", name="gearbox", amount=4},
-            {type="item", name="fiberglass", amount=12},
-            {type="item", name="phenolic-resin", amount=8},
-            {type="item", name="advanced-circuit", amount=8},
-        },
-        results = {
-            {type="item", name="fabricator-1", amount=1},
-        }
-    }
-})]]
+})

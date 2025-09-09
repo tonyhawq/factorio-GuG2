@@ -730,8 +730,8 @@ data:extend({
     type = "item",
     name = "crushed-aluminum-ore",
     icons = du.icons("crushed-aluminum-ore"),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
+    subgroup = "aluminum-ore-processing",
+    order = "a[crushing]",
     stack_size = 50
   },
   {
@@ -818,8 +818,8 @@ data:extend({
     type = "item",
     name = "crushed-manganese-ore",
     icons = du.icons("crushed-manganese-ore"),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
+    subgroup = "manganese-ore-processing",
+    order = "a[crushing]",
     stack_size = 200
   },
   {
@@ -1008,14 +1008,6 @@ data:extend({
     type = "item",
     name = "mortar",
     icons = du.icons("mortar"),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
-    stack_size = 200
-  },
-  {
-    type = "item",
-    name = "molybdenum-special-alloy",
-    icons = du.icons("molybdenum-special-alloy"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     stack_size = 200
@@ -1329,24 +1321,24 @@ data:extend({
     type = "item",
     name = "crushed-iron-ore",
     icons = du.icons("crushed-iron-ore"),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
+    subgroup = "iron-ore-processing",
+    order = "a[crushing]",
     stack_size = 50,
   },
   {
     type = "item",
     name = "crushed-copper-ore",
     icons = du.icons("crushed-copper-ore"),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
+    subgroup = "copper-ore-processing",
+    order = "a[crushing]",
     stack_size = 50,
   },
   {
     type = "item",
     name = "crushed-tin-ore",
     icons = du.icons("crushed-tin-ore"),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
+    subgroup = "tin-ore-processing",
+    order = "a[crushing]",
     stack_size = 50,
   },
   {
@@ -1362,8 +1354,8 @@ data:extend({
     type = "item",
     name = "crushed-lead-ore",
     icons = du.icons("crushed-lead-ore"),
-    subgroup = "smelting-machine",
-    order = "a[stone-furnace]",
+    subgroup = "lead-ore-processing",
+    order = "a[crushing]",
     stack_size = 50,
     formula = "(PbS)6(Pb5(AsO4)3Cl)3(Ag3AsS3)1"
   },
@@ -1595,7 +1587,9 @@ data:extend({
     icons = du.icons("cellulose"),
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
-    stack_size = 50,
+    stack_size = 200,
+    fuel_value = "250kJ",
+    fuel_category = "chemical",
   },
   {
     type = "item",
